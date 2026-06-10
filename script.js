@@ -1,3 +1,11 @@
+    // ===== 카카오 SDK 초기화 =====
+    try {
+        Kakao.init('9c311733c910878af9ea27cd77bb3f4b'); // 이 부분에 나의 실제 JavaScript 키를 대입해줘.
+        console.log("Kakao SDK Initialized successfully.");
+    } catch(e) {
+        console.log("Kakao SDK Initialization error: ", e);
+    }
+
     // ===== 문항 원본 =====
     const baseQuestions = [
         { id: 1,  category: 'E', text: "새로운 산책 경로나 생전 처음 보는 물건을 마주했을 때, 꼬리를 바짝 세우고 적극적으로 다가가 냄새를 맡는다." },
@@ -406,6 +414,26 @@
         const url = window.location.href;
         const shareText = `저희 아이는 [${typeName}] 유형이 나왔어요! 확인해보세요.`;
         
+        // 카카오톡 SDK가 초기화되어 있다면 카카오 공유 실행
+        if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
+            const shareParams = {
+                objectType: 'feed',
+                content: {
+                    title: '🐾 우리 강아지 멍-BTI 검사 결과!',
+                    description: shareText,
+                    imageUrl: 'https://mung-bti.example.com/share_thumbnail.jpg',
+                    link: { mobileWebUrl: url, webUrl: url },
+                },
+                buttons: [{ title: '결과 확인하기', link: { mobileWebUrl: url, webUrl: url } }],
+            };
+            if (Kakao.Share) {
+                Kakao.Share.sendDefault(shareParams);
+            } else if (Kakao.Link) {
+                Kakao.Link.sendDefault(shareParams);
+            }
+            return; // 카카오 공유 호출 후 종료
+        }
+
         // 모바일 환경인지 간단히 체크 (PC에서는 Share API 동작이 불안정할 수 있으므로 바로 클립보드 복사)
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
