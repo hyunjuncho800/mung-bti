@@ -414,24 +414,31 @@
         const url = window.location.href;
         const shareText = `저희 아이는 [${typeName}] 유형이 나왔어요! 확인해보세요.`;
         
-        // 카카오톡 SDK가 초기화되어 있다면 카카오 공유 실행
+        // 카카오톡 SDK가 초기화되어 있다면 카카오 공유 실행 시도
         if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
-            const shareParams = {
-                objectType: 'feed',
-                content: {
-                    title: '🐾 우리 강아지 멍-BTI 검사 결과!',
-                    description: shareText,
-                    imageUrl: 'https://mung-bti.example.com/share_thumbnail.jpg',
-                    link: { mobileWebUrl: url, webUrl: url },
-                },
-                buttons: [{ title: '결과 확인하기', link: { mobileWebUrl: url, webUrl: url } }],
-            };
-            if (Kakao.Share) {
-                Kakao.Share.sendDefault(shareParams);
-            } else if (Kakao.Link) {
-                Kakao.Link.sendDefault(shareParams);
+            try {
+                const shareParams = {
+                    objectType: 'feed',
+                    content: {
+                        title: '🐾 우리 강아지 멍-BTI 검사 결과!',
+                        description: shareText,
+                        // 임시 도메인 대신 이미지가 확실히 뜨도록 안전한 기본 이미지로 변경 (나중에 실제 도메인으로 교체 권장)
+                        imageUrl: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=400',
+                        link: { mobileWebUrl: url, webUrl: url },
+                    },
+                    buttons: [{ title: '결과 확인하기', link: { mobileWebUrl: url, webUrl: url } }],
+                };
+                if (Kakao.Share) {
+                    Kakao.Share.sendDefault(shareParams);
+                } else if (Kakao.Link) {
+                    Kakao.Link.sendDefault(shareParams);
+                }
+                return; // 성공적으로 호출되면 종료
+            } catch (err) {
+                console.error("카카오 공유 에러:", err);
+                alert("카카오톡 공유를 실행할 수 없습니다.\n카카오 디벨로퍼스에 현재 도메인이 등록되어 있는지 확인해주세요.\n\n대신 결과 링크를 복사합니다.");
+                // 에러 발생 시 아래 폴백(Fallback)으로 넘어가도록 진행
             }
-            return; // 카카오 공유 호출 후 종료
         }
 
         // 모바일 환경인지 간단히 체크 (PC에서는 Share API 동작이 불안정할 수 있으므로 바로 클립보드 복사)
