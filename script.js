@@ -400,69 +400,42 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // ===== 검사 공유하기 =====
+    // ===== 검사 결과 공유하기 =====
     function shareTest() {
         const typeName = document.getElementById('res-type-title').textContent || '반려견 기질 검사 결과';
         const url = window.location.href;
+        const shareText = `저희 아이는 [${typeName}] 유형이 나왔어요! 확인해보세요.`;
         
         if (navigator.share) {
             navigator.share({
                 title: '🐾 우리 강아지 멍-BTI 검사 결과!',
-                text: `저희 아이는 [${typeName}] 유형이 나왔어요! 확인해보세요.`,
+                text: shareText,
                 url: url
-            }).catch(console.error);
+            }).catch((error) => {
+                console.log('공유 실패 또는 취소:', error);
+                fallbackCopy(url);
+            });
         } else {
-            const successMessage = "주소가 복사되었습니다. 친구에게 붙여넣어 공유해보세요!\n\n" + url;
-            const fallbackCopyText = () => {
-                const textArea = document.createElement("textarea");
-                textArea.value = url;
-                textArea.style.position = "fixed";
-                document.body.appendChild(textArea);
-                textArea.focus();
-                textArea.select();
-                try {
-                    document.execCommand('copy');
-                    alert(successMessage);
-                } catch (err) {
-                    alert("지원하지 않는 브라우저입니다. 아래 주소를 직접 복사해주세요.\n\n" + url);
-                }
-                document.body.removeChild(textArea);
-            };
-
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(url)
-                    .then(() => { alert(successMessage); })
-                    .catch(() => { fallbackCopyText(); });
-            } else {
-                fallbackCopyText();
-            }
+            fallbackCopy(url);
         }
     }
 
-    // ===== 결과 이미지로 저장하기 =====
-    function saveResultImage() {
-        const resultZone = document.getElementById('result-zone');
-        const btnGroup = document.querySelector('.btn-group');
-        
-        // 캡처 시 버튼 숨기기
-        const originalDisplay = btnGroup.style.display || 'flex';
-        btnGroup.style.display = 'none';
-
-        html2canvas(resultZone, {
-            scale: 2,
-            useCORS: true,
-            backgroundColor: '#ffffff' // 배경색 명시
-        }).then(canvas => {
-            btnGroup.style.display = originalDisplay; // 버튼 복구
-            const link = document.createElement('a');
-            link.download = '멍-BTI_검사결과.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        }).catch(err => {
-            btnGroup.style.display = originalDisplay;
-            console.error("이미지 캡처 실패:", err);
-            alert("이미지 저장 중 오류가 발생했습니다.");
-        });
+    function fallbackCopy(url) {
+        const textArea = document.createElement("textarea");
+        textArea.value = url;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            alert("결과 링크가 복사되었습니다. 친구에게 공유해보세요!");
+        } catch (err) {
+            alert("링크 복사에 실패했습니다. 주소창의 URL을 복사해주세요.");
+        }
+        document.body.removeChild(textArea);
     }
 
     // ===== 모달 =====
