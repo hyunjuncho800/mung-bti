@@ -141,6 +141,38 @@
         </div>
     </div><!-- /test-zone -->
 
+    <!-- ===================== MBTI ZONE ===================== -->
+    <div id="mbti-zone" style="display: none;">
+        <div class="mbti-container">
+            <h2>마지막 단계! 🐾</h2>
+            <p>강아지와의 궁합을 확인하기 위해<br>보호자님의 MBTI를 알려주세요!</p>
+            
+            <div class="mbti-select-wrapper">
+                <select id="owner-mbti" class="mbti-select">
+                    <option value="" disabled selected>MBTI 선택</option>
+                    <option value="ESTJ">ESTJ (엄격한 관리자)</option>
+                    <option value="ESTP">ESTP (모험을 즐기는 사업가)</option>
+                    <option value="ESFJ">ESFJ (사교적인 외교관)</option>
+                    <option value="ESFP">ESFP (자유로운 영혼의 연예인)</option>
+                    <option value="ENTJ">ENTJ (대담한 통솔자)</option>
+                    <option value="ENTP">ENTP (뜨거운 논쟁을 즐기는 변론가)</option>
+                    <option value="ENFJ">ENFJ (정의로운 사회운동가)</option>
+                    <option value="ENFP">ENFP (재기발랄한 활동가)</option>
+                    <option value="ISTJ">ISTJ (청렴결백한 논리주의자)</option>
+                    <option value="ISTP">ISTP (만능 재주꾼)</option>
+                    <option value="ISFJ">ISFJ (용감한 수호자)</option>
+                    <option value="ISFP">ISFP (호기심 많은 예술가)</option>
+                    <option value="INTJ">INTJ (용의주도한 전략가)</option>
+                    <option value="INTP">INTP (논리적인 사색가)</option>
+                    <option value="INFJ">INFJ (선의의 옹호자)</option>
+                    <option value="INFP">INFP (열정적인 중재자)</option>
+                </select>
+            </div>
+
+            <button class="btn-start" onclick="submitMbtiAndShowResult()">최종 결과 보기 ✨</button>
+        </div>
+    </div><!-- /mbti-zone -->
+
     <!-- ===================== RESULT ZONE ===================== -->
     <div id="result-zone">
 
@@ -193,6 +225,12 @@
             <ul class="summary-list" id="res-summary-list"></ul>
 
             <div class="humor-box" id="res-humor-comment"></div>
+
+            <!-- 보호자 궁합 리포트 영역 -->
+            <div id="res-chemistry-wrapper" style="margin-top: 32px; padding: 24px; background: #fdf5e6; border-radius: 16px; border: 2px dashed #f39c12;">
+                <h3 style="margin: 0 0 12px 0; font-size: 1.2rem; color: #d35400; text-align: center;">💞 동반자 궁합 리포트</h3>
+                <p id="res-chemistry-text" style="font-size: 0.95rem; line-height: 1.6; color: #444; margin: 0; text-align: center; word-break: keep-all;"></p>
+            </div>
         </div>
 
         <div class="btn-group">

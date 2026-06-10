@@ -144,7 +144,9 @@
 
         currentIdx++;
         if (currentIdx >= questions.length) {
-            calculateAndShowResults();
+            document.getElementById('test-zone').style.display = 'none';
+            document.getElementById('mbti-zone').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
             renderQuestion();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -164,11 +166,22 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // ===== 결과 계산 =====
-    function calculateAndShowResults() {
-        document.getElementById('test-zone').style.display = 'none';
+    // ===== 보호자 MBTI 제출 및 결과 계산 =====
+    function submitMbtiAndShowResult() {
+        const mbtiSelect = document.getElementById('owner-mbti');
+        if (!mbtiSelect.value) {
+            alert('강아지와의 궁합을 확인하기 위해 보호자님의 MBTI를 선택해주세요!');
+            return;
+        }
+        
+        document.getElementById('mbti-zone').style.display = 'none';
         document.getElementById('result-zone').style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        calculateAndShowResults();
+    }
+
+    // ===== 결과 계산 =====
+    function calculateAndShowResults() {
 
         const scores = { E: [], S: [], M: [], F: [], I: [], O: [], X: [] };
         questions.forEach(q => { scores[q.category].push(answers[q.id] || 3); });
@@ -220,6 +233,59 @@
           <li class="${item.cls}">
             <strong>${item.label} ${item.val.toFixed(1)}점</strong> — ${item.desc}
           </li>`).join('');
+
+        // MBTI 궁합 매칭 연산
+        const ownerMbti = document.getElementById('owner-mbti').value || 'MBTI 미입력';
+        const rawTitle = result.typeTitle.includes(' — ') ? result.typeTitle.split(' — ')[1].replace(/["']/g, '') : result.typeTitle;
+        const chemistryResult = getChemistryReport(ownerMbti, result.typeTitle);
+        
+        document.getElementById('res-chemistry-text').innerHTML = `
+            <span style="display:inline-block; margin-bottom: 8px; font-weight: bold; color: #8e44ad; background: #f4ecf7; padding: 4px 12px; border-radius: 20px; font-size: 0.9rem;">
+                👨‍👩‍👧 보호자 ${ownerMbti} × 🐶 강아지 ${rawTitle}
+            </span><br>
+            ${chemistryResult.text}
+        `;
+
+        // 카카오톡 공유용 전역 텍스트 저장
+        window.currentShareText = `저희 아이는 [${rawTitle}], 저는 [${ownerMbti}]가 나와서 궁합 점수 ${chemistryResult.score}점 나왔어요!\n\n우리 궁합 보러 가기`;
+    }
+
+    // ===== 궁합 텍스트 도출 로직 =====
+    function getChemistryReport(mbti, dogTitle) {
+        const isE = mbti.includes('E');
+        const isF = mbti.includes('F');
+        let text = "", score = 0;
+
+        if (dogTitle.includes('폭주')) {
+            if (isE) {
+                text = "에너지 대폭발 덤앤더머 콤비! 주말마다 온 동네 오프로드를 누비는 환상의 런닝메이트입니다. 둘 다 지치지 않아서 집안 가구가 평화롭습니다.";
+                score = 95;
+            } else {
+                text = "집돌이 집순이 집사와 에너지 과잉 에너자이저의 만남! 강아지는 나가자고 줄을 물고 오고, 보호자는 침대와 물아일체 중이군요. 보호자님의 체력 방전을 심심한 위로를 전합니다. 산책 대행이나 노즈워크 대량 투하가 시급합니다.";
+                score = 70;
+            }
+        } else if (dogTitle.includes('브레이크') || dogTitle.includes('소심')) {
+            if (isE) {
+                text = "보호자는 파티광, 강아지는 쫄보! 텐션 차이가 제법 납니다. 외향적인 보호자님이 억지로 시끌벅적한 애견카페에 데려가면 강아지는 구석에서 벌벌 떨 수 있어요. 아이의 속도에 맞춰주는 배려가 필요합니다.";
+                score = 75;
+            } else {
+                text = "서로의 평온함을 존중하는 안정적 소울메이트! 시끄러운 세상 속 둘만의 조용한 아지트를 사랑하는 환상의 짝꿍입니다. 억지로 나가지 않아도 눈빛만으로 통하는 사이군요.";
+                score = 90;
+            }
+        } else if (dogTitle.includes('집돌이')) {
+            if (isF) {
+                text = "눈물 없인 볼 수 없는 영혼의 단짝! 서로 눈빛만 봐도 가슴이 찡해지는 감성 충만 조합입니다. 단, 너무 애틋해서 생기는 분리불안을 조심하세요.";
+                score = 98;
+            } else {
+                text = "실용주의 집사와 게으른 천재견의 만남! '필요 없는 움직임은 최소화한다'는 신념이 기가 막히게 일치합니다. 에너지를 아끼며 스마트하게 휴식하는 찰떡궁합 룸메이트입니다.";
+                score = 88;
+            }
+        } else {
+            text = "눈빛만 봐도 통하는 단짝 콤비! 서로의 영역을 존중하면서도 필요할 때 완벽한 케미를 보여줍니다.";
+            score = 85;
+        }
+        
+        return { text, score };
     }
 
     // ===== 내재적 기질 레이더 차트 (애니멀 테마) =====
@@ -410,9 +476,8 @@
 
     // ===== 검사 결과 공유하기 =====
     function shareTest() {
-        const typeName = document.getElementById('res-type-title').textContent || '반려견 기질 검사 결과';
         const url = window.location.href;
-        const shareText = `저희 아이는 [${typeName}] 유형이 나왔어요! 확인해보세요.`;
+        const shareText = window.currentShareText || `저희 아이는 멍-BTI 검사 결과가 나왔어요! 확인해보세요.`;
         
         // 카카오톡 SDK가 초기화되어 있다면 카카오 공유 실행 시도
         if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
