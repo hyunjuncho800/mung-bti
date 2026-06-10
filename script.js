@@ -209,6 +209,9 @@
         }
 
         // 공유를 위해 전역에 저장
+        const rawTitle = result.typeTitle.includes(' — ') ? result.typeTitle.split(' — ')[1].replace(/["']/g, '') : result.typeTitle;
+        window.currentDogType = rawTitle;
+        window.currentOwnerMbti = ownerMbti;
         window.currentScores = { e: E, s: S, m: M, f: F, i: I, o: O, x: X, owner: ownerMbti };
 
         // 차트 렌더링
@@ -252,8 +255,7 @@
           </li>`).join('');
 
         // MBTI 궁합 매칭 연산
-        const rawTitle = result.typeTitle.includes(' — ') ? result.typeTitle.split(' — ')[1].replace(/["']/g, '') : result.typeTitle;
-        const chemistryResult = getChemistryReport(ownerMbti, result.typeTitle);
+        const chemistryResult = getChemistryReport(ownerMbti, rawTitle);
         
         document.getElementById('res-chemistry-text').innerHTML = `
             <span style="display:inline-block; margin-bottom: 8px; font-weight: bold; color: #8e44ad; background: #f4ecf7; padding: 4px 12px; border-radius: 20px; font-size: 0.9rem;">
@@ -491,15 +493,15 @@
     }
 
     // ===== 검사 결과 공유하기 =====
-    function shareTest() {
+    function shareKakao() {
         const shareText = window.currentShareText || `저희 아이는 멍-BTI 검사 결과가 나왔어요! 확인해보세요.`;
         
-        // 파라미터 URL 생성
-        let shareUrl = 'https://mung-test.com';
-        if (window.currentScores) {
-            const params = new URLSearchParams(window.currentScores);
-            shareUrl = `https://mung-test.com/?${params.toString()}`;
-        }
+        // 요구사항에 맞춰 방금 도출된 강아지 유형과 보호자 MBTI 변수를 가져옵니다.
+        const dogType = window.currentDogType || '알수없음';
+        const ownerMbti = window.currentOwnerMbti || 'MBTI 미입력';
+        
+        // 파라미터가 붙은 새로운 주소 변수 생성
+        const shareUrl = `https://mung-test.com/?dogType=${encodeURIComponent(dogType)}&ownerMbti=${encodeURIComponent(ownerMbti)}`;
         
         // 카카오톡 SDK가 초기화되어 있다면 카카오 공유 실행 시도
         if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
@@ -622,16 +624,28 @@
     // ===== 초기 접속 시 파라미터 확인 =====
     document.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('e')) {
+        
+        if (urlParams.has('dogType') || urlParams.has('e')) {
+            const dogType = urlParams.get('dogType') || '';
+            const ownerMbti = urlParams.get('ownerMbti') || urlParams.get('owner') || 'MBTI 미입력';
+            
+            let e = 3, s = 3, m = 4, f = 4, i = 4, o = 4, x = 4;
+            
+            // e 파라미터가 있다면 우선 적용 (이전 버전 하위호환)
+            if (urlParams.has('e')) {
+                e = urlParams.get('e'); s = urlParams.get('s'); m = urlParams.get('m');
+                f = urlParams.get('f'); i = urlParams.get('i'); o = urlParams.get('o'); x = urlParams.get('x');
+            } else {
+                // dogType만 있는 경우 차트를 그리기 위해 매핑 점수 생성
+                if (dogType.includes('브레이크')) { e=4.5; s=4.5; }
+                else if (dogType.includes('폭주')) { e=4.5; s=2.0; }
+                else if (dogType.includes('소심')) { e=2.0; s=4.5; }
+                else if (dogType.includes('집돌이')) { e=2.0; s=2.0; }
+            }
+
             const passedParams = {
-                e: urlParams.get('e'),
-                s: urlParams.get('s'),
-                m: urlParams.get('m'),
-                f: urlParams.get('f'),
-                i: urlParams.get('i'),
-                o: urlParams.get('o'),
-                x: urlParams.get('x'),
-                owner: urlParams.get('owner') || 'MBTI 미입력'
+                e: e, s: s, m: m, f: f, i: i, o: o, x: x,
+                owner: ownerMbti
             };
             
             // UI 처리
