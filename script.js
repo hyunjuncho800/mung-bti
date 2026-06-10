@@ -482,8 +482,8 @@
         // 카카오톡 SDK가 초기화되어 있다면 카카오 공유 실행 시도
         if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
             try {
-                // 공유될 때 연결될 고정 주소 (로컬에서 테스트할 때 나는 '요청 실패' 에러 방지)
-                const targetUrl = 'https://hyunjuncho800.github.io/mung-bti/';
+                // 사용자가 현재 접속 중인 도메인 주소(URL)를 그대로 사용하여 에러 방지
+                const currentUrl = window.location.href;
                 
                 const shareParams = {
                     objectType: 'feed',
@@ -491,9 +491,9 @@
                         title: '🐾 우리 강아지 멍-BTI 검사 결과!',
                         description: shareText,
                         imageUrl: 'https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg',
-                        link: { mobileWebUrl: targetUrl, webUrl: targetUrl },
+                        link: { mobileWebUrl: currentUrl, webUrl: currentUrl },
                     },
-                    buttons: [{ title: '결과 확인하기', link: { mobileWebUrl: targetUrl, webUrl: targetUrl } }],
+                    buttons: [{ title: '결과 확인하기', link: { mobileWebUrl: currentUrl, webUrl: currentUrl } }],
                 };
                 if (Kakao.Share) {
                     Kakao.Share.sendDefault(shareParams);
