@@ -422,8 +422,8 @@
                     content: {
                         title: '🐾 우리 강아지 멍-BTI 검사 결과!',
                         description: shareText,
-                        // 임시 도메인 대신 이미지가 확실히 뜨도록 안전한 기본 이미지로 변경 (나중에 실제 도메인으로 교체 권장)
-                        imageUrl: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=400',
+                        // 임시 도메인 대신 실제 GitHub Pages 배포 주소로 강아지 썸네일 이미지 연결
+                        imageUrl: 'https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg',
                         link: { mobileWebUrl: url, webUrl: url },
                     },
                     buttons: [{ title: '결과 확인하기', link: { mobileWebUrl: url, webUrl: url } }],
