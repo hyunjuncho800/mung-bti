@@ -406,26 +406,33 @@
         const url = window.location.href;
         const shareText = `저희 아이는 [${typeName}] 유형이 나왔어요! 확인해보세요.`;
         
-        if (navigator.share) {
+        // 모바일 환경인지 간단히 체크 (PC에서는 Share API 동작이 불안정할 수 있으므로 바로 클립보드 복사)
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        if (isMobile && navigator.share) {
             navigator.share({
                 title: '🐾 우리 강아지 멍-BTI 검사 결과!',
                 text: shareText,
                 url: url
-            }).catch((error) => {
+            }).catch(function(error) {
                 console.log('공유 실패 또는 취소:', error);
-                fallbackCopy(url);
+                // 사용자가 공유창을 닫은 경우(AbortError)가 아니면 클립보드 시도
+                if (error.name !== 'AbortError') {
+                    executeCopy(url);
+                }
             });
         } else {
-            fallbackCopy(url);
+            executeCopy(url);
         }
     }
 
-    function fallbackCopy(url) {
+    // 클립보드 복사 공통 함수
+    function executeCopy(text) {
         const textArea = document.createElement("textarea");
-        textArea.value = url;
+        textArea.value = text;
         textArea.style.position = "fixed";
-        textArea.style.left = "-999999px";
-        textArea.style.top = "-999999px";
+        textArea.style.left = "-9999px";
+        textArea.style.top = "-9999px";
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
@@ -433,7 +440,7 @@
             document.execCommand('copy');
             alert("결과 링크가 복사되었습니다. 친구에게 공유해보세요!");
         } catch (err) {
-            alert("링크 복사에 실패했습니다. 주소창의 URL을 복사해주세요.");
+            alert("링크 복사에 실패했습니다. 브라우저 주소창의 URL을 직접 복사해주세요.");
         }
         document.body.removeChild(textArea);
     }
