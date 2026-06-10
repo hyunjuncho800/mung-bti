@@ -482,8 +482,8 @@
         // 카카오톡 SDK가 초기화되어 있다면 카카오 공유 실행 시도
         if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
             try {
-                // 사용자가 현재 접속 중인 도메인 주소(origin + pathname)를 그대로 사용하여 4019 에러 완벽 차단
-                const currentUrl = window.location.origin + window.location.pathname;
+                // 사용자가 현재 접속 중인 도메인 주소(href)를 그대로 사용하여 에러 방지
+                const currentUrl = window.location.href;
                 
                 const shareParams = {
                     objectType: 'feed',
