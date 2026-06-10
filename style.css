@@ -1,4 +1,4 @@
-﻿:root {
+:root {
             --bg: #faf8f5;
             --primary: #4a90e2;
             --primary-dark: #357abd;
@@ -597,10 +597,10 @@
             gap: 12px;
             margin-top: 6px;
         }
-        .btn-kakao {
+        .btn-share {
             flex: 1;
-            background: #fee500;
-            color: #191919;
+            background: #4a90e2;
+            color: #ffffff;
             border: none;
             padding: 15px;
             font-size: 0.95rem;
@@ -610,7 +610,21 @@
             transition: all var(--transition);
             font-family: 'Noto Sans KR', sans-serif;
         }
-        .btn-kakao:hover { background: #f5d900; transform: translateY(-1px); }
+        .btn-share:hover { background: #357abd; transform: translateY(-1px); }
+        .btn-save {
+            flex: 1;
+            background: #27ae60;
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .btn-save:hover { background: #219653; transform: translateY(-1px); }
         .btn-restart {
             flex: 1;
             background: #636e72;

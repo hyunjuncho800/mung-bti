@@ -1,6 +1,3 @@
-﻿// Kakao SDK
-    try { Kakao.init('YOUR_KAKAO_APP_KEY_HERE'); } catch(e) { console.log('Kakao fallback'); }
-
     // ===== 문항 원본 =====
     const baseQuestions = [
         { id: 1,  category: 'E', text: "새로운 산책 경로나 생전 처음 보는 물건을 마주했을 때, 꼬리를 바짝 세우고 적극적으로 다가가 냄새를 맡는다." },
@@ -403,31 +400,23 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // ===== 카카오 공유 =====
-    function shareKakao() {
+    // ===== 검사 공유하기 =====
+    function shareTest() {
         const typeName = document.getElementById('res-type-title').textContent || '반려견 기질 검사 결과';
         const url = window.location.href;
         
-        // 카카오 SDK가 정상 로드 및 초기화 되었는지 확인
-        if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
-            Kakao.Link.sendDefault({
-                objectType: 'feed',
-                content: {
-                    title: '🐾 우리 강아지 멍-BTI 검사 결과!',
-                    description: `저희 아이는 [${typeName}] 유형이 나왔어요!`,
-                    imageUrl: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=400',
-                    link: { mobileWebUrl: url, webUrl: url },
-                },
-                buttons: [{ title: '나도 기질 검사하러 가기', link: { mobileWebUrl: url, webUrl: url } }],
-            });
+        if (navigator.share) {
+            navigator.share({
+                title: '🐾 우리 강아지 멍-BTI 검사 결과!',
+                text: `저희 아이는 [${typeName}] 유형이 나왔어요! 확인해보세요.`,
+                url: url
+            }).catch(console.error);
         } else {
-            // 카카오 SDK 미연동 시 Fallback (클립보드 주소 복사)
             const successMessage = "주소가 복사되었습니다. 친구에게 붙여넣어 공유해보세요!\n\n" + url;
-            
             const fallbackCopyText = () => {
                 const textArea = document.createElement("textarea");
                 textArea.value = url;
-                textArea.style.position = "fixed";  // Avoid scrolling to bottom
+                textArea.style.position = "fixed";
                 document.body.appendChild(textArea);
                 textArea.focus();
                 textArea.select();
@@ -448,6 +437,32 @@
                 fallbackCopyText();
             }
         }
+    }
+
+    // ===== 결과 이미지로 저장하기 =====
+    function saveResultImage() {
+        const resultZone = document.getElementById('result-zone');
+        const btnGroup = document.querySelector('.btn-group');
+        
+        // 캡처 시 버튼 숨기기
+        const originalDisplay = btnGroup.style.display || 'flex';
+        btnGroup.style.display = 'none';
+
+        html2canvas(resultZone, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: '#ffffff' // 배경색 명시
+        }).then(canvas => {
+            btnGroup.style.display = originalDisplay; // 버튼 복구
+            const link = document.createElement('a');
+            link.download = '멍-BTI_검사결과.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }).catch(err => {
+            btnGroup.style.display = originalDisplay;
+            console.error("이미지 캡처 실패:", err);
+            alert("이미지 저장 중 오류가 발생했습니다.");
+        });
     }
 
     // ===== 모달 =====
