@@ -597,10 +597,10 @@
             gap: 12px;
             margin-top: 6px;
         }
-        .btn-share {
+        .btn-kakao {
             flex: 1;
-            background: #4a90e2;
-            color: #ffffff;
+            background: #fee500;
+            color: #191919;
             border: none;
             padding: 15px;
             font-size: 0.95rem;
@@ -610,7 +610,7 @@
             transition: all var(--transition);
             font-family: 'Noto Sans KR', sans-serif;
         }
-        .btn-share:hover { background: #357abd; transform: translateY(-1px); }
+        .btn-kakao:hover { background: #f5d900; transform: translateY(-1px); }
         .btn-save {
             flex: 1;
             background: #27ae60;
