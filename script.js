@@ -558,6 +558,43 @@
         document.body.removeChild(textArea);
     }
 
+    // ===== 이미지로 저장하기 =====
+    function saveAsImage() {
+        const resultZone = document.getElementById('result-zone');
+        // 로딩 피드백 (버튼 텍스트 변경 등)
+        const btnSave = document.getElementById('btn-save');
+        const originalText = btnSave.innerHTML;
+        btnSave.innerHTML = '저장 중... ⏳';
+        btnSave.disabled = true;
+
+        // html2canvas 옵션: 차트 렌더링을 위해 배경색 흰색 보장, CORS 이미지 허용
+        html2canvas(resultZone, {
+            backgroundColor: '#f5f7fa',
+            scale: 2, // 고해상도
+            useCORS: true,
+            allowTaint: true
+        }).then(canvas => {
+            // 이미지 데이터 URL 추출
+            const imgData = canvas.toDataURL('image/png');
+            // 다운로드 링크 생성 및 클릭
+            const link = document.createElement('a');
+            link.download = 'mung-bti-result.png';
+            link.href = imgData;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // 버튼 원복
+            btnSave.innerHTML = originalText;
+            btnSave.disabled = false;
+        }).catch(err => {
+            console.error('이미지 저장 에러:', err);
+            alert('이미지 저장 중 오류가 발생했습니다.');
+            btnSave.innerHTML = originalText;
+            btnSave.disabled = false;
+        });
+    }
+
     // ===== 모달 =====
     function openModal(type) { document.getElementById('modal-' + type).classList.add('open'); }
     function closeModal(type) { document.getElementById('modal-' + type).classList.remove('open'); }
