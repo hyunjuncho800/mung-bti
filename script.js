@@ -208,10 +208,7 @@
             ownerMbti = document.getElementById('owner-mbti').value || 'MBTI 미입력';
         }
 
-        // 공유를 위해 전역에 저장
-        const rawTitle = result.typeTitle.includes(' — ') ? result.typeTitle.split(' — ')[1].replace(/["']/g, '') : result.typeTitle;
-        window.currentDogType = rawTitle;
-        window.currentOwnerMbti = ownerMbti;
+        // 공유를 위해 임시 점수만 먼저 전역 저장 (유형 이름은 아래에서 저장)
         window.currentScores = { e: E, s: S, m: M, f: F, i: I, o: O, x: X, owner: ownerMbti };
 
         // 차트 렌더링
@@ -235,6 +232,11 @@
         ].map(c => `<span class="score-chip green"><span class="chip-dot"></span>${c.label} <strong>${c.val.toFixed(1)}</strong></span>`).join('');
 
         const result = buildResult(E, S, M, F, I, O, X);
+
+        // 결과 도출 후 전역 변수에 저장 (공유 기능용)
+        const rawTitle = result.typeTitle.includes(' — ') ? result.typeTitle.split(' — ')[1].replace(/["']/g, '') : result.typeTitle;
+        window.currentDogType = rawTitle;
+        window.currentOwnerMbti = ownerMbti;
 
         document.getElementById('res-type-title').textContent = result.typeTitle;
         document.getElementById('res-inherent-desc').textContent = result.inherentDesc;
