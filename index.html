@@ -236,10 +236,13 @@
             </div>
         </div>
 
-        <div class="btn-group">
+        <div class="btn-group" id="btn-group-owner">
             <button class="btn-save" id="btn-save" onclick="saveAsImage()">결과 이미지로 저장하기 📥</button>
             <button class="btn-kakao" id="btn-kakao" onclick="shareTest()">카카오톡 공유하기 💬</button>
             <button class="btn-restart" id="btn-restart" onclick="restartTest()">다시 테스트하기 🔄</button>
+        </div>
+        <div class="btn-group" id="btn-group-shared" style="display: none; flex-direction: column; gap: 12px; margin-top: 6px;">
+            <button class="btn-restart" style="width: 100%; background: #e67e22; color: #fff; padding: 16px; border-radius: 12px; font-weight: bold; font-size: 1.05rem;" onclick="location.href='https://mung-test.com'">나도 우리 강아지 멍-BTI 알아보기 🐾</button>
         </div>
 
     </div><!-- /result-zone -->

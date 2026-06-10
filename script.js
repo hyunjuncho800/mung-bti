@@ -181,18 +181,35 @@
     }
 
     // ===== 결과 계산 =====
-    function calculateAndShowResults() {
+    function calculateAndShowResults(passedParams = null) {
+        let E, S, M, F, I, O, X;
+        let ownerMbti = 'MBTI 미입력';
 
-        const scores = { E: [], S: [], M: [], F: [], I: [], O: [], X: [] };
-        questions.forEach(q => { scores[q.category].push(answers[q.id] || 3); });
+        if (passedParams) {
+            E = parseFloat(passedParams.e);
+            S = parseFloat(passedParams.s);
+            M = parseFloat(passedParams.m);
+            F = parseFloat(passedParams.f);
+            I = parseFloat(passedParams.i);
+            O = parseFloat(passedParams.o);
+            X = parseFloat(passedParams.x);
+            ownerMbti = passedParams.owner || 'MBTI 미입력';
+        } else {
+            const scores = { E: [], S: [], M: [], F: [], I: [], O: [], X: [] };
+            questions.forEach(q => { scores[q.category].push(answers[q.id] || 3); });
 
-        const avg = cat => {
-            const arr = scores[cat];
-            return parseFloat((arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(2));
-        };
+            const avg = cat => {
+                const arr = scores[cat];
+                return parseFloat((arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(2));
+            };
 
-        const E = avg('E'), S = avg('S'), M = avg('M'), F = avg('F');
-        const I = avg('I'), O = avg('O'), X = avg('X');
+            E = avg('E'); S = avg('S'); M = avg('M'); F = avg('F');
+            I = avg('I'); O = avg('O'); X = avg('X');
+            ownerMbti = document.getElementById('owner-mbti').value || 'MBTI 미입력';
+        }
+
+        // 공유를 위해 전역에 저장
+        window.currentScores = { e: E, s: S, m: M, f: F, i: I, o: O, x: X, owner: ownerMbti };
 
         // 차트 렌더링
         renderInherentChart(E, S, M, F);
@@ -235,7 +252,6 @@
           </li>`).join('');
 
         // MBTI 궁합 매칭 연산
-        const ownerMbti = document.getElementById('owner-mbti').value || 'MBTI 미입력';
         const rawTitle = result.typeTitle.includes(' — ') ? result.typeTitle.split(' — ')[1].replace(/["']/g, '') : result.typeTitle;
         const chemistryResult = getChemistryReport(ownerMbti, result.typeTitle);
         
@@ -476,15 +492,18 @@
 
     // ===== 검사 결과 공유하기 =====
     function shareTest() {
-        const url = window.location.href;
         const shareText = window.currentShareText || `저희 아이는 멍-BTI 검사 결과가 나왔어요! 확인해보세요.`;
+        
+        // 파라미터 URL 생성
+        let shareUrl = 'https://mung-test.com';
+        if (window.currentScores) {
+            const params = new URLSearchParams(window.currentScores);
+            shareUrl = `https://mung-test.com/?${params.toString()}`;
+        }
         
         // 카카오톡 SDK가 초기화되어 있다면 카카오 공유 실행 시도
         if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
             try {
-                // 사용자가 현재 접속 중인 도메인 주소(href)를 그대로 사용하여 에러 방지
-                const currentUrl = window.location.href;
-                
                 const shareParams = {
                     objectType: 'feed',
                     content: {
@@ -492,16 +511,16 @@
                         description: shareText,
                         imageUrl: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=400', 
                         link: {
-                            mobileWebUrl: 'https://mung-test.com',
-                            webUrl: 'https://mung-test.com'
+                            mobileWebUrl: shareUrl,
+                            webUrl: shareUrl
                         }
                     },
                     buttons: [
                         {
                             title: '나도 궁합 보러 가기 🐾',
                             link: {
-                                mobileWebUrl: 'https://mung-test.com',
-                                webUrl: 'https://mung-test.com'
+                                mobileWebUrl: shareUrl,
+                                webUrl: shareUrl
                             }
                         }
                     ]
@@ -526,16 +545,16 @@
             navigator.share({
                 title: '🐾 우리 강아지 멍-BTI 검사 결과!',
                 text: shareText,
-                url: url
+                url: shareUrl
             }).catch(function(error) {
                 console.log('공유 실패 또는 취소:', error);
                 // 사용자가 공유창을 닫은 경우(AbortError)가 아니면 클립보드 시도
                 if (error.name !== 'AbortError') {
-                    executeCopy(url);
+                    executeCopy(shareUrl);
                 }
             });
         } else {
-            executeCopy(url);
+            executeCopy(shareUrl);
         }
     }
 
@@ -599,3 +618,32 @@
     function openModal(type) { document.getElementById('modal-' + type).classList.add('open'); }
     function closeModal(type) { document.getElementById('modal-' + type).classList.remove('open'); }
     function closeOnBg(e, type) { if (e.target === document.getElementById('modal-' + type)) closeModal(type); }
+
+    // ===== 초기 접속 시 파라미터 확인 =====
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('e')) {
+            const passedParams = {
+                e: urlParams.get('e'),
+                s: urlParams.get('s'),
+                m: urlParams.get('m'),
+                f: urlParams.get('f'),
+                i: urlParams.get('i'),
+                o: urlParams.get('o'),
+                x: urlParams.get('x'),
+                owner: urlParams.get('owner') || 'MBTI 미입력'
+            };
+            
+            // UI 처리
+            document.getElementById('intro-zone').style.display = 'none';
+            document.getElementById('test-zone').style.display = 'none';
+            document.getElementById('mbti-zone').style.display = 'none';
+            document.getElementById('result-zone').style.display = 'block';
+
+            // 버튼 그룹 토글 (공유된 뷰)
+            document.getElementById('btn-group-owner').style.display = 'none';
+            document.getElementById('btn-group-shared').style.display = 'flex';
+
+            calculateAndShowResults(passedParams);
+        }
+    });
