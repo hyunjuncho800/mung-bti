@@ -492,16 +492,16 @@
                         description: shareText,
                         imageUrl: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=400', 
                         link: {
-                            mobileWebUrl: 'https://hyunjuncho800.github.io/mung-bti/',
-                            webUrl: 'https://hyunjuncho800.github.io/mung-bti/'
+                            mobileWebUrl: 'https://mung-test.com',
+                            webUrl: 'https://mung-test.com'
                         }
                     },
                     buttons: [
                         {
                             title: '나도 궁합 보러 가기 🐾',
                             link: {
-                                mobileWebUrl: 'https://hyunjuncho800.github.io/mung-bti/',
-                                webUrl: 'https://hyunjuncho800.github.io/mung-bti/'
+                                mobileWebUrl: 'https://mung-test.com',
+                                webUrl: 'https://mung-test.com'
                             }
                         }
                     ]
