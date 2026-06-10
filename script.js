@@ -488,12 +488,23 @@
                 const shareParams = {
                     objectType: 'feed',
                     content: {
-                        title: '🐾 우리 강아지 멍-BTI 검사 결과!',
+                        title: '🐾 우리 강아지 멍-BTI 검사 결과 도출!',
                         description: shareText,
-                        imageUrl: 'https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg',
-                        link: { mobileWebUrl: currentUrl, webUrl: currentUrl },
+                        imageUrl: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=400', 
+                        link: {
+                            mobileWebUrl: 'https://hyunjuncho800.github.io/mung-bti/',
+                            webUrl: 'https://hyunjuncho800.github.io/mung-bti/'
+                        }
                     },
-                    buttons: [{ title: '결과 확인하기', link: { mobileWebUrl: currentUrl, webUrl: currentUrl } }],
+                    buttons: [
+                        {
+                            title: '나도 궁합 보러 가기 🐾',
+                            link: {
+                                mobileWebUrl: 'https://hyunjuncho800.github.io/mung-bti/',
+                                webUrl: 'https://hyunjuncho800.github.io/mung-bti/'
+                            }
+                        }
+                    ]
                 };
                 if (Kakao.Share) {
                     Kakao.Share.sendDefault(shareParams);
