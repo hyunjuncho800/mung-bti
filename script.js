@@ -625,6 +625,15 @@
 
     // ===== 초기 접속 시 파라미터 확인 =====
     document.addEventListener('DOMContentLoaded', () => {
+        // 모바일 햄버거 메뉴 토글 이벤트 추가
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
         const urlParams = new URLSearchParams(window.location.search);
         
         if (urlParams.has('dogType') || urlParams.has('e')) {

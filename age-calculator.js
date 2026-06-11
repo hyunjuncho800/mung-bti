@@ -1,6 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     initAgeSelects();
     initKakao();
+
+    // 햄버거 메뉴 토글 이벤트 리스너 추가
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('nav');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
 });
 
 // ==========================================
@@ -205,12 +214,19 @@ function shareKakao() {
         const dogName = document.getElementById('res-dog-name').textContent;
         const humanAge = document.getElementById('res-human-age').textContent;
         
+        // 현재 페이지의 절대 경로 가져오기
+        const currentUrl = window.location.origin + window.location.pathname;
+        console.log('공유 URL:', currentUrl);
+        
         Kakao.Share.sendCustom({
             templateId: KAKAO_TEMPLATE_ID,
             templateArgs: {
                 'dogName': dogName,
                 'humanAge': humanAge,
-                'link': window.location.href
+                'link': currentUrl,
+                'requestUrl': currentUrl,
+                'webUrl': currentUrl,
+                'mobileWebUrl': currentUrl
             }
         });
     } else {
