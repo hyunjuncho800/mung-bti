@@ -757,7 +757,7 @@
 
         /* ===== RESPONSIVE & MOBILE MENU ===== */
         .menu-toggle {
-            display: none;
+            display: none !important;
             font-size: 1.8rem;
             background: none;
             border: none;
@@ -772,7 +772,7 @@
 
         @media (max-width: 768px) {
             .menu-toggle {
-                display: block;
+                display: block !important;
             }
             nav {
                 display: none;

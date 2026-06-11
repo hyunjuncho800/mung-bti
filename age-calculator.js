@@ -214,16 +214,22 @@ function shareKakao() {
         const dogName = document.getElementById('res-dog-name').textContent;
         const humanAge = document.getElementById('res-human-age').textContent;
         
-        // 현재 접속 중인 나이 계산기 페이지의 상세 경로 추출
-        const currentPath = window.location.pathname + window.location.search;
-        console.log('공유 URL (path):', currentPath);
+        // 현재 페이지의 pathname(예: /)과 search(?page=age 등), hash(#age 등)를 안전하게 조합
+        let cleanPath = window.location.pathname + window.location.search + window.location.hash;
+        
+        // 만약 GitHub Pages 환경이나 특정 조건에서 pathname이 비어있거나 '/' 라면 확실하게 기본값을 지정
+        if (!cleanPath || cleanPath === '/') {
+            cleanPath = '/age-calculator.html'; 
+        }
+
+        console.log("카카오톡 전송 최종 Path:", cleanPath);
         
         Kakao.Share.sendCustom({
             templateId: KAKAO_TEMPLATE_ID,
             templateArgs: {
                 'dogName': dogName,
                 'humanAge': humanAge,
-                'path': currentPath
+                'path': cleanPath
             }
         });
     } else {
