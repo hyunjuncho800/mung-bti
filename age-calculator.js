@@ -209,7 +209,8 @@ function shareKakao() {
             templateId: KAKAO_TEMPLATE_ID,
             templateArgs: {
                 'dogName': dogName,
-                'humanAge': humanAge
+                'humanAge': humanAge,
+                'link': window.location.href
             }
         });
     } else {

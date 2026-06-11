@@ -750,13 +750,57 @@
         .footer-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; cursor: pointer; transition: color var(--transition); }
         .footer-links a:hover { color: var(--primary); }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 600px) {
+        /* ===== RESPONSIVE & MOBILE MENU ===== */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--card);
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+                padding: 10px 0;
+                z-index: 99;
+            }
+            nav.active {
+                display: block;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            nav li {
+                text-align: center;
+            }
+            nav a {
+                display: block;
+                padding: 14px 20px;
+                font-size: 1rem;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            nav li:last-child a {
+                border-bottom: none;
+            }
+
             .intro-article { padding: 24px 18px; }
             .intro-article h1 { font-size: 1.3rem; }
             .question-card { padding: 22px 16px; }
             .btn-group { flex-direction: column; }
-            nav { display: none; }
             .result-type-name { font-size: 1.25rem; }
             .report-card { padding: 22px 16px; }
         }
