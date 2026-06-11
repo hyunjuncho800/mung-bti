@@ -623,6 +623,25 @@
     function closeModal(type) { document.getElementById('modal-' + type).classList.remove('open'); }
     function closeOnBg(e, type) { if (e.target === document.getElementById('modal-' + type)) closeModal(type); }
 
+    // ===== 참여자 수 카운팅 애니메이션 =====
+    function animateParticipantCount(targetElement, targetNumber, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            // easeOutExpo 효과
+            const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            const currentCount = Math.floor(easeOut * targetNumber);
+            targetElement.innerText = currentCount.toLocaleString();
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                targetElement.innerText = targetNumber.toLocaleString();
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
     // ===== 초기 접속 시 파라미터 확인 =====
     document.addEventListener('DOMContentLoaded', () => {
         // 모바일 햄버거 메뉴 토글 이벤트 추가
@@ -632,6 +651,13 @@
             menuToggle.addEventListener('click', () => {
                 navMenu.classList.toggle('active');
             });
+        }
+
+        // 참여자 수 애니메이션 실행
+        const countElement = document.getElementById('participant-count');
+        if (countElement && document.getElementById('intro-zone').style.display !== 'none') {
+            const mockTarget = 85294; // 가상의 누적 참여자 수
+            animateParticipantCount(countElement, mockTarget, 2500);
         }
 
         const urlParams = new URLSearchParams(window.location.search);

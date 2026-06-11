@@ -1,19 +1,23 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
 :root {
-            --bg: #faf8f5;
-            --primary: #4a90e2;
-            --primary-dark: #357abd;
-            --primary-light: #ebf3fc;
+            --bg: #F9F6F0;
+            --primary: #FF7A45;
+            --primary-dark: #E66533;
+            --primary-light: #FFF0EB;
             --accent: #f5a623;
             --green: #27ae60;
             --green-light: #e8f8ef;
-            --text: #2c3e50;
-            --text-muted: #7f8c8d;
-            --card: #ffffff;
-            --border: #e9e4dc;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+            --text: #2A2A2A;
+            --text-muted: #6B7280;
+            --card: #FFFFFF;
+            --border: #E5E0D8;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.02);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.02);
+            --shadow-lg: 0 16px 40px rgba(0,0,0,0.04);
             --radius: 16px;
-            --transition: 0.25s ease;
+            --radius-lg: 24px;
+            --transition: 0.2s ease;
 
             /* 차트 컬러 팔레트 — 애니멀 테마 */
             --chart-blue: rgba(99, 179, 237, 1);
@@ -25,12 +29,223 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.7;
+            letter-spacing: -0.02em;
             -webkit-font-smoothing: antialiased;
         }
+
+/* ===== BENTO GRID SYSTEM ===== */
+.bento-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+.bento-hero {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 20px 0;
+}
+.bento-hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 30px;
+    word-break: keep-all;
+}
+.bento-hero h1 span {
+    color: var(--primary);
+}
+@media (max-width: 768px) {
+    .bento-hero h1 { font-size: 2.1rem; }
+}
+.bento-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 20px 48px;
+    border-radius: var(--radius-lg);
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    text-decoration: none;
+}
+.bento-hero-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    background: var(--primary-dark);
+}
+
+.bento-grid-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+@media (max-width: 768px) {
+    .bento-grid-dashboard { grid-template-columns: 1fr; }
+}
+
+.bento-grid-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+}
+@media (max-width: 900px) {
+    .bento-grid-content { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+    .bento-grid-content { grid-template-columns: 1fr; }
+}
+
+.bento-card {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+}
+.bento-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: #FFF0EB;
+}
+
+.bento-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bento-card-title .icon {
+    font-size: 1.8rem;
+    background: var(--bg);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bento-card-text {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* Dashboard Specific Cards */
+.bento-dash-stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #FFF0EB 0%, #FFFFFF 100%);
+    border: 2px solid #FFF0EB;
+}
+.bento-dash-stat:hover {
+    border-color: var(--primary);
+}
+.stat-number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1;
+    margin: 16px 0;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -1px;
+}
+.stat-label {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.bento-mini-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+}
+.bento-mini-tools .bento-card-title { margin-bottom: 24px; }
+
+.mini-tool-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: #F9F6F0;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+.mini-tool-btn:hover {
+    background: #FFFFFF;
+    border-color: var(--primary);
+    transform: translateX(6px);
+    box-shadow: var(--shadow-sm);
+    color: var(--primary);
+}
+.mini-tool-btn .icon {
+    font-size: 1.8rem;
+    background: #FFFFFF;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Content List */
+.content-list {
+    list-style: none;
+    padding: 0;
+}
+.content-list li {
+    margin-bottom: 12px;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    position: relative;
+    padding-left: 18px;
+    line-height: 1.5;
+}
+.content-list li::before {
+    content: "•";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.2rem;
+    line-height: 1.2;
+}
+.content-list li strong {
+    color: var(--text);
+    font-weight: 700;
+}
 
         /* ===== HEADER ===== */
         header {
@@ -78,9 +293,15 @@
 
         /* ===== CONTAINER ===== */
         .container {
-            max-width: 760px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 24px 20px 60px;
+        }
+
+        /* ===== TEST & RESULT ZONES CONSTRAINTS ===== */
+        #test-zone, #mbti-zone, #result-zone {
+            max-width: 760px;
+            margin: 0 auto;
         }
 
         /* ===== AD PLACEHOLDER ===== */
