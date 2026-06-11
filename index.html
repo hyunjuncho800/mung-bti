@@ -80,7 +80,7 @@
                 <li><a href="#" onclick="openModal('about'); return false;">소개 및 문의</a></li>
                 <li><a href="age-calculator.html">나이 계산기</a></li>
                 <li><a href="#intro-article">검사 설명</a></li>
-                <li><a href="#" onclick="scrollToTest(); return false;">진단 시작</a></li>
+                <li><a href="#" onclick="scrollToTest(); return false;">기질 검사 시작</a></li>
             </ul>
         </nav>
     </div>
@@ -121,7 +121,7 @@
 
             <p>검사 완료 후 우리 아이의 내면에 숨겨진 본능의 그래프와, 보호자님이 만들어주신 후천 성향의 상태를 <strong>두 개의 레이더 차트</strong>로 시각화하여 전문적이면서도 유머러스한 맞춤 솔루션과 함께 제공합니다. 개인정보 수집 없이 완전히 브라우저 내에서만 작동합니다.</p>
 
-            <button class="btn-start" id="btn-start-main" onclick="startTest()">진단 검사 시작하기 🐾</button>
+            <button class="btn-start" id="btn-start-main" onclick="startTest()">기질 검사 시작하기 🐾</button>
         </article>
     </div><!-- /intro-zone -->
 
@@ -320,11 +320,29 @@
         <button class="modal-close" onclick="closeModal('about')" aria-label="닫기">&times;</button>
         <h3 class="modal-title">소개 및 문의</h3>
         <div class="modal-body">
-            <h4>서비스 소개 (About)</h4>
-            <p>mung-test.com은 객관적인 반려견 행동 데이터와 행동학적 근거를 바탕으로 반려견의 타고난 성향과 유전적 특성을 분석하는 <strong>'반려견 기질검사'</strong> 전문 플랫폼입니다.</p>
-            <p>반려견의 행동 문제를 예방하고 보호자와의 건강한 유대 관계 형성을 돕기 위한 데이터 기반 솔루션을 제공합니다.</p>
+            <h4 style="margin-top:0;">About mung-test.com : 반려견의 마음과 시간을 읽다</h4>
+            <p><strong>[한 줄 요약]</strong><br>mung-test.com은 객관적인 행동 데이터와 생물학적 근거를 바탕으로, 반려견의 타고난 기질을 이해하고 함께하는 시간의 가치를 일깨워주는 반려견 데이터 솔루션 플랫폼입니다.</p>
+
+            <h4>1. Our Mission (우리의 미션)</h4>
+            <p>말이 통하지 않는 반려견과 보호자가 더 깊이 교감하고, 서로를 오해 없이 사랑할 수 있도록 돕습니다. 우리는 단순한 재미를 넘어, 행동학적 근거와 수의학적 데이터를 기반으로 반려견의 삶을 다각도로 분석하는 전문적인 서비스를 지향합니다.</p>
+
+            <h4>2. Core Services (주요 서비스)</h4>
+            <p><strong>반려견 기질검사 (Dog Temperament Test)</strong><br>반려견의 행동 문제 예방과 올바른 사회화를 위해서는 타고난 성향을 파악하는 것이 우선입니다. 본 플랫폼의 기질검사는 객관적인 행동 데이터와 유전적 특성을 분석하여 반려견의 진짜 성격을 도출합니다. 이를 통해 보호자는 반려견에게 가장 적합한 양육 환경과 소통 방식을 배울 수 있습니다.</p>
+            <p><strong>반려견 생애주기 나이 계산기 (Dog Age Calculator)</strong><br>강아지와 사람의 시간은 다르게 흐릅니다. 미국 켄넬 클럽(AKC)의 견종별 기대 수명 데이터와 의학적 성장 속도를 반영하여 가장 정확한 사람 환산 나이를 산출합니다. 세분화된 생애주기별 스토리와 맞춤형 건강 가이드를 제공하여, 보호자가 아이의 아픔과 노화를 미리 대비할 수 있도록 돕습니다.</p>
+
+            <h4>3. Our Values (우리가 추구하는 가치)</h4>
+            <ul style="margin-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Data-Driven (데이터 기반의 정확성):</strong> 견종과 행동 데이터에 기반한 신뢰도 높은 알고리즘을 적용합니다.</li>
+                <li style="margin-bottom: 8px;"><strong>Empathetic (공감과 감성):</strong> 반려견의 생애 전반을 함께 고민하며 보호자의 마음에 깊이 공감합니다.</li>
+                <li style="margin-bottom: 8px;"><strong>Healthy Companion Life (건강한 반려 생활):</strong> 보호자와 반려견 사이의 건강한 유대 관계 형성과 행복한 동행을 최종 목표로 합니다.</li>
+            </ul>
+
+            <div style="background: #fdfaf6; padding: 16px; border-radius: 8px; border: 1px dashed #deb887; margin-top: 24px; text-align: center;">
+                <p style="color: #7b6a58; font-size: 0.9rem; line-height: 1.6; margin: 0; word-break: keep-all;"><strong>"우리의 시간은 다르게 흐릅니다. 아이가 보호자님과 함께할 수 있는 시간은 생각보다 길지 않습니다. 오늘, 한 번 더 눈을 맞추고 더 많이 사랑한다고 말해주세요."</strong></p>
+            </div>
+            <p style="text-align: center; font-weight: bold; margin-top: 16px; color: var(--primary-dark);">mung-test.com은 세상 모든 반려견의 행복하고 건강한 견생(犬生)을 언제나 응원합니다.</p>
             
-            <h4>문의 안내 (Contact)</h4>
+            <h4 style="margin-top: 32px;">문의 안내 (Contact)</h4>
             <p>기질검사 비즈니스 제안, 기관 협업, 기타 문의 사항은 아래 공식 이메일로 연락 주시기 바랍니다.</p>
             <p>이메일: <a href="mailto:mungtest12@gmail.com" style="color: var(--primary-dark); text-decoration: underline; font-weight: bold;">mungtest12@gmail.com</a></p>
         </div>
