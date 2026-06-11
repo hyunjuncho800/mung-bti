@@ -1,0 +1,338 @@
+/* =========================================================================
+   age-calculator.css - 스토리텔링 반려견 나이 계산기 전용 스타일
+   기존 style.css의 컬러 팔레트와 톤앤매너(베이지, 웜 그레이)를 상속하여 구현.
+   ========================================================================= */
+
+/* Calculator Main Card */
+.calculator-wrapper {
+    margin-bottom: 40px;
+}
+
+.calc-card {
+    background: var(--card, #ffffff);
+    border-radius: var(--radius, 16px);
+    padding: 36px 32px;
+    border: 1px solid var(--border, #e9e4dc);
+    box-shadow: var(--shadow-md, 0 8px 24px rgba(0,0,0,0.08));
+    margin-bottom: 28px;
+    animation: fadeInSlide 0.5s ease;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.calc-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--text, #2c3e50);
+    text-align: center;
+    margin-bottom: 12px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.calc-subtitle {
+    font-size: 0.95rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 24px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text, #2c3e50);
+    margin-bottom: 8px;
+}
+
+.input-group input[type="text"] {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 1rem;
+    border: 2px solid var(--border, #e9e4dc);
+    border-radius: 12px;
+    background-color: var(--bg, #faf8f5);
+    color: var(--text, #2c3e50);
+    transition: all 0.2s ease;
+    outline: none;
+    font-family: inherit;
+}
+
+.input-group input[type="text"]:focus {
+    border-color: var(--primary, #4a90e2);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+    background-color: #fff;
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-wrapper select {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 1rem;
+    border: 2px solid var(--border, #e9e4dc);
+    border-radius: 12px;
+    background-color: var(--bg, #faf8f5);
+    color: var(--text, #2c3e50);
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.select-wrapper select:focus {
+    border-color: var(--primary, #4a90e2);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+    background-color: #fff;
+}
+
+.select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+    font-size: 0.8rem;
+}
+
+/* Age Inputs (Years & Months) */
+.age-inputs {
+    display: flex;
+    gap: 16px;
+}
+
+.age-select {
+    display: flex;
+    align-items: center;
+}
+
+.age-unit {
+    margin-left: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-muted, #7f8c8d);
+    white-space: nowrap;
+}
+
+/* Calculate Button */
+.btn-calc {
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent, #f5a623) 0%, #ff8c00 100%);
+    color: #fff;
+    border: none;
+    padding: 18px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+    margin-top: 10px;
+    box-shadow: 0 4px 14px rgba(245, 166, 35, 0.35);
+}
+
+.btn-calc:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 166, 35, 0.5);
+}
+
+/* ===================== RESULT CARD (Capture Area) ===================== */
+.result-card {
+    background: #fffdf9;
+    border: 2px solid #f3e8d6;
+    border-radius: 20px;
+    padding: 40px 30px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(139, 115, 85, 0.1);
+    margin-bottom: 24px;
+    overflow: hidden;
+    animation: fadeInSlide 0.5s ease;
+}
+
+.result-card::before {
+    content: '🐾';
+    position: absolute;
+    font-size: 140px;
+    opacity: 0.03;
+    top: -20px;
+    right: -20px;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.result-badge {
+    background: var(--bg, #faf8f5);
+    color: #b08d57;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 16px;
+    border: 1px solid #e8decb;
+    text-transform: uppercase;
+}
+
+.result-heading {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #4a3f35;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    word-break: keep-all;
+}
+
+.highlight-name {
+    color: var(--primary, #4a90e2);
+    font-weight: 900;
+}
+
+.highlight-age {
+    font-size: 2.2rem;
+    color: var(--accent, #f5a623);
+    font-weight: 900;
+}
+
+.stage-tag {
+    background: linear-gradient(135deg, #e8f8ef, #c8f0db);
+    color: var(--green, #27ae60);
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.story-box {
+    background: rgba(250, 248, 245, 0.8);
+    border-left: 4px solid #b08d57;
+    padding: 20px 24px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 30px;
+}
+
+.story-text {
+    font-size: 1rem;
+    color: #5c5146;
+    line-height: 1.7;
+    text-align: justify;
+    word-break: keep-all;
+}
+
+.quote-box {
+    text-align: center;
+    background: #fdfaf6;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px dashed #deb887;
+    margin-top: 10px;
+}
+
+.quote-box p {
+    font-size: 0.9rem;
+    color: #7b6a58;
+    line-height: 1.6;
+}
+
+.quote-box strong {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #d35400;
+}
+
+.result-watermark {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #cccccc;
+    margin-top: 20px;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* ===================== SEO ARTICLES ===================== */
+.seo-article {
+    background: var(--card, #ffffff);
+    border-radius: var(--radius, 16px);
+    padding: 32px;
+    border: 1px solid var(--border, #e9e4dc);
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.04));
+}
+
+.seo-article h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #357abd;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--bg, #faf8f5);
+}
+
+.seo-article p {
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.8;
+    margin-bottom: 14px;
+    text-align: justify;
+}
+
+.seo-article ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.seo-article li {
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.seo-article li strong {
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 600px) {
+    .calc-card {
+        padding: 24px 20px;
+    }
+    .calc-title {
+        font-size: 1.5rem;
+    }
+    .age-inputs {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .result-card {
+        padding: 30px 20px;
+    }
+    .result-heading {
+        font-size: 1.3rem;
+    }
+    .highlight-age {
+        font-size: 1.8rem;
+    }
+    .seo-article {
+        padding: 24px 20px;
+    }
+}
