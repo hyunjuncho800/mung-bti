@@ -214,19 +214,16 @@ function shareKakao() {
         const dogName = document.getElementById('res-dog-name').textContent;
         const humanAge = document.getElementById('res-human-age').textContent;
         
-        // 현재 페이지의 절대 경로 가져오기
-        const currentUrl = window.location.origin + window.location.pathname;
-        console.log('공유 URL:', currentUrl);
+        // 현재 접속 중인 나이 계산기 페이지의 상세 경로 추출
+        const currentPath = window.location.pathname + window.location.search;
+        console.log('공유 URL (path):', currentPath);
         
         Kakao.Share.sendCustom({
             templateId: KAKAO_TEMPLATE_ID,
             templateArgs: {
                 'dogName': dogName,
                 'humanAge': humanAge,
-                'link': currentUrl,
-                'requestUrl': currentUrl,
-                'webUrl': currentUrl,
-                'mobileWebUrl': currentUrl
+                'path': currentPath
             }
         });
     } else {
