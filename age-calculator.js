@@ -238,15 +238,11 @@ function saveResultImage() {
 }
 
 // ==========================================
-// 기능: 카카오톡 공유하기 (템플릿 메시지 적용)
+// 기능: 카카오톡 공유하기 (피드 방식 적용)
 // ==========================================
 function shareKakao() {
     if (!KAKAO_JS_KEY) {
         alert("카카오톡 공유 기능이 설정되지 않았습니다. (JS 키 누락)");
-        return;
-    }
-    if (!KAKAO_TEMPLATE_ID) {
-        alert("카카오톡 메시지 템플릿 ID가 설정되지 않았습니다.");
         return;
     }
 
@@ -254,17 +250,32 @@ function shareKakao() {
         const dogName = document.getElementById('res-dog-name').textContent;
         const humanAge = document.getElementById('res-human-age').textContent;
         const currentStageRaw = document.getElementById('res-stage-tag').textContent;
+        // '🐾 청년기' 형태에서 이모지 제거 (안전하게 처리)
         const currentStage = currentStageRaw.replace('🐾 ', '').trim();
         
-        const sharePath = `age-calculator.html?name=${encodeURIComponent(dogName)}&humanAge=${humanAge}&stage=${encodeURIComponent(currentStage)}`;
+        // 쿼리 파라미터 조립 (mung-test.com 고정)
+        const shareUrl = `https://mung-test.com/age-calculator.html?name=${encodeURIComponent(dogName)}&humanAge=${humanAge}&stage=${encodeURIComponent(currentStage)}`;
 
-        Kakao.Share.sendCustom({
-            templateId: KAKAO_TEMPLATE_ID,
-            templateArgs: {
-                'dogName': dogName,
-                'humanAge': humanAge,
-                'path': sharePath
-            }
+        Kakao.Share.sendDefault({
+            objectType: 'feed',
+            content: {
+                title: '우리의 시간은 다르게 흐릅니다 🕰️',
+                description: `${dogName}의 진짜 나이는 사람으로 치면 몇 살일까요? 지금 확인해 보세요.`,
+                imageUrl: 'https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg',
+                link: {
+                    mobileWebUrl: shareUrl,
+                    webUrl: shareUrl,
+                },
+            },
+            buttons: [
+                {
+                    title: '결과 확인하기',
+                    link: {
+                        mobileWebUrl: shareUrl,
+                        webUrl: shareUrl,
+                    },
+                },
+            ],
         });
     } else {
         alert("카카오톡 SDK가 초기화되지 않았습니다.");
