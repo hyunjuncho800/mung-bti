@@ -21,33 +21,25 @@ document.addEventListener('DOMContentLoaded', () => {
 function checkAndRenderSharedResult() {
     const params = new URLSearchParams(window.location.search);
     const dogName = params.get('name');
-    const humanAge = params.get('humanAge');
-    let stage = params.get('stage');
+    const breed = params.get('breed');
+    const year = params.get('year');
+    const month = params.get('month');
 
-    if (dogName && humanAge) {
-        // 처음의 견종/나이 입력 폼 영역 숨기기
-        const calcCard = document.querySelector('.calc-card');
-        if (calcCard) calcCard.style.display = 'none';
+    // 4가지 입력값이 모두 존재하면 자동 실행
+    if (dogName && breed && year !== null && month !== null) {
+        // 1. 입력 폼에 원본 데이터 채워넣기
+        document.getElementById('dog-name').value = dogName;
+        document.getElementById('dog-breed').value = breed;
+        document.getElementById('dog-age-years').value = year;
+        document.getElementById('dog-age-months').value = month;
 
-        // 결과 DOM 업데이트
-        document.getElementById('res-dog-name').textContent = dogName;
-        document.getElementById('res-human-age').textContent = humanAge;
-
-        // 스토리텔링 추출
-        const storyInfo = getStoryByAge(parseInt(humanAge, 10), dogName);
-        if (!stage) {
-            stage = storyInfo.stage;
-        }
-
-        document.getElementById('res-stage-tag').textContent = `🐾 ${stage}`;
-        document.getElementById('res-story-text').textContent = storyInfo.text;
-
-        // 결과창 표시 및 상단으로 스크롤 이동
-        const resultWrapper = document.getElementById('result-wrapper');
-        resultWrapper.style.display = 'block';
-        
+        // 2. 원래의 계산 함수를 호출하여 완벽하게 결과창을 렌더링
         setTimeout(() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            calculateAge();
+            
+            // 공유된 화면을 깔끔하게 보여주기 위해 입력 폼(calc-card)은 숨김 처리
+            const calcCard = document.querySelector('.calc-card');
+            if (calcCard) calcCard.style.display = 'none';
         }, 100);
     }
 }
@@ -247,14 +239,14 @@ function shareKakao() {
     }
 
     if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
-        const dogName = document.getElementById('res-dog-name').textContent;
-        const humanAge = document.getElementById('res-human-age').textContent;
-        const currentStageRaw = document.getElementById('res-stage-tag').textContent;
-        // '🐾 청년기' 형태에서 이모지 제거 (안전하게 처리)
-        const currentStage = currentStageRaw.replace('🐾 ', '').trim();
+        // 사용자가 폼에 입력했던 원본 데이터 가져오기
+        const dogName = document.getElementById('dog-name').value.trim() || document.getElementById('res-dog-name').textContent;
+        const breed = document.getElementById('dog-breed').value || 'small';
+        const year = document.getElementById('dog-age-years').value || 0;
+        const month = document.getElementById('dog-age-months').value || 0;
         
-        // 쿼리 파라미터 조립 (mung-test.com 고정)
-        const shareUrl = `https://mung-test.com/age-calculator.html?name=${encodeURIComponent(dogName)}&humanAge=${humanAge}&stage=${encodeURIComponent(currentStage)}`;
+        // 쿼리 파라미터 조립 (초기 폼 입력값 전송)
+        const shareUrl = `https://mung-test.com/age-calculator.html?name=${encodeURIComponent(dogName)}&breed=${encodeURIComponent(breed)}&year=${year}&month=${month}`;
 
         Kakao.Share.sendDefault({
             objectType: 'feed',
