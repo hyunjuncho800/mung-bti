@@ -76,6 +76,7 @@
         <a href="#" class="logo" id="logo-home">🐾 반려견 기질 검사</a>
         <nav>
             <ul>
+                <li><a href="#" onclick="openModal('about'); return false;">소개 및 문의</a></li>
                 <li><a href="#intro-article">검사 설명</a></li>
                 <li><a href="#" onclick="scrollToTest(); return false;">진단 시작</a></li>
             </ul>
@@ -257,6 +258,7 @@
 <!-- ===================== FOOTER ===================== -->
 <footer>
     <div class="footer-links">
+        <a onclick="openModal('about')">소개 및 문의</a>
         <a onclick="openModal('privacy')">개인정보처리방침</a>
         <a onclick="openModal('terms')">이용약관</a>
         <a onclick="openModal('guide')">행동학 근거 안내</a>
@@ -307,6 +309,22 @@
             <p>탐험성(Exploration Instinct), 안전성(Safety Sensitivity), 교감성(Empathic Bonding), 집중성(Focus Persistence)은 수의 행동학에서 논의되는 기질(Temperament) 지표를 독자적으로 설계한 행동학 척도입니다. 독립성(Independence Regulation), 사교성(Social Cooperativeness), 유연성(Adaptive Resilience)은 사회화·훈련 효과를 측정하는 후천 성향 지표입니다.</p>
             <h4>참고 학문 영역</h4>
             <p>현대 수의 행동학(Veterinary Behavioral Medicine), 반려동물 심리학(Companion Animal Psychology), 동물 학습 이론(Animal Learning Theory), 카밍 시그널 연구(Turid Rugaas, 1997) 등을 참고하여 설계되었습니다.</p>
+        </div>
+    </div>
+</div>
+
+<div id="modal-about" class="modal" onclick="closeOnBg(event, 'about')">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('about')" aria-label="닫기">&times;</button>
+        <h3 class="modal-title">소개 및 문의</h3>
+        <div class="modal-body">
+            <h4>서비스 소개 (About)</h4>
+            <p>mung-test.com은 객관적인 반려견 행동 데이터와 행동학적 근거를 바탕으로 반려견의 타고난 성향과 유전적 특성을 분석하는 <strong>'반려견 기질검사'</strong> 전문 플랫폼입니다.</p>
+            <p>반려견의 행동 문제를 예방하고 보호자와의 건강한 유대 관계 형성을 돕기 위한 데이터 기반 솔루션을 제공합니다.</p>
+            
+            <h4>문의 안내 (Contact)</h4>
+            <p>기질검사 비즈니스 제안, 기관 협업, 기타 문의 사항은 아래 공식 이메일로 연락 주시기 바랍니다.</p>
+            <p>이메일: <a href="mailto:mungtest12@gmail.com" style="color: var(--primary-dark); text-decoration: underline; font-weight: bold;">mungtest12@gmail.com</a></p>
         </div>
     </div>
 </div>
