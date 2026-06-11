@@ -10,7 +10,47 @@ document.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.toggle('active');
         });
     }
+
+    // 공유된 링크로 들어왔을 경우 파라미터 확인 및 자동 렌더링
+    checkAndRenderSharedResult();
 });
+
+// ==========================================
+// 공유된 쿼리 파라미터 확인 및 결과 자동 렌더링
+// ==========================================
+function checkAndRenderSharedResult() {
+    const params = new URLSearchParams(window.location.search);
+    const dogName = params.get('name');
+    const humanAge = params.get('humanAge');
+    let stage = params.get('stage');
+
+    if (dogName && humanAge) {
+        // 처음의 견종/나이 입력 폼 영역 숨기기
+        const calcCard = document.querySelector('.calc-card');
+        if (calcCard) calcCard.style.display = 'none';
+
+        // 결과 DOM 업데이트
+        document.getElementById('res-dog-name').textContent = dogName;
+        document.getElementById('res-human-age').textContent = humanAge;
+
+        // 스토리텔링 추출
+        const storyInfo = getStoryByAge(parseInt(humanAge, 10), dogName);
+        if (!stage) {
+            stage = storyInfo.stage;
+        }
+
+        document.getElementById('res-stage-tag').textContent = `🐾 ${stage}`;
+        document.getElementById('res-story-text').textContent = storyInfo.text;
+
+        // 결과창 표시 및 상단으로 스크롤 이동
+        const resultWrapper = document.getElementById('result-wrapper');
+        resultWrapper.style.display = 'block';
+        
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 100);
+    }
+}
 
 // ==========================================
 // 카카오톡 공유 설정 변수
@@ -213,13 +253,17 @@ function shareKakao() {
     if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
         const dogName = document.getElementById('res-dog-name').textContent;
         const humanAge = document.getElementById('res-human-age').textContent;
+        const currentStageRaw = document.getElementById('res-stage-tag').textContent;
+        const currentStage = currentStageRaw.replace('🐾 ', '').trim();
         
+        const sharePath = `age-calculator.html?name=${encodeURIComponent(dogName)}&humanAge=${humanAge}&stage=${encodeURIComponent(currentStage)}`;
+
         Kakao.Share.sendCustom({
             templateId: KAKAO_TEMPLATE_ID,
             templateArgs: {
                 'dogName': dogName,
                 'humanAge': humanAge,
-                'path': 'age-calculator.html'
+                'path': sharePath
             }
         });
     } else {
@@ -231,11 +275,20 @@ function shareKakao() {
 // 다시 계산하기
 // ==========================================
 function resetCalculator() {
+    // 공유된 결과 화면일 때는 파라미터가 없는 순수 주소로 새로고침
+    if (window.location.search) {
+        window.location.href = window.location.origin + window.location.pathname;
+        return;
+    }
+
     document.getElementById('dog-name').value = '';
     document.getElementById('dog-breed').selectedIndex = 0;
     document.getElementById('dog-age-years').selectedIndex = 0;
     document.getElementById('dog-age-months').selectedIndex = 0;
     
     document.getElementById('result-wrapper').style.display = 'none';
+    const calcCard = document.querySelector('.calc-card');
+    if (calcCard) calcCard.style.display = 'block';
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
