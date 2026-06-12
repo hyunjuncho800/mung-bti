@@ -46,8 +46,10 @@ const breedModifiers = {
 
 function calculateSize(showScroll = true) {
     const breedSelect = document.getElementById('dog-breed');
+    const t = translations[getLang()];
+    
     if (!breedSelect.value && showScroll) {
-        alert("견종을 선택해주세요.");
+        alert(t.size_alert_breed);
         return;
     }
     
@@ -91,7 +93,7 @@ function calculateSize(showScroll = true) {
     const resChest = document.getElementById('res-chest');
 
     resSize.textContent = size;
-    resChest.textContent = `예상 가슴둘레: 약 ${finalChest.toFixed(1)}cm`;
+    resChest.textContent = t.res_chest_text + finalChest.toFixed(1) + 'cm';
 
     resultWrapper.style.display = 'block';
     
@@ -128,19 +130,29 @@ function initKakao() {
 // 카카오톡 공유하기
 // ==========================================
 function shareKakao() {
+    const t = translations[getLang()];
     if (!KAKAO_JS_KEY) {
-        alert("카카오톡 공유 기능이 설정되지 않았습니다.");
+        alert(t.size_alert_kakao);
         return;
     }
 
     if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
         const shareUrl = `https://mung-test.com/size-calculator.html`;
+        
+        let finalChest = '00';
+        let size = 'M';
+        if (document.getElementById('result-wrapper').style.display === 'block') {
+            size = document.getElementById('res-size').textContent;
+            const chestText = document.getElementById('res-chest').textContent;
+            const match = chestText.match(/(\d+\.\d+)cm/);
+            if(match) finalChest = match[1];
+        }
 
         Kakao.Share.sendDefault({
             objectType: 'feed',
             content: {
-                title: '반려견 맞춤형 의류 사이즈 추천기 👕',
-                description: '우리 강아지에게 딱 맞는 옷 사이즈는? 견종, 몸무게, 털 길이를 바탕으로 지금 바로 확인해보세요!',
+                title: t.size_kakao_title,
+                description: t.size_kakao_desc.replace('{{ chest }}', finalChest).replace('{{ size }}', size),
                 imageUrl: 'https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg',
                 link: {
                     mobileWebUrl: shareUrl,
@@ -149,7 +161,7 @@ function shareKakao() {
             },
             buttons: [
                 {
-                    title: '테스트 해보기',
+                    title: t.size_kakao_btn,
                     link: {
                         mobileWebUrl: shareUrl,
                         webUrl: shareUrl,
@@ -158,7 +170,7 @@ function shareKakao() {
             ],
         });
     } else {
-        alert("카카오톡 SDK가 초기화되지 않았습니다.");
+        alert(t.size_alert_kakao_sdk);
     }
 }
 
@@ -182,3 +194,13 @@ function resetCalculator() {
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// ==========================================
+// 언어 변경 시 결과 텍스트 리렌더링
+// ==========================================
+window.addEventListener('languageChanged', (e) => {
+    if (document.getElementById('result-wrapper').style.display === 'block') {
+        // 이미 계산된 값이 있으면 그 값을 다시 계산해서 렌더링
+        calculateSize(false);
+    }
+});

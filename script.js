@@ -6,28 +6,30 @@
         console.log("Kakao SDK Initialization error: ", e);
     }
 
+    // i18n 로직은 외부 파일(i18n.js)로 이관되었습니다.
+
     // ===== 문항 원본 =====
     const baseQuestions = [
-        { id: 1,  category: 'E', text: "새로운 산책 경로나 생전 처음 보는 물건을 마주했을 때, 꼬리를 바짝 세우고 적극적으로 다가가 냄새를 맡는다." },
-        { id: 2,  category: 'E', text: "택배 상자가 들어오거나 새로운 장난감을 사주면 눈빛이 돌변하며 오랜 시간 탐닉하고 집착한다." },
-        { id: 3,  category: 'E', text: "산책 중 나비, 벌레, 길고양이 등을 발견하면 온몸의 근육을 긴장시키며 즉각 추적하려는 본능이 발동한다." },
-        { id: 4,  category: 'S', text: "오토바이 배기음이나 천둥소리, 낯선 벨소리가 들리면 순간적으로 몸이 굳거나 침대 밑 등 구석으로 도망친다." },
-        { id: 5,  category: 'S', text: "동물병원 문 앞이나 생전 처음 가보는 실내 카페에 입장하면 유독 보호자 다리 뒤에 숨으려 한다." },
-        { id: 6,  category: 'S', text: "익숙하지 않은 타인이나 다른 강아지가 예고 없이 다가오면 경계하듯 짖거나 방어적인 으르렁거림을 보인다." },
-        { id: 7,  category: 'M', text: "보호자가 조용히 이름을 부르거나 눈을 맞출 때 즉각적이고 격렬하게 반응한다." },
-        { id: 8,  category: 'M', text: "보호자가 가짜로 우는 척을 하거나 한숨을 쉬면 다가와 얼굴을 핥아주는 등 감정적 동조 현상을 보인다." },
-        { id: 9,  category: 'M', text: "간식 보상 없이도 보호자의 '말 한마디'와 '부드러운 스킨십'만으로 꼬리를 치며 행복해한다." },
-        { id: 10, category: 'F', text: "난이도 높은 노즈워크나 장난감 속 숨겨진 간식을 꺼내기 위해 쉽게 포기하지 않고 끝까지 집요하게 매달린다." },
-        { id: 11, category: 'F', text: "'앉아', '기다려' 등 기본 교육을 진행할 때, 주변의 사소한 자극에 한눈팔지 않고 오랫동안 주의를 집중한다." },
-        { id: 12, category: 'F', text: "뼈다귀나 개껌을 주면 한자리에서 완전히 다 해체할 때까지 지치지 않는 끈기를 보여준다." },
-        { id: 13, category: 'I', text: "보호자가 외출 준비를 하거나 문을 열고 나가도 하울링이나 발로 문을 긁는 행위 없이 자기 방석에서 무덤덤하게 잠을 잔다." },
-        { id: 14, category: 'I', text: "벨이 울려 흥분한 상태에서도 보호자가 단호하게 '기다려'라고 지시하면 스스로 감정을 조율하고 자제한다." },
-        { id: 15, category: 'I', text: "실내에서 보호자 꽁무니를 졸졸 따라다니기보다 자기만의 독립적인 휴식 공간에서 혼자만의 시간을 잘 즐긴다." },
-        { id: 16, category: 'O', text: "다른 반려견을 만났을 때 으르렁대지 않고, 카밍 시그널을 부드럽게 주고받으며 양보할 줄 안다." },
-        { id: 17, category: 'O', text: "미용실·목욕·발톱 깎기 등 예민할 수 있는 위생 케어 과정을 보호자나 전문가의 통제에 순응하며 안정적으로 잘 참아낸다." },
-        { id: 18, category: 'O', text: "산책 중 마주치는 낯선 사람이 조심스럽게 손을 내밀 때 순하게 냄새를 맡고 받아들인다." },
-        { id: 19, category: 'X', text: "갑작스러운 이사나 애견 펜션 등 생소한 환경에서도 마킹이나 구토 없이 빠르게 밥을 먹고 적응한다." },
-        { id: 20, category: 'X', text: "집안 가구 배치가 크게 바뀌거나 새로운 가전제품이 거실에 들어와도 크게 경계하지 않고 편안하게 스쳐 지나간다." },
+        { id: 1,  category: 'E' },
+        { id: 2,  category: 'E' },
+        { id: 3,  category: 'E' },
+        { id: 4,  category: 'S' },
+        { id: 5,  category: 'S' },
+        { id: 6,  category: 'S' },
+        { id: 7,  category: 'M' },
+        { id: 8,  category: 'M' },
+        { id: 9,  category: 'M' },
+        { id: 10, category: 'F' },
+        { id: 11, category: 'F' },
+        { id: 12, category: 'F' },
+        { id: 13, category: 'I' },
+        { id: 14, category: 'I' },
+        { id: 15, category: 'I' },
+        { id: 16, category: 'O' },
+        { id: 17, category: 'O' },
+        { id: 18, category: 'O' },
+        { id: 19, category: 'X' },
+        { id: 20, category: 'X' },
     ];
 
     // Fisher-Yates 셔플
@@ -64,6 +66,8 @@
 
     // ===== 문항 렌더링 =====
     function renderQuestion() {
+        const lang = getLang();
+        const t = translations[lang];
         const total = questions.length;
         const pct = Math.round(((currentIdx + 1) / total) * 100);
 
@@ -76,17 +80,18 @@
 
         // 다음/완료 버튼
         const isLast = (currentIdx === total - 1);
-        document.getElementById('btn-next').textContent = isLast ? '종합 성향 리포트 확인하기 🐾' : '다음 문항으로 →';
+        document.getElementById('btn-next').textContent = isLast ? t.btn_next_finish : t.btn_next;
 
         const q = questions[currentIdx];
+        const qText = t['q' + q.id];
         const prevVal = answers[q.id] || null;
 
         const scales = [
-            { val: 1, label: '전혀<br>아님' },
-            { val: 2, label: '대체로<br>아님' },
-            { val: 3, label: '보통' },
-            { val: 4, label: '대체로<br>맞음' },
-            { val: 5, label: '정말<br>맞음' },
+            { val: 1, label: t.likert_1 },
+            { val: 2, label: t.likert_2 },
+            { val: 3, label: t.likert_3 },
+            { val: 4, label: t.likert_4 },
+            { val: 5, label: t.likert_5 },
         ];
 
         const optionsHTML = scales.map(s => {
@@ -106,11 +111,11 @@
         document.getElementById('question-container').innerHTML = `
           <div class="question-card">
             <div class="question-number-badge">${currentIdx + 1}</div>
-            <p class="question-text">${q.text}</p>
+            <p class="question-text">${qText}</p>
             <div class="likert-scale">${optionsHTML}</div>
             <div class="scale-endpoints">
-              <span>전혀 해당 없음</span>
-              <span>완전히 해당됨</span>
+              <span>${t.scale_end1}</span>
+              <span>${t.scale_end2}</span>
             </div>
           </div>`;
     }
@@ -170,7 +175,7 @@
     function submitMbtiAndShowResult() {
         const mbtiSelect = document.getElementById('owner-mbti');
         if (!mbtiSelect.value) {
-            alert('강아지와의 궁합을 확인하기 위해 보호자님의 MBTI를 선택해주세요!');
+            alert(translations[getLang()].alert_mbti);
             return;
         }
         
@@ -216,19 +221,21 @@
         renderAcquiredChart(I, O, X);
 
         // 칩 렌더링
+        const t = translations[getLang()];
+        
         const inhChips = document.getElementById('inherent-chips');
         inhChips.innerHTML = [
-            { label: '탐험성', val: E },
-            { label: '안전성', val: S },
-            { label: '교감성', val: M },
-            { label: '집중성', val: F },
+            { label: t.sum_e_label, val: E },
+            { label: t.sum_s_label, val: S },
+            { label: t.sum_m_label, val: M },
+            { label: t.sum_f_label, val: F },
         ].map(c => `<span class="score-chip blue"><span class="chip-dot"></span>${c.label} <strong>${c.val.toFixed(1)}</strong></span>`).join('');
 
         const acqChips = document.getElementById('acquired-chips');
         acqChips.innerHTML = [
-            { label: '독립성', val: I },
-            { label: '사교성', val: O },
-            { label: '유연성', val: X },
+            { label: t.sum_i_label, val: I },
+            { label: t.sum_o_label, val: O },
+            { label: t.sum_x_label, val: X },
         ].map(c => `<span class="score-chip green"><span class="chip-dot"></span>${c.label} <strong>${c.val.toFixed(1)}</strong></span>`).join('');
 
         const result = buildResult(E, S, M, F, I, O, X);
@@ -243,17 +250,21 @@
         document.getElementById('res-acquired-desc').textContent = result.acquiredDesc;
         document.getElementById('res-humor-comment').textContent = '🍖 ' + result.humorComment;
 
+        // 차트 라벨 번역 업데이트 처리 (임시)
+        renderInherentChart(E, S, M, F);
+        renderAcquiredChart(I, O, X);
+
         document.getElementById('res-summary-list').innerHTML = [
-            { label: '탐험성', val: E, cls: E >= 3.5 ? 'green' : 'orange', desc: E >= 3.5 ? '호기심 넘치는 탐험가 기질' : '신중하고 차분한 관조 기질' },
-            { label: '안전성', val: S, cls: S >= 3.5 ? 'orange' : 'green', desc: S >= 3.5 ? '소음·낯선 환경에 민감함' : '외부 자극에 비교적 담대함' },
-            { label: '교감성', val: M, cls: M >= 3.5 ? 'green' : 'orange', desc: M >= 3.5 ? '보호자와 강한 유대 형성' : '독립적·쿨한 애정 표현 스타일' },
-            { label: '집중성', val: F, cls: F >= 3.5 ? 'green' : 'orange', desc: F >= 3.5 ? '끈질기고 포기를 모르는 집요함' : '빠른 전환과 다양성을 선호' },
-            { label: '독립성', val: I, cls: I >= 3.5 ? 'green' : 'orange', desc: I >= 3.5 ? '분리 상황에도 안정적인 자율 조율' : '보호자 의존도가 높아 밀착형' },
-            { label: '사교성', val: O, cls: O >= 3.5 ? 'green' : 'orange', desc: O >= 3.5 ? '타견·타인과 원만한 친화력' : '케어·사회화 훈련 강화 권장' },
-            { label: '유연성', val: X, cls: X >= 3.5 ? 'green' : 'orange', desc: X >= 3.5 ? '환경 변화에 빠른 회복탄력성' : '환경 변화 시 완충 케어 필요' },
+            { label: t.sum_e_label, val: E, cls: E >= 3.5 ? 'green' : 'orange', desc: E >= 3.5 ? t.sum_e_high : t.sum_e_low },
+            { label: t.sum_s_label, val: S, cls: S >= 3.5 ? 'orange' : 'green', desc: S >= 3.5 ? t.sum_s_high : t.sum_s_low },
+            { label: t.sum_m_label, val: M, cls: M >= 3.5 ? 'green' : 'orange', desc: M >= 3.5 ? t.sum_m_high : t.sum_m_low },
+            { label: t.sum_f_label, val: F, cls: F >= 3.5 ? 'green' : 'orange', desc: F >= 3.5 ? t.sum_f_high : t.sum_f_low },
+            { label: t.sum_i_label, val: I, cls: I >= 3.5 ? 'green' : 'orange', desc: I >= 3.5 ? t.sum_i_high : t.sum_i_low },
+            { label: t.sum_o_label, val: O, cls: O >= 3.5 ? 'green' : 'orange', desc: O >= 3.5 ? t.sum_o_high : t.sum_o_low },
+            { label: t.sum_x_label, val: X, cls: X >= 3.5 ? 'green' : 'orange', desc: X >= 3.5 ? t.sum_x_high : t.sum_x_low },
         ].map(item => `
           <li class="${item.cls}">
-            <strong>${item.label} ${item.val.toFixed(1)}점</strong> — ${item.desc}
+            <strong>${item.label} ${item.val.toFixed(1)}</strong> — ${item.desc}
           </li>`).join('');
 
         // MBTI 궁합 매칭 연산
@@ -269,39 +280,58 @@
         // 카카오톡 공유용 전역 텍스트 저장
         window.currentShareText = `저희 아이는 [${rawTitle}], 저는 [${ownerMbti}]가 나와서 궁합 점수 ${chemistryResult.score}점 나왔어요!\n\n우리 궁합 보러 가기`;
     }
+    
+    // 글로벌 이벤트 리스너: 다국어 변경 시 현재 보이는 화면을 갱신
+    window.addEventListener('languageChanged', (e) => {
+        const lang = e.detail.lang;
+        
+        // 검사 중이면 문항 렌더링 다시
+        if (document.getElementById('test-zone').style.display === 'block') {
+            renderQuestion();
+        }
+        
+        // 결과창 표시 중이면 결과 계산 텍스트 다시 렌더링
+        if (document.getElementById('result-zone').style.display === 'block') {
+            // 이미 계산된 점수와 MBTI를 활용하여 다시 표시
+            if (window.currentScores) {
+                calculateAndShowResults(window.currentScores);
+            }
+        }
+    });
 
     // ===== 궁합 텍스트 도출 로직 =====
     function getChemistryReport(mbti, dogTitle) {
         const isE = mbti.includes('E');
         const isF = mbti.includes('F');
+        const t = translations[getLang()];
         let text = "", score = 0;
 
-        if (dogTitle.includes('폭주')) {
+        if (dogTitle.includes('폭주') || dogTitle.includes('Runaway')) {
             if (isE) {
-                text = "에너지 대폭발 덤앤더머 콤비! 주말마다 온 동네 오프로드를 누비는 환상의 런닝메이트입니다. 둘 다 지치지 않아서 집안 가구가 평화롭습니다.";
+                text = t.chem1_text;
                 score = 95;
             } else {
-                text = "집돌이 집순이 집사와 에너지 과잉 에너자이저의 만남! 강아지는 나가자고 줄을 물고 오고, 보호자는 침대와 물아일체 중이군요. 보호자님의 체력 방전을 심심한 위로를 전합니다. 산책 대행이나 노즈워크 대량 투하가 시급합니다.";
+                text = t.chem2_text;
                 score = 70;
             }
-        } else if (dogTitle.includes('브레이크') || dogTitle.includes('소심')) {
+        } else if (dogTitle.includes('브레이크') || dogTitle.includes('소심') || dogTitle.includes('Coward') || dogTitle.includes('Timid')) {
             if (isE) {
-                text = "보호자는 파티광, 강아지는 쫄보! 텐션 차이가 제법 납니다. 외향적인 보호자님이 억지로 시끌벅적한 애견카페에 데려가면 강아지는 구석에서 벌벌 떨 수 있어요. 아이의 속도에 맞춰주는 배려가 필요합니다.";
+                text = t.chem3_text;
                 score = 75;
             } else {
-                text = "서로의 평온함을 존중하는 안정적 소울메이트! 시끄러운 세상 속 둘만의 조용한 아지트를 사랑하는 환상의 짝꿍입니다. 억지로 나가지 않아도 눈빛만으로 통하는 사이군요.";
+                text = t.chem4_text;
                 score = 90;
             }
-        } else if (dogTitle.includes('집돌이')) {
+        } else if (dogTitle.includes('집돌이') || dogTitle.includes('Homebody')) {
             if (isF) {
-                text = "눈물 없인 볼 수 없는 영혼의 단짝! 서로 눈빛만 봐도 가슴이 찡해지는 감성 충만 조합입니다. 단, 너무 애틋해서 생기는 분리불안을 조심하세요.";
+                text = t.chem5_text;
                 score = 98;
             } else {
-                text = "실용주의 집사와 게으른 천재견의 만남! '필요 없는 움직임은 최소화한다'는 신념이 기가 막히게 일치합니다. 에너지를 아끼며 스마트하게 휴식하는 찰떡궁합 룸메이트입니다.";
+                text = t.chem6_text;
                 score = 88;
             }
         } else {
-            text = "눈빛만 봐도 통하는 단짝 콤비! 서로의 영역을 존중하면서도 필요할 때 완벽한 케미를 보여줍니다.";
+            text = t.chem7_text;
             score = 85;
         }
         
@@ -310,13 +340,14 @@
 
     // ===== 내재적 기질 레이더 차트 (애니멀 테마) =====
     function renderInherentChart(E, S, M, F) {
+        const t = translations[getLang()];
         const ctx = document.getElementById('inherentChart').getContext('2d');
         if (inherentChartInstance) inherentChartInstance.destroy();
 
         inherentChartInstance = new Chart(ctx, {
             type: 'radar',
             data: {
-                labels: ['🔍 탐험성', '🛡️ 안전성', '💞 교감성', '🎯 집중성'],
+                labels: [t.sum_e_label, t.sum_s_label, t.sum_m_label, t.sum_f_label],
                 datasets: [{
                     label: '본능 점수',
                     data: [E, S, M, F],
@@ -380,13 +411,14 @@
 
     // ===== 후천 성향 레이더 차트 (애니멀 테마) =====
     function renderAcquiredChart(I, O, X) {
+        const t = translations[getLang()];
         const ctx = document.getElementById('acquiredChart').getContext('2d');
         if (acquiredChartInstance) acquiredChartInstance.destroy();
 
         acquiredChartInstance = new Chart(ctx, {
             type: 'radar',
             data: {
-                labels: ['🏠 독립성', '🤝 사교성', '🌱 유연성'],
+                labels: [t.sum_i_label, t.sum_o_label, t.sum_x_label],
                 datasets: [{
                     label: '조율 성향 점수',
                     data: [I, O, X],
@@ -450,34 +482,35 @@
 
     // ===== 결과 텍스트 =====
     function buildResult(E, S, M, F, I, O, X) {
+        const t = translations[getLang()];
         let typeTitle = '', inherentDesc = '', acquiredDesc = '', humorComment = '';
 
         if (E >= 3.5 && S >= 3.5) {
-            typeTitle = '🔥 호기심 천국 겁쟁이 — "이중인격 브레이크형"';
-            inherentDesc = `탐험성(${E.toFixed(1)})과 안전성(${S.toFixed(1)})이 모두 높은 독특한 유전적 배열입니다. 새로운 자극을 보면 심장이 요동치며 돌진하다가도, 막상 대상을 코앞에서 마주하면 '앗 깜짝이야!' 하며 전력 후진하는 웰메이드 양가감정을 장착했습니다. 세상 모든 택배 상자는 다 뜯어야 직성이 풀리지만 초인종 소리에는 침대 밑 전용 벙커로 빛의 속도로 도피하는 유쾌한 매력이 돋보입니다. 교감성(${M.toFixed(1)})과 집중성(${F.toFixed(1)}) 수치도 함께 확인하여 학습 방향을 설정하세요.`;
+            typeTitle = t.res1_title;
+            inherentDesc = t.res1_inherent.replace('{{ E }}', E.toFixed(1)).replace('{{ S }}', S.toFixed(1)).replace('{{ M }}', M.toFixed(1)).replace('{{ F }}', F.toFixed(1));
         } else if (E >= 3.5 && S < 3.5) {
-            typeTitle = '🚀 브레이크 고장난 탐험가 — "폭주 호기심형"';
-            inherentDesc = `타고난 탐험성(${E.toFixed(1)})이 최상위권인 반면 안전성(${S.toFixed(1)})은 거의 발동하지 않는 '용감무쌍형' DNA입니다. 세상에 무서울 것이 없고 낙엽이 굴러가도 '저것은 무엇인가!' 하며 몸을 던질 기세입니다. 겁이 없어 온 동네 참견쟁이가 될 수 있으므로 충동 조절 훈련이 절대적입니다. 집중성(${F.toFixed(1)})이 높다면 노즈워크나 어질리티 스포츠로 에너지를 건강하게 해소시켜 주세요.`;
+            typeTitle = t.res2_title;
+            inherentDesc = t.res2_inherent.replace('{{ E }}', E.toFixed(1)).replace('{{ S }}', S.toFixed(1)).replace('{{ M }}', M.toFixed(1)).replace('{{ F }}', F.toFixed(1));
         } else if (E < 3.5 && S >= 3.5) {
-            typeTitle = '🛡️ 신중하고 세심한 파수꾼 — "소심형 철학자"';
-            inherentDesc = `탐험성(${E.toFixed(1)})은 낮고 안전성(${S.toFixed(1)})이 높아 낯선 자극을 만나면 흥분보다 회피 반응이 지배적입니다. 동물병원 대기실이나 새로운 공간에서 큰 스트레스를 표현합니다. 내면적으로는 일상의 변화에 긴장 속에 살아가고 있을 확률이 높으니 체계적 둔감화 훈련이 필요합니다. 교감성(${M.toFixed(1)})이 높다면 보호자의 안심 시그널이 큰 안정제가 됩니다.`;
+            typeTitle = t.res3_title;
+            inherentDesc = t.res3_inherent.replace('{{ E }}', E.toFixed(1)).replace('{{ S }}', S.toFixed(1)).replace('{{ M }}', M.toFixed(1)).replace('{{ F }}', F.toFixed(1));
         } else {
-            typeTitle = '🛋️ 평화로운 안방 현자 — "무소유 집돌이형"';
-            inherentDesc = `탐험성(${E.toFixed(1)})과 안전성(${S.toFixed(1)})이 모두 낮은 매우 평온하고 무던한 기질입니다. 이불 밖은 위험하다는 진리를 퍼피 시기부터 깨달은 현자 DNA입니다. 거창한 모험보다는 늘 가던 산책로 300m를 편안하게 왕복하는 것에 깊은 안락함을 느낍니다. 집중성(${F.toFixed(1)})을 활용한 차분한 교육으로 천천히 활력을 불어넣어 주세요.`;
+            typeTitle = t.res4_title;
+            inherentDesc = t.res4_inherent.replace('{{ E }}', E.toFixed(1)).replace('{{ S }}', S.toFixed(1)).replace('{{ M }}', M.toFixed(1)).replace('{{ F }}', F.toFixed(1));
         }
 
         if (I >= 3.5 && O >= 3.5) {
-            acquiredDesc = `후천적 독립성(${I.toFixed(1)})과 사교성(${O.toFixed(1)})이 조화롭게 발달한 아주 훌륭한 상태입니다. 보호자님이 그동안 눈물겨운 간식 보상과 일관성 있는 규칙으로 아이에게 엄청난 정서적 신뢰를 제공했음을 방증합니다. 혼자 있을 때는 고독을 즐길 줄 아는 쿨한 강아지이면서도, 미용·케어 시에는 전문가 손길을 묵묵히 받아들이는 '선비형' 성격을 완성했습니다. 유연성(${X.toFixed(1)})까지 높다면 여행도 함께 떠나도 좋습니다.`;
-            humorComment = `처방전: 이미 완벽합니다. 보호자님은 내일 당장 강아지 훈육 학원 차리셔도 됩니다. 지금처럼만 맛있는 동결건조 트릿을 지속 공급하십시오.`;
+            acquiredDesc = t.res1_acquired.replace('{{ I }}', I.toFixed(1)).replace('{{ O }}', O.toFixed(1)).replace('{{ X }}', X.toFixed(1));
+            humorComment = t.res1_humor;
         } else if (I < 3.5 && O >= 3.5) {
-            acquiredDesc = `사교성(${O.toFixed(1)})은 훌륭하나 독립성(${I.toFixed(1)})이 낮은 '보호자 한정 껌딱지' 성향입니다. 세상 모든 사람과 개들에겐 꼬리를 흔들며 천사처럼 행동하지만, 집에서 보호자님이 화장실만 가도 통곡의 벽을 세우는 감정 과잉 상태일 수 있습니다. 혼자 머무는 안전지대(방석) 교육을 소량씩 추가해 주는 것이 유익합니다.`;
-            humorComment = `처방전: 아이의 우주는 온통 당신뿐입니다. 화장실 갈 때 문을 0.5cm만 열어두어 영혼의 단짝을 안심시키되, 가끔은 냉정한 척 '기다려'를 외치셔야 지갑(벽지 수리비)을 지킵니다.`;
+            acquiredDesc = t.res2_acquired.replace('{{ I }}', I.toFixed(1)).replace('{{ O }}', O.toFixed(1)).replace('{{ X }}', X.toFixed(1));
+            humorComment = t.res2_humor;
         } else if (I >= 3.5 && O < 3.5) {
-            acquiredDesc = `독립성(${I.toFixed(1)})은 우수하나 사교성(${O.toFixed(1)})이 낮아 케어나 사회적 상황에서 협조성 향상이 필요합니다. 혼자 시간은 잘 보내지만 낯선 사람이나 다른 개가 다가오면 경계심이 높아질 수 있습니다. 점진적 노출 훈련과 고보상 간식을 결합한 사회화 교육을 꾸준히 제공해 주세요.`;
-            humorComment = `처방전: 혼자서는 완벽한 도사인데 사람 만나면 갑자기 도인 수련 중 모드 돌입. 간식으로 세상이 무섭지 않다는 것을 단계적으로 알려드리세요.`;
+            acquiredDesc = t.res3_acquired.replace('{{ I }}', I.toFixed(1)).replace('{{ O }}', O.toFixed(1)).replace('{{ X }}', X.toFixed(1));
+            humorComment = t.res3_humor;
         } else {
-            acquiredDesc = `독립성(${I.toFixed(1)})과 사교성(${O.toFixed(1)})이 모두 낮게 측정된 경우, 유연성(${X.toFixed(1)})을 높여주는 '밀당 케어'가 집중적으로 필요합니다. 무조건적인 다정함보다는 예측 가능한 스케줄 관리가 필수적입니다. 규칙적인 식사·산책 타임과 짧고 즐거운 훈련 세션이 아이에게 세상이 안전하다는 믿음을 심어줍니다.`;
-            humorComment = `처방전: 겉으로는 '까칠한 고양이' 코스프레를 하지만 속으로는 보호자의 손길을 격렬히 갈구하는 완벽한 츤데레. 밀당의 고수가 되어 규칙적 스케줄로 승리하십시오.`;
+            acquiredDesc = t.res4_acquired.replace('{{ I }}', I.toFixed(1)).replace('{{ O }}', O.toFixed(1)).replace('{{ X }}', X.toFixed(1));
+            humorComment = t.res4_humor;
         }
 
         return { typeTitle, inherentDesc, acquiredDesc, humorComment };
@@ -496,36 +529,28 @@
 
     // ===== 검사 결과 공유하기 =====
     function shareKakao() {
-        const shareText = window.currentShareText || `저희 아이는 멍-BTI 검사 결과가 나왔어요! 확인해보세요.`;
-        
-        // 요구사항에 맞춰 방금 도출된 강아지 유형과 보호자 MBTI 변수를 가져옵니다.
+        const t = translations[getLang()];
         const dogType = window.currentDogType || '알수없음';
         const ownerMbti = window.currentOwnerMbti || 'MBTI 미입력';
-        
-        // 파라미터가 붙은 새로운 주소 변수 생성
+        const score = getChemistryReport(ownerMbti, window.currentDogType || '').score;
+
+        let shareText = t.kakao_share_text.replace('{{ dogType }}', dogType).replace('{{ ownerMbti }}', ownerMbti).replace('{{ score }}', score);
         const shareUrl = `https://mung-test.com/?dogType=${encodeURIComponent(dogType)}&ownerMbti=${encodeURIComponent(ownerMbti)}`;
         
-        // 카카오톡 SDK가 초기화되어 있다면 카카오 공유 실행 시도
         if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
             try {
                 const shareParams = {
                     objectType: 'feed',
                     content: {
-                        title: '🐾 우리 강아지 멍-BTI 검사 결과 도출!',
+                        title: t.kakao_share_title,
                         description: shareText,
                         imageUrl: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=400', 
-                        link: {
-                            mobileWebUrl: shareUrl,
-                            webUrl: shareUrl
-                        }
+                        link: { mobileWebUrl: shareUrl, webUrl: shareUrl }
                     },
                     buttons: [
                         {
-                            title: '나도 궁합 보러 가기 🐾',
-                            link: {
-                                mobileWebUrl: shareUrl,
-                                webUrl: shareUrl
-                            }
+                            title: t.kakao_share_btn,
+                            link: { mobileWebUrl: shareUrl, webUrl: shareUrl }
                         }
                     ]
                 };

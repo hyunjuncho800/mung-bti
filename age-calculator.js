@@ -102,19 +102,21 @@ function calculateAge() {
     const years = parseInt(document.getElementById('dog-age-years').value);
     const months = parseInt(document.getElementById('dog-age-months').value);
 
+    const t = translations[getLang()];
+
     // 유효성 검사
     if (!nameInput) {
-        alert("강아지 이름을 입력해주세요.");
+        alert(t.age_alert_name);
         document.getElementById('dog-name').focus();
         return;
     }
     if (!breedSelect.value) {
-        alert("견종을 선택해주세요.");
+        alert(t.age_alert_breed);
         breedSelect.focus();
         return;
     }
     if (years === 0 && months === 0) {
-        alert("나이를 입력해주세요.");
+        alert(t.age_alert_age);
         return;
     }
 
@@ -165,40 +167,41 @@ function calculateAge() {
 // 스토리텔링 매핑
 // ==========================================
 function getStoryByAge(age, name) {
+    const t = translations[getLang()];
     if (age >= 0 && age <= 6) {
         return {
-            stage: "영유아기",
-            text: `${name}(이)는 눈 뜨고 걷기 시작하며 세상 모든 것이 신기한 꼬마 시절입니다. 호기심이 넘쳐 사고도 치지만, ${name}의 존재만으로도 미소를 짓게 하는 천사 같은 시기입니다.`
+            stage: t.age_stage1,
+            text: t.age_story1.replace(/\{\{ name \}\}/g, name)
         };
     } else if (age >= 7 && age <= 15) {
         return {
-            stage: "질풍노도 퍼피",
-            text: `${name}(이)는 이가 간지러워 이것저것 물어뜯고, 개구쟁이처럼 에너지가 폭발하는 시기입니다. 올바른 사회화와 교감이 ${name}의 평생 성격을 좌우하는 중요한 때이기도 합니다.`
+            stage: t.age_stage2,
+            text: t.age_story2.replace(/\{\{ name \}\}/g, name)
         };
     } else if (age >= 16 && age <= 25) {
         return {
-            stage: "청년기",
-            text: `${name}(이)는 골격이 다져지고 근육이 완성되는 빛나는 청춘입니다. 에너지가 최고조에 달하며, 보호자와 발맞춰 뛰고 걷는 최고의 산책 메이트입니다.`
+            stage: t.age_stage3,
+            text: t.age_story3.replace(/\{\{ name \}\}/g, name)
         };
     } else if (age >= 26 && age <= 40) {
         return {
-            stage: "성견기",
-            text: `${name}(이)는 성격이 차분하게 자리 잡고, 눈빛만 봐도 보호자의 마음을 읽어내는 시기입니다. 든든한 가족이자 그 어떤 것과도 바꿀 수 없는 완벽한 단짝 친구입니다.`
+            stage: t.age_stage4,
+            text: t.age_story4.replace(/\{\{ name \}\}/g, name)
         };
     } else if (age >= 41 && age <= 55) {
         return {
-            stage: "중년기",
-            text: `${name}의 입가에 하얀 털이 조금씩 보이기 시작합니다. 여전히 산책을 사랑하지만, 예전보다 잠이 조금 늘어나는 여유롭고 평화로운 중년입니다.`
+            stage: t.age_stage5,
+            text: t.age_story5.replace(/\{\{ name \}\}/g, name)
         };
     } else if (age >= 56 && age <= 70) {
         return {
-            stage: "시니어",
-            text: `${name}의 활동량이 눈에 띄게 줄고, 뛸 때 관절을 신경 써주어야 합니다. 함께 걷는 산책 속도를 조금 늦춰주며, 정기적인 건강 검진과 식단 관리가 필요한 시기입니다.`
+            stage: t.age_stage6,
+            text: t.age_story6.replace(/\{\{ name \}\}/g, name)
         };
     } else {
         return {
-            stage: "노령견",
-            text: `${name}(이)는 예전처럼 멀리 걷지 못하고 눈동자가 조금 탁해질 수 있습니다. 아픈 곳을 숨기려 할 수 있으니, 아주 세심한 관찰과 따뜻한 품이 필요한 귀중하고 애틋한 시간입니다.`
+            stage: t.age_stage7,
+            text: t.age_story7.replace(/\{\{ name \}\}/g, name)
         };
     }
 }
@@ -207,11 +210,12 @@ function getStoryByAge(age, name) {
 // 기능: 이미지로 저장하기
 // ==========================================
 function saveResultImage() {
+    const t = translations[getLang()];
     const captureTarget = document.getElementById('capture-area');
     const saveBtn = document.querySelector('.btn-save');
 
     saveBtn.disabled = true;
-    saveBtn.textContent = '이미지 생성 중... ⏳';
+    saveBtn.textContent = t.age_save_loading;
 
     html2canvas(captureTarget, {
         scale: 2, // 고해상도 캡처
@@ -225,12 +229,12 @@ function saveResultImage() {
         link.click();
 
         saveBtn.disabled = false;
-        saveBtn.textContent = '결과 이미지로 저장하기 📥';
+        saveBtn.textContent = t.age_save_btn;
     }).catch(err => {
         console.error('Image Capture Error:', err);
-        alert('이미지 저장 중 오류가 발생했습니다. 브라우저 설정을 확인해주세요.');
+        alert(t.age_alert_img_err);
         saveBtn.disabled = false;
-        saveBtn.textContent = '결과 이미지로 저장하기 📥';
+        saveBtn.textContent = t.age_save_btn;
     });
 }
 
@@ -238,8 +242,9 @@ function saveResultImage() {
 // 기능: 카카오톡 공유하기 (피드 방식 적용)
 // ==========================================
 function shareKakao() {
+    const t = translations[getLang()];
     if (!KAKAO_JS_KEY) {
-        alert("카카오톡 공유 기능이 설정되지 않았습니다. (JS 키 누락)");
+        alert(t.age_alert_kakao_key);
         return;
     }
 
@@ -256,8 +261,8 @@ function shareKakao() {
         Kakao.Share.sendDefault({
             objectType: 'feed',
             content: {
-                title: '우리의 시간은 다르게 흐릅니다 🕰️',
-                description: `${dogName}의 진짜 나이는 사람으로 치면 몇 살일까요? 지금 확인해 보세요.`,
+                title: t.age_kakao_title,
+                description: t.age_kakao_desc.replace('{{ name }}', dogName),
                 imageUrl: 'https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg',
                 link: {
                     mobileWebUrl: shareUrl,
@@ -266,7 +271,7 @@ function shareKakao() {
             },
             buttons: [
                 {
-                    title: '결과 확인하기',
+                    title: t.age_kakao_btn,
                     link: {
                         mobileWebUrl: shareUrl,
                         webUrl: shareUrl,
@@ -275,7 +280,7 @@ function shareKakao() {
             ],
         });
     } else {
-        alert("카카오톡 SDK가 초기화되지 않았습니다.");
+        alert(t.age_alert_kakao_sdk);
     }
 }
 
@@ -300,3 +305,19 @@ function resetCalculator() {
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// ==========================================
+// 언어 변경 시 결과 리렌더링
+// ==========================================
+window.addEventListener('languageChanged', (e) => {
+    // 결과창이 열려있으면 텍스트 다시 렌더링
+    if (document.getElementById('result-wrapper').style.display === 'block') {
+        const humanAge = parseInt(document.getElementById('res-human-age').textContent);
+        const dogName = document.getElementById('res-dog-name').textContent;
+        if (!isNaN(humanAge) && dogName) {
+            const storyInfo = getStoryByAge(humanAge, dogName);
+            document.getElementById('res-stage-tag').textContent = `🐾 ${storyInfo.stage}`;
+            document.getElementById('res-story-text').textContent = storyInfo.text;
+        }
+    }
+});

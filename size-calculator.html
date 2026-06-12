@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>반려견 맞춤형 의류 사이즈 추천기</title>
+    <title data-i18n-meta="meta_title_size">반려견 맞춤형 의류 사이즈 추천기</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     
-    <meta name="description" content="우리 강아지에게 딱 맞는 옷 사이즈는 무엇일까요? 견종, 몸무게, 털 길이를 바탕으로 반려견 맞춤형 의류 사이즈를 추천해 드립니다. 체형별 가중치를 반영한 정확한 가슴둘레 예측!">
+    <meta name="description" data-i18n-meta="meta_desc_size" content="우리 강아지에게 딱 맞는 옷 사이즈는 무엇일까요? 견종, 몸무게, 털 길이를 바탕으로 반려견 맞춤형 의류 사이즈를 추천해 드립니다. 체형별 가중치를 반영한 정확한 가슴둘레 예측!">
     <meta name="keywords" content="강아지 옷 사이즈, 반려견 의류, 강아지 가슴둘레, 반려견 옷 추천, 강아지 사이즈 계산기, 멍BTI">
 
     <!-- Google AdSense -->
@@ -19,8 +19,8 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mung-test.com/size-calculator.html">
-    <meta property="og:title" content="반려견 맞춤형 의류 사이즈 추천기">
-    <meta property="og:description" content="견종, 몸무게, 털 길이를 바탕으로 우리 강아지에게 딱 맞는 옷 사이즈를 찾아보세요!">
+    <meta property="og:title" data-i18n-meta="meta_title_size" content="반려견 맞춤형 의류 사이즈 추천기">
+    <meta property="og:description" data-i18n-meta="meta_desc_size" content="견종, 몸무게, 털 길이를 바탕으로 우리 강아지에게 딱 맞는 옷 사이즈를 찾아보세요!">
     <meta property="og:image" content="https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg">
 
     <!-- Kakao SDK -->
@@ -41,18 +41,23 @@
     <!-- 기존 공통 스타일 및 새로 만든 스타일 시트 -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="size-calculator.css">
+    <script src="i18n.js"></script>
 </head>
 <body>
 
 <header>
     <div class="header-inner">
-        <a href="index.html" class="logo" id="logo-home">🐾 의류 사이즈 추천기</a>
-        <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
+        <a href="index.html" class="logo" id="logo-home" data-i18n="logo_size">🐾 의류 사이즈 추천기</a>
+        <div class="header-actions">
+            <button id="btn-lang" class="header-btn" aria-label="언어 변경" data-i18n="btn_lang_toggle">EN</button>
+            <button id="btn-theme" class="header-btn" aria-label="테마 변경">🌙</button>
+            <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
+        </div>
         <nav>
             <ul>
-                <li><a href="age-calculator.html">나이 계산기</a></li>
-                <li><a href="size-calculator.html">의류 사이즈 추천기</a></li>
-                <li><a href="index.html">기질 검사 시작</a></li>
+                <li><a href="age-calculator.html" data-i18n="nav_age">나이 계산기</a></li>
+                <li><a href="size-calculator.html" data-i18n="nav_size">의류 사이즈 추천기</a></li>
+                <li><a href="index.html" data-i18n="nav_start">기질 검사 시작</a></li>
             </ul>
         </nav>
     </div>
@@ -67,44 +72,42 @@
 
     <main class="calculator-wrapper">
         <article class="calc-card">
-            <h1 class="calc-title">우리 아이에게 딱 맞는 사이즈를 찾아보세요! 👕</h1>
-            <p class="calc-subtitle">견종, 몸무게, 털 길이를 입력하면 최적의 옷 사이즈를 추천해 드립니다.</p>
-
-
+            <h1 class="calc-title" data-i18n="size_calc_title">우리 아이에게 딱 맞는 사이즈를 찾아보세요! 👕</h1>
+            <p class="calc-subtitle" data-i18n="size_calc_subtitle">견종, 몸무게, 털 길이를 입력하면 최적의 옷 사이즈를 추천해 드립니다.</p>
 
             <!-- 견종 선택 -->
             <div class="input-group">
-                <label for="dog-breed">견종 선택</label>
+                <label for="dog-breed" data-i18n="label_breed_select">견종 선택</label>
                 <div class="select-wrapper">
                     <select id="dog-breed">
-                        <option value="" disabled selected>견종을 선택해주세요</option>
-                        <optgroup label="국내 주요 인기견">
-                            <option value="small" data-name="말티푸">말티푸 (소형)</option>
-                            <option value="small" data-name="말티즈">말티즈 (소형)</option>
-                            <option value="small" data-name="푸들">푸들 (토이/미니어처 - 소형)</option>
-                            <option value="small" data-name="포메라니안">포메라니안 (소형)</option>
-                            <option value="large" data-name="리트리버">리트리버 (골든/래브라도 - 대형)</option>
+                        <option value="" disabled selected data-i18n="breed_select_default">견종을 선택해주세요</option>
+                        <optgroup label="국내 주요 인기견" data-i18n-label="optgroup_pop">
+                            <option value="small" data-name="말티푸" data-i18n="breed_maltipoo">말티푸 (소형)</option>
+                            <option value="small" data-name="말티즈" data-i18n="breed_maltese">말티즈 (소형)</option>
+                            <option value="small" data-name="푸들" data-i18n="breed_poodle">푸들 (토이/미니어처 - 소형)</option>
+                            <option value="small" data-name="포메라니안" data-i18n="breed_pomeranian">포메라니안 (소형)</option>
+                            <option value="large" data-name="리트리버" data-i18n="breed_retriever">리트리버 (골든/래브라도 - 대형)</option>
                         </optgroup>
-                        <optgroup label="소형견 (10kg 미만)">
-                            <option value="small" data-name="치와와">치와와</option>
-                            <option value="small" data-name="요크셔 테리어">요크셔 테리어</option>
-                            <option value="small" data-name="시츄">시츄</option>
-                            <option value="small" data-name="비숑 프리제">비숑 프리제</option>
-                            <option value="small" data-name="기타 소형견">기타 소형견</option>
+                        <optgroup label="소형견 (10kg 미만)" data-i18n-label="optgroup_small">
+                            <option value="small" data-name="치와와" data-i18n="breed_chihuahua">치와와</option>
+                            <option value="small" data-name="요크셔 테리어" data-i18n="breed_yorkshire">요크셔 테리어</option>
+                            <option value="small" data-name="시츄" data-i18n="breed_shih_tzu">시츄</option>
+                            <option value="small" data-name="비숑 프리제" data-i18n="breed_bichon">비숑 프리제</option>
+                            <option value="small" data-name="기타 소형견" data-i18n="breed_other_small">기타 소형견</option>
                         </optgroup>
-                        <optgroup label="중형견 (10kg ~ 25kg 미만)">
-                            <option value="medium" data-name="웰시 코기">웰시 코기</option>
-                            <option value="medium" data-name="비글">비글</option>
-                            <option value="medium" data-name="코카 스파니엘">코카 스파니엘</option>
-                            <option value="medium" data-name="프렌치 불독">프렌치 불독</option>
-                            <option value="medium" data-name="기타 중형견">기타 중형견</option>
+                        <optgroup label="중형견 (10kg ~ 25kg 미만)" data-i18n-label="optgroup_medium">
+                            <option value="medium" data-name="웰시 코기" data-i18n="breed_corgi">웰시 코기</option>
+                            <option value="medium" data-name="비글" data-i18n="breed_beagle">비글</option>
+                            <option value="medium" data-name="코카 스파니엘" data-i18n="breed_cocker">코카 스파니엘</option>
+                            <option value="medium" data-name="프렌치 불독" data-i18n="breed_french_bulldog">프렌치 불독</option>
+                            <option value="medium" data-name="기타 중형견" data-i18n="breed_other_medium">기타 중형견</option>
                         </optgroup>
-                        <optgroup label="대형견 (25kg 이상)">
-                            <option value="large" data-name="허스키">시베리안 허스키</option>
-                            <option value="large" data-name="사모예드">사모예드</option>
-                            <option value="large" data-name="진돗개">진돗개</option>
-                            <option value="large" data-name="저먼 셰퍼드">저먼 셰퍼드</option>
-                            <option value="large" data-name="기타 대형견">기타 대형견</option>
+                        <optgroup label="대형견 (25kg 이상)" data-i18n-label="optgroup_large">
+                            <option value="large" data-name="허스키" data-i18n="breed_husky">시베리안 허스키</option>
+                            <option value="large" data-name="사모예드" data-i18n="breed_samoyed">사모예드</option>
+                            <option value="large" data-name="진돗개" data-i18n="breed_jindo">진돗개</option>
+                            <option value="large" data-name="저먼 셰퍼드" data-i18n="breed_shepherd">저먼 셰퍼드</option>
+                            <option value="large" data-name="기타 대형견" data-i18n="breed_other_large">기타 대형견</option>
                         </optgroup>
                     </select>
                 </div>
@@ -112,7 +115,7 @@
 
             <!-- 몸무게 입력 -->
             <div class="input-group">
-                <label for="dog-weight-input">몸무게 (kg)</label>
+                <label for="dog-weight-input" data-i18n="label_weight">몸무게 (kg)</label>
                 <div class="weight-inputs">
                     <input type="range" id="dog-weight-slider" min="0.5" max="20.0" step="0.1" value="5.0">
                     <input type="number" id="dog-weight-input" min="0.5" max="20.0" step="0.1" value="5.0">
@@ -121,40 +124,40 @@
 
             <!-- 털 길이 선택 -->
             <div class="input-group">
-                <label>털 길이</label>
+                <label data-i18n="label_hair">털 길이</label>
                 <div class="segmented-control">
                     <input type="radio" id="hair-short" name="hair-length" value="0" checked>
-                    <label for="hair-short">✂️ 미용 직후(짧음)</label>
+                    <label for="hair-short" data-i18n="hair_short">✂️ 미용 직후(짧음)</label>
 
                     <input type="radio" id="hair-medium" name="hair-length" value="2.0">
-                    <label for="hair-medium">🐕 보통</label>
+                    <label for="hair-medium" data-i18n="hair_medium">🐕 보통</label>
 
                     <input type="radio" id="hair-long" name="hair-length" value="4.5">
-                    <label for="hair-long">☁️ 길고 풍성함</label>
+                    <label for="hair-long" data-i18n="hair_long">☁️ 길고 풍성함</label>
                 </div>
             </div>
 
-            <button class="btn-calc" onclick="calculateSize(true)">계산하기</button>
+            <button class="btn-calc" onclick="calculateSize(true)" data-i18n="btn_size_calc">계산하기</button>
         </article>
 
         <!-- 결과 영역 -->
         <div id="result-wrapper" style="display: none;">
             <div class="result-card">
-                <div class="result-badge">Size Recommendation</div>
+                <div class="result-badge" data-i18n="res_badge_size">Size Recommendation</div>
                 
-                <h2 class="result-heading">추천 사이즈</h2>
+                <h2 class="result-heading" data-i18n="res_size_heading">추천 사이즈</h2>
                 <div class="size-highlight" id="res-size">M</div>
                 
                 <p class="estimated-chest" id="res-chest">예상 가슴둘레: 약 00cm</p>
                 
-                <p class="result-footer-note">*본 추천은 mung-test.com의 자체 표준 규격을 기준으로 하며, 체형에 따라 약간의 오차가 있을 수 있습니다.*</p>
+                <p class="result-footer-note" data-i18n="res_size_note">*본 추천은 mung-test.com의 자체 표준 규격을 기준으로 하며, 체형에 따라 약간의 오차가 있을 수 있습니다.*</p>
             </div>
 
             <div class="btn-group share-buttons" style="display: flex; gap: 8px; margin-bottom: 12px;">
-                <button class="btn-kakao" onclick="shareKakao()" style="width: 100%; background: #fee500; color: #3c1e1e; border: none; padding: 16px; border-radius: 12px; font-weight: bold; font-size: 1.05rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">카카오톡 공유하기 💬</button>
+                <button class="btn-kakao" onclick="shareKakao()" style="width: 100%; background: #fee500; color: #3c1e1e; border: none; padding: 16px; border-radius: 12px; font-weight: bold; font-size: 1.05rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05);" data-i18n="btn_kakao">카카오톡 공유하기 💬</button>
             </div>
             <div class="btn-group">
-                <button class="btn-restart" onclick="resetCalculator()" style="width: 100%; background: #fdfaf6; color: #7b6a58; border: 2px solid #e9e4dc; padding: 16px; border-radius: 12px; font-weight: bold; font-size: 1.05rem; cursor: pointer; transition: all 0.2s ease;">다시 계산하기 🔄</button>
+                <button class="btn-restart" onclick="resetCalculator()" style="width: 100%; background: #fdfaf6; color: #7b6a58; border: 2px solid #e9e4dc; padding: 16px; border-radius: 12px; font-weight: bold; font-size: 1.05rem; cursor: pointer; transition: all 0.2s ease;" data-i18n="btn_restart">다시 계산하기 🔄</button>
             </div>
         </div>
 
@@ -167,36 +170,39 @@
 
     <!-- SEO 전문 아티클 영역 (구글 애드센스 및 검색 노출 최적화용) -->
     <section class="seo-article">
-        <h2>강아지 옷, 왜 사이즈 선택이 중요할까요?</h2>
-        <p>반려견에게 옷을 입히는 것은 단순한 패션을 넘어 <strong>체온 유지, 자외선 차단, 진드기 및 해충 방지</strong> 등 건강과 직결된 중요한 역할을 합니다. 하지만 사람과 달리 강아지는 체형이 견종마다 천차만별이기 때문에, 단순히 몸무게만으로 옷을 고르면 실패할 확률이 매우 높습니다. 꽉 끼는 옷은 피부 마찰과 관절의 움직임을 방해하여 큰 스트레스를 줄 수 있으며, 너무 헐렁한 옷은 보행 시 걸려 넘어지는 사고를 유발할 수 있습니다.</p>
-        <p>따라서 정확한 가슴둘레 측정과 견종별 체형 특성(예: 흉곽의 넓이와 깊이), 그리고 현재 털의 길이를 모두 고려하여 옷을 선택해야만 우리 아이가 하루 종일 편안하게 활동할 수 있습니다.</p>
+        <h2 data-i18n="seo_s1_t">강아지 옷, 왜 사이즈 선택이 중요할까요?</h2>
+        <p data-i18n="seo_s1_p1">반려견에게 옷을 입히는 것은 단순한 패션을 넘어 <strong>체온 유지, 자외선 차단, 진드기 및 해충 방지</strong> 등 건강과 직결된 중요한 역할을 합니다. 하지만 사람과 달리 강아지는 체형이 견종마다 천차만별이기 때문에, 단순히 몸무게만으로 옷을 고르면 실패할 확률이 매우 높습니다. 꽉 끼는 옷은 피부 마찰과 관절의 움직임을 방해하여 큰 스트레스를 줄 수 있으며, 너무 헐렁한 옷은 보행 시 걸려 넘어지는 사고를 유발할 수 있습니다.</p>
+        <p data-i18n="seo_s1_p2">따라서 정확한 가슴둘레 측정과 견종별 체형 특성(예: 흉곽의 넓이와 깊이), 그리고 현재 털의 길이를 모두 고려하여 옷을 선택해야만 우리 아이가 하루 종일 편안하게 활동할 수 있습니다.</p>
     </section>
 
     <section class="seo-article">
-        <h2>견종별 체형 특성과 가슴둘레의 관계</h2>
-        <p>강아지의 체형은 골격 구조에 따라 크게 세 가지로 나눌 수 있으며, 이는 사이즈 선택의 핵심 지표가 됩니다.</p>
+        <h2 data-i18n="seo_s2_t">견종별 체형 특성과 가슴둘레의 관계</h2>
+        <p data-i18n="seo_s2_p1">강아지의 체형은 골격 구조에 따라 크게 세 가지로 나눌 수 있으며, 이는 사이즈 선택의 핵심 지표가 됩니다.</p>
         <ul>
-            <li><strong>깊은 흉곽형 (푸들, 이탈리안 그레이하운드 등):</strong> 몸통이 좁고 가슴이 아래로 깊게 파인 체형입니다. 몸무게에 비해 가슴둘레가 커서 등길이에 맞추면 가슴이 꽉 끼는 경우가 많습니다.</li>
-            <li><strong>넓은 흉곽형 (웰시코기, 닥스훈트 등):</strong> 다리가 짧고 가슴통이 넓게 발달한 체형입니다. 하네스나 옷을 고를 때 반드시 가슴 앞쪽 폭을 고려해야 하며 넉넉한 사이즈가 필요합니다.</li>
-            <li><strong>근육/불독형 (프렌치 불독, 퍼그 등):</strong> 목이 두껍고 어깨와 가슴 근육이 매우 발달한 체형입니다. 일반적인 소형견 사이즈로는 목과 가슴이 잠기지 않으므로, 체중 대비 훨씬 큰 사이즈나 전용 의류를 입어야 합니다.</li>
-            <li><strong>표준형 (말티즈, 포메라니안 등):</strong> 체중과 가슴둘레가 비교적 일정한 비율로 성장하는 체형입니다. 하지만 털이 길게 자라는 이중모 견종의 경우 털의 부피를 감안하여 반 치수 크게 고르는 것이 좋습니다.</li>
+            <li data-i18n="seo_s2_li1"><strong>깊은 흉곽형 (푸들, 이탈리안 그레이하운드 등):</strong> 몸통이 좁고 가슴이 아래로 깊게 파인 체형입니다. 몸무게에 비해 가슴둘레가 커서 등길이에 맞추면 가슴이 꽉 끼는 경우가 많습니다.</li>
+            <li data-i18n="seo_s2_li2"><strong>넓은 흉곽형 (웰시코기, 닥스훈트 등):</strong> 다리가 짧고 가슴통이 넓게 발달한 체형입니다. 하네스나 옷을 고를 때 반드시 가슴 앞쪽 폭을 고려해야 하며 넉넉한 사이즈가 필요합니다.</li>
+            <li data-i18n="seo_s2_li3"><strong>근육/불독형 (프렌치 불독, 퍼그 등):</strong> 목이 두껍고 어깨와 가슴 근육이 매우 발달한 체형입니다. 일반적인 소형견 사이즈로는 목과 가슴이 잠기지 않으므로, 체중 대비 훨씬 큰 사이즈나 전용 의류를 입어야 합니다.</li>
+            <li data-i18n="seo_s2_li4"><strong>표준형 (말티즈, 포메라니안 등):</strong> 체중과 가슴둘레가 비교적 일정한 비율로 성장하는 체형입니다. 하지만 털이 길게 자라는 이중모 견종의 경우 털의 부피를 감안하여 반 치수 크게 고르는 것이 좋습니다.</li>
         </ul>
     </section>
 
     <section class="seo-article">
-        <h2>정확한 강아지 사이즈 측정 방법</h2>
-        <p>강아지 옷을 구매하기 전에는 반드시 줄자를 이용하여 아이가 서 있는 상태에서 측정해야 합니다. 앉거나 누워 있을 때 측정하면 오차가 크게 발생할 수 있습니다.</p>
+        <h2 data-i18n="seo_s3_t">정확한 강아지 사이즈 측정 방법</h2>
+        <p data-i18n="seo_s3_p1">강아지 옷을 구매하기 전에는 반드시 줄자를 이용하여 아이가 서 있는 상태에서 측정해야 합니다. 앉거나 누워 있을 때 측정하면 오차가 크게 발생할 수 있습니다.</p>
         <ul>
-            <li><strong>가슴둘레:</strong> 앞다리 바로 뒤, 가슴통이 가장 굵고 넓은 부분을 여유 있게 잽니다. 손가락 두 개 정도가 들어갈 여유를 두는 것이 이상적입니다.</li>
-            <li><strong>목둘레:</strong> 목걸이가 위치하는 목의 가장 굵은 부분을 잽니다.</li>
-            <li><strong>등길이:</strong> 목 뒤(목덜미)에서부터 꼬리가 시작되는 뿌리 부분까지의 길이를 잽니다.</li>
+            <li data-i18n="seo_s3_li1"><strong>가슴둘레:</strong> 앞다리 바로 뒤, 가슴통이 가장 굵고 넓은 부분을 여유 있게 잽니다. 손가락 두 개 정도가 들어갈 여유를 두는 것이 이상적입니다.</li>
+            <li data-i18n="seo_s3_li2"><strong>목둘레:</strong> 목걸이가 위치하는 목의 가장 굵은 부분을 잽니다.</li>
+            <li data-i18n="seo_s3_li3"><strong>등길이:</strong> 목 뒤(목덜미)에서부터 꼬리가 시작되는 뿌리 부분까지의 길이를 잽니다.</li>
         </ul>
-        <p>저희 mung-test.com의 반려견 맞춤형 의류 사이즈 추천기는 다년간의 데이터를 바탕으로 견종과 몸무게, 털 길이 변수를 종합적으로 연산하여 <strong>가장 이상적인 예상 가슴둘레와 추천 사이즈</strong>를 무료로 제공합니다. 우리 강아지의 편안한 일상을 위해 지금 바로 계산해보세요!</p>
+        <p data-i18n="seo_s3_p2">저희 mung-test.com의 반려견 맞춤형 의류 사이즈 추천기는 다년간의 데이터를 바탕으로 견종과 몸무게, 털 길이 변수를 종합적으로 연산하여 <strong>가장 이상적인 예상 가슴둘레와 추천 사이즈</strong>를 무료로 제공합니다. 우리 강아지의 편안한 일상을 위해 지금 바로 계산해보세요!</p>
     </section>
 </div>
 
 <footer>
-    <p>© 2026 반려견데이터솔루션 Lab. All Rights Reserved.</p>
+    <div class="footer-links" style="display:flex; gap:12px; margin-bottom: 12px; justify-content:center;">
+        <a onclick="location.href='index.html'" style="cursor:pointer; color:#7b6a58; text-decoration:none;" data-i18n="nav_start">기질 검사 시작</a>
+    </div>
+    <p data-i18n="footer_copyright">© 2026 반려견데이터솔루션 Lab. All Rights Reserved.</p>
 </footer>
 
 <script src="size-calculator.js"></script>
