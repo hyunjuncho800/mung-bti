@@ -70,7 +70,7 @@ const translations = {
             
             <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">우리 아이의 행동학적 기질이 더 궁금하다면?</h3>
-                <a href="index.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">반려견 기질 검사하러 가기 🐾</a>
+                <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">반려견 기질 검사하러 가기 🐾</a>
             </div>
         `,
 
@@ -174,7 +174,7 @@ const translations = {
 
             <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">우리 아이의 행동학적 기질이 더 궁금하다면?</h3>
-                <a href="index.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">반려견 기질 검사하러 가기 🐾</a>
+                <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">반려견 기질 검사하러 가기 🐾</a>
             </div>
         `,
 
@@ -621,7 +621,7 @@ const translations = {
             
             <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">Curious about your dog's behavioral temperament?</h3>
-                <a href="index.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Go to Dog Temperament Test 🐾</a>
+                <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Go to Dog Temperament Test 🐾</a>
             </div>
         `,
         
@@ -725,7 +725,7 @@ const translations = {
 
             <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">Curious about your dog's behavioral temperament?</h3>
-                <a href="index.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Go to Dog Temperament Test 🐾</a>
+                <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Go to Dog Temperament Test 🐾</a>
             </div>
         `,
 
