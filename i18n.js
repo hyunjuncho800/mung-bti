@@ -252,7 +252,7 @@ const translations = {
         
         // Kakao Text
         kakao_share_text: "저희 아이는 [{{ dogType }}], 저는 [{{ ownerMbti }}]가 나와서 궁합 점수 {{ score }}점 나왔어요!\n\n우리 궁합 보러 가기",
-        kakao_share_title: "🐾 우리 강아지 멍-BTI 검사 결과 도출!",
+        kakao_share_title: "🐾 우리 강아지 반려견기질검사 결과 도출!",
         kakao_share_btn: "나도 궁합 보러 가기 🐾",
         kakao_share_error: "카카오톡 공유를 실행할 수 없습니다.\n카카오 디벨로퍼스에 현재 도메인이 등록되어 있는지 확인해주세요.\n\n대신 결과 링크를 복사합니다.",
         kakao_copy_success: "링크가 클립보드에 복사되었습니다!",

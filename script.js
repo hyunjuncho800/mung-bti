@@ -591,7 +591,7 @@
 
         if (isMobile && navigator.share) {
             navigator.share({
-                title: '🐾 우리 강아지 멍-BTI 검사 결과!',
+                title: '🐾 우리 강아지 반려견기질검사 결과!',
                 text: shareText,
                 url: shareUrl
             }).catch(function(error) {
