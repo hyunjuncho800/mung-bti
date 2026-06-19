@@ -249,7 +249,9 @@
         document.getElementById('res-inherent-desc').textContent = result.inherentDesc;
         
         // 새로 추가된 SEO 최적화 텍스트 바인딩
+        document.getElementById('res-letter-desc').innerHTML = `"${result.letterDesc}"`;
         document.getElementById('res-features-desc').innerHTML = result.featuresDesc;
+        document.getElementById('res-stress-desc').innerHTML = result.stressDesc;
         document.getElementById('res-tips-desc').innerHTML = result.tipsDesc;
         document.getElementById('res-match-desc').innerHTML = result.matchDesc;
 
@@ -490,30 +492,38 @@
     function buildResult(E, S, M, F, I, O, X) {
         const t = translations[getLang()];
         let typeTitle = '', inherentDesc = '', acquiredDesc = '', humorComment = '';
-        let featuresDesc = '', tipsDesc = '', matchDesc = '';
+        let letterDesc = '', featuresDesc = '', stressDesc = '', tipsDesc = '', matchDesc = '';
 
         if (E >= 3.5 && S >= 3.5) {
             typeTitle = t.res1_title;
             inherentDesc = t.res1_inherent.replace('{{ E }}', E.toFixed(1)).replace('{{ S }}', S.toFixed(1)).replace('{{ M }}', M.toFixed(1)).replace('{{ F }}', F.toFixed(1));
+            letterDesc = t.res1_letter || '';
             featuresDesc = t.res1_features || '';
+            stressDesc = t.res1_stress || '';
             tipsDesc = t.res1_tips || '';
             matchDesc = t.res1_match || '';
         } else if (E >= 3.5 && S < 3.5) {
             typeTitle = t.res2_title;
             inherentDesc = t.res2_inherent.replace('{{ E }}', E.toFixed(1)).replace('{{ S }}', S.toFixed(1)).replace('{{ M }}', M.toFixed(1)).replace('{{ F }}', F.toFixed(1));
+            letterDesc = t.res2_letter || '';
             featuresDesc = t.res2_features || '';
+            stressDesc = t.res2_stress || '';
             tipsDesc = t.res2_tips || '';
             matchDesc = t.res2_match || '';
         } else if (E < 3.5 && S >= 3.5) {
             typeTitle = t.res3_title;
             inherentDesc = t.res3_inherent.replace('{{ E }}', E.toFixed(1)).replace('{{ S }}', S.toFixed(1)).replace('{{ M }}', M.toFixed(1)).replace('{{ F }}', F.toFixed(1));
+            letterDesc = t.res3_letter || '';
             featuresDesc = t.res3_features || '';
+            stressDesc = t.res3_stress || '';
             tipsDesc = t.res3_tips || '';
             matchDesc = t.res3_match || '';
         } else {
             typeTitle = t.res4_title;
             inherentDesc = t.res4_inherent.replace('{{ E }}', E.toFixed(1)).replace('{{ S }}', S.toFixed(1)).replace('{{ M }}', M.toFixed(1)).replace('{{ F }}', F.toFixed(1));
+            letterDesc = t.res4_letter || '';
             featuresDesc = t.res4_features || '';
+            stressDesc = t.res4_stress || '';
             tipsDesc = t.res4_tips || '';
             matchDesc = t.res4_match || '';
         }
@@ -532,7 +542,7 @@
             humorComment = t.res4_humor;
         }
 
-        return { typeTitle, inherentDesc, acquiredDesc, humorComment, featuresDesc, tipsDesc, matchDesc };
+        return { typeTitle, inherentDesc, acquiredDesc, humorComment, letterDesc, featuresDesc, stressDesc, tipsDesc, matchDesc };
     }
 
     // ===== 다시 시작 =====
