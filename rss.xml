@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mung-test - 댕댕이 팁(Blog)</title>
+    <link>https://mung-test.com</link>
+    <description>강아지 훈련, 분리불안, 강아지 산책 매너 등 보호자를 위한 실전 반려견 양육 팁과 기질 검사 행동학적 가이드를 제공합니다.</description>
+    <language>ko</language>
+    <lastBuildDate>Fri, 19 Jun 2026 11:30:00 +0900</lastBuildDate>
+    <atom:link href="https://mung-test.com/rss.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>강아지가 자꾸 주인을 따라다니는 이유와 분리불안</title>
+      <link>https://mung-test.com/blog.html#post1</link>
+      <description>화장실 문 앞까지 졸졸 따라오는 반려견. 귀엽기도 하지만 혹시 분리불안은 아닐까요? 강아지의 애착 행동과 스트레스의 차이를 구분하고 건강하게 독립심을 길러주는 방법을 소개합니다.</description>
+      <pubDate>Fri, 19 Jun 2026 09:00:00 +0900</pubDate>
+      <guid>https://mung-test.com/blog.html#post1</guid>
+    </item>
+    
+    <item>
+      <title>긍정 강화 훈련의 오해와 진실: 간식만 주면 될까?</title>
+      <link>https://mung-test.com/blog.html#post2</link>
+      <description>클리커와 간식을 사용하는 긍정 강화 훈련. 간식 없이도 훈련 효과를 유지할 수 있을까요? 올바른 보상 타이밍과 칭찬의 기술을 통해 강아지와의 신뢰를 200% 높이는 팁.</description>
+      <pubDate>Thu, 18 Jun 2026 09:00:00 +0900</pubDate>
+      <guid>https://mung-test.com/blog.html#post2</guid>
+    </item>
+
+    <item>
+      <title>스트레스 제로! 평화로운 산책 매너 가이드</title>
+      <link>https://mung-test.com/blog.html#post3</link>
+      <description>리드줄을 강하게 당기거나 다른 개를 보면 짖는 강아지. 산책이 전투가 되지 않도록 하는 '리쉬 워킹'과 후각을 만족시키는 노즈워크 산책법의 핵심 원리를 파헤칩니다.</description>
+      <pubDate>Wed, 17 Jun 2026 09:00:00 +0900</pubDate>
+      <guid>https://mung-test.com/blog.html#post3</guid>
+    </item>
+
+    <item>
+      <title>우리집 댕댕이 속마음, 얼마나 알고 계시나요? (반려견 기질 검사)</title>
+      <link>https://mung-test.com/index.html</link>
+      <description>이 테스트는 강아지의 행동학적 근거와 수의학적 데이터를 바탕으로, 일상 속에서 쉽게 지나칠 수 있는 반려견의 고유한 기질과 선천적인 성향을 객관적으로 분석하기 위해 개발되었습니다.</description>
+      <pubDate>Tue, 16 Jun 2026 09:00:00 +0900</pubDate>
+      <guid>https://mung-test.com/index.html</guid>
+    </item>
+
+  </channel>
+</rss>
