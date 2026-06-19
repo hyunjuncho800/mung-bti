@@ -79,6 +79,7 @@
         <nav>
             <ul>
                 <li><a href="#" onclick="openModal('about'); return false;" data-i18n="nav_about">소개 및 문의</a></li>
+                <li><a href="blog.html">댕댕이 팁(Blog)</a></li>
                 <li><a href="age-calculator.html" data-i18n="nav_age">나이 계산기</a></li>
                 <li><a href="size-calculator.html" data-i18n="nav_size">의류 사이즈 추천기</a></li>
                 <li><a href="#" onclick="scrollToTest(); return false;" data-i18n="nav_start">기질 검사 시작</a></li>
@@ -106,11 +107,29 @@
             <button class="bento-hero-btn" id="btn-start-main" onclick="startTest()" data-i18n="hero_btn">3분 반려견 기질 검사 시작하기 →</button>
         </section>
 
+        <!-- SEO Content Section -->
+        <section class="seo-content" style="max-width: 800px; margin: 0 auto 40px; padding: 0 20px; text-align: left; line-height: 1.8;">
+            <h2 style="font-size: 1.4rem; color: var(--text); margin-bottom: 12px;">왜 반려견 성향 분석 테스트가 필요할까요?</h2>
+            <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 16px;">
+                반려견과 보호자가 서로의 마음을 완벽히 이해하는 것은 행복한 반려 생활의 가장 중요한 기초입니다. 
+                이 테스트는 강아지의 <strong>행동학적 근거</strong>와 수의학적 데이터를 바탕으로, 일상 속에서 쉽게 지나칠 수 있는 반려견의 고유한 기질과 선천적인 성향을 객관적으로 분석하기 위해 개발되었습니다. 
+                단순히 귀여운 성격 유형을 알아보는 것을 넘어, 아이들이 스트레스를 받는 요인을 최소화하고 더 나은 교감을 나눌 수 있는 방향을 제시합니다.
+            </p>
+            <h2 style="font-size: 1.4rem; color: var(--text); margin-bottom: 12px;">테스트 기대 효과 및 활용 팁</h2>
+            <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 16px;">
+                테스트를 완료하시면 우리 강아지에게 딱 맞는 맞춤형 양육 가이드라인을 얻을 수 있습니다. 
+                결과로 제공되는 상세한 행동 특징과 훈련 시 주의사항을 참고하여 매일의 산책과 놀이 시간에 적용해 보세요. 
+                또한, 아이와 찰떡궁합인 다른 강아지 유형을 확인하여 애견 운동장이나 산책길에서 어떤 친구들과 잘 어울릴 수 있을지 미리 짐작해 볼 수 있습니다. 
+                정확한 결과를 위해 <strong>가장 최근 한 달간의 모습</strong>을 떠올리며 솔직하게 답변해 주시길 권장합니다.
+            </p>
+        </section>
+
+
         <!-- 2. Dashboard Grid Section -->
         <section class="bento-grid-dashboard">
-            <!-- 미니 진단 툴 카드 -->
+            <!-- 반려견 라이프 가이드 카드 -->
             <div class="bento-card bento-mini-tools">
-                <div class="bento-card-title"><span class="icon">🛠️</span> <span data-i18n="mini_tools_title">미니 진단 툴</span></div>
+                <div class="bento-card-title"><span class="icon">🛠️</span> <span data-i18n="mini_tools_title">반려견 라이프 가이드</span></div>
                 <a href="age-calculator.html" class="mini-tool-btn">
                     <span class="icon">🎂</span>
                     <span data-i18n="mini_tool_age">반려견 나이 계산기</span>
@@ -258,11 +277,27 @@
 
         <div class="report-card">
             <h1 class="main-title" data-i18n="res_report_title">우리 강아지의 진짜 모습은?<br><span>반려견 기질 검사</span></h1>
+            
             <div class="report-section-title" data-i18n="res_report_sub1">🧬 타고난 내재적 기질 매칭 리포트</div>
             <p class="report-text" id="res-inherent-desc"></p>
 
+            <div class="report-section-title" style="margin-top: 24px;">🔍 이 유형의 구체적인 행동 특징 및 성향</div>
+            <div style="background: var(--bg); padding: 20px; border-radius: 12px; margin-bottom: 24px;">
+                <p class="report-text" id="res-features-desc" style="margin:0;"></p>
+            </div>
+
             <div class="report-section-title" style="margin-top: 24px;" data-i18n="res_report_sub2">🏡 후천적 조율 성향 분석 및 솔루션</div>
             <p class="report-text" id="res-acquired-desc"></p>
+
+            <div class="report-section-title" style="margin-top: 24px;">💡 보호자가 주의해야 할 케어/훈련 팁</div>
+            <div style="background: var(--bg); padding: 20px; border-radius: 12px; margin-bottom: 24px;">
+                <p class="report-text" id="res-tips-desc" style="margin:0;"></p>
+            </div>
+
+            <div class="report-section-title" style="margin-top: 24px;">🐾 찰떡궁합인 다른 유형 & 상극인 유형 추천</div>
+            <div style="background: var(--bg); padding: 20px; border-radius: 12px; margin-bottom: 24px;">
+                <p class="report-text" id="res-match-desc" style="margin:0;"></p>
+            </div>
 
             <ul class="summary-list" id="res-summary-list"></ul>
 
@@ -382,6 +417,75 @@
             <h4 style="margin-top: 32px;">문의 안내 (Contact)</h4>
             <p>기질검사 비즈니스 제안, 기관 협업, 기타 문의 사항은 아래 공식 이메일로 연락 주시기 바랍니다.</p>
             <p>이메일: <a href="mailto:mungtest12@gmail.com" style="color: var(--primary-dark); text-decoration: underline; font-weight: bold;">mungtest12@gmail.com</a></p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== FOOTER & LEGAL MODALS ===================== -->
+<footer class="site-footer">
+    <div class="footer-links">
+        <button onclick="document.getElementById('legal-modal-privacy').classList.add('active')">개인정보처리방침</button>
+        <button onclick="document.getElementById('legal-modal-terms').classList.add('active')">이용약관</button>
+        <button onclick="document.getElementById('legal-modal-contact').classList.add('active')">문의(Contact)</button>
+    </div>
+    <p>&copy; 2026 mung-test.com. All rights reserved.</p>
+</footer>
+
+<!-- Privacy Modal -->
+<div id="legal-modal-privacy" class="legal-modal">
+    <div class="legal-modal-content">
+        <button class="legal-modal-close" onclick="document.getElementById('legal-modal-privacy').classList.remove('active')">&times;</button>
+        <div class="legal-modal-body">
+            <h2>개인정보처리방침 (Privacy Policy)</h2>
+            <p>mung-test.com(이하 '회사')는 이용자의 개인정보를 중요시하며, 관련 법령을 준수하고 있습니다. 본 방침은 당사가 제공하는 서비스를 이용할 때 수집되는 개인정보의 종류, 수집 목적, 보관 및 활용 방법에 대해 안내합니다.</p>
+            <h3>1. 수집하는 개인정보 항목</h3>
+            <p>서비스 이용 과정에서 서비스 제공을 위해 아래와 같은 데이터가 자동으로 수집될 수 있습니다.</p>
+            <ul>
+                <li>사용자 입력 데이터: 반려견의 행동 패턴, 점수 결과 등 (개인을 특정할 수 없는 비식별 형태로 통계에 활용)</li>
+                <li>자동 수집 정보: 접속 IP 정보, 쿠키(Cookie), 접속 로그, 기기 정보, 구글 애드센스 등 제휴 서비스 이용을 위한 식별자</li>
+            </ul>
+            <h3>2. 개인정보의 수집 및 이용 목적</h3>
+            <p>수집된 데이터는 다음과 같은 목적으로 활용됩니다.</p>
+            <ul>
+                <li>서비스 제공 및 결과 분석 기능 제공</li>
+                <li>구글 애드센스 등 맞춤형 광고 게재 및 분석</li>
+                <li>이용자 통계 분석 및 서비스 품질 개선</li>
+            </ul>
+            <h3>3. 제3자 제공 및 광고 게재</h3>
+            <p>당사는 서비스 내 구글 애드센스 광고를 게재하며, 구글(Google)을 포함한 제3자 광고 업체는 쿠키를 사용하여 사용자의 이전 방문 기록을 바탕으로 맞춤형 광고를 제공할 수 있습니다. 사용자는 브라우저 설정을 통해 쿠키 수집을 거부할 수 있습니다.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Terms Modal -->
+<div id="legal-modal-terms" class="legal-modal">
+    <div class="legal-modal-content">
+        <button class="legal-modal-close" onclick="document.getElementById('legal-modal-terms').classList.remove('active')">&times;</button>
+        <div class="legal-modal-body">
+            <h2>이용약관 (Terms of Service)</h2>
+            <p>본 약관은 mung-test.com이 제공하는 서비스의 이용과 관련하여 회사와 회원(또는 비회원 이용자) 간의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.</p>
+            <h3>1. 서비스의 목적 및 내용</h3>
+            <p>본 사이트는 반려견의 기질 및 행동을 분석하는 테스트 툴과 관련 팁을 제공합니다. 본 서비스에서 제공되는 모든 결과와 분석 내용은 통계적, 행동학적 데이터에 기반하지만 의학적/수의학적 진단을 대체할 수 없습니다. 질병이나 심각한 행동 문제가 있는 경우 전문 수의사나 훈련사와 상담하시기 바랍니다.</p>
+            <h3>2. 책임의 한계</h3>
+            <p>사용자가 본 서비스를 이용하여 얻은 결과를 바탕으로 취한 조치에 대해 당사는 법적인 책임을 지지 않습니다. 서비스의 결과는 참고용으로만 활용되어야 합니다.</p>
+            <h3>3. 저작권 및 콘텐츠 사용</h3>
+            <p>웹사이트 내 모든 텍스트, 테스트 문항, 알고리즘 로직 및 이미지에 대한 저작권은 mung-test.com에 있습니다. 무단 복제, 배포 및 상업적 이용을 엄격히 금지합니다.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Modal -->
+<div id="legal-modal-contact" class="legal-modal">
+    <div class="legal-modal-content">
+        <button class="legal-modal-close" onclick="document.getElementById('legal-modal-contact').classList.remove('active')">&times;</button>
+        <div class="legal-modal-body">
+            <h2>문의 (Contact Us)</h2>
+            <p>서비스 이용 중 궁금한 점, 비즈니스 제안, 제휴 및 광고 관련 문의는 언제든지 아래 공식 연락처로 문의해 주시기 바랍니다.</p>
+            <ul>
+                <li><strong>이메일:</strong> <a href="mailto:mungtest12@gmail.com" style="color: var(--primary);">mungtest12@gmail.com</a></li>
+                <li><strong>답변 시간:</strong> 평일 10:00 - 18:00 (주말 및 공휴일 제외)</li>
+            </ul>
+            <p>신속하고 친절하게 안내해 드리겠습니다. 감사합니다.</p>
         </div>
     </div>
 </div>
