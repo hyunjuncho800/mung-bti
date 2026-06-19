@@ -750,5 +750,7 @@
             document.getElementById('btn-group-shared').style.display = 'flex';
 
             calculateAndShowResults(passedParams);
+        } else if (urlParams.get('start') === 'true') {
+            startTest();
         }
     });
