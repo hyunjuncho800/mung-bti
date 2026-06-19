@@ -179,6 +179,10 @@
             return;
         }
         
+        // 참여 횟수 증가 (로컬 스토리지에 저장)
+        const currentLocalCount = parseInt(localStorage.getItem('my_participant_count') || '0');
+        localStorage.setItem('my_participant_count', currentLocalCount + 1);
+
         document.getElementById('mbti-zone').style.display = 'none';
         document.getElementById('result-zone').style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -279,8 +283,8 @@
         const chemistryResult = getChemistryReport(ownerMbti, rawTitle);
         
         document.getElementById('res-chemistry-text').innerHTML = `
-            <span style="display:inline-block; margin-bottom: 8px; font-weight: bold; color: #8e44ad; background: #f4ecf7; padding: 4px 12px; border-radius: 20px; font-size: 0.9rem;">
-                👨‍👩‍👧 보호자 ${ownerMbti} × 🐶 강아지 ${rawTitle}
+            <span style="display:inline-block; margin-bottom: 8px; font-weight: bold; color: var(--text); background: var(--bg); padding: 4px 12px; border-radius: 20px; font-size: 0.9rem; border: 1px solid var(--border);">
+                👨‍👩‍👧 ${translations[getLang()].res_owner_prefix} ${ownerMbti} × 🐶 ${translations[getLang()].res_dog_prefix} ${rawTitle}
             </span><br>
             ${chemistryResult.text}
         `;
@@ -710,7 +714,15 @@
         // 참여자 수 애니메이션 실행
         const countElement = document.getElementById('participant-count');
         if (countElement && document.getElementById('intro-zone').style.display !== 'none') {
-            const mockTarget = 85294; // 가상의 누적 참여자 수
+            const baseCount = 85284;
+            const baseDate = new Date('2024-06-01T00:00:00').getTime();
+            const now = new Date().getTime();
+            // 시간이 지남에 따라 증가하는 가상의 참여자 수 계산 (대략 10분에 1명)
+            const additionalCount = Math.max(0, Math.floor((now - baseDate) / (1000 * 60 * 10)));
+            // 로컬에 저장된 사용자 본인의 추가 참여 횟수
+            const localExtra = parseInt(localStorage.getItem('my_participant_count') || '0');
+            
+            const mockTarget = baseCount + additionalCount + localExtra;
             animateParticipantCount(countElement, mockTarget, 2500);
         }
 

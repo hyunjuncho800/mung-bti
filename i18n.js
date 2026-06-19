@@ -22,6 +22,13 @@ const translations = {
         nav_start: "기질검사",
         nav_blog: "댕댕이 팁(Blog)",
         logo_blog: "🐾 댕댕이 팁(Blog)",
+        res_detail_title: "🔍 기질 성향 상세 분석",
+        res_stress_title: "⚡ 이럴 때 가장 스트레스 받아요",
+        res_guide_title: "💡 보호자를 위한 맞춤형 양육 가이드",
+        res_summary_data: "📊 수치 데이터 요약 보기 (Click)",
+        res_chemistry_title_main: "🐾 찰떡궁합 & 상극 추천",
+        res_owner_prefix: "보호자",
+        res_dog_prefix: "강아지",
         
         // Blog Data (Hero, Categories, Cards)
         blog_hero_title: "반려견 양육 가이드 및 칼럼",
@@ -564,8 +571,15 @@ const translations = {
         nav_age: "Age Calculator",
         nav_size: "Size Recommender",
         nav_start: "Temperament Test",
-        nav_blog: "Puppy Tips(Blog)",
-        logo_blog: "🐾 Puppy Tips(Blog)",
+        nav_blog: "Dog Tips",
+        logo_blog: "🐾 Dog Tips",
+        res_detail_title: "🔍 Detailed Temperament Analysis",
+        res_stress_title: "⚡ Most Stressful Situations",
+        res_guide_title: "💡 Tailored Parenting Guide for Owners",
+        res_summary_data: "📊 Summary of Numerical Data (Click)",
+        res_chemistry_title_main: "🐾 Perfect Matches & Dislikes",
+        res_owner_prefix: "Owner",
+        res_dog_prefix: "Dog",
         
         // Blog Data (Hero, Categories, Cards)
         blog_hero_title: "Dog Parenting Guide & Columns",

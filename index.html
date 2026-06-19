@@ -79,7 +79,7 @@
         <nav>
             <ul>
                 <!-- Removed nav_about to clean up header -->
-                <li><a href="blog.html">댕댕이 팁(Blog)</a></li>
+                <li><a href="blog.html" data-i18n="nav_blog">댕댕이 팁(Blog)</a></li>
                 <li><a href="age-calculator.html" data-i18n="nav_age">나이 계산기</a></li>
                 <li><a href="size-calculator.html" data-i18n="nav_size">의류 사이즈 추천기</a></li>
                 <li><a href="index.html?start=true" data-i18n="nav_start">기질검사</a></li>
@@ -279,40 +279,40 @@
             <h1 class="main-title" data-i18n="res_report_title">우리 강아지의 진짜 모습은?<br><span>반려견 기질 검사</span></h1>
             
             <!-- 1. 도입부: 편지 영역 -->
-            <div class="letter-box" style="margin-top: 24px; padding: 24px; background: #fffcf8; border-radius: 12px; text-align: center; font-style: italic; color: #5a4b3c; border: 1px solid #f1e4d3; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
-                <p id="res-letter-desc" style="font-size: 1.15rem; font-weight: bold; margin: 0; line-height: 1.5;"></p>
+            <div class="letter-box" style="margin-top: 24px; padding: 24px; background: var(--card); border-radius: 12px; text-align: center; font-style: italic; color: var(--text); border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+                <p class="report-text" id="res-desc" style="margin:0; line-height: 1.6; font-size: 0.95rem;"></p>
             </div>
 
             <!-- 2. 본론 1: 기질 성향 상세 분석 -->
-            <div class="report-section-title" style="margin-top: 32px;">🔍 기질 성향 상세 분석</div>
+            <div class="report-section-title" style="margin-top: 32px;" data-i18n="res_detail_title">🔍 기질 성향 상세 분석</div>
             <div class="content-box" style="background: #ffffff; padding: 24px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 24px; border-left: 4px solid var(--primary);">
                 <p class="report-text" id="res-features-desc" style="margin:0; line-height: 1.7; font-size: 0.95rem;"></p>
             </div>
 
-            <!-- 3. 본론 2: 스트레스 상황 -->
-            <div class="report-section-title" style="margin-top: 24px;">⚡ 이럴 때 가장 스트레스 받아요</div>
-            <div class="content-box stress-box" style="background: #fff5f5; padding: 24px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 24px; border-left: 4px solid #ff6b6b;">
-                <p class="report-text" id="res-stress-desc" style="margin:0; line-height: 1.7; font-size: 0.95rem; color: #444;"></p>
+            <!-- 3. 본론 2: 스트레스 요인 -->
+            <div class="report-section-title" style="margin-top: 24px;" data-i18n="res_stress_title">⚡ 이럴 때 가장 스트레스 받아요</div>
+            <div style="margin-top: 12px; padding: 16px; background: var(--card); border-radius: 12px; border-left: 4px solid #e74c3c;">
+                <p class="report-text" id="res-stress-desc" style="margin:0; line-height: 1.7; font-size: 0.95rem; color: var(--text);"></p>
             </div>
 
             <!-- 4. 결론: 양육 가이드 -->
-            <div class="report-section-title" style="margin-top: 24px;">💡 보호자를 위한 맞춤형 양육 가이드</div>
-            <div class="content-box tips-box" style="background: #f0fdf4; padding: 24px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 24px; border-left: 4px solid #22c55e;">
-                <p class="report-text" id="res-tips-desc" style="margin:0; line-height: 1.7; font-size: 0.95rem; color: #444;"></p>
+            <div class="report-section-title" style="margin-top: 24px;" data-i18n="res_guide_title">💡 보호자를 위한 맞춤형 양육 가이드</div>
+            <div style="margin-top: 12px; padding: 16px; background: var(--card); border-radius: 12px; border-left: 4px solid #27ae60;">
+                <p class="report-text" id="res-tips-desc" style="margin:0; line-height: 1.7; font-size: 0.95rem; color: var(--text);"></p>
             </div>
 
-            <!-- 기존 내재적/후천적 요약 부분 (옵션 유지) -->
-            <details style="margin-bottom: 24px; background: #fafafa; border-radius: 8px; padding: 12px;">
-                <summary style="font-weight: bold; cursor: pointer; color: #666; font-size: 0.9rem;">📊 수치 데이터 요약 보기 (Click)</summary>
-                <div style="margin-top: 16px;">
-                    <p class="report-text" id="res-inherent-desc" style="font-size: 0.85rem; color: #666;"></p>
-                    <p class="report-text" id="res-acquired-desc" style="font-size: 0.85rem; color: #666;"></p>
+            <!-- 데이터 아코디언 -->
+            <details style="margin-top: 24px; padding: 16px; background: var(--card); border: 1px solid var(--border); border-radius: 12px;">
+                <summary style="font-weight: bold; cursor: pointer; color: var(--text-muted); font-size: 0.9rem;" data-i18n="res_summary_data">📊 수치 데이터 요약 보기 (Click)</summary>
+                <div style="margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--border);">
+                    <p class="report-text" id="res-inherent-desc" style="font-size: 0.85rem; color: var(--text-muted);"></p>
+                    <p class="report-text" id="res-acquired-desc" style="font-size: 0.85rem; color: var(--text-muted);"></p>
                     <ul class="summary-list" id="res-summary-list" style="margin-top: 8px;"></ul>
                 </div>
             </details>
 
             <!-- 찰떡궁합 -->
-            <div class="report-section-title" style="margin-top: 24px;">🐾 찰떡궁합 & 상극 추천</div>
+            <div class="report-section-title" style="margin-top: 24px;" data-i18n="res_chemistry_title_main">🐾 찰떡궁합 & 상극 추천</div>
             <div style="background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 24px;">
                 <p class="report-text" id="res-match-desc" style="margin:0; line-height: 1.6; font-size: 0.95rem;"></p>
             </div>
@@ -320,9 +320,9 @@
             <div class="humor-box" id="res-humor-comment" style="margin-bottom: 24px;"></div>
 
             <!-- 보호자 궁합 리포트 영역 -->
-            <div id="res-chemistry-wrapper" style="margin-top: 32px; padding: 24px; background: #fdf5e6; border-radius: 16px; border: 2px dashed #f39c12;">
-                <h3 style="margin: 0 0 12px 0; font-size: 1.2rem; color: #d35400; text-align: center;" data-i18n="res_chemistry_title">💞 동반자 궁합 리포트</h3>
-                <p id="res-chemistry-text" style="font-size: 0.95rem; line-height: 1.6; color: #444; margin: 0; text-align: center; word-break: keep-all;"></p>
+            <div id="res-chemistry-wrapper" style="margin-top: 32px; padding: 24px; background: var(--card); border-radius: 16px; border: 2px dashed var(--primary);">
+                <h3 style="margin: 0 0 12px 0; font-size: 1.2rem; color: var(--primary); text-align: center;" data-i18n="res_chemistry_title">💞 동반자 궁합 리포트</h3>
+                <p id="res-chemistry-text" style="font-size: 0.95rem; line-height: 1.6; color: var(--text); margin: 0; text-align: center; word-break: keep-all;"></p>
             </div>
         </div>
 
