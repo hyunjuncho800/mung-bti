@@ -200,13 +200,15 @@
 </div>
 
 <!-- ===================== FOOTER & LEGAL MODALS ===================== -->
-<footer class="site-footer">
-    <div class="footer-links">
-        <button onclick="document.getElementById('legal-modal-privacy').classList.add('active')">개인정보처리방침</button>
-        <button onclick="document.getElementById('legal-modal-terms').classList.add('active')">이용약관</button>
-        <button onclick="document.getElementById('legal-modal-contact').classList.add('active')">문의(Contact)</button>
+<footer class="site-footer" style="background-color: #f8f9fa; padding: 30px 20px; text-align: center; border-top: 1px solid #e9ecef; margin-top: 40px;">
+    <div class="footer-links" style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-bottom: 12px;">
+        <button onclick="document.getElementById('legal-modal-privacy').classList.add('active')" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:0.9rem; padding:0;">개인정보처리방침</button>
+        <span style="color:var(--text-muted); font-size:0.8rem;">|</span>
+        <button onclick="document.getElementById('legal-modal-terms').classList.add('active')" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:0.9rem; padding:0;">이용약관</button>
+        <span style="color:var(--text-muted); font-size:0.8rem;">|</span>
+        <button onclick="document.getElementById('legal-modal-contact').classList.add('active')" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:0.9rem; padding:0;">문의(Contact)</button>
     </div>
-    <p>&copy; 2026 mung-test.com. All rights reserved.</p>
+    <p style="font-size: 0.8rem; color:var(--text-muted); margin: 0;">&copy; 2026 mung-test.com. All rights reserved.</p>
 </footer>
 
 <!-- Privacy Modal -->
