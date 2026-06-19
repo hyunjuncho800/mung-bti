@@ -8,12 +8,217 @@ const translations = {
         meta_desc_age: "미국 켄넬 클럽(AKC) 기준을 반영한 과학적이고 감성적인 반려견 나이 계산기입니다.",
         meta_title_size: "반려견 맞춤형 의류 사이즈 추천기",
         meta_desc_size: "우리 강아지에게 딱 맞는 옷 사이즈는 무엇일까요? 견종, 몸무게, 털 길이를 바탕으로 추천해 드립니다.",
+        
+        // Index SEO Texts
+        seo_why_title: "왜 반려견 성향 분석 테스트가 필요할까요?",
+        seo_why_desc: "반려견과 보호자가 서로의 마음을 완벽히 이해하는 것은 행복한 반려 생활의 가장 중요한 기초입니다. 이 테스트는 강아지의 <strong>행동학적 근거</strong>와 수의학적 데이터를 바탕으로, 일상 속에서 쉽게 지나칠 수 있는 반려견의 고유한 기질과 선천적인 성향을 객관적으로 분석하기 위해 개발되었습니다. 단순히 귀여운 성격 유형을 알아보는 것을 넘어, 아이들이 스트레스를 받는 요인을 최소화하고 더 나은 교감을 나눌 수 있는 방향을 제시합니다.",
+        seo_tips_title: "테스트 기대 효과 및 활용 팁",
+        seo_tips_desc: "테스트를 완료하시면 우리 강아지에게 딱 맞는 맞춤형 양육 가이드라인을 얻을 수 있습니다. 결과로 제공되는 상세한 행동 특징과 훈련 시 주의사항을 참고하여 매일의 산책과 놀이 시간에 적용해 보세요. 또한, 아이와 찰떡궁합인 다른 강아지 유형을 확인하여 애견 운동장이나 산책길에서 어떤 친구들과 잘 어울릴 수 있을지 미리 짐작해 볼 수 있습니다. 정확한 결과를 위해 <strong>가장 최근 한 달간의 모습</strong>을 떠올리며 솔직하게 답변해 주시길 권장합니다.",
 
         // Common UI (Nav, Modals, Footer)
         nav_about: "소개 및 문의",
         nav_age: "나이 계산기",
         nav_size: "의류 사이즈 추천기",
         nav_start: "기질 검사 시작",
+        nav_blog: "댕댕이 팁(Blog)",
+        logo_blog: "🐾 댕댕이 팁(Blog)",
+        
+        // Blog Data (Hero, Categories, Cards)
+        blog_hero_title: "반려견 양육 가이드 및 칼럼",
+        blog_hero_desc: "우리 아이의 행동 뒤에 숨겨진 진짜 마음을 알아보고, 더 행복한 반려 생활을 위한 실전 노하우를 확인하세요.",
+        blog_cat_behavior: "행동·심리",
+        blog_cat_training: "교육·훈련",
+        blog_cat_health: "건강·케어",
+        blog_cat_lifestyle: "생활·상식",
+        
+        blog_post1_title: "강아지가 자꾸 주인을 따라다니는 이유와 분리불안",
+        blog_post1_excerpt: "화장실 문 앞까지 졸졸 따라오는 반려견. 귀엽기도 하지만 혹시 분리불안은 아닐까요? 강아지의 애착 행동과 스트레스의 차이를 구분하고 건강하게 독립심을 길러주는 방법을 소개합니다.",
+        blog_post2_title: "긍정 강화 훈련의 오해와 진실: 간식만 주면 될까?",
+        blog_post2_excerpt: "클리커와 간식을 사용하는 긍정 강화 훈련. 간식 없이도 훈련 효과를 유지할 수 있을까요? 올바른 보상 타이밍과 칭찬의 기술을 통해 강아지와의 신뢰를 200% 높이는 팁.",
+        blog_post3_title: "스트레스 제로! 평화로운 산책 매너 가이드",
+        blog_post3_excerpt: "리드줄을 강하게 당기거나 다른 개를 보면 짖는 강아지. 산책이 전투가 되지 않도록 하는 '리쉬 워킹'과 후각을 만족시키는 노즈워크 산책법의 핵심 원리를 파헤칩니다.",
+        blog_post4_title: "강아지 옷 사이즈 실패 없이 고르는 방법",
+        blog_post4_excerpt: "몸무게만 보고 옷을 샀다가 작아서 못 입힌 경험 있으신가요? 푸들, 말티즈, 포메라니안 등 견종별 체형과 털 찐 상태를 고려한 정확한 신체 측정법과 피팅 체크리스트를 대공개합니다.",
+        blog_post5_title: "우리 강아지 카밍 시그널 해석하기: 몸짓으로 말하는 속마음",
+        blog_post5_excerpt: "강아지가 갑자기 코를 핥거나 하품을 하는 이유는 무엇일까요? 불안과 스트레스 상황에서 평화를 요청하는 바디 랭귀지, '카밍 시그널' 5가지와 보호자의 올바른 대처법을 알아봅니다.",
+        blog_post6_title: "슬개골 탈구 예방을 위한 실내 환경 조성 및 관절 마사지",
+        blog_post6_excerpt: "소형견 보호자들의 가장 큰 고민거리, 슬개골 탈구! 수술을 피하기 위해 집에서 당장 실천할 수 있는 환경 조성법과 재활 전문가가 추천하는 하루 5분 관절 마사지 꿀팁을 알아봅니다.",
+
+        blog_post1_body: `
+            <h1>강아지가 자꾸 주인을 따라다니는 이유와 분리불안</h1>
+            <p>보호자가 집 안에서 이동할 때마다 그림자처럼 졸졸 따라다니는 반려견들이 있습니다. 처음에는 그저 나를 너무 사랑해서 그러는 것이라 생각하며 귀여워하지만, 화장실에 들어갈 때도 문 앞에서 낑낑거리거나 보호자가 외출할 때 심하게 짖는다면 '분리불안'을 의심해 보아야 합니다.</p>
+            
+            <h2>1. 왜 계속 따라다닐까?</h2>
+            <p>반려견이 보호자를 쫓아다니는 데에는 여러 가지 이유가 있습니다. 무리 생활을 하던 개의 본능으로 리더(보호자)와 함께 있으려 하는 <strong>안전 욕구</strong>, 보호자가 언제 맛있는 간식을 줄지 모른다는 <strong>기대감</strong>, 그리고 심심해서 보호자가 무언가 재미있는 일을 벌이기를 기다리는 <strong>호기심</strong> 등이 주요 원인입니다. 이런 경우는 정상적인 애착 행동에 속합니다.</p>
+            
+            <h2>2. 분리불안과의 차이점</h2>
+            <p>하지만 보호자가 시야에서 사라졌을 때 극도로 불안해하며 통제 불능 상태가 된다면 이는 분리불안입니다. 침을 심하게 흘리고, 문을 긁거나 물어뜯고, 하울링을 하거나, 평소 가리던 배변을 아무 데나 실수하는 행동이 동반된다면 아이는 지금 심각한 공황 상태에 빠져 있는 것입니다.</p>
+            
+            <h2>3. 건강한 독립심 길러주기</h2>
+            <ul>
+                <li><strong>안전지대 만들기:</strong> 집 안의 특정 공간(방석, 켄넬)을 아이만의 가장 안전한 장소로 인식하게 해야 합니다. 그곳에 있을 때만 특별한 간식을 주어 좋은 기억을 심어주세요.</li>
+                <li><strong>덤덤한 외출과 귀가:</strong> 외출할 때 미안해하며 인사를 길게 하거나, 귀가 후 아이가 방방 뛸 때 격하게 안아주면 흥분도를 높입니다. 무심하게 나가고 들어와서 아이가 차분해질 때까지 기다린 후 인사하는 것이 좋습니다.</li>
+                <li><strong>짧은 분리 연습:</strong> 방 문을 닫고 5초 뒤에 열어주기, 10초 뒤에 열어주기 등 아주 짧은 시간부터 시작해 점차 보호자가 없어도 돌아온다는 확신을 심어주세요.</li>
+            </ul>
+            
+            <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
+                <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">우리 아이의 행동학적 기질이 더 궁금하다면?</h3>
+                <a href="index.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">반려견 기질 검사하러 가기 🐾</a>
+            </div>
+        `,
+
+        blog_post2_body: `
+            <h1>긍정 강화 훈련의 오해와 진실: 간식만 주면 될까?</h1>
+            <p>많은 보호자님들이 '긍정 강화 훈련'을 시도하면서 부딪히는 가장 흔한 고민은 "간식이 없으면 말을 안 들어요"입니다. 이는 긍정 강화의 핵심을 '보상'이 아닌 '뇌물'로 잘못 사용했기 때문일 가능성이 높습니다.</p>
+            
+            <h2>보상과 뇌물의 차이</h2>
+            <p>행동을 요구하기 전에 간식을 먼저 보여주고 행동을 유도하는 것은 <strong>'뇌물'</strong>입니다. 강아지는 간식이 보여야만 움직이게 됩니다. 반면, 강아지가 먼저 올바른 행동을 취했을 때 1~2초 이내에 타이밍을 맞춰 제공하는 것이 진정한 <strong>'보상'</strong>입니다. 보상은 강아지가 스스로 생각하고 행동하도록 유도합니다.</p>
+            
+            <h2>페이딩(Fading) 기법 적용하기</h2>
+            <p>행동이 어느 정도 정착되었다면 매번 주던 간식 보상을 점진적으로 줄여나가야 합니다. 이를 페이딩이라고 합니다. 10번 중 10번 주던 간식을 7번으로 줄이고, 나머지는 격렬한 칭찬이나 장난감 놀이, 혹은 스킨십 등 강아지가 좋아하는 다른 보상으로 대체해야 합니다. 이 과정을 거치면 간식이 보이지 않아도 습관적으로 올바른 행동을 수행하게 됩니다.</p>
+        `,
+
+        blog_post3_body: `
+            <h1>스트레스 제로! 평화로운 산책 매너 가이드</h1>
+            <p>매일 하는 산책이 체력장이 되고 있다면 아이와 보호자 모두에게 큰 스트레스입니다. 팽팽한 리드줄은 강아지의 목을 조일뿐만 아니라 심리적 흥분도까지 극도로 끌어올립니다.</p>
+            
+            <h2>1. 리드줄은 여유롭게 (U자 형태)</h2>
+            <p>강아지가 보호자보다 앞서 나가며 줄이 팽팽해지려 할 때, 보호자가 줄을 당기기보다는 <strong>그 자리에 우뚝 멈춰 서는 것</strong>이 가장 중요합니다. 강아지가 '어? 왜 안 가지?' 하고 돌아보거나 스스로 한 발짝 뒤로 물러나 줄이 다시 헐렁해졌을 때 다시 출발하세요. 이 과정이 반복되면 '줄이 당겨지면 멈춘다'는 룰을 배우게 됩니다.</p>
+            
+            <h2>2. 노즈워크 산책의 중요성</h2>
+            <p>직진만 하는 산책보다 중간중간 멈춰서 충분히 냄새를 맡게 해주는 것이 강아지의 스트레스 해소에 훨씬 이롭습니다. 개들에게 후각 활동은 인간이 책을 읽거나 유튜브를 보는 것과 같은 정보 습득 과정입니다. 안전한 풀숲이나 나무 기둥 냄새를 맡을 때는 충분히 기다려 주세요.</p>
+            
+            <h2>3. 낯선 강아지와의 인사 매너</h2>
+            <p>무작정 들이미는 인사는 싸움의 원인이 됩니다. 정면으로 직진하여 다가가는 것은 개들의 세계에서 무례하거나 도전적인 의미로 받아들여집니다. 상대를 발견했다면 둥글게 곡선을 그리며 접근하거나 서로 시선을 피해 우회하는 것이 가장 정중하고 안전한 카밍 시그널입니다.</p>
+        `,
+
+        blog_post4_body: `
+            <h1>강아지 옷 사이즈 실패 없이 고르는 방법</h1>
+            <p>온라인 쇼핑몰에서 너무나 귀여운 강아지 옷을 발견하고, 우리 아이의 몸무게만 대충 보고 M 사이즈를 주문해 본 경험이 있으신가요? 하지만 막상 입혀보니 가슴은 터질 듯이 꽉 끼고, 등 길이는 껑충 짧아서 결국 옷장에 방치하게 되는 일이 반려인들에게는 매우 흔한 일상입니다. 사람과 마찬가지로 강아지 역시 견종, 골격, 근육량, 심지어 털의 길이에 따라 체형이 천차만별이기 때문에 단순한 몸무게 수치만으로는 정확한 옷 사이즈를 가늠할 수 없습니다.</p>
+            <p>오늘 칼럼에서는 실패 없는 쇼핑을 위한 올바른 신체 부위별 상세 측정 방법과, 주요 견종별 체형 특징에 따른 사이즈 선택 노하우, 그리고 올바른 피팅을 위한 필수 체크리스트를 전문적인 관점에서 상세히 안내해 드리겠습니다.</p>
+            
+            <h2>1. 올바른 신체 부위별 상세 측정 방법</h2>
+            <p>강아지 옷을 고를 때 반드시 알아야 할 3대 측정 부위는 <strong>'목둘레', '가슴둘레', '등길이'</strong>입니다. 반려견을 똑바로 서게 한 상태에서 부드러운 줄자를 이용해 측정해야 가장 정확합니다. 아이가 앉거나 엎드려 있을 때 측정하면 수치가 크게 달라질 수 있으니 주의해 주세요.</p>
+            <ul>
+                <li><strong>목둘레 (Neck Circumference):</strong> 목걸이가 위치하는 목의 가장 굵은 부분, 즉 목의 밑동을 둥글게 감싸듯 측정합니다. 이때 줄자를 너무 꽉 조이지 말고, 사람의 손가락 한두 개가 편안하게 들어갈 정도의 여유를 두는 것이 중요합니다. 너무 꽉 끼는 옷은 기도를 압박하여 켁켁거림이나 호흡 곤란을 유발할 수 있습니다.</li>
+                <li><strong>가슴둘레 (Chest Circumference):</strong> 앞다리 바로 뒤, 갈비뼈가 가장 많이 튀어나온 가슴의 가장 넓은 부분을 측정합니다. 강아지 옷에서 <strong>가장 중요한 기준이 되는 치수</strong>입니다. 가슴둘레가 맞지 않으면 앞다리를 움직일 때 심한 쓸림이 발생하거나 보행 자체에 불편함을 느낍니다. 측정 후 약 2~3cm (소형견 기준) 또는 4~5cm (중대형견 기준)의 여유분을 더해서 사이즈 표와 비교해야 합니다.</li>
+                <li><strong>등길이 (Back Length):</strong> 목이 시작되는 지점(목덜미)부터 꼬리가 시작되는 밑동 부분까지의 직선 길이를 측정합니다. 등길이가 너무 길면 꼬리를 덮어 배변 활동 시 옷에 오물이 묻을 수 있고, 너무 짧으면 티셔츠가 허리 중간에서 말려 올라가 크롭티처럼 되어버리는 불상사가 발생합니다.</li>
+            </ul>
+
+            <h2>2. 견종별 체형 특징 및 털 길이에 따른 주의사항</h2>
+            <p>모든 강아지가 동일한 비율을 가지고 있지 않습니다. 특정 견종이 가진 고유의 골격과 털 상태(모량)를 반드시 고려해야 실패를 줄일 수 있습니다.</p>
+            <ul>
+                <li><strong>푸들 (Poodle) & 비숑 프리제 (Bichon Frise):</strong> 이들은 다리가 길고 가슴통(흉곽)이 비교적 좁은 편에 속하지만, 털이 풍성하게 자라는 견종입니다. 미용 직후에는 S 사이즈가 맞다가도 털이 찐 일명 '하이바' 상태가 되면 M 사이즈를 입어야 할 정도로 모량의 영향을 크게 받습니다. 평소 미용 주기에 맞춰 털이 가장 길었을 때를 기준으로 넉넉한 사이즈를 선택하는 것이 좋습니다.</li>
+                <li><strong>말티즈 (Maltese) & 요크셔테리어 (Yorkshire Terrier):</strong> 골격이 작고 가녀린 체형이 특징입니다. 기성복의 표준 체형에 가장 잘 맞는 편이지만, 체중이 적게 나가더라도 가슴통이 유독 발달한 아이들이 있습니다. 신축성이 없는 소재(데님, 셔츠 등)의 옷을 고를 때는 무조건 가슴둘레 실측 사이즈를 최우선으로 고려하세요.</li>
+                <li><strong>포메라니안 (Pomeranian) & 스피츠 (Spitz):</strong> 겉보기에는 매우 커 보이지만 실제 만져보면 뼈대는 얇고 이중모의 풍성한 털이 부피의 대부분을 차지합니다. 털이 눌리는 것을 방지하고 피부 통풍을 돕기 위해, 실제 몸체 측정값보다 한 사이즈 크게(가슴둘레 기준 +5cm 이상 여유) 고르는 것이 필수입니다.</li>
+                <li><strong>닥스훈트 (Dachshund) & 웰시코기 (Welsh Corgi):</strong> 다리가 매우 짧고 등길이가 유독 긴 특수 체형입니다. 일반 기성복을 가슴둘레에 맞춰 사면 등이 절반밖에 안 덮이는 경우가 많습니다. 최근에는 이들을 위해 등길이를 특별히 길게 제작한 전용 라인업(DX, CX 사이즈 등)이 많이 출시되고 있으니 가급적 특수 체형 전용 옷을 구매하시는 것을 강력히 권장합니다.</li>
+            </ul>
+
+            <h2>3. 몸무게 데이터만 믿으면 실패하는 이유</h2>
+            <p>많은 쇼핑몰에서 '3kg = M 사이즈'라는 식으로 몸무게 기준표를 제시합니다. 하지만 3kg의 근육질 잭 러셀 테리어와 3kg의 마른 체형 푸들을 상상해 보세요. 테리어는 가슴통이 두꺼워 가슴둘레가 크고, 푸들은 등길이가 길 수 있습니다. 몸무게는 전체적인 질량을 나타낼 뿐 체형의 비율을 설명해주지 못합니다. 옷은 3차원 입체 패턴으로 재단되기 때문에 반드시 '둘레'와 '길이'라는 길이 데이터를 기준으로 삼아야 합니다. 몸무게는 참고용으로만 사용하시고, 최종 결정은 줄자로 잰 실측 가슴둘레를 기준으로 하셔야 합니다.</p>
+
+            <h2>4. 올바른 피팅 체크리스트 (보호자의 필수 점검 사항)</h2>
+            <p>새 옷을 입힌 후 아이가 얼음처럼 굳어 한 발짝도 걷지 않거나, 자꾸 옷을 물어뜯으려 한다면 옷이 불편하다는 명확한 신호입니다. 새 옷을 입혔다면 아래 세 가지를 반드시 체크해 주세요.</p>
+            <ul>
+                <li><strong>겨드랑이 여유 공간 확인:</strong> 강아지가 서 있을 때 보호자의 검지 손가락을 옷의 겨드랑이 틈새로 넣어보세요. 부드럽게 들어갔다 나와야 합니다. 빡빡하다면 앞다리를 내디딜 때마다 피부가 쓸려 붉게 부어오를 수 있습니다.</li>
+                <li><strong>신축성과 소재 점검:</strong> 활동량이 많은 산책 시에는 신축성이 좋은 면이나 스판덱스 소재가 좋습니다. 뻣뻣한 청자켓이나 하네스 일체형 패딩의 경우, 신축성이 제로에 가깝기 때문에 평소 입던 사이즈보다 한 치수 업(Up)하는 것이 관절 무리를 예방합니다.</li>
+                <li><strong>배변 부분 파임(Cut) 확인:</strong> 배 쪽의 옷단이 생식기를 덮지는 않는지 확인하세요. 특히 수컷의 경우 배 쪽 파임이 충분하지 않으면 소변을 볼 때 옷이 다 젖어버려 피부병의 원인이 되거나 심한 스트레스를 유발할 수 있습니다.</li>
+            </ul>
+            <p>반려견에게 옷이란 단순한 패션을 넘어 체온 유지, 진드기 방지, 피부 보호를 위한 훌륭한 기능성 장비입니다. 우리 아이의 체형을 정확히 이해하고 여유로운 피팅을 제공해 주신다면, 옷 입는 시간은 아이에게도 즐거운 산책의 시작을 알리는 신나는 순간이 될 것입니다.</p>
+            
+            <div style="margin-top: 40px; padding: 24px; background: #f0f8ff; border: 2px dashed #3498db; border-radius: 12px; text-align: center;">
+                <h3 style="margin-top: 0; color: #2980b9; font-size: 1.15rem; margin-bottom: 12px;">옷 사이즈 고르기가 너무 어렵다면?</h3>
+                <a href="size-calculator.html" style="display: inline-block; background: #3498db; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">의류 사이즈 추천기 바로가기 👕</a>
+            </div>
+        `,
+
+        blog_post5_body: `
+            <h1>우리 강아지 카밍 시그널 해석하기: 몸짓으로 말하는 속마음</h1>
+            <p>보호자님에게 혼나고 있을 때, 강아지가 갑자기 큰 하품을 하거나 코를 핥는 것을 본 적이 있으신가요? 많은 보호자님들이 이 모습을 보고 "혼나는데 졸리냐?", "딴청 피우지 마!"라며 오해하곤 합니다. 하지만 이는 반항이 아니라, 강아지 언어인 '카밍 시그널(Calming Signal)'입니다. 오늘은 노르웨이의 반려견 전문가 투리드 루가스(Turid Rugaas)가 체계화한 강아지의 평화 언어에 대해 알아봅니다.</p>
+
+            <h2>카밍 시그널이란?</h2>
+            <p>카밍 시그널은 개들이 무리 생활을 하며 불필요한 싸움을 피하고, 상대방과 <strong>자신 스스로를 진정시키기 위해</strong> 사용하는 바디 랭귀지입니다. 낯선 강아지를 만나 긴장했거나, 보호자가 화를 내어 두려울 때, 혹은 상황이 너무 흥분되었을 때 "나는 적의가 없어요. 우리 조금 진정합시다"라고 온몸으로 보내는 신호입니다.</p>
+
+            <h2>대표적인 카밍 시그널 5가지와 그 의미</h2>
+
+            <h3>1. 코 핥기 (Licking the nose)</h3>
+            <p>가장 빠르고 빈번하게 나타나는 신호입니다. 혀가 살짝 나왔다가 코를 핥고 들어갑니다. 누군가 자기를 뚫어지게 쳐다보거나, 낯선 물건이 다가올 때 흔히 볼 수 있습니다. 스스로 긴장을 완화하려는 아주 미세하지만 확실한 표현입니다.</p>
+
+            <h3>2. 하품하기 (Yawning)</h3>
+            <p>정말 졸려서 하는 하품과 다릅니다. 동물병원 진료대 위에서, 혹은 보호자가 큰 소리로 야단칠 때 강아지는 하품을 합니다. 이는 사람으로 치면 깊은 심호흡을 하며 마인드 컨트롤을 하는 것과 같습니다. "저 지금 스트레스받고 있어요. 제발 화내지 마세요"라는 뜻이므로 이때는 야단을 멈추고 상황을 부드럽게 넘겨주셔야 합니다.</p>
+
+            <h3>3. 시선 피하기 / 고개 돌리기 (Turning the head)</h3>
+            <p>강아지의 세계에서 상대를 똑바로 빤히 쳐다보는 것은 무례하고 도전적인 행동입니다. 그래서 상대방이 너무 강하게 다가오거나 위협적으로 느껴질 때, 고개를 옆으로 휙 돌리거나 시선을 내리깔아 갈등을 피하려 합니다. 사진을 찍으려고 카메라(낯선 눈동자 모양)를 들이댈 때 고개를 돌리는 것도 이 때문입니다.</p>
+
+            <h3>4. 몸 털기 (Shaking off)</h3>
+            <p>목욕 후 물기를 털어내는 것과 같은 동작입니다. 주로 불편하거나 긴장되는 상황(병원 진료, 낯선 개와의 만남, 싫어하는 스킨십 등)이 <strong>끝난 직후</strong>에 나타납니다. 사람으로 치면 "휴~ 이제 살았다!"라며 묻은 긴장감을 문자 그대로 '털어내는' 행동입니다.</p>
+
+            <h3>5. 천천히 걷기 / 커브로 다가기 (Walking slowly / Curving)</h3>
+            <p>자신감이 없거나 상대방을 안심시키고 싶을 때 강아지는 행동이 아주 느려집니다. 보호자가 화난 목소리로 "이리 와!"라고 불렀을 때 슬로 모션처럼 아주 천천히 눈치를 보며 다가오는 것을 보신 적 있으시죠? 또한 낯선 개를 만났을 때 직선으로 달려가지 않고 포물선을 그리며 다가가는 것은 최고의 예의 바른 인사법입니다.</p>
+
+            <h2>카밍 시그널, 보호자는 어떻게 대처해야 할까?</h2>
+            <ul>
+                <li><strong>신호를 무시하지 마세요:</strong> 아이가 코를 핥고 하품을 하며 두려워하는데 계속 야단을 치거나 안으려고 강요하면, 강아지는 카밍 시그널이 통하지 않는다고 판단합니다. 결국 소통을 포기하고 공격성(으르렁거림, 물기)으로 방어 기제를 바꾸게 될 수 있습니다.</li>
+                <li><strong>보호자도 시그널을 보내주세요:</strong> 아이가 극도로 흥분했거나 불안해할 때, 보호자 역시 하품을 길게 해주거나 시선을 부드럽게 피해 보세요. 놀랍게도 강아지가 보호자의 행동을 보고 안정을 찾는 경우가 많습니다.</li>
+                <li><strong>원인을 제거해 주세요:</strong> 산책 중 낯선 개를 보고 아이가 시선을 돌리거나 입맛을 다신다면 억지로 인사시키지 말고 방향을 틀어주세요. 보호자가 자신의 신호를 읽고 리드해 준다는 것을 깨달으면 강아지는 보호자를 깊이 신뢰하게 됩니다.</li>
+            </ul>
+
+            <p>강아지는 말을 하지 못할 뿐, 하루 종일 보호자를 향해 몸으로 수많은 이야기를 건네고 있습니다. 카밍 시그널을 이해하는 것은 내 강아지의 마음을 읽는 독심술을 배우는 것과 같습니다. 오늘부터 우리 아이가 보내는 작은 신호들에 귀를 기울여 보세요. 반려견과의 유대감이 몰라보게 깊어질 것입니다.</p>
+
+            <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
+                <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">우리 아이의 행동학적 기질이 더 궁금하다면?</h3>
+                <a href="index.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">반려견 기질 검사하러 가기 🐾</a>
+            </div>
+        `,
+
+        blog_post6_body: `
+            <h1>슬개골 탈구 예방을 위한 실내 환경 조성 및 보호자 마사지 방법</h1>
+            <p>안녕하세요. 많은 소형견 보호자님들의 가장 큰 고민거리이자 숙제, 바로 '슬개골 탈구'입니다. 포메라니안, 말티즈, 푸들 등 우리나라에서 많이 반려하는 소형견들은 유전적으로 관절이 약하게 태어나는 경우가 많아 평생 세심한 관리가 필요합니다. 오늘 이 칼럼에서는 수술이라는 최악의 상황을 막고 아이들이 오랫동안 튼튼한 다리로 뛰어놀 수 있도록, 집에서 당장 실천해야 하는 올바른 환경 조성법과 보호자가 직접 해줄 수 있는 간단한 재활 마사지 방법을 상세히 안내해 드립니다.</p>
+            
+            <h2>1. 슬개골 탈구의 정확한 이해와 초기 증상</h2>
+            <p>슬개골은 강아지의 무릎 관절 앞쪽에 위치한 작고 납작한 뼈입니다. 무릎을 굽히고 펼 때 도르래 역할을 하며 부드러운 움직임을 돕는데, 이 뼈가 본래 위치해야 할 활차구(뼈가 들어가는 홈)에서 안쪽이나 바깥쪽으로 빠져나가는 질환을 '슬개골 탈구(Patellar Luxation)'라고 합니다. 소형견들은 이 활차구의 홈이 태생적으로 얕게 파여 있어 조금만 무리한 힘이 가해져도 뼈가 쉽게 이탈하게 됩니다.</p>
+            <p><strong>초기 증상은 어떻게 나타날까요?</strong><br>아이들이 평소처럼 걷다가 갑자기 뒷다리 한쪽을 살짝 들고 세 발로 뛰거나(깽깽이걸음), 무릎 쪽에서 '뚝뚝' 하는 미세한 관절음이 들릴 수 있습니다. 산책을 하다가 갑자기 주저앉거나 평소 잘 올라가던 소파에 올라가기를 머뭇거린다면 이미 관절에 통증이나 불편함이 시작되었다는 신호일 수 있으니 보호자의 세심한 관찰이 절대적으로 필요합니다.</p>
+            
+            <h2>2. 슬개골을 지키는 필수 실내 환경 조성 팁 3가지</h2>
+            <p>집 안 환경을 조금만 바꿔주어도 슬개골 탈구의 진행 속도를 현저히 늦출 수 있습니다. 생활 속 위험 요소들을 제거하는 것이 가장 중요합니다.</p>
+            
+            <h3>① 미끄럼 방지 매트 시공: 선택이 아닌 필수</h3>
+            <p>한국의 일반적인 주거 환경인 마룻바닥이나 장판은 강아지의 발바닥 패드가 접지력을 발휘하기에는 빙판길과 다를 바가 없습니다. 아이가 장난감을 쫓아 달리다 미끄러지면서 브레이크를 밟을 때, 관절과 인대에 어마어마한 비틀림 토크(Torque)가 발생합니다. 강아지가 주로 뛰어노는 거실과 복도 동선에는 반드시 <strong>충격 흡수가 되고 표면 마찰력이 높은 전용 매트</strong>를 깔아주셔야 합니다. 매트는 너무 푹신하면 오히려 관절에 무리가 가므로, 적당히 탄탄하면서도 밀리지 않는 제품을 선택하는 것이 기준입니다.</p>
+
+            <h3>② 침대 및 소파 계단(슬라이드) 설치</h3>
+            <p>보호자 곁으로 오기 위해 높은 소파나 침대에서 뛰어내리는 행동은 어깨와 무릎 관절에 체중의 수 배에 달하는 충격을 가합니다. 반드시 전용 계단이나 경사로(슬라이드)를 설치해 주세요. 주의할 점은, 경사각이 너무 가파르면 오히려 오르내릴 때 뒷다리에 과도한 하중이 실리게 되므로, 경사가 완만한 슬라이드형 제품이나 단차가 낮고 밟는 면적이 넓은 계단을 선택하는 것이 바람직합니다. 아이가 계단 사용에 익숙해지도록 간식으로 유도하며 안전하게 오르내리는 교육을 병행해 주세요.</p>
+
+            <h3>③ 발바닥 패드 털 및 발톱 주기적 관리</h3>
+            <p>아무리 비싼 매트를 깔아도 강아지의 발바닥 털이 길게 자라 패드를 덮고 있다면 양말을 신고 얼음판을 걷는 것과 같습니다. 적어도 1~2주에 한 번씩은 이발기(클리퍼)를 사용해 발바닥 패드 사이의 털을 짧게 정리해 주어야 완벽한 접지력이 살아납니다. 또한, 발톱이 바닥에 먼저 닿게 되면 걸음걸이가 틀어지고 체중 지지축이 무너지므로 바닥에 닿기 전에 주기적으로 다듬어 주셔야 합니다.</p>
+
+            <h2>3. 집에서 해주는 재활/관절 마사지 방법</h2>
+            <p>마사지는 근육의 긴장을 풀어주고 혈액순환을 촉진하여 관절 주변 조직을 튼튼하게 유지하는 데 큰 도움을 줍니다. 단, 아이가 편안하게 이완된 상태에서 진행해야 하며 힘을 주어 억지로 눌러서는 안 됩니다.</p>
+
+            <h3>⚠️ 마사지 전 주의사항</h3>
+            <p>아이가 심한 통증을 호소하거나 다리를 만졌을 때 물려고 하는 등 염증기의 급성 증상이 의심될 때는 절대 마사지를 하지 말고 수의사의 진료를 먼저 받아야 합니다. 마사지는 통증이 없는 평온한 휴식 시간에 가볍게 해주는 '예방 및 이완'의 목적임을 명심해 주세요.</p>
+
+            <h3>대퇴사두근(허벅지 앞쪽 근육) 이완 마사지</h3>
+            <p>슬개골이 자꾸 빠지게 되면 강아지들은 무릎을 지탱하기 위해 허벅지 근육(대퇴사두근)을 과도하게 사용하게 되어 뻣뻣하게 뭉치게 됩니다. 아이를 옆으로 편안하게 눕히고, 뒷다리의 넓적다리 앞쪽 근육을 엄지와 검지를 사용해 부드럽게 감싸줍니다. 그리고 아주 가벼운 압력으로 원을 그리며 조물조물 근육의 긴장을 풀어주세요. 한쪽 다리당 1~2분 정도, 체온이 전해지도록 따뜻하고 부드럽게 문질러 주면 강아지도 눈을 지그시 감으며 편안함을 느낄 것입니다.</p>
+
+            <h3>올바른 뒷다리 스트레칭 가이드</h3>
+            <p>관절의 정상적인 가동 범위를 유지해주기 위한 가벼운 스트레칭입니다. 아이가 옆으로 누운 상태에서 한 손으로는 무릎 위 허벅지를 부드럽게 고정하고, 다른 한 손으로는 발목을 가볍게 잡습니다. 자전거 페달을 천천히 굴리듯이 무릎 관절을 살짝 굽혔다가 펴주는 동작을 5~10회 정도 부드럽게 반복합니다. <strong>절대로 무리하게 꺾거나 당겨서는 안 되며</strong>, 저항이 느껴지면 즉시 멈춰야 합니다.</p>
+
+            <h2>4. 일상 속 '이것'만은 절대 금지! 주의 행동</h2>
+            <p>환경을 개선하고 마사지를 해주더라도, 일상 속 나쁜 습관이 반복되면 슬개골은 무너질 수밖에 없습니다. 아래의 행동은 단호하게 통제해 주세요.</p>
+            <ul>
+                <li style="margin-bottom: 10px;"><strong>두 발로 서서 뛰기:</strong> 간식을 주거나 반가워할 때 뒷다리 두 발로만 서서 콩콩 뛰는 행동은 무릎과 고관절에 최악의 하중을 줍니다. 아이가 서려고 할 때는 보호자가 즉시 뒤로 돌아서서 무시하거나, '앉아'를 지시하여 네 발이 바닥에 닿았을 때만 보상해 주세요.</li>
+                <li style="margin-bottom: 10px;"><strong>무리한 수직 점프:</strong> 침대나 소파 등에서 바닥으로 뛰어내리는 행동은 인대 파열로 이어질 수 있으므로 절대 못하게 해야 합니다.</li>
+                <li style="margin-bottom: 10px;"><strong>터그 놀이 시 과도한 흔들기:</strong> 터그 놀이 자체는 좋지만, 보호자가 흥분해서 장난감을 좌우로 강하게 흔들거나 위로 들어 올리면 목 디스크뿐만 아니라 체중을 버티는 뒷다리 관절에 극심한 무리가 갑니다. 터그는 강아지 스스로 당기도록 저항만 주거나 앞뒤로 부드럽게 당기는 선에서 마무리하세요.</li>
+            </ul>
+
+            <p>슬개골 탈구 관리는 단거리 달리기가 아니라 평생 안고 가야 하는 마라톤과 같습니다. 사랑하는 반려견이 오랫동안 건강하게 보호자님과 산책할 수 있도록, 오늘부터 당장 매트 점검과 부드러운 허벅지 마사지를 시작해 보는 것은 어떨까요?</p>
+            
+            <div style="margin-top: 40px; padding: 24px; background: #eef2f3; border: 2px dashed #8e44ad; border-radius: 12px; text-align: center;">
+                <h3 style="margin-top: 0; color: #6c3483; font-size: 1.15rem; margin-bottom: 12px;">우리 아이의 체형에 맞는 매트나 옷 사이즈가 궁금하다면?</h3>
+                <a href="size-calculator.html" style="display: inline-block; background: #9b59b6; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">의류 사이즈 추천기 활용해보기 👕</a>
+            </div>
+        `,
+
         footer_copyright: "© 2026 반려견데이터솔루션 Lab. All Rights Reserved.",
         footer_terms1: "소개 및 문의",
         footer_terms2: "개인정보처리방침",
@@ -21,6 +226,27 @@ const translations = {
         footer_terms4: "행동학 근거 안내",
         footer_disclaimer_main: "본 검사는 교육·참고용 동물행동학 정보를 바탕으로 제작되었으며, 수의사 진료를 대체하지 않습니다.",
         footer_disclaimer_age: "본 계산기는 미국 켄넬 클럽(AKC) 데이터를 참고하여 제작되었으며, 개체별 건강 상태에 따라 오차가 있을 수 있습니다.",
+
+        // Blog Data (Hero, Categories, Cards)
+        blog_hero_title: "반려견 양육 가이드 및 칼럼",
+        blog_hero_desc: "우리 아이의 행동 뒤에 숨겨진 진짜 마음을 알아보고, 더 행복한 반려 생활을 위한 실전 노하우를 확인하세요.",
+        blog_cat_behavior: "행동·심리",
+        blog_cat_training: "교육·훈련",
+        blog_cat_health: "건강·케어",
+        blog_cat_lifestyle: "생활·상식",
+        
+        blog_post1_title: "강아지가 자꾸 주인을 따라다니는 이유와 분리불안",
+        blog_post1_excerpt: "화장실 문 앞까지 졸졸 따라오는 반려견. 귀엽기도 하지만 혹시 분리불안은 아닐까요? 강아지의 애착 행동과 스트레스의 차이를 구분하고 건강하게 독립심을 길러주는 방법을 소개합니다.",
+        blog_post2_title: "긍정 강화 훈련의 오해와 진실: 간식만 주면 될까?",
+        blog_post2_excerpt: "클리커와 간식을 사용하는 긍정 강화 훈련. 간식 없이도 훈련 효과를 유지할 수 있을까요? 올바른 보상 타이밍과 칭찬의 기술을 통해 강아지와의 신뢰를 200% 높이는 팁.",
+        blog_post3_title: "스트레스 제로! 평화로운 산책 매너 가이드",
+        blog_post3_excerpt: "리드줄을 강하게 당기거나 다른 개를 보면 짖는 강아지. 산책이 전투가 되지 않도록 하는 '리쉬 워킹'과 후각을 만족시키는 노즈워크 산책법의 핵심 원리를 파헤칩니다.",
+        blog_post4_title: "강아지 옷 사이즈 실패 없이 고르는 방법",
+        blog_post4_excerpt: "몸무게만 보고 옷을 샀다가 작아서 못 입힌 경험 있으신가요? 푸들, 말티즈, 포메라니안 등 견종별 체형과 털 찐 상태를 고려한 정확한 신체 측정법과 피팅 체크리스트를 대공개합니다.",
+        blog_post5_title: "우리 강아지 카밍 시그널 해석하기: 몸짓으로 말하는 속마음",
+        blog_post5_excerpt: "강아지가 갑자기 코를 핥거나 하품을 하는 이유는 무엇일까요? 불안과 스트레스 상황에서 평화를 요청하는 바디 랭귀지, '카밍 시그널' 5가지와 보호자의 올바른 대처법을 알아봅니다.",
+        blog_post6_title: "슬개골 탈구 예방을 위한 실내 환경 조성 및 관절 마사지",
+        blog_post6_excerpt: "소형견 보호자들의 가장 큰 고민거리, 슬개골 탈구! 수술을 피하기 위해 집에서 당장 실천할 수 있는 환경 조성법과 재활 전문가가 추천하는 하루 5분 관절 마사지 꿀팁을 알아봅니다.",
 
         // Header Toggles
         btn_lang_toggle: "EN",
@@ -321,6 +547,10 @@ const translations = {
         seo_s3_p2: "저희 mung-test.com의 반려견 맞춤형 의류 사이즈 추천기는 다년간의 데이터를 바탕으로 견종과 몸무게, 털 길이 변수를 종합적으로 연산하여 <strong>가장 이상적인 예상 가슴둘레와 추천 사이즈</strong>를 무료로 제공합니다. 우리 강아지의 편안한 일상을 위해 지금 바로 계산해보세요!",
     },
     en: {
+        seo_why_title: "Why is a Dog Temperament Analysis Test Necessary?",
+        seo_why_desc: "Perfectly understanding each other's minds is the most important foundation for a happy life with your dog. This test was developed to objectively analyze your dog's unique temperament and innate tendencies, which can be easily overlooked in daily life, based on <strong>behavioral grounds</strong> and veterinary data. Moving beyond simply finding out cute personality types, it suggests ways to minimize stress factors for the child and share better communication.",
+        seo_tips_title: "Expected Effects and Application Tips of the Test",
+        seo_tips_desc: "By completing the test, you can get customized parenting guidelines perfectly suited for your dog. Try applying them to daily walks and playtime by referring to the detailed behavioral characteristics and precautions during training provided as results. In addition, you can check other dog types that are a perfect match for your child to guess in advance what kind of friends they will get along well with at the dog park or on a walk. For accurate results, we recommend that you answer honestly while recalling their behavior from the <strong>most recent month</strong>.",
         // Meta & Titles
         meta_title_main: "Dog Temperament Test",
         meta_desc_main: "An original dog temperament test analyzing your dog's inherent instincts and acquired traits based on animal behavioral science.",
@@ -334,6 +564,205 @@ const translations = {
         nav_age: "Age Calculator",
         nav_size: "Size Recommender",
         nav_start: "Start Test",
+        nav_blog: "Puppy Tips(Blog)",
+        logo_blog: "🐾 Puppy Tips(Blog)",
+        
+        // Blog Data (Hero, Categories, Cards)
+        blog_hero_title: "Dog Parenting Guide & Columns",
+        blog_hero_desc: "Discover the true feelings hidden behind your dog's behavior, and check out practical know-how for a happier life with your dog.",
+        blog_cat_behavior: "Behavior & Mind",
+        blog_cat_training: "Training",
+        blog_cat_health: "Health & Care",
+        blog_cat_lifestyle: "Lifestyle",
+        
+        blog_post1_title: "Why Does My Dog Follow Me Everywhere? Separation Anxiety Explained",
+        blog_post1_excerpt: "A dog following you to the bathroom—is it just affection or separation anxiety? We explain the difference between healthy attachment and stress, and how to foster independence.",
+        blog_post2_title: "Truths About Positive Reinforcement: Is Treat the Only Way?",
+        blog_post2_excerpt: "Positive reinforcement with clickers and treats. Can you maintain the effect without treats? Tips on proper reward timing and praising techniques to boost your dog's trust by 200%.",
+        blog_post3_title: "Zero Stress! Peaceful Walking Manner Guide",
+        blog_post3_excerpt: "Dogs that pull the leash hard or bark at others. Discover the core principles of 'leash walking' and nosework walks that satisfy their sense of smell without turning walks into battles.",
+        blog_post4_title: "How to Choose Dog Clothes Sizes Without Failing",
+        blog_post4_excerpt: "Have you ever bought clothes based only on weight and found them too small? We reveal accurate measuring methods and a fitting checklist considering breed shapes and fluffy coats.",
+        blog_post5_title: "Interpreting Calming Signals: Mind Spoken Through Body Language",
+        blog_post5_excerpt: "Why does a dog suddenly lick its nose or yawn? Learn 5 'calming signals', the body language dogs use to request peace in stressful situations, and the right ways to respond.",
+        blog_post6_title: "Preventing Patellar Luxation: Indoor Environments & Joint Massage",
+        blog_post6_excerpt: "The biggest worry for small dog owners—patellar luxation! Check out indoor environment tips to avoid surgery and a 5-minute daily joint massage routine recommended by rehab experts.",
+        
+        blog_post1_body: `
+            <h1>Why Does My Dog Follow Me Everywhere? Separation Anxiety Explained</h1>
+            <p>There are dogs who follow their owners like a shadow every time they move around the house. At first, you might find it cute, thinking they just love you too much, but if they whine in front of the bathroom door or bark severely when you go out, you should suspect 'separation anxiety'.</p>
+            
+            <h2>1. Why do they keep following?</h2>
+            <p>There are several reasons why your dog follows you. As a pack animal instinct, the <strong>desire for safety</strong> to be with the leader (owner), the <strong>expectation</strong> not knowing when the owner will give a tasty treat, and the <strong>curiosity</strong> waiting for the bored owner to do something fun are the main causes. In these cases, it falls under normal attachment behavior.</p>
+            
+            <h2>2. Differences from Separation Anxiety</h2>
+            <p>However, if the dog becomes extremely anxious and uncontrollable when the owner disappears from sight, this is separation anxiety. If it is accompanied by severe drooling, scratching or biting the door, howling, or making mistakes with bowel movements they usually hide, the child is currently in a state of severe panic.</p>
+            
+            <h2>3. Fostering Healthy Independence</h2>
+            <ul>
+                <li><strong>Creating a Safe Zone:</strong> You need to make them recognize a specific space in the house (cushion, kennel) as their safest place. Give them a special treat only when they are there to plant a good memory.</li>
+                <li><strong>Calm Departures and Arrivals:</strong> Saying a long sorry goodbye when leaving, or hugging them intensely when they jump around after you return, raises their excitement level. It is good to leave and enter indifferently and wait until the child calms down before greeting.</li>
+                <li><strong>Short Separation Practice:</strong> Close the room door and open it after 5 seconds, then after 10 seconds. Start from a very short time and gradually instill the confidence that the owner will return even if they are not there.</li>
+            </ul>
+            
+            <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
+                <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">Curious about your dog's behavioral temperament?</h3>
+                <a href="index.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Go to Dog Temperament Test 🐾</a>
+            </div>
+        `,
+        
+        blog_post2_body: `
+            <h1>Truths About Positive Reinforcement: Is Treat the Only Way?</h1>
+            <p>The most common concern owners have while trying 'positive reinforcement' is "they don't listen without treats". This is highly likely because you mistakenly used it as a 'bribe' rather than a 'reward'.</p>
+            
+            <h2>Difference Between Reward and Bribe</h2>
+            <p>Showing a treat before asking for a behavior and inducing it is a <strong>'bribe'</strong>. The dog moves only when the treat is visible. On the other hand, a true <strong>'reward'</strong> is providing it within 1~2 seconds right after the dog first performs the correct behavior. Rewards encourage the dog to think and act on their own.</p>
+            
+            <h2>Applying the Fading Technique</h2>
+            <p>Once a behavior is somewhat established, you must gradually reduce the treat rewards you used to give every time. This is called fading. Reduce the treats given 10 out of 10 times to 7 times, and replace the rest with other rewards the dog likes, such as enthusiastic praise, playing with toys, or physical affection. Through this process, they will habitually perform the correct behavior even without seeing a treat.</p>
+        `,
+
+        blog_post3_body: `
+            <h1>Zero Stress! Peaceful Walking Manner Guide</h1>
+            <p>If everyday walking is becoming a physical fitness test, it's a huge stress for both the child and the owner. A tight leash not only chokes the dog's neck but also raises their psychological excitement to an extreme level.</p>
+            
+            <h2>1. Keep the Leash Loose (U-Shape)</h2>
+            <p>When the dog steps ahead of the owner and the leash is about to become tight, the most important thing is for the owner to <strong>stop right there</strong> rather than pulling the leash. When the dog looks back wondering 'Huh? Why aren't we going?' or takes a step back and the leash becomes loose again, start walking. If this process is repeated, they learn the rule: 'When the leash is tight, we stop.'</p>
+            
+            <h2>2. Importance of Nosework Walks</h2>
+            <p>Rather than a walk that only goes straight, stopping occasionally to let them fully sniff is much more beneficial for relieving your dog's stress. For dogs, olfactory activity is an information acquisition process like humans reading a book or watching YouTube. Please wait patiently when they are sniffing a safe grassy area or tree trunk.</p>
+            
+            <h2>3. Manners for Greeting Strange Dogs</h2>
+            <p>Blindly thrusting into a greeting can cause fights. Approaching directly face-to-face is taken as rude or challenging in the dog world. If you spot another dog, drawing a curve to approach or detouring while avoiding each other's gaze is the most polite and safe calming signal.</p>
+        `,
+
+        blog_post4_body: `
+            <h1>How to Choose Dog Clothes Sizes Without Failing</h1>
+            <p>Have you ever found a very cute dog outfit online and ordered an M size just by roughly looking at your dog's weight? But when you tried it on, the chest was super tight and the back length was way too short, so it ended up neglected in the closet—a very common daily occurrence for pet owners. Just like humans, dogs have vastly different body shapes depending on their breed, bone structure, muscle mass, and even coat length, so simple weight figures alone cannot estimate the exact clothing size.</p>
+            <p>In today's column, we will guide you in detail from an expert's perspective on the correct measuring methods for each body part, size selection know-how based on the body characteristics of major breeds, and an essential checklist for a proper fit to ensure failure-free shopping.</p>
+            
+            <h2>1. Correct Detailed Measurement Method by Body Part</h2>
+            <p>The three major measurement parts you must know when choosing dog clothes are the <strong>'neck circumference', 'chest circumference', and 'back length'</strong>. It is most accurate to measure with a soft tape measure while the dog is standing straight. Be careful, as the figures can change significantly if measured while the child is sitting or lying down.</p>
+            <ul>
+                <li><strong>Neck Circumference:</strong> Measure the thickest part of the neck where the collar sits, meaning wrapping around the base of the neck. It is important not to pull the tape too tight, leaving enough slack for one or two human fingers to fit comfortably. Clothes that are too tight can compress the airway and cause coughing or difficulty breathing.</li>
+                <li><strong>Chest Circumference:</strong> Measure the widest part of the chest right behind the front legs, where the ribs stick out the most. This is the <strong>most important standard dimension</strong> in dog clothes. If the chest circumference doesn't fit, severe chafing occurs when moving the front legs, or they feel discomfort in walking itself. After measuring, add about 2~3cm (for small dogs) or 4~5cm (for medium/large dogs) of slack and compare it with the size chart.</li>
+                <li><strong>Back Length:</strong> Measure the straight length from the point where the neck starts (nape) to the base where the tail begins. If the back length is too long, it covers the tail and the clothes can get dirty during bowel movements, and if it's too short, the T-shirt rolls up in the middle of the waist, resulting in a mishap of becoming like a crop top.</li>
+            </ul>
+
+            <h2>2. Breed Body Characteristics and Precautions According to Coat Length</h2>
+            <p>Not all dogs have the same proportions. You must consider the unique bone structure and coat condition (volume) of a specific breed to reduce failure.</p>
+            <ul>
+                <li><strong>Poodle & Bichon Frise:</strong> They have long legs and a relatively narrow chest (rib cage), but their hair grows abundantly. Even if an S size fits right after grooming, when they get hairy (the so-called 'helmet' state), they are heavily influenced by hair volume to the point of needing an M size. It is better to choose a generous size based on when their hair is longest according to their regular grooming cycle.</li>
+                <li><strong>Maltese & Yorkshire Terrier:</strong> They are characterized by a small bone structure and slender body shape. They fit best to the standard body shape of ready-made clothes, but there are children whose chests are unusually developed even if they weigh less. When choosing clothes made of non-stretchable materials (denim, shirts, etc.), unconditionally consider the actual chest circumference size as the top priority.</li>
+                <li><strong>Pomeranian & Spitz:</strong> They look very large on the outside, but if you actually touch them, their bones are thin and the voluminous double coat takes up most of the bulk. To prevent the coat from being pressed and to help skin ventilation, it is essential to choose one size larger (more than +5cm slack based on chest circumference) than the actual body measurement.</li>
+                <li><strong>Dachshund & Welsh Corgi:</strong> This is a special body type with very short legs and an unusually long back. If you buy regular ready-made clothes matching the chest circumference, the back is often only half covered. Recently, many dedicated lineups (DX, CX sizes, etc.) with specially lengthened back lengths for them are being released, so we strongly recommend purchasing clothes specifically for special body types if possible.</li>
+            </ul>
+
+            <h2>3. Why You Fail if You Only Trust Weight Data</h2>
+            <p>Many shopping malls present a weight reference table like '3kg = M size'. But imagine a muscular 3kg Jack Russell Terrier and a skinny 3kg Poodle. The terrier has a thick chest so the chest circumference is large, and the poodle may have a long back. Weight only represents total mass and cannot explain the proportion of the body shape. Since clothes are tailored in 3D patterns, you must base it on the length data of 'circumference' and 'length'. Use weight only as a reference, and your final decision must be based on the actual chest circumference measured with a tape measure.</p>
+
+            <h2>4. Proper Fitting Checklist (Owner's Essential Checkpoints)</h2>
+            <p>If the child freezes like ice and won't take a step, or keeps trying to bite the clothes after putting on new clothes, it is a clear sign that the clothes are uncomfortable. If you have put on new clothes, please make sure to check the three things below.</p>
+            <ul>
+                <li><strong>Check Armpit Slack Space:</strong> Try gently inserting your index finger into the armpit gap of the clothes while the dog is standing. It should go in and out smoothly. If it's tight, the skin can chafe and swell red every time they step forward.</li>
+                <li><strong>Check Elasticity and Material:</strong> For walks with a lot of activity, highly elastic cotton or spandex materials are good. For stiff denim jackets or harness-integrated padding, since the elasticity is close to zero, sizing up one size from what they usually wear prevents joint strain.</li>
+                <li><strong>Check the Cut of the Belly Area:</strong> Ensure the hem on the belly side does not cover the genitals. Especially for males, if the belly cut is insufficient, the clothes will get all wet when urinating, which can cause skin diseases or severe stress.</li>
+            </ul>
+            <p>For dogs, clothes are great functional equipment for maintaining body temperature, preventing ticks, and protecting the skin beyond simple fashion. If you accurately understand your child's body shape and provide a relaxed fit, dressing time will be an exciting moment signaling the start of a joyful walk for the child as well.</p>
+            
+            <div style="margin-top: 40px; padding: 24px; background: #f0f8ff; border: 2px dashed #3498db; border-radius: 12px; text-align: center;">
+                <h3 style="margin-top: 0; color: #2980b9; font-size: 1.15rem; margin-bottom: 12px;">Is choosing a clothes size too difficult?</h3>
+                <a href="size-calculator.html" style="display: inline-block; background: #3498db; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Go to Clothing Size Recommender 👕</a>
+            </div>
+        `,
+
+        blog_post5_body: `
+            <h1>Interpreting Calming Signals: Mind Spoken Through Body Language</h1>
+            <p>Have you ever seen your dog suddenly let out a big yawn or lick its nose when being scolded? Many owners misunderstand this, saying "Are you sleepy while being scolded?" or "Don't ignore me!". However, this is not defiance, but the dog language 'Calming Signal'. Today, we'll look into the dog's language of peace systematized by Norwegian dog expert Turid Rugaas.</p>
+
+            <h2>What is a Calming Signal?</h2>
+            <p>A calming signal is a body language dogs use to avoid unnecessary fights in pack life and <strong>calm the other party and themselves</strong>. When they are nervous meeting a strange dog, afraid because the owner is angry, or when the situation is too exciting, it is a signal sent with their whole body saying, "I have no hostility. Let's calm down a bit."</p>
+
+            <h2>5 Typical Calming Signals and Their Meanings</h2>
+
+            <h3>1. Licking the nose</h3>
+            <p>This is the fastest and most frequent signal. The tongue comes out slightly, licks the nose, and goes back in. It can be commonly seen when someone stares at them intently or a strange object approaches. It is a very subtle but clear expression trying to relieve their own tension.</p>
+
+            <h3>2. Yawning</h3>
+            <p>This is different from yawning because they are genuinely sleepy. On the examination table at the vet, or when the owner is scolding them loudly, the dog yawns. In human terms, this is like taking a deep breath and controlling one's mind. Since it means "I am stressed right now. Please don't be angry," you should stop scolding and ease the situation.</p>
+
+            <h3>3. Turning the head / Avoiding gaze</h3>
+            <p>In the dog world, staring straight at the other party is rude and challenging behavior. Therefore, when the other party approaches too strongly or feels threatening, they turn their head away or cast their eyes down to avoid conflict. This is also why they turn their head when you point a camera (which looks like a strange eye) at them to take a picture.</p>
+
+            <h3>4. Shaking off</h3>
+            <p>This is the same motion as shaking off water after a bath. It mainly appears <strong>right after</strong> an uncomfortable or tense situation (vet examination, meeting a strange dog, disliked physical contact, etc.) is over. In human terms, it is the act of literally 'shaking off' the tension, like saying "Phew~ I survived!"</p>
+
+            <h3>5. Walking slowly / Curving</h3>
+            <p>When they lack confidence or want to reassure the other party, the dog's actions become very slow. Have you ever seen them walking over very slowly like in slow motion while reading the room when you call them with an angry voice "Come here!"? Also, when meeting a strange dog, not running in a straight line but approaching in an arc is the most polite way of greeting.</p>
+
+            <h2>How Should Owners Respond to Calming Signals?</h2>
+            <ul>
+                <li><strong>Don't ignore the signals:</strong> If the child is afraid, licking their nose and yawning, but you keep scolding or forcing them to be held, the dog decides that calming signals don't work. Eventually, they give up communicating and may change their defense mechanism to aggression (growling, biting).</li>
+                <li><strong>Owners should send signals too:</strong> When the child is extremely excited or anxious, the owner should also yawn long or gently look away. Surprisingly, dogs often find stability by watching the owner's behavior.</li>
+                <li><strong>Remove the cause:</strong> If the child turns their head away or licks their lips at a strange dog during a walk, don't force them to greet but change direction. Realizing that the owner reads their signals and leads them, the dog will deeply trust the owner.</li>
+            </ul>
+
+            <p>Dogs just can't speak, but they are telling numerous stories to their owners all day through their bodies. Understanding calming signals is like learning telepathy to read your dog's mind. Starting today, listen to the small signals your child sends. Your bond with your dog will deepen remarkably.</p>
+
+            <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
+                <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">Curious about your dog's behavioral temperament?</h3>
+                <a href="index.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Go to Dog Temperament Test 🐾</a>
+            </div>
+        `,
+
+        blog_post6_body: `
+            <h1>Preventing Patellar Luxation: Indoor Environments & Joint Massage</h1>
+            <p>Hello. The biggest worry and homework for many small dog owners is 'patellar luxation'. Small dogs commonly raised in Korea, such as Pomeranians, Malteses, and Poodles, are often born with genetically weak joints and require careful management throughout their lives. In this column, to prevent the worst-case scenario of surgery and allow children to run around on strong legs for a long time, we will provide detailed guidance on proper indoor environment creation methods you should practice immediately at home and simple rehabilitation massage techniques owners can do themselves.</p>
+            
+            <h2>1. Accurate Understanding and Early Symptoms of Patellar Luxation</h2>
+            <p>The patella is a small, flat bone located at the front of the dog's knee joint. It acts as a pulley when bending and straightening the knee to help smooth movement. The disease where this bone slips inward or outward from the trochlear groove (the groove the bone fits into) where it should originally be located is called 'Patellar Luxation'. Small dogs inherently have a shallow trochlear groove, so even a little excessive force can cause the bone to easily dislocate.</p>
+            <p><strong>How do early symptoms appear?</strong><br>While walking normally, they might suddenly lift one hind leg slightly and hop on three legs, or you might hear a subtle 'click-click' joint sound from the knee. If they suddenly sit down while walking or hesitate to jump onto a sofa they usually climb easily, it could be a sign that joint pain or discomfort has already begun, so the owner's careful observation is absolutely necessary.</p>
+            
+            <h2>2. 3 Essential Indoor Environment Tips to Protect the Patella</h2>
+            <p>Just changing the indoor environment a little can significantly slow down the progression of patellar luxation. Eliminating risk factors in daily life is the most important.</p>
+            
+            <h3>① Installing Anti-slip Mats: Not an Option, But Essential</h3>
+            <p>Wooden floors or linoleum, which are common residential environments in Korea, are no different from icy roads for a dog's paw pads to exert grip. When a child runs after a toy, slips, and steps on the brakes, tremendous twisting torque occurs in the joints and ligaments. In the living room and hallway areas where the dog mainly runs around, you must install a <strong>dedicated mat with shock absorption and high surface friction</strong>. If the mat is too soft, it actually puts a strain on the joints, so the criterion is to choose a product that is moderately firm and non-slip.</p>
+
+            <h3>② Installing Bed and Sofa Stairs (Slides)</h3>
+            <p>Jumping down from a high sofa or bed to come to the owner applies an impact equivalent to several times their body weight to the shoulder and knee joints. Please be sure to install dedicated stairs or a ramp (slide). The precaution is that if the slope angle is too steep, excessive load will actually be placed on the hind legs when going up and down, so it is desirable to choose a slide-type product with a gentle slope or stairs with low step height and wide stepping areas. Please parallel it with training to safely go up and down by inducing them with treats so the child gets used to using the stairs.</p>
+
+            <h3>③ Periodic Management of Paw Pad Hair and Nails</h3>
+            <p>No matter how expensive a mat you lay down, if the dog's paw hair grows long and covers the pads, it's like walking on an icy surface wearing socks. At least once every 1~2 weeks, you should use clippers to trim the hair between the paw pads short to revive perfect grip. Also, if the nails touch the floor first, the gait gets distorted and the weight support axis collapses, so you must trim them periodically before they touch the floor.</p>
+
+            <h2>3. Home Rehabilitation/Joint Massage Methods</h2>
+            <p>Massage is of great help in relaxing muscle tension and promoting blood circulation to keep the tissues around the joints strong. However, it should be done while the child is in a comfortably relaxed state and you should not forcefully press down.</p>
+
+            <h3>⚠️ Precautions Before Massage</h3>
+            <p>If acute symptoms of the inflammatory phase are suspected, such as the child complaining of severe pain or trying to bite when you touch the leg, you should absolutely not massage and consult a vet first. Please keep in mind that massage is for the purpose of 'prevention and relaxation' done lightly during a peaceful rest time without pain.</p>
+
+            <h3>Quadriceps (Front Thigh Muscle) Relaxation Massage</h3>
+            <p>If the patella keeps slipping out, dogs excessively use their thigh muscles (quadriceps) to support the knee, making them stiff and tense. Lay the child comfortably on their side, and gently wrap the front muscle of the thigh on the hind leg using your thumb and index finger. Then, with very light pressure, gently massage in a circle to release muscle tension. Rub it warmly and gently for about 1~2 minutes per leg so that body heat is transferred, and the dog will gently close its eyes and feel comfortable.</p>
+
+            <h3>Proper Hind Leg Stretching Guide</h3>
+            <p>This is a light stretch to maintain the normal range of motion of the joint. With the child lying on their side, gently fix the thigh above the knee with one hand, and lightly hold the ankle with the other hand. As if slowly pedaling a bicycle, gently repeat the motion of slightly bending and straightening the knee joint 5~10 times. <strong>You must absolutely not bend or pull it forcefully</strong>, and you must stop immediately if you feel resistance.</p>
+
+            <h2>4. Essential Prohibited Behaviors in Daily Life</h2>
+            <p>Even if you improve the environment and give massages, if bad habits in daily life are repeated, the patella is bound to collapse. Please firmly control the following behaviors.</p>
+            <ul>
+                <li style="margin-bottom: 10px;"><strong>Jumping on Two Legs:</strong> Jumping up and down standing only on two hind legs when given a treat or being glad puts the worst load on the knee and hip joints. When the child tries to stand, the owner should immediately turn their back and ignore it, or command 'sit' and reward only when all four feet touch the ground.</li>
+                <li style="margin-bottom: 10px;"><strong>Excessive Vertical Jumping:</strong> Jumping down to the floor from a bed or sofa can lead to ligament rupture, so it must be absolutely prohibited.</li>
+                <li style="margin-bottom: 10px;"><strong>Excessive Shaking During Tug-of-War:</strong> Tug play itself is good, but if the owner gets excited and vigorously shakes the toy side-to-side or lifts it up, it puts extreme strain not only on the neck disc but also on the hind leg joints supporting the weight. Conclude tug play by only giving resistance so the dog pulls themselves, or gently pulling back and forth.</li>
+            </ul>
+
+            <p>Patellar luxation management is not a short sprint but a marathon you must carry throughout life. So that your beloved dog can walk healthily with you for a long time, how about starting to check the mats and doing a gentle thigh massage right from today?</p>
+            
+            <div style="margin-top: 40px; padding: 24px; background: #eef2f3; border: 2px dashed #8e44ad; border-radius: 12px; text-align: center;">
+                <h3 style="margin-top: 0; color: #6c3483; font-size: 1.15rem; margin-bottom: 12px;">Curious about a mat or clothes size suitable for your child's body shape?</h3>
+                <a href="size-calculator.html" style="display: inline-block; background: #9b59b6; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Try using the Clothing Size Recommender 👕</a>
+            </div>
+        `,
+
         footer_copyright: "© 2026 Dog Data Solution Lab. All Rights Reserved.",
         footer_terms1: "About",
         footer_terms2: "Privacy Policy",
