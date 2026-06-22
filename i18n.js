@@ -552,6 +552,10 @@ const translations = {
         seo_s3_li2: "<strong>목둘레:</strong> 목걸이가 위치하는 목의 가장 굵은 부분을 잽니다.",
         seo_s3_li3: "<strong>등길이:</strong> 목 뒤(목덜미)에서부터 꼬리가 시작되는 뿌리 부분까지의 길이를 잽니다.",
         seo_s3_p2: "저희 mung-test.com의 반려견 맞춤형 의류 사이즈 추천기는 다년간의 데이터를 바탕으로 견종과 몸무게, 털 길이 변수를 종합적으로 연산하여 <strong>가장 이상적인 예상 가슴둘레와 추천 사이즈</strong>를 무료로 제공합니다. 우리 강아지의 편안한 일상을 위해 지금 바로 계산해보세요!",
+        
+        // Share Feature
+        btn_share_link: "링크 공유하기 🔗",
+        toast_link_copied: "링크가 클립보드에 복사되었습니다! (Link copied!)"
     },
     en: {
         seo_why_title: "Why is a Dog Temperament Analysis Test Necessary?",
@@ -1083,6 +1087,10 @@ const translations = {
         seo_s3_li2: "<strong>Neck Girth:</strong> Measure the thickest part of the neck where the collar sits.",
         seo_s3_li3: "<strong>Back Length:</strong> Measure from the base of the neck (nape) to the root of the tail.",
         seo_s3_p2: "mung-test.com's size recommender uses years of data to compute breed, weight, and hair length variables to provide the <strong>most ideal estimated chest girth and recommended size</strong> for free. Calculate now for your dog's comfortable daily life!",
+        
+        // Share Feature
+        btn_share_link: "Share Link 🔗",
+        toast_link_copied: "Link copied to clipboard!"
     }
 };
 
@@ -1184,3 +1192,76 @@ function initI18nAndTheme() {
 }
 
 document.addEventListener('DOMContentLoaded', initI18nAndTheme);
+
+// ==========================================
+// 글로벌 공유 기능 (Web Share API & 클립보드)
+// ==========================================
+function shareGlobalLink() {
+    const currentUrl = window.location.href;
+    const lang = getLang();
+    const t = translations[lang];
+    const shareTitle = document.title;
+    const shareData = {
+        title: shareTitle,
+        url: currentUrl
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData)
+            .catch((err) => {
+                console.log('Share API error or cancelled:', err);
+                // Fallback to clipboard on error
+                copyToClipboard(currentUrl, t);
+            });
+    } else {
+        // Fallback for browsers that don't support Web Share API
+        copyToClipboard(currentUrl, t);
+    }
+}
+
+function copyToClipboard(text, t) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+            showGlobalToast(t.toast_link_copied || '링크가 클립보드에 복사되었습니다!');
+        }).catch(err => {
+            console.error('Clipboard copy failed:', err);
+            fallbackCopyTextToClipboard(text, t);
+        });
+    } else {
+        fallbackCopyTextToClipboard(text, t);
+    }
+}
+
+function fallbackCopyTextToClipboard(text, t) {
+    var textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+        document.execCommand('copy');
+        showGlobalToast(t.toast_link_copied || '링크가 클립보드에 복사되었습니다!');
+    } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+        alert('링크 복사에 실패했습니다.');
+    }
+    document.body.removeChild(textArea);
+}
+
+function showGlobalToast(msg) {
+    let toast = document.getElementById('global-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'global-toast';
+        document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.className = 'toast show';
+    // Remove the class after 3 seconds
+    setTimeout(() => { 
+        toast.className = toast.className.replace('show', '').trim(); 
+    }, 3000);
+}

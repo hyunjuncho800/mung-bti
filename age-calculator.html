@@ -154,9 +154,10 @@
                 <div class="result-watermark">mung-test.com</div>
             </div>
 
-            <div class="btn-group share-buttons">
-                <button class="btn-save" onclick="saveResultImage()" data-i18n="btn_save">결과 이미지로 저장하기 📥</button>
-                <button class="btn-kakao" onclick="shareKakao()" data-i18n="btn_kakao">카카오톡 공유하기 💬</button>
+            <div class="btn-group share-buttons" style="flex-wrap: wrap;">
+                <button class="btn-save" onclick="saveResultImage()" data-i18n="btn_save" style="flex: 1 1 40%;">결과 이미지로 저장하기 📥</button>
+                <button class="btn-kakao" onclick="shareKakao()" data-i18n="btn_kakao" style="flex: 1 1 40%;">카카오톡 공유하기 💬</button>
+                <button class="btn-share" onclick="shareGlobalLink()" data-i18n="btn_share_link" style="flex: 1 1 40%;">링크 공유하기 🔗</button>
             </div>
             <div class="btn-group" style="margin-top: 12px;">
                 <button class="btn-restart" onclick="resetCalculator()" style="width:100%;" data-i18n="btn_age_restart">다시 계산하기 🔄</button>

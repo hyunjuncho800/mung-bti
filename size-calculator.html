@@ -155,8 +155,9 @@
                 <p class="result-footer-note" data-i18n="res_size_note">*본 추천은 mung-test.com의 자체 표준 규격을 기준으로 하며, 체형에 따라 약간의 오차가 있을 수 있습니다.*</p>
             </div>
 
-            <div class="btn-group share-buttons" style="display: flex; gap: 8px; margin-bottom: 12px;">
-                <button class="btn-kakao" onclick="shareKakao()" style="width: 100%; background: #fee500; color: #3c1e1e; border: none; padding: 16px; border-radius: 12px; font-weight: bold; font-size: 1.05rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05);" data-i18n="btn_kakao">카카오톡 공유하기 💬</button>
+            <div class="btn-group share-buttons" style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
+                <button class="btn-kakao" onclick="shareKakao()" style="flex: 1 1 40%; background: #fee500; color: #3c1e1e; border: none; padding: 16px; border-radius: 12px; font-weight: bold; font-size: 1.05rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05);" data-i18n="btn_kakao">카카오톡 공유하기 💬</button>
+                <button class="btn-share" onclick="shareGlobalLink()" style="flex: 1 1 40%; border-radius: 12px;" data-i18n="btn_share_link">링크 공유하기 🔗</button>
             </div>
             <div class="btn-group">
                 <button class="btn-restart" onclick="resetCalculator()" style="width: 100%; background: #fdfaf6; color: #7b6a58; border: 2px solid #e9e4dc; padding: 16px; border-radius: 12px; font-weight: bold; font-size: 1.05rem; cursor: pointer; transition: all 0.2s ease;" data-i18n="btn_restart">다시 계산하기 🔄</button>

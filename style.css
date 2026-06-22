@@ -977,6 +977,44 @@
             box-shadow: 0 6px 16px rgba(254, 229, 0, 0.3);
         }
         .btn-kakao:hover { background: #F4DC00; transform: translateY(-3px); box-shadow: 0 10px 24px rgba(254, 229, 0, 0.4); }
+        .btn-share {
+            flex: 1;
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            color: #ffffff;
+            border: none;
+            padding: 16px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-family: 'Pretendard', sans-serif;
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
+        }
+        .btn-share:hover { background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); transform: translateY(-3px); box-shadow: 0 10px 24px rgba(59, 130, 246, 0.4); }
+        #global-toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 9999;
+            left: 50%;
+            bottom: 30px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            opacity: 0;
+            transition: opacity 0.5s, bottom 0.5s;
+        }
+        #global-toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }
         .btn-save {
             flex: 1;
             background: linear-gradient(135deg, #10B981 0%, #059669 100%);
