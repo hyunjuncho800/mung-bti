@@ -57,6 +57,11 @@
             <input type="text" id="food-search-input" class="search-input" placeholder="음식 이름을 검색해보세요. (예: 사과, 초콜릿)" data-i18n-placeholder="search_food_placeholder">
         </div>
 
+        <!-- 카테고리 칩 영역 -->
+        <div class="category-chips" id="category-chips">
+            <!-- JS 렌더링 -->
+        </div>
+
         <div class="tab-group" id="food-tabs">
             <button class="tab-btn active safe" data-type="safe" id="tab-safe">
                 🟢 <span data-i18n="tab_safe">먹어도 돼요</span>
@@ -68,6 +73,11 @@
 
         <div class="food-grid" id="food-grid">
             <!-- 자바스크립트에서 렌더링 됩니다 -->
+        </div>
+
+        <!-- 더보기 버튼 -->
+        <div class="load-more-container">
+            <button id="btn-load-more" class="load-more-btn" style="display: none;">더보기 ⬇️</button>
         </div>
     </div>
 </div>
