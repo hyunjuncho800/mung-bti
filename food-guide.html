@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>댕댕이 음식 가이드 | mung-test.com</title>
+    <meta name="description" content="강아지가 먹어도 되는 음식과 먹으면 안 되는 음식을 빠르게 확인하세요.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="댕댕이 음식 가이드">
+    <meta property="og:description" content="강아지가 먹어도 되는 음식과 먹으면 안 되는 음식을 빠르게 확인하세요.">
+    <meta property="og:image" content="https://mung-test.com/og-image.png">
+    <meta property="og:url" content="https://mung-test.com/food-guide.html">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css?v=20260622_1420">
+    <link rel="stylesheet" href="food-guide.css?v=1">
+    <script src="i18n.js?v=20260622_1420"></script>
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="logo" onclick="location.href='index.html'" style="cursor: pointer;">
+            🐾 <span>mung-test.com</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="blog.html" data-i18n="nav_blog">댕댕이 팁(Blog)</a></li>
+                <li><a href="food-guide.html" class="active" data-i18n="nav_food">음식 가이드</a></li>
+                <li><a href="age-calculator.html" data-i18n="nav_age">나이 계산기</a></li>
+                <li><a href="size-calculator.html" data-i18n="nav_size">의류 사이즈 추천기</a></li>
+                <li><a href="index.html?start=true" data-i18n="nav_start">기질검사</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button id="btn-lang" class="header-btn" aria-label="언어 변경">EN</button>
+            <button id="btn-theme" class="header-btn" aria-label="테마 변경">🌙</button>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="food-guide-wrapper">
+        <div class="food-guide-header">
+            <h1 class="food-guide-title" data-i18n="food_title">댕댕이 음식 가이드</h1>
+            <p class="food-guide-desc" data-i18n="food_desc">우리 강아지가 먹어도 되는 음식일까? 급여 전 빠르게 확인해보세요.</p>
+        </div>
+
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="food-search-input" class="search-input" placeholder="음식 이름을 검색해보세요. (예: 사과, 초콜릿)" data-i18n-placeholder="search_food_placeholder">
+        </div>
+
+        <div class="tab-group" id="food-tabs">
+            <button class="tab-btn active safe" data-type="safe" id="tab-safe">
+                🟢 <span data-i18n="tab_safe">먹어도 돼요</span>
+            </button>
+            <button class="tab-btn unsafe" data-type="unsafe" id="tab-unsafe">
+                ❌ <span data-i18n="tab_unsafe">먹으면 안 돼요</span>
+            </button>
+        </div>
+
+        <div class="food-grid" id="food-grid">
+            <!-- 자바스크립트에서 렌더링 됩니다 -->
+        </div>
+    </div>
+</div>
+
+<!-- ===================== FOOD MODAL ===================== -->
+<div id="food-modal" class="legal-modal">
+    <div class="legal-modal-content">
+        <button class="legal-modal-close" onclick="closeFoodModal()">&times;</button>
+        <div class="legal-modal-body food-modal-body" id="food-modal-body">
+            <!-- 자바스크립트에서 렌더링 됩니다 -->
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer" style="background-color: #f8f9fa; padding: 30px 20px; text-align: center; border-top: 1px solid #e9ecef; margin-top: 40px;">
+    <p style="font-size: 0.8rem; color:var(--text-muted); margin: 0;">&copy; 2026 mung-test.com. All rights reserved.</p>
+</footer>
+
+<script src="food-guide.js?v=1"></script>
+</body>
+</html>

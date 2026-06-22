@@ -555,7 +555,15 @@ const translations = {
         
         // Share Feature
         btn_share_link: "링크 공유하기 🔗",
-        toast_link_copied: "링크가 클립보드에 복사되었습니다! (Link copied!)"
+        toast_link_copied: "링크가 클립보드에 복사되었습니다! (Link copied!)",
+        
+        // Food Guide
+        nav_food: "음식 가이드",
+        food_title: "댕댕이 음식 가이드",
+        food_desc: "우리 강아지가 먹어도 되는 음식일까? 급여 전 빠르게 확인해보세요.",
+        search_food_placeholder: "음식 이름을 검색해보세요. (예: 사과, 초콜릿)",
+        tab_safe: "먹어도 돼요",
+        tab_unsafe: "먹으면 안 돼요"
     },
     en: {
         seo_why_title: "Why is a Dog Temperament Analysis Test Necessary?",
@@ -1090,7 +1098,15 @@ const translations = {
         
         // Share Feature
         btn_share_link: "Share Link 🔗",
-        toast_link_copied: "Link copied to clipboard!"
+        toast_link_copied: "Link copied to clipboard!",
+        
+        // Food Guide
+        nav_food: "Food Guide",
+        food_title: "Dog Food Guide",
+        food_desc: "Is it safe for my dog to eat? Check quickly before feeding.",
+        search_food_placeholder: "Search for a food (e.g., Apple, Chocolate)",
+        tab_safe: "Safe to Eat",
+        tab_unsafe: "Do Not Eat"
     }
 };
 
