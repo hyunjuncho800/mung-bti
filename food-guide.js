@@ -1,4 +1,4 @@
-const rawFoodData = [
+const rawFoodDataKo = [
   { id: 1, name: "사과", category: "과일", isSafe: true, tags: ["비타민", "소화촉진", "씨앗제거"], summary: "씨앗과 껍질, 심지를 제외한 과육만 급여하세요.", detail: "비타민 A, C와 식이섬유가 풍부해 소화와 피로 해소에 좋습니다. 단, 사과 씨앗에는 시안화물이라는 독성이 있으므로 반드시 완전히 제거하고 작게 잘라 주어야 합니다." },
   { id: 2, name: "수박", category: "과일", isSafe: true, tags: ["수분보충", "음수량", "씨앗주의"], summary: "빨간 과육만 주시고 두꺼운 껍질과 씨는 빼주세요.", detail: "90% 이상이 수분으로 이루어져 있어 여름철 수분 보충과 열을 내리는 데 탁월합니다. 수박씨는 장폐색을 유발할 수 있고 껍질은 소화가 안 되므로 과육만 잘라 줍니다." },
   { id: 3, name: "바나나", category: "과일", isSafe: true, tags: ["칼륨", "에너지", "변비예방"], summary: "껍질을 벗기고 소량만 급여하세요.", detail: "칼륨, 섬유질, 비타민이 풍부해 마그네슘 보충과 장 건강에 좋습니다. 당도가 높으므로 당뇨가 있거나 비만인 강아지에게는 주의가 필요하며 간식 개념으로 조금만 주어야 합니다." },
@@ -43,34 +43,66 @@ const rawFoodData = [
   { id: 42, name: "감", category: "과일", isSafe: true, tags: ["단감", "홍시", "장폐색주의"], summary: "씨앗을 완벽히 제거하고 부드러운 과육만 주세요.", detail: "단감이나 홍시는 비타민이 풍부해 소량 급여 시 면역력에 좋습니다. 다만 감 씨앗은 소화되지 않고 장에 걸려 수술로 제거해야 하는 단골 원인이 되며, 탄닌 성분이 많아 과식하면 변비를 유발합니다." }
 ];
 
-// 이모지 매핑 헬퍼
+const rawFoodDataEn = [
+  { id: 1, name: "Apple", category: "Fruit", isSafe: true, tags: ["Vitamin", "Digestion", "NoSeeds"], summary: "Feed only the flesh, avoiding seeds, skin, and core.", detail: "Rich in vitamins A, C, and dietary fiber, it aids digestion and relieves fatigue. However, apple seeds contain toxic cyanide, so they must be completely removed, and the apple should be cut into small pieces." },
+  { id: 2, name: "Watermelon", category: "Fruit", isSafe: true, tags: ["Hydration", "WaterIntake", "NoSeeds"], summary: "Give only the red flesh, remove the thick rind and seeds.", detail: "Made up of over 90% water, it's excellent for hydration and cooling down in summer. Watermelon seeds can cause intestinal blockage, and the rind is indigestible, so give only the chopped flesh." },
+  { id: 3, name: "Banana", category: "Fruit", isSafe: true, tags: ["Potassium", "Energy", "PreventsConstipation"], summary: "Peel and feed in small amounts.", detail: "Rich in potassium, fiber, and vitamins, it's good for magnesium supplementation and bowel health. It is high in sugar, so caution is needed for diabetic or obese dogs, and it should be given sparingly as a treat." },
+  { id: 4, name: "Grape", category: "Fruit", isSafe: false, tags: ["AcuteRenalFailure", "Fatal", "IncludesRaisins"], summary: "A fatal food that should never be fed, not even a single grape.", detail: "Grapes, giant grapes, and raisins contain substances that cause acute kidney failure in dogs. They induce vomiting, diarrhea, and lethargy, and can lead to death in severe cases, so store them carefully." },
+  { id: 5, name: "Strawberry", category: "Fruit", isSafe: true, tags: ["Antioxidant", "VitaminC", "RemoveStem"], summary: "Remove the stem, wash thoroughly, and feed in small amounts.", detail: "Rich in antioxidants and vitamin C, it helps improve immunity and prevent aging. It contains a trace amount of xylitol, which can cause hypoglycemia if overfed, so 1-2 berries a day is appropriate." },
+  { id: 6, name: "Blueberry", category: "Fruit", isSafe: true, tags: ["Superfood", "EyeHealth", "AntiAging"], summary: "Wash thoroughly and feed fresh or frozen.", detail: "Rich in anthocyanins and antioxidants, it's excellent for the eye health and cognitive function of senior dogs. Because of its small size, it's great as a reward treat for training." },
+  { id: 7, name: "Peach", category: "Fruit", isSafe: true, tags: ["AllergyWarning", "SeedDanger", "FleshOnly"], summary: "Always discard the large seed and give only the chopped flesh.", detail: "A fruit rich in vitamins and moisture but prone to causing allergies. The peach pit, in particular, is sharp and can injure the esophagus or intestines or cause a blockage, so never let the dog get to it." },
+  { id: 8, name: "Tangerine", category: "Fruit", isSafe: true, tags: ["VitaminC", "SournessWarning", "RemoveSkin"], summary: "Peel even the inner skin and give a small amount of the pulp.", detail: "Rich in vitamin C, which is good for immunity, but the acidic components of citrus fruits can irritate a dog's stomach. Eating too much can cause vomiting or diarrhea, so it's best to let them taste just a small piece." },
+  { id: 9, name: "Avocado", category: "Fruit", isSafe: false, tags: ["PersinToxicity", "VomitingDiarrhea", "HighFat"], summary: "Contains a toxic substance called Persin, so feeding is strictly prohibited.", detail: "The 'persin' component in avocados can cause gastrointestinal upset, vomiting, and diarrhea in dogs. In addition, its fat content is too high, posing a risk of pancreatitis." },
+  { id: 10, name: "Sweet Potato", category: "Vegetable", isSafe: true, tags: ["DietaryFiber", "Steamed", "DietEnemy"], summary: "Cook before feeding, but overfeeding can cause obesity.", detail: "Rich in dietary fiber, it is good for constipation and bowel health, and is highly palatable. Steam or bake it, but due to its high carbohydrate content, overfeeding easily leads to weight gain, so portion control is essential." },
+  { id: 11, name: "Carrot", category: "Vegetable", isSafe: true, tags: ["EyeHealth", "TartarRemoval", "BetaCarotene"], summary: "Give raw for chewing fun, or slightly cook it.", detail: "Rich in beta-carotene, it helps protect vision and improve coat quality. Giving a raw carrot stick provides excellent nose-work and tartar removal effects." },
+  { id: 12, name: "Broccoli", category: "Vegetable", isSafe: true, tags: ["LightlyBlanched", "AntiCancer", "SmallAmounts"], summary: "Lightly blanch in water and chop small, focusing on the stem.", detail: "A vegetable rich in vitamins and anti-cancer compounds. However, the 'isothiocyanate' component in broccoli irritates the stomach if consumed in large quantities, so give very small amounts (less than 10% of total diet)." },
+  { id: 13, name: "Onion", category: "Vegetable", isSafe: false, tags: ["DestroysRedBloodCells", "InducesAnemia", "NeverFeed"], summary: "Destroys red blood cells, causing fatal anemia.", detail: "The onion component in foods like Jajangmyeon or curry retains its toxicity even when cooked. It destroys a dog's red blood cells, causing hemolytic anemia, vomiting, bloody urine, and jaundice, so never feed it." },
+  { id: 14, name: "Garlic", category: "Vegetable", isSafe: false, tags: ["Thiosulfate", "Anemia", "KoreanFoodWarning"], summary: "Like onions, it has toxicity and should not be fed.", detail: "The thiosulfate component in garlic causes toxic symptoms and anemia in dogs. Minced garlic is often used in Korean cuisine, so be careful not to give human side dishes or meat." },
+  { id: 15, name: "Cabbage", category: "Vegetable", isSafe: true, tags: ["StomachHealth", "Digestion", "CausesGas"], summary: "Lightly blanch or boil and feed in small amounts.", detail: "Rich in Vitamin U, which helps stomach health, making it good for dogs with weak stomachs. However, it's not good for dogs with hypothyroidism, and eating too much can cause gas and abdominal pain." },
+  { id: 16, name: "Cucumber", category: "Vegetable", isSafe: true, tags: ["Hydrating", "Diet", "BreathFreshener"], summary: "Peel and chop small for an excellent diet treat.", detail: "With almost no calories and high water content, it's the best treat for dogs needing weight loss. The crunchy texture provides chewing fun and also helps reduce bad breath." },
+  { id: 17, name: "Tomato", category: "Vegetable", isSafe: true, tags: ["RipeRedOnly", "TomatineToxicity", "CherryTomato"], summary: "Feed only perfectly ripe red tomatoes in small amounts.", detail: "Ripe tomatoes are rich in lycopene, an antioxidant, making them healthy. However, unripe green tomatoes, stems, and leaves contain a toxin called 'tomatine' that causes vomiting and arrhythmia, so be careful." },
+  { id: 18, name: "Chicken", category: "Meat", isSafe: true, tags: ["HighProtein", "ChickenBreast", "AllergyCheck"], summary: "Boiled chicken breast without seasoning is a good protein source.", detail: "Low in fat and rich in protein, it's good for muscle development and energy recovery. However, as a common dog food ingredient, many dogs unexpectedly have chicken allergies, so monitor their skin after feeding." },
+  { id: 19, name: "Beef", category: "Meat", isSafe: true, tags: ["EnergyRecovery", "RichInIron", "NoSeasoning"], summary: "Choose lean cuts and grill or boil without seasoning.", detail: "Rich in iron and essential amino acids, it's good for anemia prevention and immunity. Fatty cuts can cause pancreatitis, so choose lean cuts like round steak and cook them without salt or spices." },
+  { id: 20, name: "Pork Belly", category: "Meat", isSafe: false, tags: ["PancreatitisRisk", "HighFat", "Vomiting"], summary: "Excessively high fat content can cause pancreatitis.", detail: "Extremely fatty meats like pork belly or brisket put a heavy burden on a dog's digestive system and are a primary cause of acute pancreatitis. It is accompanied by severe vomiting and abdominal pain, so never give fatty parts." },
+  { id: 21, name: "Duck", category: "Meat", isSafe: true, tags: ["UnsaturatedFat", "CoatHealth", "HealthFood"], summary: "Cook raw or unseasoned smoked duck, drain the fat, and serve.", detail: "Rich in unsaturated fatty acids, it softens the skin and coat and helps vascular health. Commercial smoked duck for humans is too salty, so cook dog-specific duck meat or raw duck." },
+  { id: 22, name: "Pork/Chicken Bone", category: "Meat", isSafe: false, tags: ["EsophagusTear", "BowelObstruction", "CookedBoneDanger"], summary: "Cooked animal bones shatter sharply and pierce internal organs.", detail: "Unlike raw bones, boiled or roasted bones (chicken bones, pork feet bones, etc.) splinter into sharp pieces when chewed. Swallowing them can tear the esophagus, stomach, or intestines, requiring emergency surgery." },
+  { id: 23, name: "Dried Pollock", category: "Seafood", isSafe: true, tags: ["DogMedicine", "RemoveSalt", "EnergyRecovery"], summary: "Boil in water multiple times to completely remove salt and bones.", detail: "Known as 'dog medicine', it's rich in amino acids and excellent for recovery after birth or surgery. However, as a sea fish, it's salty, so soak it in water for over half a day to completely remove salt before boiling." },
+  { id: 24, name: "Salmon", category: "Seafood", isSafe: true, tags: ["Omega3", "SkinBeauty", "FullyCooked"], summary: "Raw salmon is dangerous, so must be fully cooked before feeding.", detail: "Rich in Omega-3 fatty acids, it's great for coat improvement, immunity, and joint health. However, eating it raw can cause 'salmon poisoning' (vomiting, high fever) from salmon flukes, so steam or grill it thoroughly." },
+  { id: 25, name: "Squid/Octopus", category: "Seafood", isSafe: false, tags: ["Indigestion", "StomachUpset", "DriedSeafoodDanger"], summary: "High in taurine but completely indigestible, causing stomach pain.", detail: "Shellfish and crustaceans like squid and octopus are chewy, so dogs often swallow them without chewing properly. They swell in the stomach, causing indigestion, vomiting, and severe bowel obstruction. Dried squid is especially dangerous." },
+  { id: 26, name: "Shrimp", category: "Seafood", isSafe: true, tags: ["Cholesterol", "RemoveShell", "Cooked"], summary: "Completely remove the shell, tail, and head, boil, and give only the meat.", detail: "Rich in chitosan and taurine, it's beneficial in small amounts. However, it shouldn't be given raw, and the hard, sharp shell and tail can injure the digestive tract, so they must be completely removed." },
+  { id: 27, name: "Chocolate", category: "Processed Food", isSafe: false, tags: ["Theobromine", "FatalToxin", "EmergencyRoom"], summary: "The most common and fatal poison for dogs.", detail: "The 'theobromine' in cocoa is a toxic substance dogs cannot metabolize. It causes a rapid heart rate, seizures, and vomiting. Even a small amount is life-threatening, so visit a vet immediately if ingested." },
+  { id: 28, name: "Xylitol Gum", category: "Processed Food", isSafe: false, tags: ["ExcessInsulin", "AcuteLiverFailure", "HypoglycemicShock"], summary: "Even a tiny amount causes severe hypoglycemic shock and liver damage.", detail: "Xylitol in human gum or candy causes excessive insulin secretion in dogs, leading to rapid hypoglycemia. Within 30 minutes of ingestion, lethargy, vomiting, and seizures can occur, and it causes liver necrosis." },
+  { id: 29, name: "Tofu", category: "Processed Food", isSafe: true, tags: ["PlantProtein", "Blanching", "DietFood"], summary: "Soak in cold water to remove salt, then blanch in boiling water.", detail: "Made from soybeans, tofu provides abundant plant protein and has high digestibility, making it good for senior dogs. Since coagulant (salt) is used in manufacturing, blanch in boiling water to remove salt before feeding." },
+  { id: 30, name: "Milk (Human)", category: "Beverage", isSafe: false, tags: ["LactoseIntolerance", "Diarrhea", "LactoseFreeOnly"], summary: "Human milk causes diarrhea, so give only lactose-free milk.", detail: "Dogs lack the enzyme (lactase) to break down lactose in regular cow's milk. Drinking it causes enteritis, diarrhea, and abdominal pain, so you must give pet-specific milk or lactose-free milk." },
+  { id: 31, name: "Coffee/Green Tea", category: "Beverage", isSafe: false, tags: ["CaffeinePoisoning", "HeartAttack", "Excitement"], summary: "Caffeine is fatal to a dog's heart and nervous system.", detail: "Caffeine in coffee, green tea, black tea, and energy drinks causes excessive excitement, hypertension, vomiting, arrhythmia, and seizures in dogs. Severe poisoning can lead to a heart attack." },
+  { id: 32, name: "Alcohol", category: "Beverage", isSafe: false, tags: ["AlcoholPoisoning", "BreathingDifficulty", "NeverFeed"], summary: "Even a microscopic amount of alcohol causes acute alcohol poisoning.", detail: "A dog's liver cannot process alcohol. Drinking it leads to brain damage, respiratory distress, coma, and death in severe cases. Never leave an alcohol glass on the floor out of curiosity." },
+  { id: 33, name: "Egg Yolk", category: "Other", isSafe: true, tags: ["EnergyRecovery", "Nutritious", "PerfectFood"], summary: "Fully boiled and mashed into kibble, it becomes a great nutritious meal.", detail: "Rich in protein, amino acids, and vitamins, it's excellent for a dog's fatigue recovery and coat improvement. However, it's high in calories, so adjust the portion appropriately according to their daily meal allowance." },
+  { id: 34, name: "Raw Egg White", category: "Other", isSafe: false, tags: ["Avidin", "BiotinDeficiency", "Salmonella"], summary: "Raw egg white can cause biotin deficiency and food poisoning.", detail: "Cooked egg white is safe, but raw white contains 'avidin', which blocks the absorption of Vitamin H (biotin), causing dermatitis. There's also a risk of Salmonella infection, so always boil eggs." },
+  { id: 35, name: "Cheese (Human)", category: "Processed Food", isSafe: false, tags: ["HighSalt", "HighFat", "PetCheeseRecommended"], summary: "Avoid human cheese due to excessively high salt and fat.", detail: "Regular sliced cheese or pizza cheese has too much sodium and fat, putting a strain on the dog's kidneys and potentially causing pancreatitis. If you want to feed cheese, choose unsalted baby cheese or pet-specific cheese." },
+  { id: 36, name: "Bread/Flour", category: "Processed Food", isSafe: true, tags: ["Carbohydrates", "GlutenAllergy", "SmallAmount"], summary: "Give only a tiny bit of plain white bread (soft part).", detail: "Plain bread isn't toxic, but it's a mass of simple carbs, offering no nutritional benefit and easily causing weight gain. Dogs with gluten allergies may itch, and raw dough with yeast will expand in the stomach—strictly forbidden." },
+  { id: 37, name: "Almond/Peanut", category: "Other", isSafe: false, tags: ["NutDanger", "Indigestion", "MacadamiaToxicity"], summary: "High fat makes them hard to digest, and they pose a choking hazard.", detail: "Nuts are hard and can block the esophagus or intestines if swallowed unchewed. High fat causes vomiting and diarrhea. 'Macadamia' nuts, in particular, cause nervous system toxicity in dogs and must never be fed." },
+  { id: 38, name: "Mushroom", category: "Vegetable", isSafe: true, tags: ["Immunity", "Enoki", "Shiitake"], summary: "Fully cook edible mushrooms without seasoning and chop small.", detail: "Edible mushrooms like Enoki and Shiitake are rich in beta-glucan, good for immunity. Boil them in water instead of frying in oil. Wild mushrooms encountered during walks can be deadly toxic, so never let them eat those." },
+  { id: 39, name: "Ice Cream", category: "Processed Food", isSafe: false, tags: ["ExcessSugar", "LactoseIntolerance", "Obesity"], summary: "Excessive sugar and lactose cause severe gastrointestinal distress.", detail: "Ice cream contains high amounts of sugar and dairy, causing acute diarrhea, abdominal pain, and obesity in dogs. Chocolate, green tea, or xylitol-flavored ice cream are literally toxic." },
+  { id: 40, name: "Kimchi", category: "Processed Food", isSafe: false, tags: ["Spicy", "SaltBomb", "StomachUlcer"], summary: "Spicy chili powder, garlic, and high salt irritate the stomach lining.", detail: "Korean soul food, but the worst for dogs. Capsaicin ulcerates the stomach lining, causing severe diarrhea and pain. The large amounts of garlic and onion in Kimchi also cause anemia." },
+  { id: 41, name: "Honey", category: "Other", isSafe: true, tags: ["NaturalSugar", "ColdPrevention", "BotulismWarning"], summary: "Mix a tiny amount in warm water when they have a slight cold.", detail: "Acts as a natural fatigue reliever and helps soothe coughs. Do not give to puppies under 1 year old due to the risk of botulism. Even for adult dogs, give very rarely in tiny amounts to prevent diabetes." },
+  { id: 42, name: "Persimmon", category: "Fruit", isSafe: true, tags: ["SweetPersimmon", "RipePersimmon", "BlockageWarning"], summary: "Completely remove the seeds and give only the soft flesh.", detail: "Sweet or ripe persimmons are rich in vitamins and good for immunity in small amounts. However, the seeds are undigestible and a common cause for surgical removal due to bowel blockage. Excess tannin can also cause constipation." }
+];
+
+// 이모지 매핑 헬퍼 (한국어/영어 둘 다 같은 ID/순서이므로 하나만 사용해도 무방하지만 키값은 한국어 기준)
 const iconMap = {
-  "사과": "🍎", "수박": "🍉", "바나나": "🍌", "포도": "🍇", "딸기": "🍓", "블루베리": "🫐", "복숭아": "🍑", "귤": "🍊", "아보카도": "🥑",
-  "고구마": "🍠", "당근": "🥕", "브로콜리": "🥦", "양파": "🧅", "마늘": "🧄", "양배추": "🥬", "오이": "🥒", "토마토": "🍅",
-  "닭고기": "🍗", "소고기": "🥩", "삼겹살": "🥓", "오리고기": "🦆", "돼지뼈 / 닭뼈": "🦴",
-  "북어 / 황태": "🐟", "연어": "🍣", "오징어 / 문어": "🦑", "새우": "🦐",
-  "초콜릿": "🍫", "자일리톨 껌": "🍬", "두부": "🧊", "치즈 (사람용)": "🧀", "식빵 / 밀가루": "🍞", "아이스크림": "🍦", "김치": "🌶️",
-  "우유 (사람용)": "🥛", "커피 / 녹차": "☕", "막걸리 / 술": "🍺",
-  "계란 노른자": "🥚", "계란 흰자 (날것)": "🍳", "아몬드 / 땅콩": "🥜", "버섯": "🍄", "꿀": "🍯", "감": "🍅"
+  1: "🍎", 2: "🍉", 3: "🍌", 4: "🍇", 5: "🍓", 6: "🫐", 7: "🍑", 8: "🍊", 9: "🥑",
+  10: "🍠", 11: "🥕", 12: "🥦", 13: "🧅", 14: "🧄", 15: "🥬", 16: "🥒", 17: "🍅",
+  18: "🍗", 19: "🥩", 20: "🥓", 21: "🦆", 22: "🦴",
+  23: "🐟", 24: "🍣", 25: "🦑", 26: "🦐",
+  27: "🍫", 28: "🍬", 29: "🧊", 35: "🧀", 36: "🍞", 39: "🍦", 40: "🌶️",
+  30: "🥛", 31: "☕", 32: "🍺",
+  33: "🥚", 34: "🍳", 37: "🥜", 38: "🍄", 41: "🍯", 42: "🍅"
 };
 
-// 데이터에 이모지 병합 및 키명 변경(type -> isSafe, tag -> tags 등)
-const foodData = rawFoodData.map(food => ({
-  id: food.id,
-  type: food.isSafe ? 'safe' : 'unsafe',
-  icon: iconMap[food.name] || "🍽️",
-  name: food.name,
-  category: food.category,
-  tags: food.tags,
-  tag: food.tags[0], // 메인 태그 (카드 표시용)
-  desc: food.summary,
-  warning: food.detail,
-  howTo: food.isSafe ? food.summary : "절대 급여 금지"
-}));
-
 // 상태 관리
+let foodData = [];
 let currentType = 'safe'; // 'safe' or 'unsafe'
-let currentCategory = '전체'; // 카테고리 필터
+let currentCategory = ''; // 카테고리 필터
 let searchQuery = '';
 
 // 페이지네이션
@@ -78,11 +110,49 @@ const ITEMS_PER_PAGE = 12;
 let currentPage = 1;
 let filteredDataCache = []; // 필터링된 전체 결과 캐싱
 
-const categories = ['전체', '과일', '채소', '육류', '수산물', '가공식품', '음료', '기타'];
+const categoriesKo = ['전체', '과일', '채소', '육류', '수산물', '가공식품', '음료', '기타'];
+const categoriesEn = ['All', 'Fruit', 'Vegetable', 'Meat', 'Seafood', 'Processed Food', 'Beverage', 'Other'];
+let activeCategories = [];
+
+function initData() {
+    const lang = typeof getLang === 'function' ? getLang() : 'ko';
+    const rawData = lang === 'en' ? rawFoodDataEn : rawFoodDataKo;
+    activeCategories = lang === 'en' ? categoriesEn : categoriesKo;
+
+    // 카테고리 매핑 유지 처리
+    if (currentCategory === '' || currentCategory === categoriesKo[0] || currentCategory === categoriesEn[0]) {
+        currentCategory = activeCategories[0];
+    } else {
+        // 기존 선택된 카테고리의 인덱스를 찾아 새 언어 카테고리로 변경
+        let oldCategories = lang === 'en' ? categoriesKo : categoriesEn;
+        let idx = oldCategories.indexOf(currentCategory);
+        if (idx !== -1) {
+            currentCategory = activeCategories[idx];
+        } else {
+            currentCategory = activeCategories[0];
+        }
+    }
+
+    foodData = rawData.map(food => ({
+        id: food.id,
+        type: food.isSafe ? 'safe' : 'unsafe',
+        icon: iconMap[food.id] || "🍽️",
+        name: food.name,
+        category: food.category,
+        tags: food.tags,
+        tag: food.tags[0], // 메인 태그 (카드 표시용)
+        desc: food.summary,
+        warning: food.detail,
+        howTo: food.isSafe ? food.summary : (lang === 'en' ? "Strictly forbidden" : "절대 급여 금지")
+    }));
+
+    initCategoryChips();
+    applyFilters();
+}
 
 function initCategoryChips() {
     const chipContainer = document.getElementById('category-chips');
-    chipContainer.innerHTML = categories.map(cat => 
+    chipContainer.innerHTML = activeCategories.map(cat => 
         `<button class="category-chip ${cat === currentCategory ? 'active' : ''}" data-cat="${cat}">${cat}</button>`
     ).join('');
 
@@ -102,12 +172,13 @@ function initCategoryChips() {
 }
 
 function applyFilters() {
+    const defaultCat = activeCategories[0]; // '전체' 또는 'All'
     filteredDataCache = foodData.filter(food => {
         // 1. 안전 여부 필터
         const matchType = food.type === currentType;
         
         // 2. 카테고리 필터
-        const matchCategory = currentCategory === '전체' || food.category === currentCategory;
+        const matchCategory = currentCategory === defaultCat || food.category === currentCategory;
 
         // 3. 검색어 필터 (이름 또는 태그 배열 내 텍스트 매칭)
         const query = searchQuery.toLowerCase();
@@ -206,10 +277,15 @@ function closeFoodModal() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. 카테고리 칩 초기화
-    initCategoryChips();
+    // 1. 초기 데이터 로드 및 렌더링
+    initData();
 
-    // 2. 탭 이벤트 리스너
+    // 2. 언어 변경 시 데이터 재렌더링 이벤트 수신
+    window.addEventListener('languageChanged', () => {
+        initData();
+    });
+
+    // 3. 탭 이벤트 리스너
     const tabSafe = document.getElementById('tab-safe');
     const tabUnsafe = document.getElementById('tab-unsafe');
 
@@ -233,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
         applyFilters();
     });
 
-    // 3. 검색 이벤트 리스너
+    // 4. 검색 이벤트 리스너
     const searchInput = document.getElementById('food-search-input');
     searchInput.addEventListener('input', (e) => {
         searchQuery = e.target.value.trim();
@@ -241,13 +317,10 @@ document.addEventListener('DOMContentLoaded', () => {
         applyFilters();
     });
 
-    // 4. 더보기 버튼 이벤트 리스너
+    // 5. 더보기 버튼 이벤트 리스너
     const loadMoreBtn = document.getElementById('btn-load-more');
     loadMoreBtn.addEventListener('click', () => {
         currentPage++;
         renderFoodGrid(false); // reset = false 로 계속 이어붙이기
     });
-
-    // 5. 최초 렌더링
-    applyFilters();
 });
