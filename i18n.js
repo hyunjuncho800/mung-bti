@@ -251,6 +251,11 @@ const translations = {
                 <li style="margin-bottom: 10px;"><strong>증상:</strong> 심박수 급증, 발작, 구토를 일으키며 소량으로도 목숨을 잃을 수 있습니다.</li>
                 <li style="margin-bottom: 10px;"><strong>대처법:</strong> 닿지 않는 곳에 보관하는 것이 최선이며, 섭취 시 24시간 응급실로 직행해야 합니다.</li>
             </ul>
+            
+            <div style="margin-top: 40px; padding: 24px; background: #E6F4EA; border: 2px dashed #1E8E3E; border-radius: 12px; text-align: center;">
+                <h3 style="margin-top: 0; color: #137333; font-size: 1.15rem; margin-bottom: 12px;">더 많은 안전/위험 음식이 궁금하시다면?</h3>
+                <a href="food-guide.html" style="display: inline-block; background: #1E8E3E; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">댕댕이 음식 가이드 확인하기 🔍</a>
+            </div>
         `,
 
         footer_copyright: "© 2026 반려견데이터솔루션 Lab. All Rights Reserved.",
@@ -842,6 +847,11 @@ const translations = {
                 <li style="margin-bottom: 10px;"><strong>Symptoms:</strong> Increased heart rate, seizures, and vomiting. Even small amounts can be fatal.</li>
                 <li style="margin-bottom: 10px;"><strong>Action:</strong> Keeping it out of reach is best. If ingested, rush to a 24-hour emergency room immediately.</li>
             </ul>
+            
+            <div style="margin-top: 40px; padding: 24px; background: #E6F4EA; border: 2px dashed #1E8E3E; border-radius: 12px; text-align: center;">
+                <h3 style="margin-top: 0; color: #137333; font-size: 1.15rem; margin-bottom: 12px;">Curious about more safe/unsafe foods?</h3>
+                <a href="food-guide.html" style="display: inline-block; background: #1E8E3E; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Check out the Dog Food Guide 🔍</a>
+            </div>
         `,
 
         footer_copyright: "© 2026 Dog Data Solution Lab. All Rights Reserved.",
