@@ -253,7 +253,7 @@
         document.getElementById('res-inherent-desc').textContent = result.inherentDesc;
         
         // 새로 추가된 SEO 최적화 텍스트 바인딩
-        document.getElementById('res-letter-desc').innerHTML = `"${result.letterDesc}"`;
+        document.getElementById('res-desc').innerHTML = `"${result.letterDesc}"`;
         document.getElementById('res-features-desc').innerHTML = result.featuresDesc;
         document.getElementById('res-stress-desc').innerHTML = result.stressDesc;
         document.getElementById('res-tips-desc').innerHTML = result.tipsDesc;
