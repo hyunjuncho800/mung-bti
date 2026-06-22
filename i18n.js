@@ -225,6 +225,33 @@ const translations = {
                 <a href="size-calculator.html" style="display: inline-block; background: #9b59b6; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">의류 사이즈 추천기 활용해보기 👕</a>
             </div>
         `,
+        blog_post7_title: "초보 견주 필독! 강아지가 절대 먹으면 안 되는 치명적인 음식 3가지",
+        blog_post7_excerpt: '"고기니까 괜찮겠지?" 흔히 하는 실수부터 단 한 알로도 치명적인 위험을 초래하는 일상 속 위험한 음식들과 응급 대처법을 정리했습니다.',
+        blog_post7_body: `
+            <h1>초보 견주 필독! 강아지가 절대 먹으면 안 되는 치명적인 음식 3가지</h1>
+            <p>"고기니까 괜찮겠지?" 흔히 하는 실수부터 단 한 알로도 치명적인 위험을 초래하는 일상 속 위험한 음식들과 응급 대처법을 정리했습니다.</p>
+            
+            <h3>1. 포도 및 건포도: 단 한 알도 치명적</h3>
+            <p>포도와 건포도는 강아지에게 급성 신부전을 유발하는 가장 대표적인 위험 음식입니다.</p>
+            <ul>
+                <li style="margin-bottom: 10px;"><strong>증상:</strong> 구토, 설사, 무기력증이 수시간 내에 발생할 수 있습니다.</li>
+                <li style="margin-bottom: 10px;"><strong>대처법:</strong> 섭취가 의심되면 즉시 동물병원에 방문하여 구토 유발 처치를 받아야 합니다.</li>
+            </ul>
+
+            <h3>2. 양파와 마늘: 익혀도 사라지지 않는 독성</h3>
+            <p>양파와 마늘에 포함된 티오황산염은 강아지의 적혈구를 파괴하여 용혈성 빈혈을 일으킵니다.</p>
+            <ul>
+                <li style="margin-bottom: 10px;"><strong>증상:</strong> 혈뇨, 황달, 심각한 기력 저하가 나타납니다.</li>
+                <li style="margin-bottom: 10px;"><strong>주의사항:</strong> 짜장면, 카레, 고기 국물 등 사람이 먹는 음식에 섞인 양파도 절대 피해야 합니다.</li>
+            </ul>
+
+            <h3>3. 초콜릿 (카카오): 일상 속 가장 흔한 위험</h3>
+            <p>초콜릿의 테오브로민 성분은 강아지가 대사하지 못하는 독극물과 같습니다.</p>
+            <ul>
+                <li style="margin-bottom: 10px;"><strong>증상:</strong> 심박수 급증, 발작, 구토를 일으키며 소량으로도 목숨을 잃을 수 있습니다.</li>
+                <li style="margin-bottom: 10px;"><strong>대처법:</strong> 닿지 않는 곳에 보관하는 것이 최선이며, 섭취 시 24시간 응급실로 직행해야 합니다.</li>
+            </ul>
+        `,
 
         footer_copyright: "© 2026 반려견데이터솔루션 Lab. All Rights Reserved.",
         footer_terms1: "소개 및 문의",
@@ -787,6 +814,34 @@ const translations = {
                 <h3 style="margin-top: 0; color: #6c3483; font-size: 1.15rem; margin-bottom: 12px;">Curious about a mat or clothes size suitable for your child's body shape?</h3>
                 <a href="size-calculator.html" style="display: inline-block; background: #9b59b6; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Try using the Clothing Size Recommender 👕</a>
             </div>
+        `,
+
+        blog_post7_title: "A Must-Read for New Owners! 3 Fatal Foods Dogs Must Never Eat",
+        blog_post7_excerpt: "From the common mistake of 'It's just meat, so it's fine' to everyday foods that cause fatal risks even with just one piece, here are the dangerous foods and emergency actions.",
+        blog_post7_body: `
+            <h1>A Must-Read for New Owners! 3 Fatal Foods Dogs Must Never Eat</h1>
+            <p>From the common mistake of "It's just meat, so it's fine" to everyday foods that cause fatal risks even with just one piece, here are the dangerous foods and emergency actions.</p>
+            
+            <h3>1. Grapes and Raisins: Even One is Fatal</h3>
+            <p>Grapes and raisins are the most common dangerous foods that cause acute kidney failure in dogs.</p>
+            <ul>
+                <li style="margin-bottom: 10px;"><strong>Symptoms:</strong> Vomiting, diarrhea, and lethargy can occur within hours.</li>
+                <li style="margin-bottom: 10px;"><strong>Action:</strong> If ingestion is suspected, visit a veterinary clinic immediately to induce vomiting.</li>
+            </ul>
+
+            <h3>2. Onions and Garlic: Toxicity That Persists Even When Cooked</h3>
+            <p>Thiosulfate in onions and garlic destroys a dog's red blood cells, causing hemolytic anemia.</p>
+            <ul>
+                <li style="margin-bottom: 10px;"><strong>Symptoms:</strong> Blood in urine, jaundice, and severe lethargy.</li>
+                <li style="margin-bottom: 10px;"><strong>Warning:</strong> Absolutely avoid human foods mixed with onions like Jajangmyeon, curry, or meat broth.</li>
+            </ul>
+
+            <h3>3. Chocolate (Cacao): The Most Common Danger in Daily Life</h3>
+            <p>Theobromine in chocolate is like a poison that dogs cannot metabolize.</p>
+            <ul>
+                <li style="margin-bottom: 10px;"><strong>Symptoms:</strong> Increased heart rate, seizures, and vomiting. Even small amounts can be fatal.</li>
+                <li style="margin-bottom: 10px;"><strong>Action:</strong> Keeping it out of reach is best. If ingested, rush to a 24-hour emergency room immediately.</li>
+            </ul>
         `,
 
         footer_copyright: "© 2026 Dog Data Solution Lab. All Rights Reserved.",
