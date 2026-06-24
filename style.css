@@ -1324,3 +1324,47 @@ body.dark-mode .footer-links button {
     margin-left: 20px;
     margin-bottom: 10px;
 }
+
+/* ===================== 서브페이지 다크모드 공통 (나이계산기, 사이즈추천기 등) ===================== */
+body.dark-mode .calc-card,
+body.dark-mode .seo-article,
+body.dark-mode .result-card {
+    background-color: var(--card);
+    border-color: var(--border);
+}
+
+body.dark-mode .calc-title,
+body.dark-mode .calc-subtitle,
+body.dark-mode .input-group label,
+body.dark-mode .result-heading,
+body.dark-mode .result-desc {
+    color: var(--text);
+}
+
+body.dark-mode .seo-article h2 {
+    color: #ffffff;
+}
+
+body.dark-mode .seo-article p,
+body.dark-mode .seo-article li {
+    color: var(--text-muted);
+}
+
+body.dark-mode .seo-article li strong {
+    color: var(--text);
+}
+
+body.dark-mode select {
+    background-color: var(--card) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+}
+
+body.dark-mode select option {
+    background-color: var(--card);
+    color: var(--text);
+}
+
+body.dark-mode .select-wrapper::after {
+    color: var(--text-muted);
+}
