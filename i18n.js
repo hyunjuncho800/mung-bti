@@ -21,6 +21,15 @@ const translations = {
         nav_size: "의류 사이즈 추천기",
         nav_start: "기질검사",
         nav_blog: "댕댕이 팁(Blog)",
+        nav_food: "음식 가이드",
+        nav_breeds: "견종 백과사전",
+        nav_diagnostics: "자가진단 가이드",
+        nav_travel: "여행 가이드",
+        nav_home: "홈",
+        desc_breeds: "말티즈, 푸들 등 인기 반려견의 성격, 역사, 건강 정보 등 모든 것을 담은 심도 깊은 가이드입니다.",
+        desc_diagnostics: "우리 아이의 이상 행동이나 증상의 원인이 궁금하신가요? 심리적, 신체적 원인과 대처법을 확인하세요.",
+        desc_travel: "반려견과 함께 떠나는 완벽한 여행을 위한 준비부터 펫티켓까지.",
+        logo_food: "🐾 반려견 음식 가이드",
         logo_blog: "🐾 댕댕이 팁(Blog)",
         res_detail_title: "🔍 기질 성향 상세 분석",
         res_stress_title: "⚡ 이럴 때 가장 스트레스 받아요",
@@ -29,6 +38,43 @@ const translations = {
         res_chemistry_title_main: "🐾 찰떡궁합 & 상극 추천",
         res_owner_prefix: "보호자",
         res_dog_prefix: "강아지",
+
+        // Index Content
+        index_logo: "🐾 반려견 라이프 종합 가이드",
+        index_hero_title: "우리집 댕댕이의 모든 것,<br><span>한 곳에서 확인하세요!</span>",
+        index_hero_desc: "행복한 반려 생활을 위해 어디서부터 시작해야 할지 고민이셨나요? 아이를 위한 모든 것을 한곳에 모았습니다.<br><br>단순한 정보 제공을 넘어, 아이의 내면을 깊이 이해하는 과학적인 기질 검사부터 견종별 다양한 체형을 반영한 의류 사이즈 추천 시스템, 그리고 실전 양육 가이드까지 제공하는 대한민국 유일의 종합 반려견 라이프 솔루션입니다.<br><br>지금 바로 우리 강아지를 위한 맞춤형 라이프 가이드를 확인해 보세요.",
+        index_value1_title: "데이터 기반:",
+        index_value1_desc: "통계와 분석을 통해 반려견의 기질과 정확한 나이를 예측합니다.",
+        index_value2_title: "완벽한 핏:",
+        index_value2_desc: "실패 없는 반려견 의류 쇼핑을 위한 정밀한 사이즈 기준을 제공합니다.",
+        index_value3_title: "전문 가이드:",
+        index_value3_desc: "일상 케어부터 음식 급여 가이드까지 건강한 라이프스타일을 지원합니다.",
+        index_stat_label: "마음을 알아본 보호자 수",
+        index_stat_desc: "오늘도 많은 댕댕이들이 참여하고 있어요! 🐶",
+        index_service1_title: "반려견 기질 검사",
+        index_service1_desc: "동물행동학을 기반으로 우리 아이의 타고난 기질과 후천적 조율 성향을 정밀 분석합니다.",
+        index_service1_btn: "검사 시작하기 →",
+        index_service2_title: "댕댕이 팁(Blog)",
+        index_service2_desc: "분리불안, 사회화, 식습관 등 반려 생활의 고민을 해결하는 풍성한 훈련 및 케어 노하우를 만나보세요.",
+        index_service2_btn: "유용한 팁 읽기 →",
+        index_service3_title: "음식 가이드",
+        index_service3_desc: "우리 강아지가 먹어도 되는 음식과 절대 먹으면 안 되는 음식을 한눈에 확인하세요.",
+        index_service3_btn: "가이드 보기 →",
+        index_service4_title: "의류 사이즈 추천기",
+        index_service4_desc: "견종별 다양한 체형을 반영한 맞춤형 의류 사이즈 추천 가이드입니다.",
+        index_service4_btn: "사이즈 확인하기 →",
+        index_service5_title: "나이 계산기",
+        index_service5_desc: "소형견부터 대형견까지! 우리 강아지의 사람 나이를 정확하게 계산해 드립니다.",
+        index_service5_btn: "나이 계산하기 →",
+        index_service6_title: "견종 백과사전",
+        index_service6_desc: "말티즈, 푸들, 포메라니안 등 우리나라 인기 반려견의 성격, 역사, 건강 정보 등 모든 것을 담은 심도 깊은 백과사전입니다.",
+        index_service6_btn: "견종 정보 보기 →",
+        index_service7_title: "자가진단 가이드",
+        index_service7_desc: "우리 아이의 이상 행동이나 증상의 원인이 궁금하신가요? 심리적/신체적 원인과 집에서 할 수 있는 홈케어 방법을 알아보세요.",
+        index_service7_btn: "증상 진단하기 →",
+        index_service8_title: "여행 및 아웃도어 가이드",
+        index_service8_desc: "반려견과 함께하는 장거리 여행, 펜션 에티켓, 대중교통 탑승 훈련 등 프로 아웃도어 라이프를 위한 필수 가이드입니다.",
+        index_service8_btn: "여행 팁 확인하기 →",
         
         // Blog Data (Hero, Categories, Cards)
         blog_hero_title: "반려견 양육 가이드 및 칼럼",
@@ -190,7 +236,7 @@ const translations = {
             <p>집 안 환경을 조금만 바꿔주어도 슬개골 탈구의 진행 속도를 현저히 늦출 수 있습니다. 생활 속 위험 요소들을 제거하는 것이 가장 중요합니다.</p>
             
             <h3>① 미끄럼 방지 매트 시공: 선택이 아닌 필수</h3>
-            <p>한국의 일반적인 주거 환경인 마룻바닥이나 장판은 강아지의 발바닥 패드가 접지력을 발휘하기에는 빙판길과 다를 바가 없습니다. 아이가 장난감을 쫓아 달리다 미끄러지면서 브레이크를 밟을 때, 관절과 인대에 어마어마한 비틀림 토크(Torque)가 발생합니다. 강아지가 주로 뛰어노는 거실과 복도 동선에는 반드시 <strong>충격 흡수가 되고 표면 마찰력이 높은 전용 매트</strong>를 깔아주셔야 합니다. 매트는 너무 푹신하면 오히려 관절에 무리가 가므로, 적당히 탄탄하면서도 밀리지 않는 제품을 선택하는 것이 기준입니다.</p>
+            <p>한국의 일반적인 주거 환경인 마룻바닥이나 장판은 강아지의 발바닥 패드가 접지력을 발휘하기에는 빙판길과 다를 바가 없습니다. 아이가 장난감을 쫓아 달리다 미끄러지면서 브레이크를 밟을 때, 관절과 인대에 어마어마한 비틀림 토크(Torque)가 발생합니다. 강아지가 주로 뛰어노는 거실과 복도 동선에는 반드시 <strong>충격 흡수가 되고 표면 마찰력이 높은 전용 매트</strong>를 깔아주셔야 합니다. 매트는 너무 푹신하면 오히려 관절에 무리가 가므로, 적당히 탄탄하면서도 밀리지 않는 제품을 선택하는 것이 기준합니다.</p>
 
             <h3>② 침대 및 소파 계단(슬라이드) 설치</h3>
             <p>보호자 곁으로 오기 위해 높은 소파나 침대에서 뛰어내리는 행동은 어깨와 무릎 관절에 체중의 수 배에 달하는 충격을 가합니다. 반드시 전용 계단이나 경사로(슬라이드)를 설치해 주세요. 주의할 점은, 경사각이 너무 가파르면 오히려 오르내릴 때 뒷다리에 과도한 하중이 실리게 되므로, 경사가 완만한 슬라이드형 제품이나 단차가 낮고 밟는 면적이 넓은 계단을 선택하는 것이 바람직합니다. 아이가 계단 사용에 익숙해지도록 간식으로 유도하며 안전하게 오르내리는 교육을 병행해 주세요.</p>
@@ -265,27 +311,6 @@ const translations = {
         footer_terms4: "행동학 근거 안내",
         footer_disclaimer_main: "본 검사는 교육·참고용 동물행동학 정보를 바탕으로 제작되었으며, 수의사 진료를 대체하지 않습니다.",
         footer_disclaimer_age: "본 계산기는 미국 켄넬 클럽(AKC) 데이터를 참고하여 제작되었으며, 개체별 건강 상태에 따라 오차가 있을 수 있습니다.",
-
-        // Blog Data (Hero, Categories, Cards)
-        blog_hero_title: "반려견 양육 가이드 및 칼럼",
-        blog_hero_desc: "우리 아이의 행동 뒤에 숨겨진 진짜 마음을 알아보고, 더 행복한 반려 생활을 위한 실전 노하우를 확인하세요.",
-        blog_cat_behavior: "행동·심리",
-        blog_cat_training: "교육·훈련",
-        blog_cat_health: "건강·케어",
-        blog_cat_lifestyle: "생활·상식",
-        
-        blog_post1_title: "강아지가 자꾸 주인을 따라다니는 이유와 분리불안",
-        blog_post1_excerpt: "화장실 문 앞까지 졸졸 따라오는 반려견. 귀엽기도 하지만 혹시 분리불안은 아닐까요? 강아지의 애착 행동과 스트레스의 차이를 구분하고 건강하게 독립심을 길러주는 방법을 소개합니다.",
-        blog_post2_title: "긍정 강화 훈련의 오해와 진실: 간식만 주면 될까?",
-        blog_post2_excerpt: "클리커와 간식을 사용하는 긍정 강화 훈련. 간식 없이도 훈련 효과를 유지할 수 있을까요? 올바른 보상 타이밍과 칭찬의 기술을 통해 강아지와의 신뢰를 200% 높이는 팁.",
-        blog_post3_title: "스트레스 제로! 평화로운 산책 매너 가이드",
-        blog_post3_excerpt: "리드줄을 강하게 당기거나 다른 개를 보면 짖는 강아지. 산책이 전투가 되지 않도록 하는 '리쉬 워킹'과 후각을 만족시키는 노즈워크 산책법의 핵심 원리를 파헤칩니다.",
-        blog_post4_title: "강아지 옷 사이즈 실패 없이 고르는 방법",
-        blog_post4_excerpt: "몸무게만 보고 옷을 샀다가 작아서 못 입힌 경험 있으신가요? 푸들, 말티즈, 포메라니안 등 견종별 체형과 털 찐 상태를 고려한 정확한 신체 측정법과 피팅 체크리스트를 대공개합니다.",
-        blog_post5_title: "우리 강아지 카밍 시그널 해석하기: 몸짓으로 말하는 속마음",
-        blog_post5_excerpt: "강아지가 갑자기 코를 핥거나 하품을 하는 이유는 무엇일까요? 불안과 스트레스 상황에서 평화를 요청하는 바디 랭귀지, '카밍 시그널' 5가지와 보호자의 올바른 대처법을 알아봅니다.",
-        blog_post6_title: "슬개골 탈구 예방을 위한 실내 환경 조성 및 관절 마사지",
-        blog_post6_excerpt: "소형견 보호자들의 가장 큰 고민거리, 슬개골 탈구! 수술을 피하기 위해 집에서 당장 실천할 수 있는 환경 조성법과 재활 전문가가 추천하는 하루 5분 관절 마사지 꿀팁을 알아봅니다.",
 
         // Header Toggles
         btn_lang_toggle: "EN",
@@ -614,8 +639,17 @@ const translations = {
         nav_about: "About & Contact",
         nav_age: "Age Calculator",
         nav_size: "Size Recommender",
-        nav_start: "Temperament Test",
-        nav_blog: "Dog Tips",
+        nav_start: "Test Start",
+        nav_blog: "Doggy Tips",
+        nav_food: "Food Guide",
+        nav_breeds: "Breeds Encyclopedia",
+        nav_diagnostics: "Diagnostics Guide",
+        nav_travel: "Travel Guide",
+        nav_home: "Home",
+        desc_breeds: "An in-depth guide covering the personality, history, and health information of popular dogs like Maltese and Poodles.",
+        desc_diagnostics: "Curious about the causes of your dog's unusual behavior? Discover psychological and physical causes along with home care tips.",
+        desc_travel: "Everything you need for a perfect trip with your dog, from preparation to petiquette.",
+        logo_food: "🐾 Dog Food Guide",
         logo_blog: "🐾 Dog Tips",
         res_detail_title: "🔍 Detailed Temperament Analysis",
         res_stress_title: "⚡ Most Stressful Situations",
@@ -632,6 +666,44 @@ const translations = {
         blog_cat_training: "Training",
         blog_cat_health: "Health & Care",
         blog_cat_lifestyle: "Lifestyle",
+
+        // Index
+        index_logo: "🐾 Dog Life Comprehensive Guide",
+        nav_home: "Home",
+        index_hero_title: "Everything for your dog,<br><span>in one place!</span>",
+        index_hero_desc: "Have you been wondering where to start for a happy journey with your dog? We have gathered everything for your child in one place.<br><br>Going beyond simple information provision, our platform is Korea's only comprehensive dog life solution that provides a scientific temperament test to deeply understand your dog's inner self, a clothing size recommendation system reflecting various body types of different breeds, and practical parenting guides.<br><br>Discover the customized life guide for your dog right now.",
+        index_value1_title: "Data-Driven:",
+        index_value1_desc: "Predicts your dog's temperament and exact age through statistics and analysis.",
+        index_value2_title: "Perfect Fit:",
+        index_value2_desc: "Provides precise size standards for failure-free dog clothing shopping.",
+        index_value3_title: "Expert Guide:",
+        index_value3_desc: "Supports a healthy lifestyle from daily care to food intake guides.",
+        index_stat_label: "Number of guardians who have discovered their dogs' minds",
+        index_stat_desc: "Many dogs are participating today too! 🐶",
+        index_service1_title: "Dog Temperament Test",
+        index_service1_desc: "Precisely analyzes your dog's innate temperament and acquired tuning tendency based on ethology.",
+        index_service1_btn: "Start Test →",
+        index_service2_title: "Dog Tips (Blog)",
+        index_service2_desc: "Discover rich training and care know-how to solve concerns while raising a dog, such as separation anxiety, socialization, and eating habits.",
+        index_service2_btn: "Read Useful Tips →",
+        index_service3_title: "Food Guide",
+        index_service3_desc: "Find out at a glance the foods your dog can eat and the foods they should never eat.",
+        index_service3_btn: "View Guide →",
+        index_service4_title: "Size Recommender",
+        index_service4_desc: "A customized clothing size recommendation guide reflecting the various body types of different breeds.",
+        index_service4_btn: "Check Size →",
+        index_service5_title: "Age Calculator",
+        index_service5_desc: "From small dogs to large dogs! We accurately calculate your dog's age in human years.",
+        index_service5_btn: "Calculate Age →",
+        index_service6_title: "Dog Breeds Encyclopedia",
+        index_service6_desc: "An in-depth encyclopedia covering the personality, history, and health information of popular dog breeds like Maltese, Poodles, and Pomeranians.",
+        index_service6_btn: "View Breed Info →",
+        index_service7_title: "Diagnostics Guide",
+        index_service7_desc: "Curious about the cause of your dog's unusual behavior or symptoms? Discover psychological/physical causes and home care methods you can try.",
+        index_service7_btn: "Diagnose Symptoms →",
+        index_service8_title: "Travel & Outdoor Guide",
+        index_service8_desc: "Essential guides for a pro-outdoor life, including long-distance travel, pension etiquette, and public transportation training with your dog.",
+        index_service8_btn: "Check Travel Tips →",
         
         blog_post1_title: "Why Does My Dog Follow Me Everywhere? Separation Anxiety Explained",
         blog_post1_excerpt: "A dog following you to the bathroom—is it just affection or separation anxiety? We explain the difference between healthy attachment and stress, and how to foster independence.",
@@ -1179,11 +1251,12 @@ const translations = {
 // 공통 언어 및 테마 관리
 // ==========================================
 function getLang() {
-    return localStorage.getItem('mung_lang') || 'ko';
+    return localStorage.getItem('mung_lang') || localStorage.getItem('lang') || 'ko';
 }
 
 function applyLanguage(lang) {
     localStorage.setItem('mung_lang', lang);
+    localStorage.setItem('lang', lang); // For backward compatibility with cached scripts
     const btnLang = document.getElementById('btn-lang');
     if (btnLang) btnLang.textContent = translations[lang].btn_lang_toggle;
     

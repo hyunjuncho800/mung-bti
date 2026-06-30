@@ -37,8 +37,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css?v=20260622_1420">
-    <script src="i18n.js?v=20260622_1420"></script>
+    <link rel="stylesheet" href="style.css?v=original_v1">
+    <script src="i18n.js?v=toss_v2"></script>
 
     <style>
         .blog-hero {
@@ -48,8 +48,8 @@
             border-bottom: 1px solid #f0e6d2;
         }
         [data-theme="dark"] .blog-hero {
-            background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
-            border-bottom: 1px solid #333;
+            background: var(--bg);
+            border-bottom: none;
         }
         .blog-hero h1 {
             font-size: 2.2rem;
@@ -96,7 +96,7 @@
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            border-bottom: 1px solid var(--border);
+            border-bottom: none;
         }
 
         .blog-content {
@@ -215,6 +215,37 @@
                 font-size: 1.5rem;
             }
         }
+
+        /* Pagination Styles */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 40px auto;
+            padding-bottom: 40px;
+        }
+        .pagination button {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .pagination button:hover {
+            background: #f39c12;
+            color: white;
+            border-color: #f39c12;
+        }
+        .pagination button.active {
+            background: #e67e22;
+            color: white;
+            border-color: #e67e22;
+        }
     </style>
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
@@ -222,21 +253,26 @@
 
 <header>
     <div class="header-inner">
-        <a href="index.html" class="logo" data-i18n="logo_blog">🐾 댕댕이 팁(Blog)</a>
-        <div class="header-actions">
-            <button id="btn-lang" class="header-btn" aria-label="언어 변경" data-i18n="btn_lang_toggle">EN</button>
-            <button id="btn-theme" class="header-btn" aria-label="테마 변경">🌙</button>
-            <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
-        </div>
+        <a href="index.html" class="logo" data-i18n="nav_blog" style="color: var(--primary);">🐾 댕댕이 팁(Blog)</a>
+        <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
         <nav>
             <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="mung-test.html">반려견 기질 검사</a></li>
                 <li><a href="blog.html" style="font-weight:bold; color:var(--primary);" data-i18n="nav_blog">댕댕이 팁(Blog)</a></li>
                 <li><a href="food-guide.html" data-i18n="nav_food">음식 가이드</a></li>
                 <li><a href="age-calculator.html" data-i18n="nav_age">나이 계산기</a></li>
                 <li><a href="size-calculator.html" data-i18n="nav_size">의류 사이즈 추천기</a></li>
-                <li><a href="index.html?start=true" data-i18n="nav_start">기질검사</a></li>
+                <li><a href="breeds.html" data-i18n="nav_breeds">견종 백과사전</a></li>
+                <li><a href="diagnostics.html" data-i18n="nav_diagnostics">자가진단 가이드</a></li>
+                <li><a href="travel.html" data-i18n="nav_travel">여행 가이드</a></li>
+
             </ul>
         </nav>
+        <div class="header-actions">
+            <button id="btn-lang" class="header-btn" aria-label="언어 변경" data-i18n="btn_lang_toggle">EN</button>
+            <button id="btn-theme" class="header-btn" aria-label="테마 변경">🌙</button>
+        </div>
     </div>
 </header>
 
@@ -250,130 +286,24 @@
     구글 애드센스 광고 배치 영역 — 상단 배너 (Responsive / Auto Ads)
 </div>
 
-<main class="blog-grid">
-    <!-- Post 1 -->
-    <article class="blog-card" onclick="openBlogModal('post1')">
-        <div class="blog-thumb">🐕</div>
-        <div class="blog-content">
-            <span class="blog-category" data-i18n="blog_cat_behavior">행동·심리</span>
-            <h2 class="blog-title" data-i18n="blog_post1_title">강아지가 자꾸 주인을 따라다니는 이유와 분리불안</h2>
-            <p class="blog-excerpt" data-i18n="blog_post1_excerpt">화장실 문 앞까지 졸졸 따라오는 반려견. 귀엽기도 하지만 혹시 분리불안은 아닐까요? 강아지의 애착 행동과 스트레스의 차이를 구분하고 건강하게 독립심을 길러주는 방법을 소개합니다.</p>
-        </div>
-    </article>
-
-    <!-- Post 2 -->
-    <article class="blog-card" onclick="openBlogModal('post2')">
-        <div class="blog-thumb">🍖</div>
-        <div class="blog-content">
-            <span class="blog-category" data-i18n="blog_cat_training">교육·훈련</span>
-            <h2 class="blog-title" data-i18n="blog_post2_title">긍정 강화 훈련의 오해와 진실: 간식만 주면 될까?</h2>
-            <p class="blog-excerpt" data-i18n="blog_post2_excerpt">클리커와 간식을 사용하는 긍정 강화 훈련. 간식 없이도 훈련 효과를 유지할 수 있을까요? 올바른 보상 타이밍과 칭찬의 기술을 통해 강아지와의 신뢰를 200% 높이는 팁.</p>
-        </div>
-    </article>
-
-    <!-- Post 3 -->
-    <article class="blog-card" onclick="openBlogModal('post3')">
-        <div class="blog-thumb">🌳</div>
-        <div class="blog-content">
-            <span class="blog-category" data-i18n="blog_cat_health">건강·케어</span>
-            <h2 class="blog-title" data-i18n="blog_post3_title">스트레스 제로! 평화로운 산책 매너 가이드</h2>
-            <p class="blog-excerpt" data-i18n="blog_post3_excerpt">리드줄을 강하게 당기거나 다른 개를 보면 짖는 강아지. 산책이 전투가 되지 않도록 하는 '리쉬 워킹'과 후각을 만족시키는 노즈워크 산책법의 핵심 원리를 파헤칩니다.</p>
-        </div>
-    </article>
-
-    <!-- Post 4 -->
-    <article class="blog-card" onclick="openBlogModal('post4')">
-        <div class="blog-thumb">👕</div>
-        <div class="blog-content">
-            <span class="blog-category" data-i18n="blog_cat_lifestyle">생활·상식</span>
-            <h2 class="blog-title" data-i18n="blog_post4_title">강아지 옷 사이즈 실패 없이 고르는 방법</h2>
-            <p class="blog-excerpt" data-i18n="blog_post4_excerpt">몸무게만 보고 옷을 샀다가 작아서 못 입힌 경험 있으신가요? 푸들, 말티즈, 포메라니안 등 견종별 체형과 털 찐 상태를 고려한 정확한 신체 측정법과 피팅 체크리스트를 대공개합니다.</p>
-        </div>
-    </article>
-
-    <!-- Post 5 -->
-    <article class="blog-card" onclick="openBlogModal('post5')">
-        <div class="blog-thumb">🤫</div>
-        <div class="blog-content">
-            <span class="blog-category" data-i18n="blog_cat_behavior">행동·심리</span>
-            <h2 class="blog-title" data-i18n="blog_post5_title">우리 강아지 카밍 시그널 해석하기: 몸짓으로 말하는 속마음</h2>
-            <p class="blog-excerpt" data-i18n="blog_post5_excerpt">강아지가 갑자기 코를 핥거나 하품을 하는 이유는 무엇일까요? 불안과 스트레스 상황에서 평화를 요청하는 바디 랭귀지, '카밍 시그널' 5가지와 보호자의 올바른 대처법을 알아봅니다.</p>
-        </div>
-    </article>
-
-    <!-- Post 6 -->
-    <article class="blog-card" onclick="openBlogModal('post6')">
-        <div class="blog-thumb">🦴</div>
-        <div class="blog-content">
-            <span class="blog-category" data-i18n="blog_cat_health">건강·케어</span>
-            <h2 class="blog-title" data-i18n="blog_post6_title">슬개골 탈구 예방을 위한 실내 환경 조성 및 관절 마사지</h2>
-            <p class="blog-excerpt" data-i18n="blog_post6_excerpt">소형견 보호자들의 가장 큰 고민거리, 슬개골 탈구! 수술을 피하기 위해 집에서 당장 실천할 수 있는 환경 조성법과 재활 전문가가 추천하는 하루 5분 관절 마사지 꿀팁을 알아봅니다.</p>
-        </div>
-    </article>
-
-    <!-- Post 7 -->
-    <article class="blog-card" onclick="openBlogModal('post7')">
-        <div class="blog-thumb">🍖</div>
-        <div class="blog-content">
-            <span class="blog-category" data-i18n="blog_cat_health">건강·케어</span>
-            <h2 class="blog-title" data-i18n="blog_post7_title">초보 견주 필독! 강아지가 절대 먹으면 안 되는 치명적인 음식 3가지</h2>
-            <p class="blog-excerpt" data-i18n="blog_post7_excerpt">"고기니까 괜찮겠지?" 흔히 하는 실수부터 단 한 알로도 치명적인 위험을 초래하는 일상 속 위험한 음식들과 응급 대처법을 정리했습니다.</p>
-        </div>
-    </article>
+<main class="blog-grid" id="blog-grid-container">
+    <!-- Blog cards will be dynamically injected here via JS -->
 </main>
+
+<div id="pagination-container" class="pagination">
+    <!-- Pagination buttons will be injected here -->
+</div>
 
 <!-- 구글 애드센스 광고 배치 영역 (하단) -->
 <div class="ad-placeholder" aria-label="광고 영역">
     구글 애드센스 광고 배치 영역 — 하단 (Multiplex / In-article Ads)
 </div>
 
-<!-- Blog Viewer Modals -->
-<div id="blog-modal-post1" class="blog-modal">
+<!-- Single Dynamic Blog Viewer Modal -->
+<div id="dynamic-blog-modal" class="blog-modal">
     <div class="blog-modal-content">
-        <button class="blog-modal-close" onclick="closeBlogModal('post1')">&times;</button>
-        <article class="blog-article" data-i18n="blog_post1_body"></article>
-    </div>
-</div>
-
-<div id="blog-modal-post2" class="blog-modal">
-    <div class="blog-modal-content">
-        <button class="blog-modal-close" onclick="closeBlogModal('post2')">&times;</button>
-        <article class="blog-article" data-i18n="blog_post2_body"></article>
-    </div>
-</div>
-
-<div id="blog-modal-post3" class="blog-modal">
-    <div class="blog-modal-content">
-        <button class="blog-modal-close" onclick="closeBlogModal('post3')">&times;</button>
-        <article class="blog-article" data-i18n="blog_post3_body"></article>
-    </div>
-</div>
-
-<div id="blog-modal-post4" class="blog-modal">
-    <div class="blog-modal-content">
-        <button class="blog-modal-close" onclick="closeBlogModal('post4')">&times;</button>
-        <article class="blog-article" data-i18n="blog_post4_body"></article>
-    </div>
-</div>
-
-<div id="blog-modal-post5" class="blog-modal">
-    <div class="blog-modal-content">
-        <button class="blog-modal-close" onclick="closeBlogModal('post5')">&times;</button>
-        <article class="blog-article" data-i18n="blog_post5_body"></article>
-    </div>
-</div>
-
-<div id="blog-modal-post6" class="blog-modal">
-    <div class="blog-modal-content">
-        <button class="blog-modal-close" onclick="closeBlogModal('post6')">&times;</button>
-        <article class="blog-article" data-i18n="blog_post6_body"></article>
-    </div>
-</div>
-
-<div id="blog-modal-post7" class="blog-modal">
-    <div class="blog-modal-content">
-        <button class="blog-modal-close" onclick="closeBlogModal('post7')">&times;</button>
-        <article class="blog-article" data-i18n="blog_post7_body"></article>
+        <button class="blog-modal-close" onclick="closeDynamicBlogModal()">&times;</button>
+        <article class="blog-article" id="dynamic-blog-article"></article>
     </div>
 </div>
 
@@ -432,15 +362,145 @@
 
 <script>
     // Blog Modal Functions
-    function openBlogModal(postId) {
-        document.getElementById('blog-modal-' + postId).classList.add('active');
-        document.body.style.overflow = 'hidden'; // prevent background scrolling
+    const dynamicModal = document.getElementById('dynamic-blog-modal');
+    
+    function openDynamicBlogModal(id) {
+        const post = window.blogDataMap[id];
+        if (post) {
+            let ctaHtml = '';
+            
+            const contentString = (post.title + ' ' + post.category + ' ' + (post.tags ? post.tags.join(' ') : '')).toLowerCase();
+            
+            const behaviorKeywords = ['행동', '성격', '심리', '기질', '분리불안', '카밍', '짖음', '핥기'];
+            const sizeKeywords = ['사이즈', '몸무게', '체형', '의류', '패딩', '슬개골'];
+            const foodKeywords = ['음식', '영양', '사료', '식단', '자연식'];
+            const ageKeywords = ['나이', '생애', '노령', '노화', '치매', '스케줄', '수명'];
+
+            const isBehavior = behaviorKeywords.some(kw => contentString.includes(kw));
+            const isSize = sizeKeywords.some(kw => contentString.includes(kw));
+            const isFood = foodKeywords.some(kw => contentString.includes(kw));
+            const isAge = ageKeywords.some(kw => contentString.includes(kw));
+
+            // Generate Contextual CTA Button based on matched category with unified orange tone
+            if (isBehavior) {
+                ctaHtml = `
+                <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
+                    <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">우리 아이의 행동학적 기질이 더 궁금하다면?</h3>
+                    <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">우리 아이 기질 검사하러 가기 ➔</a>
+                </div>`;
+            } else if (isSize) {
+                ctaHtml = `
+                <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
+                    <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">우리 강아지에게 딱 맞는 옷 사이즈를 찾고 싶다면?</h3>
+                    <a href="size-calculator.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">맞춤형 의류 사이즈 추천 받기 ➔</a>
+                </div>`;
+            } else if (isFood) {
+                ctaHtml = `
+                <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
+                    <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">이 음식, 강아지가 먹어도 될까?</h3>
+                    <a href="food-guide.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">안전한 음식 가이드 사전 보기 ➔</a>
+                </div>`;
+            } else if (isAge) {
+                ctaHtml = `
+                <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
+                    <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">우리 강아지는 사람 나이로 몇 살일까?</h3>
+                    <a href="age-calculator.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">우리 아이 사람 나이 계산하기 ➔</a>
+                </div>`;
+            } else {
+                // If it's a general care/hygiene post, do not show any CTA
+                ctaHtml = '';
+            }
+
+            document.getElementById('dynamic-blog-article').innerHTML = `
+                <h1>${post.title}</h1>
+                ${post.content}
+                ${ctaHtml}
+            `;
+            dynamicModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
     }
     
-    function closeBlogModal(postId) {
-        document.getElementById('blog-modal-' + postId).classList.remove('active');
+    function closeDynamicBlogModal() {
+        dynamicModal.classList.remove('active');
         document.body.style.overflow = 'auto';
     }
+
+    // Dynamic Blog Loading Logic
+    window.blogDataMap = {};
+    let currentBlogPage = 1;
+    const postsPerPage = 9;
+    let allBlogData = [];
+
+    function renderBlogPage(page) {
+        const grid = document.getElementById('blog-grid-container');
+        grid.innerHTML = ''; // clear grid
+        
+        const startIndex = (page - 1) * postsPerPage;
+        const endIndex = startIndex + postsPerPage;
+        const pageData = allBlogData.slice(startIndex, endIndex);
+        const thumbnails = ['🐕', '👕', '🩺', '🍖', '🐾', '🏠', '🦴', '💉', '🏷️', '🕰️'];
+
+        pageData.forEach((post, index) => {
+            window.blogDataMap[post.id] = post;
+            const thumb = thumbnails[(startIndex + index) % thumbnails.length];
+            const card = document.createElement('article');
+            card.className = 'blog-card';
+            card.onclick = () => openDynamicBlogModal(post.id);
+            
+            // Excerpt creation
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = post.content;
+            const textContent = tempDiv.textContent || tempDiv.innerText || "";
+            let excerpt = textContent.substring(0, 100);
+            if (textContent.length > 100) excerpt += '...';
+
+            card.innerHTML = `
+                <div class="blog-thumb">${thumb}</div>
+                <div class="blog-content">
+                    <span class="blog-category">${post.category}</span>
+                    <h2 class="blog-title">${post.title}</h2>
+                    <p class="blog-excerpt">${excerpt}</p>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        renderPagination();
+    }
+
+    function renderPagination() {
+        const paginationContainer = document.getElementById('pagination-container');
+        paginationContainer.innerHTML = '';
+        const totalPages = Math.ceil(allBlogData.length / postsPerPage);
+
+        if (totalPages <= 1) return;
+
+        for (let i = 1; i <= totalPages; i++) {
+            const btn = document.createElement('button');
+            btn.textContent = i;
+            if (i === currentBlogPage) btn.classList.add('active');
+            btn.onclick = () => {
+                currentBlogPage = i;
+                renderBlogPage(currentBlogPage);
+                // Scroll up smoothly to the top of the grid
+                const heroHeight = document.querySelector('.blog-hero').offsetHeight;
+                window.scrollTo({ top: heroHeight, behavior: 'smooth' });
+            };
+            paginationContainer.appendChild(btn);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        try {
+            const response = await fetch('blog_data.json?v=' + new Date().getTime());
+            allBlogData = await response.json();
+            renderBlogPage(currentBlogPage);
+        } catch (error) {
+            console.error("Failed to load blog data:", error);
+            document.getElementById('blog-grid-container').innerHTML = '<p style="text-align:center; padding:40px;">블로그 데이터를 불러오는 데 실패했습니다.</p>';
+        }
+    });
 
     // Modal background click to close
     window.addEventListener('click', (e) => {

@@ -1,23 +1,23 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 :root {
-            --bg: #F9F6F0;
-            --primary: #FF7A45;
-            --primary-dark: #E66533;
-            --primary-light: #FFF0EB;
-            --accent: #f5a623;
-            --green: #27ae60;
-            --green-light: #e8f8ef;
-            --text: #2A2A2A;
-            --text-muted: #6B7280;
-            --card: #FFFFFF;
-            --border: #E5E0D8;
-            --shadow-sm: 0 4px 12px rgba(0,0,0,0.02);
-            --shadow-md: 0 8px 30px rgba(0,0,0,0.02);
-            --shadow-lg: 0 16px 40px rgba(0,0,0,0.04);
-            --radius: 16px;
-            --radius-lg: 24px;
-            --transition: 0.2s ease;
+        --bg: #F9F6F0;
+        --primary: #FF7A45;
+        --primary-dark: #E66533;
+        --primary-light: #FFF0EB;
+        --accent: #f5a623;
+        --green: #27ae60;
+        --green-light: #e8f8ef;
+        --text: #2A2A2A;
+        --text-muted: #6B7280;
+        --card: #FFFFFF;
+        --border: #E5E0D8;
+        --shadow-sm: 0 4px 12px rgba(0,0,0,0.02);
+        --shadow-md: 0 8px 30px rgba(0,0,0,0.02);
+        --shadow-lg: 0 16px 40px rgba(0,0,0,0.04);
+        --radius: 16px;
+        --radius-lg: 24px;
+        --transition: 0.2s ease;
 
             /* 차트 컬러 팔레트 — 애니멀 테마 */
             --chart-blue: rgba(99, 179, 237, 1);
@@ -370,7 +370,7 @@
             box-shadow: var(--shadow-sm);
         }
         .header-inner {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
@@ -393,7 +393,7 @@
         nav {
             margin-left: auto;
         }
-        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav ul { display: flex; list-style: none; gap: 14px; margin: 0; padding: 0; flex-wrap: wrap; justify-content: flex-end; }
         nav a {
             text-decoration: none;
             color: var(--text-muted);

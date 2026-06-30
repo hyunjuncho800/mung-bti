@@ -1,0 +1,105 @@
+const fs = require('fs');
+
+const data = JSON.parse(fs.readFileSync('travel_data.json', 'utf8'));
+
+const updates = [
+  {
+    "id": 3,
+    "titleKo": "반려견 동반 여행 필수 준비물 체크리스트 및 짐 싸기 팁",
+    "titleEn": "Essential Packing List and Tips for Traveling with Dogs",
+    "ko": {
+        "content": "반려견과의 첫 여행을 앞두고 짐을 싸다 보면, 예상치 못한 상황에 대비하느라 사람 짐보다 강아지 짐이 더 많아지곤 합니다. 하지만 무작정 다 챙기기보다는 '집에서의 익숙함'을 그대로 옮겨오는 것이 핵심입니다. 환경이 바뀌면 예민해지는 반려견을 위해 빠짐없이 챙겨야 할 필수 체크리스트를 소개합니다.\n\n1. 서류 및 위생 용품 챙기기\n외지에서 갑자기 동물병원에 가야 하거나, 동반 시설 입장을 위해 외장형 동물등록증이나 접종 증명서(사진본)가 필요할 수 있습니다. 또한 배변 패드는 평소 쓰던 양의 1.5배를 챙기고, 낯선 숙소나 카페 실내 이용을 대비해 매너 벨트(기저귀)를 반드시 여유 있게 준비하세요.\n\n2. 식사 및 안정 용품 구성\n사료는 여행 일수에 맞춰 1회분씩 소분하여 지퍼백에 담아 가고, 물통은 휴대용 접이식 식기를 챙기는 것이 편리합니다. 무엇보다 중요한 것은 평소 집에서 사용하던 애착 담요나 장난감을 가져가는 것입니다. 익숙한 냄새가 묻어있는 물건은 새로운 숙소에서 반려견의 분리불안과 경계심을 낮춰주는 데 매우 효과적입니다.\n\n- 상비약 준비: 소독약, 붕대, 평소 먹던 상비약(지설제, 안약 등)과 함께 여행지 주변의 24시간 동물병원 위치를 미리 파악해 두는 것이 좋습니다.\n- 리드줄과 인식표: 평소보다 튼튼한 리드줄을 챙기고, 인식표에는 반드시 보호자의 최신 연락처가 지워지지 않게 각인되어 있는지 재차 확인하세요."
+    },
+    "en": {
+        "content": "When packing for your first trip with your dog, you might find yourself packing more for them than for yourself to prepare for unexpected situations. However, rather than bringing everything, the key is to transfer 'the familiarity of home'. Here is an essential checklist for dogs who become sensitive in new environments.\n\n1. Documents and Hygiene Supplies\nYou may need a physical pet registration tag or a photo of vaccination records for sudden vet visits or entry to pet-friendly facilities. Bring 1.5 times more pee pads than usual, and pack plenty of belly bands (diapers) for indoor use in unfamiliar accommodations or cafes.\n\n2. Meals and Comfort Items\nPortion out daily meals into ziplock bags according to the travel days, and bring a portable folding bowl for water. Most importantly, bring their favorite blanket or toys from home. Items with familiar scents are highly effective at lowering separation anxiety and wariness in a new accommodation.\n\n- First-Aid Kit: Prepare antiseptics, bandages, and any usual medications (like anti-diarrhea pills or eye drops), and locate a 24-hour emergency vet near your destination in advance.\n- Leash and ID Tag: Bring a sturdier leash than usual, and double-check that your ID tag has your latest contact information clearly engraved."
+    }
+  },
+  {
+    "id": 4,
+    "titleKo": "KTX, SRT 등 대중교통 이용 시 동반 탑승 규정과 매너",
+    "titleEn": "Rules and Etiquette for Public Transit (Trains, Subways)",
+    "ko": {
+        "content": "자동차 없이 대중교통으로 반려견과 여행을 떠나는 것은 멋진 도전이지만, 공공장소인 만큼 엄격한 규정과 펫티켓이 요구됩니다. KTX나 SRT, 고속버스 등은 여러 승객이 함께 이용하는 공간이므로, 타인에게 불편을 주지 않으면서 반려견도 편안하게 이동할 수 있는 가이드를 숙지해야 합니다.\n\n1. 켄넬 및 캐리어 규격 제한 준수\n모든 고속열차와 대중교통 탑승의 제1원칙은 '반려견의 신체(머리와 꼬리 포함)가 이동장 밖으로 절대 나오지 않아야 한다'는 점입니다. 항공사와 달리 열차는 통상 가로·세로·높이의 합이 150cm 이내이거나 지정된 무게(동물 포함 10kg 내외) 제한이 있으므로, 출발 전 이용할 교통수단의 정확한 약관을 확인하고 탑승하세요.\n\n2. 탑승 전 배변과 체력 소모\n열차나 버스 안에서 배변 실수를 하거나 불안감에 짖는 것을 막기 위해, 탑승 최소 1시간 전에 역사 주변이나 터미널 근처에서 충분한 산책을 시켜주세요. 노즈워크와 배변을 끝내고 몸을 적당히 피로하게 만들면, 탑승 후 이동 시간 동안 반려견이 깊은 잠에 들 가능성이 훨씬 높아집니다.\n\n- 좌석 지정 팁: 통로나 화장실 근처 좌석은 사람들의 왕래가 잦아 예민한 강아지가 계속 깰 수 있습니다. 가급적 맨 앞좌석이나 맨 뒷좌석을 예매하여 다리 공간에 캐리어를 안정적으로 두는 것이 좋습니다.\n- 간식 급여 주의: 열차 안에서 칭찬용 간식을 줄 때는 냄새가 심하게 나지 않는 육포나 껌 종류를 선택하고, 옆 승객에게 방해가 되지 않도록 조용히 켄넬 안으로 넣어주세요."
+    },
+    "en": {
+        "content": "Traveling with a dog via public transit without a car is a wonderful challenge, but it requires strict rules and petiquette as it's a public space. Since KTX, SRT, and express buses are shared with many passengers, you must know the guidelines to ensure a comfortable ride for your dog without inconveniencing others.\n\n1. Carrier Size Restrictions\nThe first rule of all high-speed trains and public transit is that 'the dog's body (including head and tail) must never stick out of the carrier.' Unlike airlines, trains usually restrict the sum of width, length, and height to under 150cm or set a weight limit (around 10kg including the pet). Always check the exact terms and conditions before departure.\n\n2. Potty Breaks and Energy Drain Before Boarding\nTo prevent potty accidents or anxious barking on the train or bus, take them for a long walk near the station or terminal at least an hour before boarding. If you drain their energy properly through nosework and potty breaks, they are highly likely to fall into a deep sleep during transit.\n\n- Seat Selection Tip: Seats near aisles or restrooms have high foot traffic, which can wake up a sensitive dog. Try to book the very front or back row so you can stably place the carrier in the legroom.\n- Feeding Treats Safely: When offering praise treats on the train, choose jerky or chews without a strong odor, and quietly slip them into the kennel so as not to disturb the passenger next to you."
+    }
+  },
+  {
+    "id": 5,
+    "titleKo": "반려견과 함께하는 안전한 캠핑 및 야외 아웃도어 가이드",
+    "titleEn": "Safe Camping and Outdoor Guide with Dogs",
+    "ko": {
+        "content": "자연 속에서 반려견과 함께 불을 쬐고 숲길을 걷는 캠핑은 반려견에게 최고의 노즈워크 선물이 됩니다. 그러나 야생의 환경에는 도심보다 훨씬 많은 위험 요소가 도사리고 있습니다. 텐트를 치는 순간부터 철수할 때까지 아이들의 안전을 지키기 위한 아웃도어 가이드입니다.\n\n1. 해충 및 진드기 철저 방역\n풀숲과 산속 캠핑장은 기생충의 온상입니다. 캠핑을 떠나기 최소 일주일 전 심장사상충 및 외부 기생충(진드기) 예방약을 반드시 도포하거나 복용시켜야 합니다. 캠핑 중에는 진드기 기피 스프레이를 수시로 뿌려주고, 하루 일과가 끝나면 아이의 발가락 사이, 귀 속, 배 주변에 진드기가 붙지 않았는지 샅샅이 빗질하며 확인하세요.\n\n2. 캠핑장 내 안전 구역 확보\n캠핑장에서는 텐트를 고정하는 날카로운 팩, 뜨거운 화로대, 다른 텐트의 스트링(줄) 등 걸려 넘어지거나 다칠 요소가 많습니다. 반려견을 사이트 내에 묶어둘 때는 화로대와 최소 2m 이상 거리를 두어야 하며, 줄이 무작정 길어지지 않도록 고정형 롱 리드줄이나 안전 울타리를 활용하는 것이 좋습니다.\n\n- 야간 식별 장치: 캠핑장은 밤이 되면 도심보다 훨씬 어두워집니다. 어둠 속에서 반려견의 위치를 놓치지 않도록 목줄이나 하네스에 LED 야간 펜던트를 반드시 착용시켜 주세요.\n- 매너 타임 준수: 밤이 되면 낯선 산짐승 소리나 옆 사이트의 발소리에 강아지가 경계성 짖음을 보일 수 있습니다. 매너 타임에는 텐트 내부 이너텐트 안으로 들여보내 안심시켜 주세요."
+    },
+    "en": {
+        "content": "Camping, where you sit by the fire and walk forest trails with your dog, is the ultimate nosework gift. However, the wilderness hides far more dangers than the city. Here is an outdoor guide to keeping your dog safe from the moment you pitch your tent to the time you pack up.\n\n1. Thorough Pest and Tick Prevention\nGrassy fields and mountain campsites are hotbeds for parasites. You must apply or administer heartworm and external parasite (tick) preventatives at least a week before the trip. During camping, spray tick repellent frequently, and at the end of the day, comb thoroughly to check for ticks between toes, inside ears, and around the belly.\n\n2. Securing a Safe Zone in Camp\nCampsites have many hazards like sharp tent pegs, hot fire pits, and guy lines from other tents. When tying your dog in your site, maintain at least a 2m distance from the fire pit. It's best to use a fixed long leash or a safety playpen so they don't wander too far.\n\n- Night Identification: Campsites get much darker than cities at night. Make sure they wear an LED night pendant on their collar or harness so you don't lose sight of them in the dark.\n- Quiet Time Etiquette: At night, dogs might bark defensively at unfamiliar wildlife sounds or neighbors' footsteps. During quiet hours, bring them inside the inner tent to reassure them."
+    }
+  },
+  {
+    "id": 6,
+    "titleKo": "바다 및 계곡 수영 시 안전 수칙과 물놀이 후 케어법",
+    "titleEn": "Safety Rules for Beach/Valley Swimming and Post-Swim Care",
+    "ko": {
+        "content": "여름철 반려견과 함께 시원한 바다나 계곡으로 뛰어드는 물놀이는 더할 나위 없는 피서입니다. 흔히 '개헤엄'이라는 말 때문에 모든 강아지가 수영을 잘할 것이라 오해하지만, 물을 무서워하거나 쥐가 나서 가라앉는 사고도 빈번합니다. 안전하고 즐거운 물놀이를 위한 수칙입니다.\n\n1. 구명조끼 착용과 점진적 입수\n수영 실력과 상관없이 파도가 치는 바다나 와류가 있는 계곡에서는 반려견 전용 구명조끼를 반드시 착용시켜야 합니다. 조끼에 달린 손잡이는 비상 상황 시 아이를 물 밖으로 빠르게 건져 올리는 생명줄이 됩니다. 물에 들어갈 때는 심장에서 먼 뒷발과 배부터 물을 적셔주며 천천히 진입하세요.\n\n2. 수분 섭취와 체온 유지\n강아지들은 수영을 하면서 목이 마르면 무심코 염분이 가득한 바닷물이나 이끼 낀 계곡물을 마시게 됩니다. 이는 심각한 구토와 설사를 유발하므로, 물놀이 중간중간 보호자가 깨끗한 생수를 자주 급여해야 합니다. 또한 물 밖으로 나오면 젖은 털 때문에 급격히 체온이 떨어지므로 대형 타월로 감싸 햇볕에서 체온을 올려주세요.\n\n- 유행성 질환 예방: 계곡물에는 쥐의 소변 등을 통해 감염되는 '레포스피라' 균이 있을 수 있으므로 사전에 종합백신 접종이 완료되었는지 확인하고, 물놀이 후에는 반드시 전용 샴푸로 깨끗이 세척해야 합니다.\n- 귓속 건조 필수: 귀가 덮인 견종들은 물놀이 후 귀 내부 습기로 인해 외이도염에 걸리기 쉽습니다. 물놀이 직후 귀 세정제를 활용해 이물질을 닦아내고 바짝 말려주세요."
+    },
+    "en": {
+        "content": "Jumping into a cool beach or valley with your dog during summer is the ultimate vacation. Because of the phrase 'doggy paddle', many mistakenly think all dogs are good swimmers, but accidents where they panic or get cramps and sink are frequent. Here are rules for safe and fun swimming.\n\n1. Life Jackets and Gradual Entry\nRegardless of swimming ability, a dog life jacket is mandatory in oceans with waves or valleys with undercurrents. The handle on the jacket acts as a lifeline to quickly pull them out in emergencies. When entering the water, wet their hind legs and belly first, furthest from the heart, and enter slowly.\n\n2. Hydration and Body Temp Maintenance\nDogs will unknowingly drink salty seawater or mossy valley water if they get thirsty while swimming. This causes severe vomiting and diarrhea, so you must frequently offer clean bottled water during the swim. Also, their body temperature drops rapidly out of the water due to wet fur, so wrap them in a large towel and warm them in the sun.\n\n- Preventing Infectious Diseases: Valley water may contain 'Leptospira' bacteria transmitted via rat urine, so ensure their combination vaccines are up-to-date. Wash them thoroughly with dog shampoo after swimming.\n- Ear Drying is Crucial: Breeds with floppy ears are prone to otitis externa due to moisture trapped inside after swimming. Clean out debris with ear cleaner immediately after swimming and dry them completely."
+    }
+  },
+  {
+    "id": 7,
+    "titleKo": "반려견과 국내선/국제선 비행기 탑승 시 체크포인트",
+    "titleEn": "Checkpoints for Domestic/International Flights with Dogs",
+    "ko": {
+        "content": "제주도나 해외로 반려견과 함께 비행기를 타고 떠나는 여행은 철저한 사전 예약과 서류 준비가 당락을 결정합니다. 항공사는 기차보다 승객 및 수하물 안전 규정이 까다롭기 때문에, 예약 단계부터 당일 탑승까지 타임라인별로 꼼꼼하게 준비해야 비행기에 무사히 오를 수 있습니다.\n\n1. 항공사 사전 예약 및 무게 규정 체크\n비행기 한 대에 탑승할 수 있는 반려견의 수는 기내 동반과 위탁 수하물을 합쳐 극소수로 제한되어 있습니다. 따라서 항공권을 결제하기 전, 해당 편명에 반려견 동반 좌석이 남아있는지 반드시 고객센터를 통해 유선 확인 후 예약을 진행해야 합니다. 일반적으로 케이지를 포함한 무게가 7~9kg 이하는 기내 동반, 그 이상은 위탁 수하물로 분류됩니다.\n\n2. 비행 당일 컨디션 조절과 케이지 적응\n비행기 안에서는 기압 변화와 굉음으로 인해 강아지가 큰 공포를 느낍니다. 출발 최소 3시간 전 가벼운 산책으로 배변을 끝내고 식사를 마쳐 비행 중 구토를 예방하세요. 기내에서는 발밑 공간에 케이지를 두어야 하므로, 평소에 지퍼가 닫힌 답답한 기내용 소프트 케이지 안에서 가만히 엎드려 있는 연습을 충분히 해두어야 합니다.\n\n- 국제선 필수 서류: 해외여행의 경우 목적지 국가의 검역 기준에 따라 광견병 예방접종 증명서, 마이크로칩 이식 확인서, 항체가 검사 결과지 등이 필요하며, 발급에 최소 수개월이 소요되므로 미리 준비해야 합니다.\n- 진정제 사용 주의: 불안해한다고 해서 수의사의 처방 없는 진정제나 수면제를 임의로 먹이는 것은 비행 중 호흡 곤란이나 혈압 저하를 유발할 수 있어 매우 위험합니다."
+    },
+    "en": {
+        "content": "Taking a flight with your dog to Jeju Island or abroad depends heavily on thorough pre-booking and document preparation. Airlines have stricter passenger and luggage safety rules than trains, so you must prepare meticulously along a timeline from booking to boarding day to board successfully.\n\n1. Advance Airline Booking and Weight Limits\nThe number of dogs allowed per flight is strictly capped, combining both in-cabin and checked pets. Thus, before paying for a ticket, you must call customer service to verify if pet spots are left on that specific flight. Generally, if the dog plus carrier weighs under 7-9kg, they can fly in-cabin; otherwise, they fly as checked baggage.\n\n2. Flight Day Conditioning and Carrier Acclimation\nDogs feel immense fear in a plane due to pressure changes and loud noises. Finish a light walk for potty breaks and meals at least 3 hours before departure to prevent mid-flight vomiting. Since the carrier must sit in the footwell, they must practice lying calmly inside a zipped, enclosed soft airline carrier well in advance.\n\n- Essential International Documents: For overseas travel, destination countries require rabies vaccination certificates, microchip confirmation, and antibody titer test results. These can take months to obtain, so start early.\n- Danger of Sedatives: Giving unprescribed sedatives or sleeping pills because they are anxious is extremely dangerous and can cause breathing difficulties or severe blood pressure drops mid-flight."
+    }
+  },
+  {
+    "id": 8,
+    "titleKo": "낯선 여행지에서 반려견 잃어버렸을 때 대처 및 예방법",
+    "titleEn": "Prevention and Response if You Lose Your Dog on a Trip",
+    "ko": {
+        "content": "익숙한 동네를 벗어난 여행지에서는 아주 작은 소음이나 낯선 환경적 자극에도 반려견이 패닉에 빠져 순식간에 보호자의 손을 놓치고 도망칠 수 있습니다. 주변 지리를 전혀 모르는 곳에서 발생한 분실 사고는 골든타임 내에 대처하지 않으면 찾기가 매우 어렵습니다. 예방법과 대처법을 숙지하세요.\n\n1. 다중 안전장치 및 최신 정보 업데이트\n여행을 떠나기 전 동물보호관리시스템에 등록된 보호자의 연락처와 주소가 최신인지 확인하세요. 인식표는 목줄과 하네스 두 곳에 모두 착용시키는 것이 안전하며, 외장형 칩 외에도 내장형 마이크로칩 시술을 해두면 인식표를 잃어버려도 유기동물 보호소에서 즉시 보호자를 찾을 수 있습니다.\n\n2. 분실 즉시 골든타임 대처법\n아이가 시야에서 사라졌다면 즉시 그 자리에서 크게 이름을 부르며 주변을 수색하되, 동시에 112(경찰)와 해당 지자체 시청/군청 유기동물 담당 부서에 신고해야 합니다. 국내 최대 유기동물 플랫폼인 '포인핸드'와 지역 인스타그램 커뮤니티에 아이의 특징, 사진, 분실 장소가 담긴 전단을 빠르게 업로드하는 것이 중요합니다.\n\n- 냄새를 이용한 유인: 강아지는 멀리 도망쳤더라도 자신의 흔적이나 보호자의 냄새를 따라 돌아오려는 본능이 있습니다. 처음 놓친 장소나 숙소 입구 주변에 보호자가 입던 옷가지나 평소 쓰던 침구를 두면 큰 도움이 됩니다.\n- 리드줄 놓침 방지: 여행지 사진 촬영에 집중하다 리드줄을 놓치는 사고가 많습니다. 손목 구멍에 고리를 단단히 걸거나, 허리/어깨에 매는 크로스형 리드줄을 사용하는 것을 추천합니다."
+    },
+    "en": {
+        "content": "In unfamiliar places, even tiny noises or novel environmental stimuli can send a dog into a panic, causing them to slip away in an instant. A lost dog in an area where you don't know the geography is extremely hard to find if you miss the 'golden time.' Memorize these preventions and responses.\n\n1. Multi-layered Safety Gear and Info Updates\nBefore traveling, ensure your contact info on the national animal protection registry is up to date. It's safer to attach ID tags to both the collar and harness. Beyond external tags, an implanted microchip ensures shelters can immediately identify you even if the tag is lost.\n\n2. Golden Time Response After Loss\nIf they vanish from sight, immediately call their name loudly while searching the immediate area, but simultaneously report the loss to the police (112) and the local animal control office. It is crucial to quickly upload a flyer with their photo, features, and lost location to major lost-pet apps and local Instagram communities.\n\n- Scent Luring: Even if they ran far, dogs have an instinct to return following their own or their owner's scent. Leaving your worn clothes or their familiar bedding near where they were lost or the accommodation entrance helps immensely.\n- Preventing Leash Slips: Many accidents happen when owners drop the leash while focusing on taking photos. Firmly hook the loop around your wrist, or use a hands-free crossbody or waist leash."
+    }
+  },
+  {
+    "id": 9,
+    "titleKo": "인생샷 보장! 반려견이 편안해하는 여행 스냅 촬영 팁",
+    "titleEn": "Guaranteed Great Shots! Tips for Stress-Free Dog Photos",
+    "ko": {
+        "content": "반려견과의 소중한 여행 순간을 사진으로 남기는 것은 빼놓을 수 없는 즐거움입니다. 하지만 카메라를 들이대면 고개를 돌려버리거나, 빨리 움직이고 싶어 안달이 난 강아지들을 달래며 좋은 사진을 건지기란 쉽지 않습니다. 강아지에게 스트레스를 주지 않으면서 감성적인 인생샷을 남기는 프로들의 노하우입니다.\n\n1. 시선 강탈을 위한 소리와 보상 활용\n카메라 렌즈를 정확히 바라보는 사진을 찍고 싶다면, 렌즈 바로 뒤쪽에서 보호자가 소리 나는 장난감을 삑삑거리거나 강아지가 좋아하는 간식을 들고 있어야 합니다. \"여기 봐!\" 하고 다그치기보다는 카메라를 쳐다보는 순간 셔터를 누르고 즉시 칭찬과 함께 간식 보상을 주어 '카메라=좋은 것'이라는 인식을 심어주세요.\n\n2. 아이들의 눈높이에 맞춘 로우 앵글\n위에서 아래로 내려다보며 찍는 사진은 강아지의 비율이 왜곡되고 답답한 인상을 줍니다. 보호자가 무릎을 꿇거나 바닥에 엎드려 카메라 렌즈의 높이를 강아지의 눈높이와 맞추어(Low-Angle) 촬영해 보세요. 뒤쪽 배경이 자연스럽게 흐려지면서 반려견의 생동감 넘치는 표정이 화면 가득 고급스럽게 담깁니다.\n\n- 강제적인 포즈 금지: 벼랑 끝이나 위험한 구조물 위에 억지로 앉혀두고 촬영하는 것은 추락 사고를 유발하며 반려견에게 극심한 스트레스를 줍니다. 자연스럽게 걷거나 뛰는 모습을 '연속 촬영(고속 연사)' 모드로 찍는 것이 훨씬 예쁩니다.\n- 빛의 활용: 정오의 강한 햇빛 아래서는 눈 밑에 어두운 그림자가 지므로, 이른 아침이나 해가 지기 시작하는 오후 4~5시의 부드러운 순광을 이용하면 털의 질감이 세련되게 살아납니다."
+    },
+    "en": {
+        "content": "Capturing precious travel moments with your dog is an indispensable joy. But it's not easy to get a good photo while coaxing a dog who turns their head away or is eager to move. Here is the pros' know-how for taking emotional, once-in-a-lifetime shots without stressing the dog.\n\n1. Using Sounds and Rewards for Eye Contact\nIf you want them looking directly at the lens, you must hold a squeaky toy or their favorite treat right behind the camera lens. Rather than scolding \"Look here!\", press the shutter the moment they glance at the camera and immediately reward them, teaching them that 'Camera = Good things.'\n\n2. Low Angles Matching Their Eye Level\nShooting looking down from above distorts their proportions and looks suffocating. Get on your knees or lie on your stomach to align the lens with their eye level (Low-Angle). The background blurs naturally, and their vivid expressions elegantly fill the frame.\n\n- No Forced Poses: Forcing them to sit on cliff edges or dangerous structures invites fall accidents and causes severe stress. It's much prettier to use 'burst mode' (continuous shooting) to capture them naturally walking or running.\n- Utilizing Light: Under the harsh midday sun, dark shadows form under their eyes. Use the soft front light of early morning or 4-5 PM just before sunset to stylishly highlight their fur texture."
+    }
+  },
+  {
+    "id": 10,
+    "titleKo": "여행지 지역 별미 및 휴게소 음식 섭취 시 주의사항",
+    "titleEn": "Precautions When Eating Regional Delicacies and Rest Stop Food",
+    "ko": {
+        "content": "여행의 또 다른 묘미는 맛있는 음식을 먹는 것입니다. 고속도로 휴게소의 고소한 간식 냄새와 여행지 특산 요리는 보호자뿐만 아니라 반려견의 후각도 강하게 자극합니다. 하지만 \"여행 왔으니까 특별히 한 입만 줄게\"라는 마음으로 사람이 먹는 음식을 무심코 건넸다간 즐거운 여행길이 병원행으로 바뀔 수 있습니다.\n\n1. 휴게소 음식의 숨겨진 위험 성분\n휴게소의 대표 메뉴인 통감자 구이, 핫바, 호두과자 등에는 사람이 먹기엔 무해하지만 강아지에게는 치명적인 양파 분말, 마늘 성분, 다량의 소금과 설탕, 팽창제 등이 포함되어 있습니다. 특히 양파와 마늘은 적은 양으로도 반려견의 적혈구를 파괴해 급성 빈혈을 일으키므로 절대 바닥에 떨어진 부스러기를 먹지 못하게 차단해야 합니다.\n\n2. 지역 특산물 오인 섭취 경계\n예를 들어 포도가 유명한 지역(포도밭 주변 산책 등)이나 초콜릿 디저트가 유명한 카페 등지에서는 반려견이 급성 신부전을 일으킬 수 있는 포도, 초콜릿 성분을 먹지 않도록 극도로 주의해야 합니다. 동반 식당에 가더라도 사람이 먹는 양념 된 고기 대신, 챙겨온 반려견 전용 화식이나 동반 식당에서 판매하는 '멍푸치노', '강아지 전용 스테이크'만 급여하세요.\n\n- 바닥 노즈워크 주의: 관광지 주변 식당가 바닥에는 사람들이 버린 닭뼈나 족발 뼈 등이 떨어져 있을 확률이 높습니다. 뼈 종류는 씹었을 때 날카롭게 부서져 강아지의 식도와 위장에 구멍을 낼 수 있으므로 산책 시 바닥을 주시하세요.\n- 과식으로 인한 장염: 여행의 신이 나서 평소보다 간식을 과도하게 급여하면 급성 췌장염이나 장염으로 밤새 구토와 설사를 할 수 있습니다. 사료와 간식은 철저히 평소 급여량을 유지해 주세요."
+    },
+    "en": {
+        "content": "Another joy of traveling is eating delicious food. The savory smell of highway rest stops and regional specialties strongly stimulates a dog's nose as well. However, carelessly handing them human food thinking \"just a bite since it's a special trip\" can turn a fun vacation into a hospital visit.\n\n1. Hidden Danger Ingredients in Rest Stop Food\nPopular rest stop menus like roasted potatoes, fish cakes, or walnut pastries contain onion powder, garlic, high salt/sugar, and leavening agents—harmless to humans but fatal to dogs. Onions and garlic, even in small amounts, destroy red blood cells causing acute anemia, so you must strictly block them from eating crumbs on the floor.\n\n2. Guarding Against Accidental Intake of Local Specialties\nFor example, in regions famous for grapes (walking near vineyards) or cafes known for chocolate desserts, you must be extremely cautious that your dog doesn't ingest grapes or chocolate, which cause acute kidney failure. Even at pet-friendly restaurants, avoid giving them seasoned meat; instead, feed them packed dog food or special dog menus like 'Puppuccino' or 'Dog Steaks'.\n\n- Beware of Floor Nosework: The ground near tourist restaurants likely has discarded chicken bones or pork trotters. Bones splinter sharply when chewed and can puncture the esophagus and stomach, so watch the ground carefully during walks.\n- Enteritis from Overeating: If you get excited on the trip and overfeed treats, they may suffer from acute pancreatitis or enteritis, vomiting and having diarrhea all night. Strictly stick to their usual food and treat portions."
+    }
+  }
+];
+
+// Apply updates
+updates.forEach(update => {
+  const index = data.findIndex(item => item.id === update.id);
+  if (index !== -1) {
+    data[index] = update;
+  }
+});
+
+fs.writeFileSync('travel_data.json', JSON.stringify(data, null, 4), 'utf8');
+console.log('Updated travel_data.json successfully with detailed info.');

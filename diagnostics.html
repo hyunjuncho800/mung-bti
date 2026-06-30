@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자가진단 가이드 | mung-test.com</title>
+    <meta name="description" content="반려견의 이상 행동과 증상의 원인을 파악하고, 집에서 할 수 있는 홈케어 방법을 알아보는 자가진단 가이드입니다.">
+    
+    <link rel="canonical" href="https://mung-test.com/diagnostics.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-4790912864460441">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4790912864460441" crossorigin="anonymous"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css?v=original_v1">
+    <script src="i18n.js?v=toss_v2"></script>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .page-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            word-break: keep-all;
+        }
+
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .acc-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .acc-header {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+            background: var(--card);
+            transition: background 0.3s ease;
+        }
+        .acc-header:hover {
+            background: rgba(255,122,69, 0.05);
+        }
+        .acc-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+        .acc-item.active .acc-icon {
+            transform: rotate(180deg);
+        }
+        .acc-item.active .acc-header {
+            border-bottom: 1px solid var(--border);
+        }
+        .acc-content {
+            display: none;
+            padding: 24px;
+            line-height: 1.7;
+            color: var(--text);
+            font-size: 0.95rem;
+            background: var(--bg);
+        }
+        .acc-item.active .acc-content {
+            display: block;
+        }
+        .content-section {
+            margin-bottom: 24px;
+        }
+        .content-section:last-child {
+            margin-bottom: 0;
+        }
+        .content-section h4 {
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .content-section p {
+            margin: 0;
+        }
+        .red-flag {
+            background: #ffebe9;
+            border-left: 4px solid #ff4d4f;
+            padding: 16px;
+            border-radius: 4px;
+        }
+        .red-flag h4 {
+            color: #cf1322;
+        }
+
+        .cta-box {
+            text-align: center;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px dashed var(--border);
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .cta-btn:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="index.html" class="logo" data-i18n="nav_diagnostics" style="color: var(--primary);">🐾 자가진단 가이드</a>
+        <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-i18n="nav_home">홈</a></li>
+                <li><a href="mung-test.html" data-i18n="nav_start">반려견 기질 검사</a></li>
+                <li><a href="blog.html" data-i18n="nav_blog">댕댕이팁</a></li>
+                <li><a href="food-guide.html" data-i18n="nav_food">음식 가이드</a></li>
+                <li><a href="age-calculator.html" data-i18n="nav_age">나이 계산기</a></li>
+                <li><a href="size-calculator.html" data-i18n="nav_size">의류 사이즈 추천기</a></li>
+                <li><a href="breeds.html" data-i18n="nav_breeds">견종 백과사전</a></li>
+                <li><a href="diagnostics.html" class="active" data-i18n="nav_diagnostics">자가진단 가이드</a></li>
+                <li><a href="travel.html" data-i18n="nav_travel">여행 가이드</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button id="btn-lang" class="header-btn" aria-label="언어 변경">EN</button>
+            <button id="btn-theme" class="header-btn" aria-label="테마 변경">🌙</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <div class="page-header">
+        <h1 class="page-title" data-i18n="nav_diagnostics">자가진단 가이드</h1>
+        <p class="page-desc" data-i18n="desc_diagnostics">우리 아이의 이상 행동이나 증상의 원인이 궁금하신가요? 심리적, 신체적 원인과 대처법을 확인하세요.</p>
+    </div>
+
+    <!-- 로딩 상태 표시 -->
+    <div id="loading" style="text-align: center; padding: 40px; color: var(--text-muted);">
+        데이터를 불러오는 중입니다... 🩺
+    </div>
+
+    <div class="accordion" id="acc-container"></div>
+
+    <div class="ad-placeholder" aria-label="광고 영역" style="margin-top: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        구글 애드센스 광고 배치 영역
+    </div>
+</main>
+
+<footer class="site-footer">
+    <p style="font-size: 0.8rem; color:var(--text-muted); margin: 0; text-align: center;">&copy; 2026 mung-test.com. All rights reserved.</p>
+</footer>
+
+<script src="diagnostics.js?v=3"></script>
+<script>
+    // 메뉴 토글 스크립트
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+        document.querySelector('nav').classList.toggle('active');
+    });
+</script>
+</body>
+</html>

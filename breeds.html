@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>견종 백과사전 | mung-test.com</title>
+    <meta name="description" content="우리나라 인기 반려견들의 역사, 성격, 유전병, 의류 선택 팁까지 모든 것을 담은 심도 깊은 백과사전입니다.">
+    <meta name="keywords" content="견종 백과사전, 말티즈, 푸들, 포메라니안, 비숑, 강아지 성격, 강아지 유전병">
+    
+    <link rel="canonical" href="https://mung-test.com/breeds.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-4790912864460441">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4790912864460441" crossorigin="anonymous"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css?v=original_v1">
+    <script src="i18n.js?v=toss_v2"></script>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        .page-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .page-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            word-break: keep-all;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .breed-card {
+            background-color: var(--card);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .breed-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        .breed-icon {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+        }
+        .breed-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .breed-en {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        .modal-content {
+            background-color: var(--card);
+            margin: auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        .modal-header {
+            padding: 24px 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, #ff5e62 100%);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-radius: 20px 20px 0 0;
+        }
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        .close-btn:hover {
+            opacity: 1;
+        }
+        .modal-body {
+            padding: 32px;
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .modal-section {
+            margin-bottom: 32px;
+        }
+        .modal-section h3 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+        }
+        
+        .cta-container {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px dashed var(--border);
+            flex-wrap: wrap;
+        }
+        .cta-btn {
+            flex: 1;
+            min-width: 250px;
+            background: #fffaf0;
+            border: 2px solid var(--primary);
+            color: var(--primary-dark);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+        .cta-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="index.html" class="logo" data-i18n="nav_breeds" style="color: var(--primary);">🐾 견종 백과사전</a>
+        <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-i18n="nav_home">홈</a></li>
+                <li><a href="mung-test.html" data-i18n="nav_start">반려견 기질 검사</a></li>
+                <li><a href="blog.html" data-i18n="nav_blog">댕댕이팁</a></li>
+                <li><a href="food-guide.html" data-i18n="nav_food">음식 가이드</a></li>
+                <li><a href="age-calculator.html" data-i18n="nav_age">나이 계산기</a></li>
+                <li><a href="size-calculator.html" data-i18n="nav_size">의류 사이즈 추천기</a></li>
+                <li><a href="breeds.html" class="active" data-i18n="nav_breeds">견종 백과사전</a></li>
+                <li><a href="diagnostics.html" data-i18n="nav_diagnostics">자가진단 가이드</a></li>
+                <li><a href="travel.html" data-i18n="nav_travel">여행 가이드</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button id="btn-lang" class="header-btn" aria-label="언어 변경">EN</button>
+            <button id="btn-theme" class="header-btn" aria-label="테마 변경">🌙</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <div class="page-header">
+        <h1 class="page-title" data-i18n="nav_breeds">견종 백과사전</h1>
+        <p class="page-desc" data-i18n="desc_breeds">말티즈, 푸들 등 인기 반려견의 성격, 역사, 건강 정보 등 모든 것을 담은 심도 깊은 가이드입니다.</p>
+    </div>
+
+    <!-- 로딩 상태 표시 -->
+    <div id="loading" style="text-align: center; padding: 40px; color: var(--text-muted);">
+        데이터를 불러오는 중입니다... 🐶
+    </div>
+
+    <!-- 그리드 컨테이너 -->
+    <div class="grid-container" id="breed-grid"></div>
+
+    <!-- 광고 영역 -->
+    <div class="ad-placeholder" aria-label="광고 영역" style="margin-top: 40px;">
+        구글 애드센스 광고 배치 영역 — 하단 배너
+    </div>
+</main>
+
+<footer class="site-footer">
+    <p style="font-size: 0.8rem; color:var(--text-muted); margin: 0; text-align: center;">&copy; 2026 mung-test.com. All rights reserved.</p>
+</footer>
+
+<!-- 모달 팝업 -->
+<div id="breed-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">견종 이름</h2>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <!-- 내용이 동적으로 채워집니다 -->
+        </div>
+    </div>
+</div>
+
+<script src="breeds.js?v=5"></script>
+<script>
+    // 메뉴 토글 스크립트
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+        document.querySelector('nav').classList.toggle('active');
+    });
+</script>
+</body>
+</html>

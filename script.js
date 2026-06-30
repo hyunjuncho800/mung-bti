@@ -51,11 +51,17 @@
 
     // ===== 시작 =====
     function startTest() {
+        const testZone = document.getElementById('test-zone');
+        if (!testZone) {
+            window.location.href = 'mung-test.html?start=true';
+            return;
+        }
+
         questions = shuffle(baseQuestions);      // 랜덤 순서 적용
         currentIdx = 0;
         answers = {};
-        document.getElementById('intro-zone').style.display = 'none';
-        document.getElementById('test-zone').style.display = 'block';
+        const iz = document.getElementById('intro-zone'); if(iz) iz.style.display = 'none';
+        testZone.style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth' });
         renderQuestion();
     }
