@@ -119,10 +119,6 @@
             <div class="question-number-badge">${currentIdx + 1}</div>
             <p class="question-text">${qText}</p>
             <div class="likert-scale">${optionsHTML}</div>
-            <div class="scale-endpoints">
-              <span>${t.scale_end1}</span>
-              <span>${t.scale_end2}</span>
-            </div>
           </div>`;
     }
 
