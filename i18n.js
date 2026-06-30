@@ -19,7 +19,7 @@ const translations = {
         nav_about: "소개 및 문의",
         nav_age: "나이 계산기",
         nav_size: "의류 사이즈 추천기",
-        nav_start: "기질검사",
+        nav_start: "반려견기질검사",
         nav_blog: "댕댕이 팁(Blog)",
         nav_food: "음식 가이드",
         nav_breeds: "견종 백과사전",
@@ -316,7 +316,7 @@ const translations = {
         btn_lang_toggle: "EN",
         
         // --- Index Page ---
-        logo_main: "🐾 반려견 기질 검사",
+        logo_main: "🐾 반려견기질검사",
         hero_title: "우리집 댕댕이 속마음<br><span>얼마나 알고 계시나요?</span>",
         hero_btn: "3분 반려견 기질 검사 시작하기 →",
         mini_tools_title: "반려견 라이프 가이드",
