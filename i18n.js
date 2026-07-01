@@ -639,7 +639,7 @@ const translations = {
         nav_about: "About & Contact",
         nav_age: "Age Calculator",
         nav_size: "Size Recommender",
-        nav_start: "Test Start",
+        nav_start: "Dog Temperament Test",
         nav_blog: "Doggy Tips",
         nav_food: "Food Guide",
         nav_breeds: "Breeds Encyclopedia",
