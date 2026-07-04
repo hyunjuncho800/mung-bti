@@ -25,6 +25,13 @@ const translations = {
         nav_breeds: "견종 백과사전",
         nav_diagnostics: "자가진단 가이드",
         nav_travel: "여행 가이드",
+        
+        // Food Guide Extras
+        failed_to_load_data: "데이터를 불러오는 데 실패했습니다.",
+        empty_search_result_1: "앗, '<b>",
+        empty_search_result_2: "</b>'에 대한 검색 결과가 없어요!<br>다른 음식을 검색해보시거나 필터를 변경해보세요.",
+        empty_search_default: "해당하는 음식을 찾지 못했어요.",
+        btn_load_more: "더보기 ⬇️",
         nav_home: "홈",
         category_all: '전체',
         category_fruit: '과일·채소',
@@ -636,6 +643,12 @@ const translations = {
         tab_unsafe: "먹으면 안 돼요"
     },
     en: {
+        // Food Guide Extras
+        failed_to_load_data: "Failed to load data.",
+        empty_search_result_1: "Oops, no search results for '<b>",
+        empty_search_result_2: "</b>'!<br>Please search for another food or change the filter.",
+        empty_search_default: "We couldn't find matching food.",
+        btn_load_more: "Load More ⬇️",
         category_all: 'All',
         category_fruit: 'Fruits',
         category_veg: 'Vegetables',

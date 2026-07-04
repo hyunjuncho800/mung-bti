@@ -81,7 +81,7 @@ async function initData() {
 
     } catch (error) {
         console.error("Failed to load food data:", error);
-        document.getElementById('food-grid').innerHTML = '<p style="text-align:center; padding:40px;">데이터를 불러오는 데 실패했습니다.</p>';
+        document.getElementById('food-grid').innerHTML = `<p style="text-align:center; padding:40px;">${window.t ? window.t('failed_to_load_data', '데이터를 불러오는 데 실패했습니다.') : '데이터를 불러오는 데 실패했습니다.'}</p>`;
     }
 }
 
@@ -135,11 +135,15 @@ function renderFoodGrid(reset = false) {
     }
 
     if (filteredDataCache.length === 0) {
+        const emptyTextDefault = window.t ? window.t('empty_search_default', '해당하는 음식을 찾지 못했어요.') : '해당하는 음식을 찾지 못했어요.';
+        const emptyResult1 = window.t ? window.t('empty_search_result_1', "앗, '<b>") : "앗, '<b>";
+        const emptyResult2 = window.t ? window.t('empty_search_result_2', "</b>'에 대한 검색 결과가 없어요!<br>다른 음식을 검색해보시거나 필터를 변경해보세요.") : "</b>'에 대한 검색 결과가 없어요!<br>다른 음식을 검색해보시거나 필터를 변경해보세요.";
+
         grid.innerHTML = `
             <div class="empty-state">
                 <div class="empty-icon">🐶💦</div>
                 <div class="empty-text">
-                    앗, '<b>${searchQuery}</b>'에 대한 검색 결과가 없어요!<br>다른 음식을 검색해보시거나 필터를 변경해보세요.
+                    ${searchQuery ? `${emptyResult1}${searchQuery}${emptyResult2}` : emptyTextDefault}
                 </div>
             </div>
         `;
@@ -245,6 +249,18 @@ document.addEventListener('DOMContentLoaded', () => {
         tabUnsafe.style.background = '';
     }
 
+    function updateDynamicTexts() {
+        initCategoryChips();
+        if (tabSafe) tabSafe.innerHTML = `🟢 <span>${window.t ? window.t('status_safe', '먹어도 돼요') : '먹어도 돼요'}</span>`;
+        if (tabWarning) tabWarning.innerHTML = `🟠 <span>${window.t ? window.t('status_warning', '소량만 가능해요') : '소량만 가능해요'}</span>`;
+        if (tabUnsafe) tabUnsafe.innerHTML = `❌ <span>${window.t ? window.t('status_unsafe', '먹으면 안 돼요') : '먹으면 안 돼요'}</span>`;
+        
+        const loadMoreBtn = document.getElementById('btn-load-more');
+        if (loadMoreBtn && loadMoreBtn.style.display !== 'none') {
+            loadMoreBtn.innerText = window.t ? window.t('btn_load_more', '더보기 ⬇️') : '더보기 ⬇️';
+        }
+    }
+
     tabSafe.addEventListener('click', () => {
         currentType = 'safe';
         resetTabs();
@@ -282,22 +298,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. 더보기 버튼 이벤트 리스너
     const loadMoreBtn = document.getElementById('btn-load-more');
-    loadMoreBtn.addEventListener('click', () => {
-        currentPage++;
-        renderFoodGrid(false); // reset = false 로 계속 이어붙이기
-    });
-
+    if (loadMoreBtn) {
+        loadMoreBtn.innerText = window.t ? window.t('btn_load_more', '더보기 ⬇️') : '더보기 ⬇️';
+        loadMoreBtn.addEventListener('click', () => {
+            currentPage++;
+            renderFoodGrid(false); // reset = false 로 계속 이어붙이기
+        });
+    }
+    
     // Add translation update logic
     window.addEventListener('languageChanged', () => {
-        initCategoryChips();
-        const tabSafe = document.getElementById('tab-safe');
-        const tabWarning = document.getElementById('tab-warning');
-        const tabUnsafe = document.getElementById('tab-unsafe');
-        if (tabSafe) tabSafe.innerHTML = `🟢 <span>${window.t ? window.t('status_safe', '먹어도 돼요') : '먹어도 돼요'}</span>`;
-        if (tabWarning) tabWarning.innerHTML = `🟠 <span>${window.t ? window.t('status_warning', '소량만 가능해요') : '소량만 가능해요'}</span>`;
-        if (tabUnsafe) tabUnsafe.innerHTML = `❌ <span>${window.t ? window.t('status_unsafe', '먹으면 안 돼요') : '먹으면 안 돼요'}</span>`;
+        updateDynamicTexts();
         renderFoodGrid(true);
     });
+
+    // Run once on load to catch initial lang if set before event listener
+    updateDynamicTexts();
 });
 
 // Modal background click to close
