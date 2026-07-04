@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실패 없는 강아지 옷 고르기: 체형별 맞춤 사이즈 측정법 | 댕댕이 팁</title>
+    <meta name="description" content="서론: 몸무게만 보고 옷을 샀다가 실패하는 이유 계절이 바뀌거나 특별한 날을 기념하기 위해 강아지 옷을 구매할 때, 많은 보호자들이 쇼핑몰에 기재된 '몸무게 기준표(예: 3kg은 M사이즈)'만 보고 제품을 선택하곤 ...">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="실패 없는 강아지 옷 고르기: 체형별 맞춤 사이즈 측정법 | 댕댕이 팁">
+    <meta property="og:description" content="서론: 몸무게만 보고 옷을 샀다가 실패하는 이유 계절이 바뀌거나 특별한 날을 기념하기 위해 강아지 옷을 구매할 때, 많은 보호자들이 쇼핑몰에 기재된 '몸무게 기준표(예: 3kg은 M사이즈)'만 보고 제품을 선택하곤 ...">
+    <meta property="og:image" content="https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg">
+    <meta property="og:type" content="article">
+
+    <link rel="canonical" href="https://mung-test.com/post-2.html">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css?v=2">
+    <script src="i18n.js?v=2"></script>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <style>
+        .post-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: var(--bg);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+        
+        .blog-article h1 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .blog-article h2 {
+            font-size: 1.4rem;
+            color: var(--text);
+            margin-top: 30px;
+            margin-bottom: 16px;
+        }
+
+        .blog-article p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .blog-article ul {
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+
+        .blog-article li {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .back-to-blog {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .back-to-blog:hover {
+            text-decoration: underline;
+        }
+
+        /* Language switching CSS */
+        html[lang="en"] .lang-ko { display: none !important; }
+        html[lang="en"] .lang-en { display: block !important; }
+        html[lang="ko"] .lang-en { display: none !important; }
+        html[lang="ko"] .lang-ko { display: block !important; }
+        
+        /* By default if no lang attribute, show KO and hide EN */
+        .lang-en { display: none; }
+        .lang-ko { display: block; }
+        
+        @media(max-width: 600px) {
+            .post-container {
+                padding: 20px;
+                margin: 20px;
+                border-radius: 12px;
+            }
+            .blog-article h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="index.html" class="logo" data-i18n="nav_blog" style="color: var(--primary);">🐾 댕댕이 팁(Blog)</a>
+        <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-i18n="nav_home">홈</a></li>
+                <li><a href="mung-test.html" data-i18n="nav_start">반려견 기질 검사</a></li>
+                <li><a href="blog.html" style="font-weight:bold; color:var(--primary);" data-i18n="nav_blog">댕댕이 팁(Blog)</a></li>
+                <li><a href="food-guide.html" data-i18n="nav_food">음식 가이드</a></li>
+                <li><a href="age-calculator.html" data-i18n="nav_age">나이 계산기</a></li>
+                <li><a href="size-calculator.html" data-i18n="nav_size">의류 사이즈 추천기</a></li>
+                <li><a href="breeds.html" data-i18n="nav_breeds">견종 백과사전</a></li>
+                <li><a href="diagnostics.html" data-i18n="nav_diagnostics">자가진단 가이드</a></li>
+                <li><a href="travel.html" data-i18n="nav_travel">여행 가이드</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button id="btn-lang" class="header-btn" aria-label="언어 변경">EN</button>
+            <button id="btn-theme" class="header-btn" aria-label="테마 변경">🌙</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <div class="post-container">
+        <a href="blog.html" class="back-to-blog" data-i18n="back_to_blog">← 목록으로 돌아가기</a>
+        <article class="blog-article">
+            <!-- Korean Content -->
+            <div class="lang-ko">
+                <h1>실패 없는 강아지 옷 고르기: 체형별 맞춤 사이즈 측정법</h1>
+                <h2>서론: 몸무게만 보고 옷을 샀다가 실패하는 이유</h2><p>계절이 바뀌거나 특별한 날을 기념하기 위해 강아지 옷을 구매할 때, 많은 보호자들이 쇼핑몰에 기재된 '몸무게 기준표(예: 3kg은 M사이즈)'만 보고 제품을 선택하곤 합니다. 하지만 막상 옷을 입혀보면 가슴이 꽉 끼어 걷지 못하거나, 등 길이가 짧아 크롭티처럼 말려 올라가는 경험을 한 번쯤 해보셨을 것입니다. 사람의 체형이 제각각이듯 강아지 역시 견종, 근육량, 골격, 그리고 털의 길이에 따라 체형이 천차만별입니다. 실패 없는 의류 쇼핑을 위한 정밀한 측정법과 견종별 선택 팁을 알아보겠습니다.</p><h2>본론 1: 반드시 알아야 할 3대 측정 부위 (목, 가슴, 등)</h2><p>가장 기본적이면서도 중요한 측정 부위는 목둘레, 가슴둘레, 등길이입니다. 강아지가 바르게 서 있는 상태에서 부드러운 줄자로 측정해야 오차가 적습니다.</p><ul><li><strong>목둘레:</strong> 목줄이나 하네스가 위치하는 목의 가장 두꺼운 밑동을 둥글게 측정합니다. 사람 손가락 한두 개가 들어갈 정도의 여유를 두어야 기도를 압박하지 않습니다.</li><li><strong>가슴둘레:</strong> 앞다리 바로 뒤, 갈비뼈가 가장 많이 튀어나온 흉곽의 가장 넓은 부분을 잽니다. 강아지 옷 선택에 있어 가장 결정적인 치수이며, 소형견은 실측 사이즈에 2~3cm, 중대형견은 4~5cm의 여유를 더해 사이즈를 선택해야 활동에 불편함이 없습니다.</li><li><strong>등길이:</strong> 목덜미부터 꼬리가 시작되는 밑동까지의 직선 길이입니다. 옷이 너무 길면 꼬리 움직임을 방해하고 배변 시 오염될 수 있으므로 정확한 측정이 필요합니다.</li></ul><h2>본론 2: 견종 특성과 모량(털 길이)을 고려한 실전 팁</h2><p>푸들, 비숑 프리제, 포메라니안과 같이 털이 풍성하게 자라는 이중모 및 곱슬모 견종은 미용 직후와 털이 찐 상태의 가슴둘레가 많게는 한 사이즈 이상 차이 납니다. 따라서 평소 미용 주기에 맞춰 털이 가장 길었을 때를 기준으로 넉넉하게 구매하는 것이 좋습니다. 반면 닥스훈트나 웰시코기처럼 허리가 비약적으로 긴 견종은 일반 기성복을 입히면 등 절반만 덮이는 경우가 많으므로, 시중에 출시된 특수 체형 전용(DX, CX 사이즈) 옷을 선택하는 것이 바람직합니다. 이탈리안 그레이하운드처럼 가슴통이 깊고 다리가 긴 견종 역시 신축성이 뛰어난 전용 의류를 착용해야 관절 쓸림을 예방할 수 있습니다.</p><h2>결론: 옷은 패션을 넘어선 기능성 장비입니다</h2><p>강아지에게 옷은 체온을 유지하고 자외선을 차단하며, 진드기 등 외부 기생충으로부터 피부를 보호하는 중요한 기능성 장비입니다. 우리 강아지의 정확한 신체 치수를 기록해 두고 견종별 특징을 고려하여 옷을 고른다면, 반품의 번거로움을 줄일 뿐만 아니라 아이에게 가장 편안하고 안전한 산책 시간을 선물할 수 있을 것입니다.</p>
+                
+        <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
+            <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">우리 강아지에게 딱 맞는 옷 사이즈를 찾고 싶다면?</h3>
+            <a href="size-calculator.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">맞춤형 의류 사이즈 추천 받기 ➔</a>
+        </div>
+            </div>
+            
+            <!-- English Content -->
+            <div class="lang-en">
+                <h1>Choosing Dog Clothes Without Failure: How to Measure Tailored Sizes by Body Type</h1>
+                <h2>Introduction: Why buying clothes based solely on weight fails?</h2><p>When purchasing dog clothes to change seasons or to commemorate a special occasion, many guardians choose the product only by looking at the 'weight standard' listed in the shopping mall (e.g., 3kg is size M). However, when you try on clothes, you may have experienced at least once that your chest is too tight and you cannot walk, or the back is so short that it rolls up like a crop top. Just as people have different body types, dogs also have different body types depending on their breed, muscle mass, skeleton, and fur length. Let's learn about precise measurement methods and tips for selecting dog breeds for flawless clothing shopping.</p><h2>Main topic 1: The three measurement areas you must know (neck, chest, back)</h2><p>The most basic yet important measurement areas are neck circumference, chest circumference, and back length. To minimize errors, measure with a soft tape measure while the dog is standing upright.</p><ul><li><strong>Neck circumference:</strong> Measure round the thickest base of the neck where the leash or harness is located. Make sure there is enough room to fit a finger or two to avoid compressing the airway.</li><li><strong>Chest circumference:</strong> Measure at the widest part of the ribcage, just behind the front legs, where the ribs protrude the most. This is the most critical size when choosing dog clothes. For small dogs, add 2~3cm to the actual size, and for medium to large dogs, add 4~5cm to the actual size to avoid discomfort during activities.</li><li><strong>Back length:</strong> This is the straight length from the nape of the neck to the base of the tail. Clothes that are too long can hinder tail movement and cause contamination during defecation, so accurate measurements are required.</li></ul><h2>Main 2: Practical tips considering breed characteristics and hair length</h2><p>For double-coated and curly-haired dog breeds that grow abundant fur, such as poodles, bichon frize, and Pomeranians, the chest circumference immediately after grooming and when the fur is thick can differ by up to one size or more. Therefore, it is recommended that you purchase a generous amount based on your regular grooming cycle when the hair is at its longest. On the other hand, dog breeds with extremely long waists, such as dachshunds or Welsh corgis, often only cover half of their backs when dressed in regular ready-made clothes, so it is advisable to choose clothes specifically for special body types (DX, CX sizes) available on the market. Dog breeds with deep chests and long legs, such as Italian greyhounds, must also wear specialized clothing with high elasticity to prevent joint chafing.</p><h2>Conclusion: Clothes are functional equipment that goes beyond fashion</h2><p>For dogs, clothing is an important functional equipment that maintains body temperature, blocks ultraviolet rays, and protects the skin from external parasites such as mites. If you record your dog's exact body measurements and choose clothes that take into account the characteristics of each breed, you will not only reduce the hassle of returns, but you will also be able to give your child the most comfortable and safe walking time.</p>
+                
+        <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
+            <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">Looking for the perfect clothing size for your dog?</h3>
+            <a href="size-calculator.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Get Size Recommendation ➔</a>
+        </div>
+            </div>
+        </article>
+    </div>
+</main>
+
+<footer class="site-footer" style="background-color: #f8f9fa; padding: 30px 20px; text-align: center; border-top: 1px solid #e9ecef; margin-top: 40px;">
+    <p style="font-size: 0.8rem; color:var(--text-muted); margin: 0;">&copy; 2026 mung-test.com. All rights reserved.</p>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Init theme and lang from i18n.js
+        const lang = getLang();
+        applyLanguage(lang);
+    });
+</script>
+</body>
+</html>

@@ -299,14 +299,6 @@
     구글 애드센스 광고 배치 영역 — 하단 (Multiplex / In-article Ads)
 </div>
 
-<!-- Single Dynamic Blog Viewer Modal -->
-<div id="dynamic-blog-modal" class="blog-modal">
-    <div class="blog-modal-content">
-        <button class="blog-modal-close" onclick="closeDynamicBlogModal()">&times;</button>
-        <article class="blog-article" id="dynamic-blog-article"></article>
-    </div>
-</div>
-
 
 <!-- ===================== FOOTER & LEGAL MODALS ===================== -->
 <footer class="site-footer" style="background-color: #f8f9fa; padding: 30px 20px; text-align: center; border-top: 1px solid #e9ecef; margin-top: 40px;">
@@ -361,70 +353,7 @@
 </div>
 
 <script>
-    // Blog Modal Functions
-    const dynamicModal = document.getElementById('dynamic-blog-modal');
-    
-    function openDynamicBlogModal(id) {
-        const post = window.blogDataMap[id];
-        if (post) {
-            let ctaHtml = '';
-            
-            const contentString = (post.title + ' ' + post.category + ' ' + (post.tags ? post.tags.join(' ') : '')).toLowerCase();
-            
-            const behaviorKeywords = ['행동', '성격', '심리', '기질', '분리불안', '카밍', '짖음', '핥기'];
-            const sizeKeywords = ['사이즈', '몸무게', '체형', '의류', '패딩', '슬개골'];
-            const foodKeywords = ['음식', '영양', '사료', '식단', '자연식'];
-            const ageKeywords = ['나이', '생애', '노령', '노화', '치매', '스케줄', '수명'];
 
-            const isBehavior = behaviorKeywords.some(kw => contentString.includes(kw));
-            const isSize = sizeKeywords.some(kw => contentString.includes(kw));
-            const isFood = foodKeywords.some(kw => contentString.includes(kw));
-            const isAge = ageKeywords.some(kw => contentString.includes(kw));
-
-            // Generate Contextual CTA Button based on matched category with unified orange tone
-            if (isBehavior) {
-                ctaHtml = `
-                <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
-                    <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">우리 아이의 행동학적 기질이 더 궁금하다면?</h3>
-                    <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">우리 아이 기질 검사하러 가기 ➔</a>
-                </div>`;
-            } else if (isSize) {
-                ctaHtml = `
-                <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
-                    <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">우리 강아지에게 딱 맞는 옷 사이즈를 찾고 싶다면?</h3>
-                    <a href="size-calculator.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">맞춤형 의류 사이즈 추천 받기 ➔</a>
-                </div>`;
-            } else if (isFood) {
-                ctaHtml = `
-                <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
-                    <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">이 음식, 강아지가 먹어도 될까?</h3>
-                    <a href="food-guide.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">안전한 음식 가이드 사전 보기 ➔</a>
-                </div>`;
-            } else if (isAge) {
-                ctaHtml = `
-                <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
-                    <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">우리 강아지는 사람 나이로 몇 살일까?</h3>
-                    <a href="age-calculator.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">우리 아이 사람 나이 계산하기 ➔</a>
-                </div>`;
-            } else {
-                // If it's a general care/hygiene post, do not show any CTA
-                ctaHtml = '';
-            }
-
-            document.getElementById('dynamic-blog-article').innerHTML = `
-                <h1>${post.title}</h1>
-                ${post.content}
-                ${ctaHtml}
-            `;
-            dynamicModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-    }
-    
-    function closeDynamicBlogModal() {
-        dynamicModal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
 
     // Dynamic Blog Loading Logic
     window.blogDataMap = {};
@@ -441,16 +370,24 @@
         const pageData = allBlogData.slice(startIndex, endIndex);
         const thumbnails = ['🐕', '👕', '🩺', '🍖', '🐾', '🏠', '🦴', '💉', '🏷️', '🕰️'];
 
+        const lang = typeof getLang === 'function' ? getLang() : (localStorage.getItem('mung_lang') || localStorage.getItem('lang') || 'ko');
+
         pageData.forEach((post, index) => {
             window.blogDataMap[post.id] = post;
             const thumb = thumbnails[(startIndex + index) % thumbnails.length];
-            const card = document.createElement('article');
+            const card = document.createElement('a');
             card.className = 'blog-card';
-            card.onclick = () => openDynamicBlogModal(post.id);
+            card.href = 'post-' + post.id + '.html';
+            card.style.textDecoration = 'none';
+            card.style.color = 'inherit';
+            
+            const displayTitle = (lang === 'en' && post.title_en) ? post.title_en : post.title;
+            const displayCategory = (lang === 'en' && post.category_en) ? post.category_en : post.category;
+            const displayContent = (lang === 'en' && post.content_en) ? post.content_en : post.content;
             
             // Excerpt creation
             const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = post.content;
+            tempDiv.innerHTML = displayContent;
             const textContent = tempDiv.textContent || tempDiv.innerText || "";
             let excerpt = textContent.substring(0, 100);
             if (textContent.length > 100) excerpt += '...';
@@ -458,8 +395,8 @@
             card.innerHTML = `
                 <div class="blog-thumb">${thumb}</div>
                 <div class="blog-content">
-                    <span class="blog-category">${post.category}</span>
-                    <h2 class="blog-title">${post.title}</h2>
+                    <span class="blog-category">${displayCategory}</span>
+                    <h2 class="blog-title">${displayTitle}</h2>
                     <p class="blog-excerpt">${excerpt}</p>
                 </div>
             `;
@@ -491,7 +428,7 @@
         }
     }
 
-    document.addEventListener("DOMContentLoaded", async () => {
+    async function loadBlogData() {
         try {
             const response = await fetch('blog_data.json?v=' + new Date().getTime());
             allBlogData = await response.json();
@@ -500,14 +437,18 @@
             console.error("Failed to load blog data:", error);
             document.getElementById('blog-grid-container').innerHTML = '<p style="text-align:center; padding:40px;">블로그 데이터를 불러오는 데 실패했습니다.</p>';
         }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        loadBlogData();
+        
+        window.addEventListener('languageChanged', () => {
+            loadBlogData();
+        });
     });
 
-    // Modal background click to close
+    // Modal background click to close (Legal modals)
     window.addEventListener('click', (e) => {
-        if(e.target.classList.contains('blog-modal')) {
-            e.target.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
         if(e.target.classList.contains('legal-modal')) {
             e.target.classList.remove('active');
         }

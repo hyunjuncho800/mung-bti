@@ -12,6 +12,28 @@ let filteredDataCache = []; // 필터링된 전체 결과 캐싱
 const categoriesKo = ['전체', '과일류', '채소 및 야채류', '육류 및 해산물류', '곡물, 견과류 및 유지류', '유제품 및 기타 가공식품류'];
 let activeCategories = categoriesKo;
 
+// Helper to get category translation key
+function getCategoryKey(cat) {
+    if (cat === '전체') return 'category_all';
+    if (cat === '과일류') return 'category_fruit';
+    if (cat === '채소 및 야채류') return 'category_veg';
+    if (cat === '육류 및 해산물류') return 'category_meat';
+    if (cat === '곡물, 견과류 및 유지류') return 'category_grain';
+    if (cat === '유제품 및 기타 가공식품류') return 'category_dairy';
+    return cat;
+}
+
+// Helper to get status translation key
+function getStatusKey(status) {
+    if (status === '먹어도 돼요') return 'status_safe';
+    if (status === '소량만 가능해요') return 'status_warning';
+    if (status === '먹으면 안 돼요') return 'status_unsafe';
+    if (status === '안전') return 'status_safe';
+    if (status === '소량만 급여 가능') return 'status_warning';
+    if (status === '절대 급여 금지') return 'status_unsafe';
+    return status;
+}
+
 async function initData() {
     try {
         const response = await fetch('food_data.json?v=' + new Date().getTime());
@@ -44,11 +66,13 @@ async function initData() {
                 type: foodType,
                 icon: icon,
                 name: food.name,
+                name_en: food.name_en || food.name,
                 category: food.category,
                 tags: [food.safetyLevel, food.category], 
                 tag: food.safetyLevel, // 메인 태그 (카드 표시용)
                 desc: food.safetyLevel === '안전' ? '안전하게 급여 가능합니다.' : (food.safetyLevel === '소량만 급여 가능' ? '주의하여 소량만 급여하세요.' : '절대 급여 금지'),
-                warning: food.description
+                warning: food.description,
+                warning_en: food.description_en || food.description
             };
         });
 
@@ -64,7 +88,7 @@ async function initData() {
 function initCategoryChips() {
     const chipContainer = document.getElementById('category-chips');
     chipContainer.innerHTML = activeCategories.map(cat => 
-        `<button class="category-chip ${cat === currentCategory ? 'active' : ''}" data-cat="${cat}">${cat}</button>`
+        `<button class="category-chip ${cat === currentCategory ? 'active' : ''}" data-cat="${cat}">${window.t ? window.t(getCategoryKey(cat), cat) : cat}</button>`
     ).join('');
 
     chipContainer.querySelectorAll('.category-chip').forEach(btn => {
@@ -130,14 +154,18 @@ function renderFoodGrid(reset = false) {
 
     const htmlString = itemsToShow.map(food => {
         let cls = food.type; // 'safe', 'warning', 'unsafe'
+        const lang = typeof getLang === 'function' ? getLang() : (localStorage.getItem('mung_lang') || localStorage.getItem('lang') || 'ko');
+        const displayName = (lang === 'en' && food.name_en) ? food.name_en : food.name;
+        const displayTag = window.t ? window.t(getStatusKey(food.tag), food.tag) : food.tag;
+
         // 소량 급여의 경우 약간의 스타일 구분을 줄 수도 있음 (여기선 태그 텍스트로 구분)
-        let tagHtml = `<div class="food-tag" style="${food.type === 'warning' ? 'color:#d35400; background:#fdf2e9; border: 1px solid #e67e22;' : ''}">#${food.tag}</div>`;
-        if (food.type === 'unsafe') tagHtml = `<div class="food-tag">#${food.tag}</div>`;
+        let tagHtml = `<div class="food-tag" style="${food.type === 'warning' ? 'color:#d35400; background:#fdf2e9; border: 1px solid #e67e22;' : ''}">#${displayTag}</div>`;
+        if (food.type === 'unsafe') tagHtml = `<div class="food-tag">#${displayTag}</div>`;
 
         return `
             <div class="food-card ${cls}" onclick="openFoodModal(${food.id})">
                 <div class="food-icon">${food.icon}</div>
-                <div class="food-name">${food.name}</div>
+                <div class="food-name">${displayName}</div>
                 ${tagHtml}
             </div>
         `;
@@ -164,19 +192,31 @@ function openFoodModal(foodId) {
 
     const modal = document.getElementById('food-modal');
     const body = document.getElementById('food-modal-body');
+    const lang = typeof getLang === 'function' ? getLang() : (localStorage.getItem('mung_lang') || localStorage.getItem('lang') || 'ko');
 
-    const typeLabel = food.tag; // 안전, 소량만 급여 가능, 절대 금지
+    const displayTag = window.t ? window.t(getStatusKey(food.tag), food.tag) : food.tag;
+    const typeLabel = displayTag; // 안전, 소량만 급여 가능, 절대 금지
     let tagCls = food.type; // 'safe', 'warning', 'unsafe'
+    
+    const displayName = (lang === 'en' && food.name_en) ? food.name_en : food.name;
+    const displayWarning = (lang === 'en' && food.warning_en) ? food.warning_en : food.warning;
+    
+    let descKey = '';
+    if (food.type === 'safe') descKey = 'modal_safe_desc';
+    else if (food.type === 'warning') descKey = 'modal_warning_desc';
+    else descKey = 'modal_unsafe_desc';
+    const displayDesc = window.t ? window.t(descKey, food.desc) : food.desc;
+    const detailsTitle = window.t ? window.t('modal_warning_title', '💡 상세 설명 / 급여 주의사항') : '💡 상세 설명 / 급여 주의사항';
 
     body.innerHTML = `
         <span class="food-modal-tag ${tagCls}" style="${food.type === 'warning' ? 'background:#f39c12; color:#fff;' : ''}">${typeLabel}</span>
-        <h3><span style="font-size: 2rem;">${food.icon}</span> ${food.name}</h3>
+        <h3><span style="font-size: 2rem;">${food.icon}</span> ${displayName}</h3>
         
-        <p class="food-modal-content-text" style="font-weight:bold; color:var(--text);">${food.desc}</p>
+        <p class="food-modal-content-text" style="font-weight:bold; color:var(--text);">${displayDesc}</p>
         
         <div style="margin-bottom: 16px;">
-            <strong style="color:var(--text); font-size:1.05rem;">💡 상세 설명 / 급여 주의사항</strong>
-            <p class="food-modal-content-text" style="margin-top: 8px; line-height: 1.6;">${food.warning}</p>
+            <strong style="color:var(--text); font-size:1.05rem;">${detailsTitle}</strong>
+            <p class="food-modal-content-text" style="margin-top: 8px; line-height: 1.6;">${displayWarning}</p>
         </div>
     `;
 
@@ -245,6 +285,18 @@ document.addEventListener('DOMContentLoaded', () => {
     loadMoreBtn.addEventListener('click', () => {
         currentPage++;
         renderFoodGrid(false); // reset = false 로 계속 이어붙이기
+    });
+
+    // Add translation update logic
+    window.addEventListener('languageChanged', () => {
+        initCategoryChips();
+        const tabSafe = document.getElementById('tab-safe');
+        const tabWarning = document.getElementById('tab-warning');
+        const tabUnsafe = document.getElementById('tab-unsafe');
+        if (tabSafe) tabSafe.innerHTML = `🟢 <span>${window.t ? window.t('status_safe', '먹어도 돼요') : '먹어도 돼요'}</span>`;
+        if (tabWarning) tabWarning.innerHTML = `🟠 <span>${window.t ? window.t('status_warning', '소량만 가능해요') : '소량만 가능해요'}</span>`;
+        if (tabUnsafe) tabUnsafe.innerHTML = `❌ <span>${window.t ? window.t('status_unsafe', '먹으면 안 돼요') : '먹으면 안 돼요'}</span>`;
+        renderFoodGrid(true);
     });
 });
 

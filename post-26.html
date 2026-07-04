@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반려견 사료 급여량 계산법: 활동량과 기초대사량(RER) 기반 맞춤 정량 구하기 | 댕댕이 팁</title>
+    <meta name="description" content="서론: 사료 봉투 뒷면의 기준량, 믿어도 될까요? 초보 보호자들이 가장 흔히 하는 질문 중 하나는 "우리 강아지 하루에 사료를 몇 알이나 줘야 하나요?" 혹은 "종이컵으로 몇 컵이 적당한가요?"입니다. 대부분 사료 ...">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="반려견 사료 급여량 계산법: 활동량과 기초대사량(RER) 기반 맞춤 정량 구하기 | 댕댕이 팁">
+    <meta property="og:description" content="서론: 사료 봉투 뒷면의 기준량, 믿어도 될까요? 초보 보호자들이 가장 흔히 하는 질문 중 하나는 "우리 강아지 하루에 사료를 몇 알이나 줘야 하나요?" 혹은 "종이컵으로 몇 컵이 적당한가요?"입니다. 대부분 사료 ...">
+    <meta property="og:image" content="https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg">
+    <meta property="og:type" content="article">
+
+    <link rel="canonical" href="https://mung-test.com/post-26.html">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css?v=2">
+    <script src="i18n.js?v=2"></script>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <style>
+        .post-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: var(--bg);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+        
+        .blog-article h1 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .blog-article h2 {
+            font-size: 1.4rem;
+            color: var(--text);
+            margin-top: 30px;
+            margin-bottom: 16px;
+        }
+
+        .blog-article p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .blog-article ul {
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+
+        .blog-article li {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .back-to-blog {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .back-to-blog:hover {
+            text-decoration: underline;
+        }
+
+        /* Language switching CSS */
+        html[lang="en"] .lang-ko { display: none !important; }
+        html[lang="en"] .lang-en { display: block !important; }
+        html[lang="ko"] .lang-en { display: none !important; }
+        html[lang="ko"] .lang-ko { display: block !important; }
+        
+        /* By default if no lang attribute, show KO and hide EN */
+        .lang-en { display: none; }
+        .lang-ko { display: block; }
+        
+        @media(max-width: 600px) {
+            .post-container {
+                padding: 20px;
+                margin: 20px;
+                border-radius: 12px;
+            }
+            .blog-article h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="index.html" class="logo" data-i18n="nav_blog" style="color: var(--primary);">🐾 댕댕이 팁(Blog)</a>
+        <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-i18n="nav_home">홈</a></li>
+                <li><a href="mung-test.html" data-i18n="nav_start">반려견 기질 검사</a></li>
+                <li><a href="blog.html" style="font-weight:bold; color:var(--primary);" data-i18n="nav_blog">댕댕이 팁(Blog)</a></li>
+                <li><a href="food-guide.html" data-i18n="nav_food">음식 가이드</a></li>
+                <li><a href="age-calculator.html" data-i18n="nav_age">나이 계산기</a></li>
+                <li><a href="size-calculator.html" data-i18n="nav_size">의류 사이즈 추천기</a></li>
+                <li><a href="breeds.html" data-i18n="nav_breeds">견종 백과사전</a></li>
+                <li><a href="diagnostics.html" data-i18n="nav_diagnostics">자가진단 가이드</a></li>
+                <li><a href="travel.html" data-i18n="nav_travel">여행 가이드</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button id="btn-lang" class="header-btn" aria-label="언어 변경">EN</button>
+            <button id="btn-theme" class="header-btn" aria-label="테마 변경">🌙</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <div class="post-container">
+        <a href="blog.html" class="back-to-blog" data-i18n="back_to_blog">← 목록으로 돌아가기</a>
+        <article class="blog-article">
+            <!-- Korean Content -->
+            <div class="lang-ko">
+                <h1>반려견 사료 급여량 계산법: 활동량과 기초대사량(RER) 기반 맞춤 정량 구하기</h1>
+                <h2>서론: 사료 봉투 뒷면의 기준량, 믿어도 될까요?</h2><p>초보 보호자들이 가장 흔히 하는 질문 중 하나는 "우리 강아지 하루에 사료를 몇 알이나 줘야 하나요?" 혹은 "종이컵으로 몇 컵이 적당한가요?"입니다. 대부분 사료 봉투 뒷면에 적힌 권장 급여량 표를 보고 짐작하여 주지만, 이는 모든 강아지 평균을 단순 체중으로만 나눈 대략적인 가이드일 뿐입니다. 하루 1시간 격렬하게 뛰어노는 5kg 강아지와 하루 종일 소파에 누워 잠만 자는 5kg 강아지의 에너지 소모량은 하늘과 땅 차이입니다. 나의 반려견이 비만이나 영양실조에 걸리지 않게, 현재 상태에 맞춘 가장 정밀하고 과학적인 하루 필요 칼로리(사료량) 계산법을 알려드립니다.</p><h2>본론 1: 강아지 기초대사량(RER)과 하루 필요 에너지(DER) 계산식</h2><p>정확한 급여량을 알기 위해서는 먼저 수의학에서 사용하는 두 가지 단어를 이해해야 합니다. 가만히 숨만 쉬어도 소모되는 최소한의 에너지인 <strong>휴식기 에너지 요구량(RER)</strong>과, 활동량 등을 곱해 산출하는 실제 <strong>일일 필요 에너지 요구량(DER)</strong>입니다.</p><p><strong>1단계: RER (휴식기 에너지 요구량) 계산하기</strong><br>가장 널리 쓰이는 표준 계산식은 다음과 같습니다.<br>• RER (kcal) = 30 × (현재 체중 kg) + 70<br>예를 들어 체중 5kg의 강아지라면: 30 × 5 + 70 = 220 kcal 가 기초대사량입니다.</p><p><strong>2단계: DER (일일 필요 에너지 요구량) 도출을 위한 승수 곱하기</strong><br>아이의 연령, 중성화 여부, 활동 수준(승수)을 RER에 곱해줍니다.<br>• 중성화 한 성견 (일반적인 실내견): RER × 1.6<br>• 중성화 안 한 성견: RER × 1.8<br>• 다이어트가 필요한 비만견: RER × 1.0 ~ 1.2<br>• 한창 자라는 강아지 (생후 4개월 미만): RER × 3.0<br>예시) 5kg의 중성화한 실내 성견의 하루 필요 칼로리는: 220 × 1.6 = <strong>352 kcal</strong> 가 됩니다.</p><h2>본론 2: 칼로리를 사료 그램(g) 수로 환산하기</h2><p>필요한 칼로리를 구했다면, 현재 먹이고 있는 사료의 칼로리를 바탕으로 급여량(g)을 환산해야 합니다. 사료 봉투 뒷면이나 상세 페이지에 적힌 '대사 에너지 (ME)'를 확인하세요. 보통 1kg당 3,500kcal(즉 1g당 3.5kcal) 식으로 적혀 있습니다.</p><p>• <strong>하루 사료 급여량(g)</strong> = 일일 필요 에너지(DER) ÷ 사료 1g당 칼로리<br>앞선 예시의 강아지가 1g당 3.5kcal인 사료를 먹는다면: 352 ÷ 3.5 = 약 <strong>100g</strong>이 하루치 정량이 됩니다. 이를 아침저녁 2회로 나누어 주면 한 끼에 50g씩 주방 저울로 재어 급여하면 완벽합니다. (간식을 주었다면 그 칼로리만큼 사료 양을 줄여야 비만을 막을 수 있습니다.)</p><h2>결론: 비만도 평가(BCS)로 유동적인 조절이 필요합니다</h2><p>위의 계산식은 과학적 접근의 시작점일 뿐, 강아지마다 장 흡수율과 신진대사가 다릅니다. 급여량을 정하고 한 달 뒤 아이의 갈비뼈를 만져보았을 때 지방에 덮여 뼈가 잘 만져지지 않는다면(비만), 현재 급여량에서 10%를 줄이고 다시 관찰해야 합니다. 눈대중이나 종이컵 측정은 생각보다 오차가 매우 크므로, 강아지 밥그릇 전용 주방 전자저울을 구입하여 매끼 정확하게 1g 단위로 계량하여 주는 습관이 반려견 건강 관리의 훌륭한 첫걸음이 됩니다.</p>
+                
+        <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
+            <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">이 음식, 강아지가 먹어도 될까?</h3>
+            <a href="food-guide.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">안전한 음식 가이드 사전 보기 ➔</a>
+        </div>
+            </div>
+            
+            <!-- English Content -->
+            <div class="lang-en">
+                <h1>반려견 사료 급여량 계산법: 활동량과 기초대사량(RER) 기반 맞춤 정량 구하기</h1>
+                <h2>서론: 사료 봉투 뒷면의 기준량, 믿어도 될까요?</h2><p>초보 보호자들이 가장 흔히 하는 질문 중 하나는 "우리 강아지 하루에 사료를 몇 알이나 줘야 하나요?" 혹은 "종이컵으로 몇 컵이 적당한가요?"입니다. 대부분 사료 봉투 뒷면에 적힌 권장 급여량 표를 보고 짐작하여 주지만, 이는 모든 강아지 평균을 단순 체중으로만 나눈 대략적인 가이드일 뿐입니다. 하루 1시간 격렬하게 뛰어노는 5kg 강아지와 하루 종일 소파에 누워 잠만 자는 5kg 강아지의 에너지 소모량은 하늘과 땅 차이입니다. 나의 반려견이 비만이나 영양실조에 걸리지 않게, 현재 상태에 맞춘 가장 정밀하고 과학적인 하루 필요 칼로리(사료량) 계산법을 알려드립니다.</p><h2>본론 1: 강아지 기초대사량(RER)과 하루 필요 에너지(DER) 계산식</h2><p>정확한 급여량을 알기 위해서는 먼저 수의학에서 사용하는 두 가지 단어를 이해해야 합니다. 가만히 숨만 쉬어도 소모되는 최소한의 에너지인 <strong>휴식기 에너지 요구량(RER)</strong>과, 활동량 등을 곱해 산출하는 실제 <strong>일일 필요 에너지 요구량(DER)</strong>입니다.</p><p><strong>1단계: RER (휴식기 에너지 요구량) 계산하기</strong><br>가장 널리 쓰이는 표준 계산식은 다음과 같습니다.<br>• RER (kcal) = 30 × (현재 체중 kg) + 70<br>예를 들어 체중 5kg의 강아지라면: 30 × 5 + 70 = 220 kcal 가 기초대사량입니다.</p><p><strong>2단계: DER (일일 필요 에너지 요구량) 도출을 위한 승수 곱하기</strong><br>아이의 연령, 중성화 여부, 활동 수준(승수)을 RER에 곱해줍니다.<br>• 중성화 한 성견 (일반적인 실내견): RER × 1.6<br>• 중성화 안 한 성견: RER × 1.8<br>• 다이어트가 필요한 비만견: RER × 1.0 ~ 1.2<br>• 한창 자라는 강아지 (생후 4개월 미만): RER × 3.0<br>예시) 5kg의 중성화한 실내 성견의 하루 필요 칼로리는: 220 × 1.6 = <strong>352 kcal</strong> 가 됩니다.</p><h2>본론 2: 칼로리를 사료 그램(g) 수로 환산하기</h2><p>필요한 칼로리를 구했다면, 현재 먹이고 있는 사료의 칼로리를 바탕으로 급여량(g)을 환산해야 합니다. 사료 봉투 뒷면이나 상세 페이지에 적힌 '대사 에너지 (ME)'를 확인하세요. 보통 1kg당 3,500kcal(즉 1g당 3.5kcal) 식으로 적혀 있습니다.</p><p>• <strong>하루 사료 급여량(g)</strong> = 일일 필요 에너지(DER) ÷ 사료 1g당 칼로리<br>앞선 예시의 강아지가 1g당 3.5kcal인 사료를 먹는다면: 352 ÷ 3.5 = 약 <strong>100g</strong>이 하루치 정량이 됩니다. 이를 아침저녁 2회로 나누어 주면 한 끼에 50g씩 주방 저울로 재어 급여하면 완벽합니다. (간식을 주었다면 그 칼로리만큼 사료 양을 줄여야 비만을 막을 수 있습니다.)</p><h2>결론: 비만도 평가(BCS)로 유동적인 조절이 필요합니다</h2><p>위의 계산식은 과학적 접근의 시작점일 뿐, 강아지마다 장 흡수율과 신진대사가 다릅니다. 급여량을 정하고 한 달 뒤 아이의 갈비뼈를 만져보았을 때 지방에 덮여 뼈가 잘 만져지지 않는다면(비만), 현재 급여량에서 10%를 줄이고 다시 관찰해야 합니다. 눈대중이나 종이컵 측정은 생각보다 오차가 매우 크므로, 강아지 밥그릇 전용 주방 전자저울을 구입하여 매끼 정확하게 1g 단위로 계량하여 주는 습관이 반려견 건강 관리의 훌륭한 첫걸음이 됩니다.</p>
+                
+        <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
+            <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">Is this food safe for my dog?</h3>
+            <a href="food-guide.html" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Check Food Guide ➔</a>
+        </div>
+            </div>
+        </article>
+    </div>
+</main>
+
+<footer class="site-footer" style="background-color: #f8f9fa; padding: 30px 20px; text-align: center; border-top: 1px solid #e9ecef; margin-top: 40px;">
+    <p style="font-size: 0.8rem; color:var(--text-muted); margin: 0;">&copy; 2026 mung-test.com. All rights reserved.</p>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Init theme and lang from i18n.js
+        const lang = getLang();
+        applyLanguage(lang);
+    });
+</script>
+</body>
+</html>
