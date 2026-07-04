@@ -34,6 +34,14 @@ function getStatusKey(status) {
     return status;
 }
 
+// Helper to get tag translation key
+function getTagKey(status) {
+    if (status === '먹어도 돼요' || status === '안전') return 'tag_safe';
+    if (status === '소량만 가능해요' || status === '소량만 급여 가능') return 'tag_warning';
+    if (status === '먹으면 안 돼요' || status === '절대 급여 금지' || status === '절대 금지') return 'tag_unsafe';
+    return status;
+}
+
 async function initData() {
     try {
         const response = await fetch('food_data.json?v=' + new Date().getTime());
@@ -160,7 +168,7 @@ function renderFoodGrid(reset = false) {
         let cls = food.type; // 'safe', 'warning', 'unsafe'
         const lang = typeof getLang === 'function' ? getLang() : (localStorage.getItem('mung_lang') || localStorage.getItem('lang') || 'ko');
         const displayName = (lang === 'en' && food.name_en) ? food.name_en : food.name;
-        const displayTag = window.t ? window.t(getStatusKey(food.tag), food.tag) : food.tag;
+        const displayTag = window.t ? window.t(getTagKey(food.tag), food.tag) : food.tag;
 
         // 소량 급여의 경우 약간의 스타일 구분을 줄 수도 있음 (여기선 태그 텍스트로 구분)
         let tagHtml = `<div class="food-tag" style="${food.type === 'warning' ? 'color:#d35400; background:#fdf2e9; border: 1px solid #e67e22;' : ''}">#${displayTag}</div>`;
@@ -198,7 +206,7 @@ function openFoodModal(foodId) {
     const body = document.getElementById('food-modal-body');
     const lang = typeof getLang === 'function' ? getLang() : (localStorage.getItem('mung_lang') || localStorage.getItem('lang') || 'ko');
 
-    const displayTag = window.t ? window.t(getStatusKey(food.tag), food.tag) : food.tag;
+    const displayTag = window.t ? window.t(getTagKey(food.tag), food.tag) : food.tag;
     const typeLabel = displayTag; // 안전, 소량만 급여 가능, 절대 금지
     let tagCls = food.type; // 'safe', 'warning', 'unsafe'
     
