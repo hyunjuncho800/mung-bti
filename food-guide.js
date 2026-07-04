@@ -30,7 +30,7 @@ function getStatusKey(status) {
     if (status === '먹으면 안 돼요') return 'status_unsafe';
     if (status === '안전') return 'status_safe';
     if (status === '소량만 급여 가능') return 'status_warning';
-    if (status === '절대 급여 금지') return 'status_unsafe';
+    if (status === '절대 급여 금지' || status === '절대 금지') return 'status_unsafe';
     return status;
 }
 

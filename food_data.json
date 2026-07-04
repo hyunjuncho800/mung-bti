@@ -7,7 +7,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "비타민 A와 C, 섬유질이 풍부해 좋은 간식이 됩니다. 단, 씨앗에는 시안화물이라는 맹독이 있으므로 씨와 심은 완벽히 제거하고 껍질을 벗겨 작게 썰어주세요.",
     "name_en": "Apple",
-    "description_en": "비타민 A와 C, 섬유질이 풍부해 좋은 간식이 됩니다. 단, 씨앗에는 시안화물이라는 맹독이 있으므로 씨와 심은 완벽히 제거하고 껍질을 벗겨 작게 썰어주세요."
+    "description_en": "It is rich in vitamins A and C and fiber, making it a good snack. However, since the seeds contain a deadly poison called cyanide, completely remove the seeds and core, peel them, and cut them into small pieces."
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "수분이 많아 여름철 수분 보충에 탁월하며 기침 완화에 도움을 줍니다. 사과와 마찬가지로 씨앗은 절대 먹지 못하게 하고 작게 잘라 급여하세요.",
     "name_en": "Pear",
-    "description_en": "수분이 많아 여름철 수분 보충에 탁월하며 기침 완화에 도움을 줍니다. 사과와 마찬가지로 씨앗은 절대 먹지 못하게 하고 작게 잘라 급여하세요."
+    "description_en": "It is high in moisture, so it is excellent for replenishing moisture in the summer and helps relieve coughing. As with apples, never allow the seeds to be eaten and feed them in small pieces."
   },
   {
     "id": 3,
@@ -27,7 +27,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "칼륨과 비타민 B6, 비타민 C가 풍부하지만 당분이 매우 높아 비만이나 당뇨가 있는 강아지에게는 피하는 것이 좋습니다. 하루 권장 칼로리의 10% 미만으로만 주세요.",
     "name_en": "Banana",
-    "description_en": "칼륨과 비타민 B6, 비타민 C가 풍부하지만 당분이 매우 높아 비만이나 당뇨가 있는 강아지에게는 피하는 것이 좋습니다. 하루 권장 칼로리의 10% 미만으로만 주세요."
+    "description_en": "It is rich in potassium, vitamin B6, and vitamin C, but is very high in sugar, so it is best avoided for dogs with obesity or diabetes. Give less than 10% of your recommended daily calories."
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "92%가 수분으로 이루어져 있어 더운 여름철 열사병 예방에 좋습니다. 수박씨는 장폐색을 유발할 수 있으므로 완전히 제거하고 껍질도 주면 안 됩니다.",
     "name_en": "Watermelon",
-    "description_en": "92%가 수분으로 이루어져 있어 더운 여름철 열사병 예방에 좋습니다. 수박씨는 장폐색을 유발할 수 있으므로 완전히 제거하고 껍질도 주면 안 됩니다."
+    "description_en": "It is made up of 92% water, so it is good for preventing heatstroke during hot summer days. Watermelon seeds can cause intestinal obstruction, so remove them completely and do not give them the peel."
   },
   {
     "id": 5,
@@ -47,7 +47,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "눈 건강에 좋은 베타카로틴이 풍부합니다. 당도가 높아 살이 찌기 쉬우므로 아주 소량만 과육 부분만 잘라서 주어야 합니다.",
     "name_en": "Melon",
-    "description_en": "눈 건강에 좋은 베타카로틴이 풍부합니다. 당도가 높아 살이 찌기 쉬우므로 아주 소량만 과육 부분만 잘라서 주어야 합니다."
+    "description_en": "It is rich in beta-carotene, which is good for eye health. Because the sugar content is high, it is easy to gain weight, so only a very small amount of the flesh should be cut and given."
   },
   {
     "id": 6,
@@ -57,7 +57,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "항산화 물질이 풍부하고 치아 미백 효과를 주는 효소가 있습니다. 깨끗이 씻어 꼭지를 떼고 반으로 잘라 소화하기 쉽게 주세요.",
     "name_en": "Strawberry",
-    "description_en": "항산화 물질이 풍부하고 치아 미백 효과를 주는 효소가 있습니다. 깨끗이 씻어 꼭지를 떼고 반으로 잘라 소화하기 쉽게 주세요."
+    "description_en": "It is rich in antioxidants and contains enzymes that whiten teeth. Wash it thoroughly, remove the stem, and cut it in half to make it easier to digest."
   },
   {
     "id": 7,
@@ -67,7 +67,7 @@
     "safetyLevel": "안전",
     "description": "반려견에게 최고의 슈퍼푸드로 꼽힙니다. 강력한 항산화 작용으로 세포 손상을 막고 노령견의 두뇌 건강과 시력 보호에 아주 좋습니다.",
     "name_en": "Blueberry",
-    "description_en": "반려견에게 최고의 슈퍼푸드로 꼽힙니다. 강력한 항산화 작용으로 세포 손상을 막고 노령견의 두뇌 건강과 시력 보호에 아주 좋습니다."
+    "description_en": "It is considered the best superfood for dogs. Its powerful antioxidant effect prevents cell damage and is great for protecting the brain health and vision of older dogs."
   },
   {
     "id": 8,
@@ -77,7 +77,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "비타민 C와 망간이 풍부하지만 천연 자일리톨 성분이 미량 함유되어 있으므로, 체중 10kg 기준 하루 2~3개 이하로 제한해야 합니다.",
     "name_en": "Raspberry",
-    "description_en": "비타민 C와 망간이 풍부하지만 천연 자일리톨 성분이 미량 함유되어 있으므로, 체중 10kg 기준 하루 2~3개 이하로 제한해야 합니다."
+    "description_en": "Although it is rich in vitamin C and manganese, it contains trace amounts of natural xylitol, so it should be limited to no more than 2 to 3 servings per day based on 10 kg of body weight."
   },
   {
     "id": 9,
@@ -87,7 +87,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "방광염이나 요로결석 예방에 효과적입니다. 생과일은 너무 시어서 잘 먹지 않으며, 건조 크랜베리는 설탕이 많으므로 피하는 것이 낫습니다.",
     "name_en": "Cranberry",
-    "description_en": "방광염이나 요로결석 예방에 효과적입니다. 생과일은 너무 시어서 잘 먹지 않으며, 건조 크랜베리는 설탕이 많으므로 피하는 것이 낫습니다."
+    "description_en": "It is effective in preventing cystitis or urinary stones. Raw fruit is too sour to eat, and dried cranberries are high in sugar, so it is better to avoid them."
   },
   {
     "id": 10,
@@ -97,7 +97,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "비타민이 풍부하고 식감이 부드럽지만 당류가 엄청나게 높습니다. 커다란 씨앗은 삼킬 경우 식도나 장이 막혀 치명적이니 과육만 잘라주세요.",
     "name_en": "Mango",
-    "description_en": "비타민이 풍부하고 식감이 부드럽지만 당류가 엄청나게 높습니다. 커다란 씨앗은 삼킬 경우 식도나 장이 막혀 치명적이니 과육만 잘라주세요."
+    "description_en": "Although it is rich in vitamins and has a soft texture, it is extremely high in sugar. Swallowing large seeds can cause blockage in the esophagus or intestines, which can be fatal, so just cut off the flesh."
   },
   {
     "id": 11,
@@ -107,7 +107,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "탄닌 성분 때문에 많이 먹으면 변비를 유발할 수 있습니다. 떫은맛이 없는 단감의 과육만 씨앗을 완벽히 제거하여 극소량 급여하세요.",
     "name_en": "Persimmon",
-    "description_en": "탄닌 성분 때문에 많이 먹으면 변비를 유발할 수 있습니다. 떫은맛이 없는 단감의 과육만 씨앗을 완벽히 제거하여 극소량 급여하세요."
+    "description_en": "Because of the tannin content, eating too much can cause constipation. Completely remove the seeds and feed only the pulp of sweet persimmons that do not have an astringent taste in very small amounts."
   },
   {
     "id": 12,
@@ -117,7 +117,7 @@
     "safetyLevel": "절대 금지",
     "description": "과육 자체는 독성이 없으나, 복숭아의 커다란 씨앗에는 시안화물이 들어있고 삼키면 장폐색을 일으켜 사망에 이를 수 있습니다. 씨앗을 버린 쓰레기통도 뒤지지 않게 주의하세요.",
     "name_en": "Peach",
-    "description_en": "과육 자체는 독성이 없으나, 복숭아의 커다란 씨앗에는 시안화물이 들어있고 삼키면 장폐색을 일으켜 사망에 이를 수 있습니다. 씨앗을 버린 쓰레기통도 뒤지지 않게 주의하세요."
+    "description_en": "Although the flesh itself is not toxic, the large seeds of peaches contain cyanide, which, if swallowed, can cause intestinal obstruction and lead to death. Be careful not to rummage through the trash can where the seeds were thrown away."
   },
   {
     "id": 13,
@@ -127,7 +127,7 @@
     "safetyLevel": "절대 금지",
     "description": "자두 역시 씨앗이 작지만 단단하고 시안화물을 함유하고 있어 장 폐색의 원인이 됩니다. 줄기나 잎에도 독성이 있으므로 피하는 것이 안전합니다.",
     "name_en": "Plum",
-    "description_en": "자두 역시 씨앗이 작지만 단단하고 시안화물을 함유하고 있어 장 폐색의 원인이 됩니다. 줄기나 잎에도 독성이 있으므로 피하는 것이 안전합니다."
+    "description_en": "Plums also have small but hard seeds and contain cyanide, which can cause intestinal obstruction. The stems and leaves are also toxic, so it is safe to avoid them."
   },
   {
     "id": 14,
@@ -137,7 +137,7 @@
     "safetyLevel": "절대 금지",
     "description": "살구 씨앗, 잎, 줄기 모두에 청산가리 성분인 시안화물이 포함되어 있어 호흡 곤란, 쇼크를 유발하므로 근처에 가지 못하게 해야 합니다.",
     "name_en": "Apricot",
-    "description_en": "살구 씨앗, 잎, 줄기 모두에 청산가리 성분인 시안화물이 포함되어 있어 호흡 곤란, 쇼크를 유발하므로 근처에 가지 못하게 해야 합니다."
+    "description_en": "Apricot seeds, leaves, and stems all contain cyanide, a component of cyanide, which can cause breathing difficulties and shock, so avoid going near them."
   },
   {
     "id": 15,
@@ -147,7 +147,7 @@
     "safetyLevel": "절대 금지",
     "description": "체리 씨앗 주변의 과육을 제외한 모든 부분(씨앗, 줄기, 잎)에 시안화물이 들어있습니다. 씨를 발라내기 번거로우며 중독 시 동공 확장과 붉은 점막 증상이 나타납니다.",
     "name_en": "Cherry",
-    "description_en": "체리 씨앗 주변의 과육을 제외한 모든 부분(씨앗, 줄기, 잎)에 시안화물이 들어있습니다. 씨를 발라내기 번거로우며 중독 시 동공 확장과 붉은 점막 증상이 나타납니다."
+    "description_en": "All parts of the cherry (seeds, stems, leaves) except the flesh around the seeds contain cyanide. It is difficult to remove the seeds, and poisoning causes dilated pupils and red mucous membranes."
   },
   {
     "id": 16,
@@ -157,7 +157,7 @@
     "safetyLevel": "절대 금지",
     "description": "반려견에게 가장 치명적인 과일 1순위입니다. 단 한 알만 먹어도 급성 신부전(신장 파괴)을 일으켜 사망에 이를 수 있습니다. 포도즙이나 껍질도 절대 안 됩니다.",
     "name_en": "Grape",
-    "description_en": "반려견에게 가장 치명적인 과일 1순위입니다. 단 한 알만 먹어도 급성 신부전(신장 파괴)을 일으켜 사망에 이를 수 있습니다. 포도즙이나 껍질도 절대 안 됩니다."
+    "description_en": "This is the #1 most lethal fruit for dogs. Taking just one pill can cause acute renal failure (kidney destruction) and lead to death. Never use grape juice or skin."
   },
   {
     "id": 17,
@@ -167,7 +167,7 @@
     "safetyLevel": "절대 금지",
     "description": "포도를 말린 건포도는 독성 성분이 고농축되어 있어 생포도보다 훨씬 더 치명적입니다. 건포도가 들어간 빵이나 쿠키도 절대 급여 금지입니다.",
     "name_en": "Raisin",
-    "description_en": "포도를 말린 건포도는 독성 성분이 고농축되어 있어 생포도보다 훨씬 더 치명적입니다. 건포도가 들어간 빵이나 쿠키도 절대 급여 금지입니다."
+    "description_en": "Raisins made from dried grapes are highly concentrated in toxic substances and are much more lethal than fresh grapes. Bread or cookies containing raisins are also strictly prohibited."
   },
   {
     "id": 18,
@@ -177,7 +177,7 @@
     "safetyLevel": "절대 금지",
     "description": "아보카도의 잎, 씨앗, 과육에는 '페르신(Persin)'이라는 독성 물질이 있어 반려견에게 구토, 설사, 호흡 곤란을 유발할 수 있습니다.",
     "name_en": "Avocado",
-    "description_en": "아보카도의 잎, 씨앗, 과육에는 '페르신(Persin)'이라는 독성 물질이 있어 반려견에게 구토, 설사, 호흡 곤란을 유발할 수 있습니다."
+    "description_en": "Avocado leaves, seeds, and flesh contain a toxic substance called 'Persin', which can cause vomiting, diarrhea, and breathing difficulties in dogs."
   },
   {
     "id": 19,
@@ -187,7 +187,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "비타민 C가 풍부하지만 산성이 강해 빈속에 먹으면 위염이나 구토를 유발할 수 있습니다. 껍질의 흰 귤락을 벗기고 속 알맹이만 조금 줍니다.",
     "name_en": "Tangerine",
-    "description_en": "비타민 C가 풍부하지만 산성이 강해 빈속에 먹으면 위염이나 구토를 유발할 수 있습니다. 껍질의 흰 귤락을 벗기고 속 알맹이만 조금 줍니다."
+    "description_en": "It is rich in vitamin C, but is highly acidic, so eating it on an empty stomach can cause gastritis or vomiting. Peel off the white tangerine from the peel and give only a small amount of the inner kernels."
   },
   {
     "id": 20,
@@ -197,7 +197,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "귤과 마찬가지로 산도가 높아 소화 불량을 일으키기 쉽습니다. 두꺼운 껍질에는 소화하기 힘든 에센셜 오일이 있으므로 알맹이만 소량 급여하세요.",
     "name_en": "Orange",
-    "description_en": "귤과 마찬가지로 산도가 높아 소화 불량을 일으키기 쉽습니다. 두꺼운 껍질에는 소화하기 힘든 에센셜 오일이 있으므로 알맹이만 소량 급여하세요."
+    "description_en": "Like tangerines, they have high acidity and can easily cause indigestion. The thick skin contains essential oils that are difficult to digest, so feed only the kernels in small amounts."
   },
   {
     "id": 21,
@@ -207,7 +207,7 @@
     "safetyLevel": "안전",
     "description": "베타카로틴과 섬유질이 풍부하여 눈 건강과 장 건강에 최고입니다. 딱딱한 생당근은 치석 제거에 좋으나 어린 강아지에겐 익혀서 부드럽게 주세요.",
     "name_en": "Carrot",
-    "description_en": "베타카로틴과 섬유질이 풍부하여 눈 건강과 장 건강에 최고입니다. 딱딱한 생당근은 치석 제거에 좋으나 어린 강아지에겐 익혀서 부드럽게 주세요."
+    "description_en": "It is rich in beta-carotene and fiber, making it excellent for eye and intestinal health. Hard raw carrots are good for removing tartar, but for young dogs, cook them to make them softer."
   },
   {
     "id": 22,
@@ -217,7 +217,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "항암 효과가 뛰어나지만 '이소티오시아네이트' 성분이 들어있어 많이 먹으면 위장 자극이 옵니다. 반드시 끓는 물에 데쳐서 작게 잘라 식사에 섞어주세요.",
     "name_en": "Broccoli",
-    "description_en": "항암 효과가 뛰어나지만 '이소티오시아네이트' 성분이 들어있어 많이 먹으면 위장 자극이 옵니다. 반드시 끓는 물에 데쳐서 작게 잘라 식사에 섞어주세요."
+    "description_en": "Although it has excellent anti-cancer effects, it contains 'isothiocyanate', which can cause stomach irritation if consumed in large quantities. Be sure to blanch it in boiling water, cut it into small pieces, and mix it with your meal."
   },
   {
     "id": 23,
@@ -227,7 +227,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "위염 완화와 다이어트에 좋지만, 소화되는 과정에서 가스가 많이 발생하여 헛배부름(가스 참)을 유발할 수 있습니다. 살짝 데쳐 소량만 급여하세요.",
     "name_en": "Cabbage",
-    "description_en": "위염 완화와 다이어트에 좋지만, 소화되는 과정에서 가스가 많이 발생하여 헛배부름(가스 참)을 유발할 수 있습니다. 살짝 데쳐 소량만 급여하세요."
+    "description_en": "It is good for relieving gastritis and dieting, but it can cause flatulence as a lot of gas is generated during digestion. Lightly blanch and feed only in small amounts."
   },
   {
     "id": 24,
@@ -237,7 +237,7 @@
     "safetyLevel": "안전",
     "description": "칼로리가 거의 없고 수분이 가득해 훌륭한 다이어트 간식입니다. 비타민 K도 풍부하여 관절 건강에 도움을 줄 수 있습니다.",
     "name_en": "Cucumber",
-    "description_en": "칼로리가 거의 없고 수분이 가득해 훌륭한 다이어트 간식입니다. 비타민 K도 풍부하여 관절 건강에 도움을 줄 수 있습니다."
+    "description_en": "It's low in calories and full of water, making it a great diet snack. It is also rich in vitamin K, which can help support joint health."
   },
   {
     "id": 25,
@@ -247,7 +247,7 @@
     "safetyLevel": "안전",
     "description": "수분이 많고 독성이 없어 먹어도 안전합니다. 다만 잎이 넓어 목에 걸릴 수 있으므로 잘게 찢어서 사료 위에 토핑으로 올려주세요.",
     "name_en": "Lettuce",
-    "description_en": "수분이 많고 독성이 없어 먹어도 안전합니다. 다만 잎이 넓어 목에 걸릴 수 있으므로 잘게 찢어서 사료 위에 토핑으로 올려주세요."
+    "description_en": "It is safe to eat as it is high in moisture and non-toxic. However, since the leaves are large and can get stuck in the throat, tear them into small pieces and place them on top of the food."
   },
   {
     "id": 26,
@@ -257,7 +257,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "철분이 풍부하지만 옥살산(수산) 성분이 있어 신장 결석을 유발할 수 있습니다. 신장이 안 좋은 아이는 피하고, 건강하다면 살짝 데쳐 소량만 주세요.",
     "name_en": "Spinach",
-    "description_en": "철분이 풍부하지만 옥살산(수산) 성분이 있어 신장 결석을 유발할 수 있습니다. 신장이 안 좋은 아이는 피하고, 건강하다면 살짝 데쳐 소량만 주세요."
+    "description_en": "Although it is rich in iron, it contains oxalic acid, which can cause kidney stones. Avoid children with kidney problems, but if they are healthy, give them only a small amount after lightly boiling them."
   },
   {
     "id": 27,
@@ -267,7 +267,7 @@
     "safetyLevel": "안전",
     "description": "소화 불량이나 설사, 변비가 있을 때 탁월한 천연 소화제 역할을 합니다. 찌거나 삶아서 속살만 급여하면 건강에 매우 좋습니다.",
     "name_en": "Pumpkin",
-    "description_en": "소화 불량이나 설사, 변비가 있을 때 탁월한 천연 소화제 역할을 합니다. 찌거나 삶아서 속살만 급여하면 건강에 매우 좋습니다."
+    "description_en": "It serves as an excellent natural digestive aid when you have indigestion, diarrhea, or constipation. If you steam or boil it and feed only the flesh, it is very good for your health."
   },
   {
     "id": 28,
@@ -277,7 +277,7 @@
     "safetyLevel": "안전",
     "description": "베타카로틴이 풍부하고 기호성이 매우 뛰어납니다. 다이어트나 보양식으로 좋으며, 껍질과 씨를 제거하고 푹 삶아 으깨어 급여하세요.",
     "name_en": "Kabocha Squash",
-    "description_en": "베타카로틴이 풍부하고 기호성이 매우 뛰어납니다. 다이어트나 보양식으로 좋으며, 껍질과 씨를 제거하고 푹 삶아 으깨어 급여하세요."
+    "description_en": "It is rich in beta-carotene and has excellent palatability. It is good as a diet or health food. Remove the skin and seeds, boil it, mash it, and feed it."
   },
   {
     "id": 29,
@@ -287,7 +287,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "비타민과 식이섬유가 풍부하지만 탄수화물과 당분이 매우 높습니다. 매일 주면 비만의 지름길이 되므로 반드시 삶거나 쪄서 간식으로만 조금 주세요.",
     "name_en": "Sweet Potato",
-    "description_en": "비타민과 식이섬유가 풍부하지만 탄수화물과 당분이 매우 높습니다. 매일 주면 비만의 지름길이 되므로 반드시 삶거나 쪄서 간식으로만 조금 주세요."
+    "description_en": "Although it is rich in vitamins and dietary fiber, it is very high in carbohydrates and sugar. If you give it every day, it becomes a shortcut to obesity, so make sure to boil or steam it and give it only as a snack."
   },
   {
     "id": 30,
@@ -297,7 +297,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "익히지 않은 생감자와 싹이 난 초록색 껍질에는 솔라닌이라는 독성이 있어 절대 금물입니다. 껍질을 깎고 푹 삶은 익은 감자만 소량 가능합니다.",
     "name_en": "Potato",
-    "description_en": "익히지 않은 생감자와 싹이 난 초록색 껍질에는 솔라닌이라는 독성이 있어 절대 금물입니다. 껍질을 깎고 푹 삶은 익은 감자만 소량 가능합니다."
+    "description_en": "Raw, uncooked potatoes and green sprouted skin are strictly prohibited as they contain a poison called solanine. Only peeled and boiled potatoes are allowed in small quantities."
   },
   {
     "id": 31,
@@ -307,7 +307,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "라이코펜이 풍부해 좋으나, 덜 익은 초록색 토마토나 잎, 줄기에는 토마틴이라는 독성 성분이 있습니다. 완전히 빨갛게 익은 과육만 작게 썰어 주세요.",
     "name_en": "Tomato",
-    "description_en": "라이코펜이 풍부해 좋으나, 덜 익은 초록색 토마토나 잎, 줄기에는 토마틴이라는 독성 성분이 있습니다. 완전히 빨갛게 익은 과육만 작게 썰어 주세요."
+    "description_en": "It is good because it is rich in lycopene, but unripe green tomatoes, leaves, and stems contain a toxic ingredient called tomatine. Cut only the fully red ripened flesh into small pieces."
   },
   {
     "id": 32,
@@ -317,7 +317,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "큰 토마토와 성분은 동일하나 한 입에 삼키다 식도에 걸려 질식할 위험이 매우 높습니다. 반드시 4등분으로 작게 쪼개어 급여해야 합니다.",
     "name_en": "Cherry Tomato",
-    "description_en": "큰 토마토와 성분은 동일하나 한 입에 삼키다 식도에 걸려 질식할 위험이 매우 높습니다. 반드시 4등분으로 작게 쪼개어 급여해야 합니다."
+    "description_en": "Although it has the same ingredients as a large tomato, there is a very high risk of choking if it gets caught in the esophagus if swallowed in one bite. Be sure to feed it by dividing it into four equal parts."
   },
   {
     "id": 33,
@@ -327,7 +327,7 @@
     "safetyLevel": "안전",
     "description": "비타민 A와 C가 풍부하며 색깔별로 영양소가 다양합니다. 매운맛이 없고 아삭하여 간식으로 제격입니다. 씨앗을 제거하고 썰어주세요.",
     "name_en": "Paprika",
-    "description_en": "비타민 A와 C가 풍부하며 색깔별로 영양소가 다양합니다. 매운맛이 없고 아삭하여 간식으로 제격입니다. 씨앗을 제거하고 썰어주세요."
+    "description_en": "It is rich in vitamins A and C and has various nutrients depending on its color. It's not spicy and crunchy, so it's perfect as a snack. Remove seeds and slice."
   },
   {
     "id": 34,
@@ -337,7 +337,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "파프리카와 달리 약간의 쓴맛이나 매운 향이 날 수 있어 위장을 자극할 수 있습니다. 굳이 권장하지 않으나 소량은 괜찮습니다.",
     "name_en": "Bell Pepper",
-    "description_en": "파프리카와 달리 약간의 쓴맛이나 매운 향이 날 수 있어 위장을 자극할 수 있습니다. 굳이 권장하지 않으나 소량은 괜찮습니다."
+    "description_en": "Unlike paprika, it may have a slightly bitter or spicy flavor and may irritate the stomach. It is not recommended, but a small amount is fine."
   },
   {
     "id": 35,
@@ -347,7 +347,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "영양가는 높지만 너무 질겨서 생으로 먹으면 장폐색을 유발합니다. 완전히 부드러워질 때까지 익혀서 아주 잘게 썰어야만 소화가 가능합니다.",
     "name_en": "Asparagus",
-    "description_en": "영양가는 높지만 너무 질겨서 생으로 먹으면 장폐색을 유발합니다. 완전히 부드러워질 때까지 익혀서 아주 잘게 썰어야만 소화가 가능합니다."
+    "description_en": "Although it is highly nutritious, it is so tough that eating it raw can cause intestinal obstruction. It can only be digested if it is cooked until completely soft and cut into very small pieces."
   },
   {
     "id": 36,
@@ -357,7 +357,7 @@
     "safetyLevel": "안전",
     "description": "칼로리가 낮고 심장 건강에 좋은 비타민이 함유되어 있으며 입 냄새 제거 효과도 있습니다. 길고 질긴 섬유질은 잘게 잘라서 질식 위험을 없애주세요.",
     "name_en": "Celery",
-    "description_en": "칼로리가 낮고 심장 건강에 좋은 비타민이 함유되어 있으며 입 냄새 제거 효과도 있습니다. 길고 질긴 섬유질은 잘게 잘라서 질식 위험을 없애주세요."
+    "description_en": "It's low in calories, packed with heart-healthy vitamins, and even helps eliminate bad breath. Cut long, tough fibers into small pieces to reduce the risk of choking."
   },
   {
     "id": 37,
@@ -367,7 +367,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "수분이 많아 좋지만 생무는 특유의 알싸한 매운맛 때문에 위가 놀라 구토할 수 있습니다. 무국에 들어있는 것처럼 푹 익혀 매운맛을 없앤 후 소량만 줍니다.",
     "name_en": "Radish",
-    "description_en": "수분이 많아 좋지만 생무는 특유의 알싸한 매운맛 때문에 위가 놀라 구토할 수 있습니다. 무국에 들어있는 것처럼 푹 익혀 매운맛을 없앤 후 소량만 줍니다."
+    "description_en": "It's good because it has a lot of moisture, but raw radish can upset your stomach and cause you to vomit due to its unique spicy taste. Just like in radish soup, it is cooked thoroughly to remove the spiciness and only given in small amounts."
   },
   {
     "id": 38,
@@ -377,7 +377,7 @@
     "safetyLevel": "절대 금지",
     "description": "사람이 먹는 표고버섯, 팽이버섯 등 마트용 버섯은 소화가 어렵습니다. 특히 야생 버섯은 맹독이 있으므로 산책 시 절대 주워 먹지 못하게 차단해야 합니다.",
     "name_en": "Mushroom",
-    "description_en": "사람이 먹는 표고버섯, 팽이버섯 등 마트용 버섯은 소화가 어렵습니다. 특히 야생 버섯은 맹독이 있으므로 산책 시 절대 주워 먹지 못하게 차단해야 합니다."
+    "description_en": "Supermarket mushrooms, such as shiitake mushrooms and enoki mushrooms, are difficult to digest. In particular, wild mushrooms are highly poisonous, so you should never pick them up or eat them while walking."
   },
   {
     "id": 39,
@@ -387,7 +387,7 @@
     "safetyLevel": "절대 금지",
     "description": "엔-프로필 디설파이드 성분이 강아지의 적혈구를 파괴하여 심각한 '용혈성 빈혈'을 유발합니다. 익히거나 끓여도 독성이 사라지지 않으니 짜장면 등 양파가 들어간 음식은 절대 금물입니다.",
     "name_en": "Onion",
-    "description_en": "엔-프로필 디설파이드 성분이 강아지의 적혈구를 파괴하여 심각한 '용혈성 빈혈'을 유발합니다. 익히거나 끓여도 독성이 사라지지 않으니 짜장면 등 양파가 들어간 음식은 절대 금물입니다."
+    "description_en": "N-propyl disulfide destroys your dog's red blood cells, causing severe 'hemolytic anemia'. The toxicity does not disappear even if you cook or boil it, so foods containing onions, such as black bean noodles, are absolutely prohibited."
   },
   {
     "id": 40,
@@ -397,7 +397,7 @@
     "safetyLevel": "절대 금지",
     "description": "양파와 동일한 원리로 적혈구를 파괴하며, 양파보다 독성이 더 강할 수 있습니다. 다진 마늘이 듬뿍 들어간 한국식 국물이나 반찬은 절대로 주면 안 됩니다.",
     "name_en": "Garlic",
-    "description_en": "양파와 동일한 원리로 적혈구를 파괴하며, 양파보다 독성이 더 강할 수 있습니다. 다진 마늘이 듬뿍 들어간 한국식 국물이나 반찬은 절대로 주면 안 됩니다."
+    "description_en": "It destroys red blood cells in the same way as onions, and may be more toxic than onions. Never give Korean-style soup or side dishes with lots of minced garlic."
   },
   {
     "id": 41,
@@ -407,7 +407,7 @@
     "safetyLevel": "안전",
     "description": "고단백 저지방의 가장 대표적인 강아지 영양원입니다. 삶아서 살코기만 주어야 하며, 닭 뼈는 익히면 날카롭게 쪼개져 장을 찌르므로 절대 금지입니다.",
     "name_en": "Chicken",
-    "description_en": "고단백 저지방의 가장 대표적인 강아지 영양원입니다. 삶아서 살코기만 주어야 하며, 닭 뼈는 익히면 날카롭게 쪼개져 장을 찌르므로 절대 금지입니다."
+    "description_en": "It is the most representative source of dog nutrition with high protein and low fat. Only boiled and lean meat should be given, and chicken bones are strictly prohibited as they break sharply and pierce the intestines when cooked."
   },
   {
     "id": 42,
@@ -417,7 +417,7 @@
     "safetyLevel": "안전",
     "description": "철분과 아미노산이 풍부하여 면역력 강화와 근육 발달에 좋습니다. 지방 부위를 제거한 살코기 위주로 완전히 익혀서 급여하세요.",
     "name_en": "Beef",
-    "description_en": "철분과 아미노산이 풍부하여 면역력 강화와 근육 발달에 좋습니다. 지방 부위를 제거한 살코기 위주로 완전히 익혀서 급여하세요."
+    "description_en": "It is rich in iron and amino acids and is good for strengthening immunity and muscle development. Feed mainly lean meat with the fat removed and thoroughly cooked."
   },
   {
     "id": 43,
@@ -427,7 +427,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "삼겹살 등 지방이 많은 부위는 급성 췌장염을 유발하는 치명적인 원인이 됩니다. 반드시 안심, 등심처럼 기름기 없는 부위만 수육으로 푹 삶아주세요.",
     "name_en": "Pork",
-    "description_en": "삼겹살 등 지방이 많은 부위는 급성 췌장염을 유발하는 치명적인 원인이 됩니다. 반드시 안심, 등심처럼 기름기 없는 부위만 수육으로 푹 삶아주세요."
+    "description_en": "Fatty areas such as pork belly can be a fatal cause of acute pancreatitis. Be sure to boil only lean parts such as tenderloin and sirloin."
   },
   {
     "id": 44,
@@ -437,7 +437,7 @@
     "safetyLevel": "안전",
     "description": "닭고기 알레르기가 있는 아이들에게 훌륭한 대체 단백질입니다. 불포화 지방산이 풍부해 피부와 모질을 윤기 나게 해줍니다.",
     "name_en": "Duck",
-    "description_en": "닭고기 알레르기가 있는 아이들에게 훌륭한 대체 단백질입니다. 불포화 지방산이 풍부해 피부와 모질을 윤기 나게 해줍니다."
+    "description_en": "It's a great alternative protein for kids with chicken allergies. It is rich in unsaturated fatty acids, making the skin and fur shiny."
   },
   {
     "id": 45,
@@ -447,7 +447,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "저알러지 식품으로 인기가 많지만 지방 함량이 높아 비만을 유발할 수 있습니다. 살코기만 적당량 삶아서 특별식으로 제공하세요.",
     "name_en": "Lamb",
-    "description_en": "저알러지 식품으로 인기가 많지만 지방 함량이 높아 비만을 유발할 수 있습니다. 살코기만 적당량 삶아서 특별식으로 제공하세요."
+    "description_en": "It is popular as a hypoallergenic food, but its high fat content can cause obesity. Boil only lean meat in an appropriate amount and serve as a special meal."
   },
   {
     "id": 46,
@@ -457,7 +457,7 @@
     "safetyLevel": "안전",
     "description": "오메가3 지방산이 가득해 두뇌 발달과 관절 염증 완화에 탁월합니다. 단, 생연어는 기생충 위험이 있으니 반드시 찌거나 구워서 완벽히 익혀 급여합니다.",
     "name_en": "Salmon",
-    "description_en": "오메가3 지방산이 가득해 두뇌 발달과 관절 염증 완화에 탁월합니다. 단, 생연어는 기생충 위험이 있으니 반드시 찌거나 구워서 완벽히 익혀 급여합니다."
+    "description_en": "It is full of omega-3 fatty acids and is excellent for brain development and relieving joint inflammation. However, raw salmon has a risk of parasites, so it must be steamed or grilled and cooked to perfection before feeding."
   },
   {
     "id": 47,
@@ -467,7 +467,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "기력 회복에 최고의 보양식이지만 바닷물 염분이 가득합니다. 반드시 물에 반나절 이상 담가 염분을 완전히 빼내고 가시를 손으로 다 발라낸 후 급여해야 합니다.",
     "name_en": "Dried Pollock",
-    "description_en": "기력 회복에 최고의 보양식이지만 바닷물 염분이 가득합니다. 반드시 물에 반나절 이상 담가 염분을 완전히 빼내고 가시를 손으로 다 발라낸 후 급여해야 합니다."
+    "description_en": "It is the best health food for restoring energy, but it is full of seawater salt. Be sure to soak them in water for at least half a day to completely remove the salt and remove all thorns by hand before feeding them."
   },
   {
     "id": 48,
@@ -477,7 +477,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "황태와 마찬가지로 염분 제거와 뾰족한 가시 제거가 생명입니다. 노령견이나 수술 후 회복 중인 아이에게 북엇국을 끓여 식혀주면 아주 좋습니다.",
     "name_en": "Dried Alaska Pollock",
-    "description_en": "황태와 마찬가지로 염분 제거와 뾰족한 가시 제거가 생명입니다. 노령견이나 수술 후 회복 중인 아이에게 북엇국을 끓여 식혀주면 아주 좋습니다."
+    "description_en": "Like pollack, removing salt and sharp thorns is essential. It is very good to boil and cool dried pollack soup for elderly dogs or children recovering from surgery."
   },
   {
     "id": 49,
@@ -487,7 +487,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "천연 칼슘 공급원이지만 염분이 극도로 높습니다. 끓는 물에 여러 번 데쳐 짠맛을 완전히 제거하고 자연 건조한 뒤 사료에 소량 토핑으로 줍니다.",
     "name_en": "Anchovy",
-    "description_en": "천연 칼슘 공급원이지만 염분이 극도로 높습니다. 끓는 물에 여러 번 데쳐 짠맛을 완전히 제거하고 자연 건조한 뒤 사료에 소량 토핑으로 줍니다."
+    "description_en": "Although it is a natural source of calcium, it is extremely high in salt. Blanch it in boiling water several times to completely remove the salty taste, dry it naturally, and then add it as a small topping to the feed."
   },
   {
     "id": 50,
@@ -497,7 +497,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "오메가3가 풍부하지만 기름기가 너무 많아 소화 불량을 일으킬 수 있습니다. 가시를 완벽히 제거하고 구운 고등어 살 한두 점만 별미로 줍니다.",
     "name_en": "Mackerel",
-    "description_en": "오메가3가 풍부하지만 기름기가 너무 많아 소화 불량을 일으킬 수 있습니다. 가시를 완벽히 제거하고 구운 고등어 살 한두 점만 별미로 줍니다."
+    "description_en": "Although it is rich in omega-3, it is too oily and can cause indigestion. Only one or two pieces of grilled mackerel meat with the spines completely removed are served as a delicacy."
   },
   {
     "id": 51,
@@ -507,7 +507,7 @@
     "safetyLevel": "절대 금지",
     "description": "오징어나 문어 등 두족류는 위 속에서 수분을 머금고 팽창하여 심각한 장폐색과 극심한 소화불량을 유발합니다. 마른오징어는 위를 뚫을 수도 있습니다.",
     "name_en": "Squid",
-    "description_en": "오징어나 문어 등 두족류는 위 속에서 수분을 머금고 팽창하여 심각한 장폐색과 극심한 소화불량을 유발합니다. 마른오징어는 위를 뚫을 수도 있습니다."
+    "description_en": "Cephalopods such as squid and octopus retain moisture in the stomach and swell, causing severe intestinal obstruction and extreme indigestion. Dried squid may pierce the stomach."
   },
   {
     "id": 52,
@@ -517,7 +517,7 @@
     "safetyLevel": "절대 금지",
     "description": "오징어와 마찬가지로 질기고 소화가 전혀 되지 않습니다. 구토와 설사를 유발하며 최악의 경우 장을 막아 개복 수술을 해야 합니다.",
     "name_en": "Octopus",
-    "description_en": "오징어와 마찬가지로 질기고 소화가 전혀 되지 않습니다. 구토와 설사를 유발하며 최악의 경우 장을 막아 개복 수술을 해야 합니다."
+    "description_en": "Like squid, it is tough and completely indigestible. It causes vomiting and diarrhea, and in the worst case, it blocks the intestines, requiring open surgery."
   },
   {
     "id": 53,
@@ -527,7 +527,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "콜레스테롤이 높고 갑각류 알레르기를 일으킬 수 있습니다. 머리, 꼬리, 껍질을 완벽히 제거하고 푹 삶은 새우 속살 1~2개 정도만 안전합니다.",
     "name_en": "Shrimp",
-    "description_en": "콜레스테롤이 높고 갑각류 알레르기를 일으킬 수 있습니다. 머리, 꼬리, 껍질을 완벽히 제거하고 푹 삶은 새우 속살 1~2개 정도만 안전합니다."
+    "description_en": "It is high in cholesterol and can cause shellfish allergies. Only 1-2 soft boiled shrimp flesh with the head, tail, and shell completely removed is safe."
   },
   {
     "id": 54,
@@ -537,7 +537,7 @@
     "safetyLevel": "절대 금지",
     "description": "게 껍데기는 씹혔을 때 유리조각처럼 날카로워 식도와 장을 찢습니다. 살코기 또한 나트륨 덩어리이므로 식탁 위에 올려둔 게를 훔쳐먹지 않게 주의하세요.",
     "name_en": "Crab (Crustacean)",
-    "description_en": "게 껍데기는 씹혔을 때 유리조각처럼 날카로워 식도와 장을 찢습니다. 살코기 또한 나트륨 덩어리이므로 식탁 위에 올려둔 게를 훔쳐먹지 않게 주의하세요."
+    "description_en": "When chewed, crab shells are as sharp as glass and tear the esophagus and intestines. Meat is also high in sodium, so be careful not to steal crab from the table."
   },
   {
     "id": 55,
@@ -547,7 +547,7 @@
     "safetyLevel": "절대 금지",
     "description": "조개, 홍합, 굴 등의 해산물은 티아미나제라는 효소가 비타민 B1을 파괴하며, 염분이 지나치게 높고 패각 삼킴 사고가 발생할 수 있어 금지합니다.",
     "name_en": "Clam (Shellfish)",
-    "description_en": "조개, 홍합, 굴 등의 해산물은 티아미나제라는 효소가 비타민 B1을 파괴하며, 염분이 지나치게 높고 패각 삼킴 사고가 발생할 수 있어 금지합니다."
+    "description_en": "Seafood such as clams, mussels, and oysters are prohibited because an enzyme called thiaminase destroys vitamin B1, and the salt content is too high, which can lead to accidents involving shell swallowing."
   },
   {
     "id": 56,
@@ -557,7 +557,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "미네랄이 풍부하지만 소화하기 매우 질깁니다. 내장을 제거하고 아주 부드럽게 푹 삶아 잘게 다져야만 흡수가 가능합니다.",
     "name_en": "Abalone",
-    "description_en": "미네랄이 풍부하지만 소화하기 매우 질깁니다. 내장을 제거하고 아주 부드럽게 푹 삶아 잘게 다져야만 흡수가 가능합니다."
+    "description_en": "Although it is rich in minerals, it is very tough to digest. It can only be absorbed if the intestines are removed, boiled very gently, and chopped finely."
   },
   {
     "id": 57,
@@ -567,7 +567,7 @@
     "safetyLevel": "안전",
     "description": "최고의 저지방 다이어트 식품이자 단백질 보충원입니다. 생으로 주면 살모넬라균 위험이 있으니 안쪽까지 푹 익도록 삶아서 결대로 찢어주세요.",
     "name_en": "Chicken Breast",
-    "description_en": "최고의 저지방 다이어트 식품이자 단백질 보충원입니다. 생으로 주면 살모넬라균 위험이 있으니 안쪽까지 푹 익도록 삶아서 결대로 찢어주세요."
+    "description_en": "It is the best low-fat diet food and protein supplement. There is a risk of salmonella if you feed it raw, so boil it until it is thoroughly cooked inside and tear it along the grain."
   },
   {
     "id": 58,
@@ -577,7 +577,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "철분과 비타민 A가 매우 풍부해 눈물 자국 개선에 좋다고 알려져 있습니다. 하지만 과다 복용 시 비타민 A 중독증(관절 기형 등)이 올 수 있으니 일주일에 한두 번만 건조 간식으로 급여합니다.",
     "name_en": "Beef Liver",
-    "description_en": "철분과 비타민 A가 매우 풍부해 눈물 자국 개선에 좋다고 알려져 있습니다. 하지만 과다 복용 시 비타민 A 중독증(관절 기형 등)이 올 수 있으니 일주일에 한두 번만 건조 간식으로 급여합니다."
+    "description_en": "It is very rich in iron and vitamin A and is known to be good for improving tear stains. However, overdosing can lead to vitamin A toxicity (joint deformities, etc.), so feed it as a dry snack only once or twice a week."
   },
   {
     "id": 59,
@@ -587,7 +587,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "건조된 돼지 귀는 콜라겐이 풍부하고 오래 씹을 수 있어 스트레스 해소용 개껌으로 훌륭합니다. 하지만 지방이 많아 비만인 아이는 조심해야 합니다.",
     "name_en": "Pig Ear",
-    "description_en": "건조된 돼지 귀는 콜라겐이 풍부하고 오래 씹을 수 있어 스트레스 해소용 개껌으로 훌륭합니다. 하지만 지방이 많아 비만인 아이는 조심해야 합니다."
+    "description_en": "Dried pig ears are rich in collagen and can be chewed for a long time, making them a great stress-relieving dog chew. However, children who are obese and have a lot of fat should be careful."
   },
   {
     "id": 60,
@@ -597,7 +597,7 @@
     "safetyLevel": "절대 금지",
     "description": "닭 뼈와 마찬가지로 생선 가시는 바늘처럼 뾰족하여 삼킬 경우 목구멍과 식도를 찌르고 파고들어 치명적인 내부 출혈을 유발합니다.",
     "name_en": "Fish Bone",
-    "description_en": "닭 뼈와 마찬가지로 생선 가시는 바늘처럼 뾰족하여 삼킬 경우 목구멍과 식도를 찌르고 파고들어 치명적인 내부 출혈을 유발합니다."
+    "description_en": "Like chicken bones, fish spines are needle-like and, if swallowed, can pierce and burrow into the throat and esophagus, causing fatal internal bleeding."
   },
   {
     "id": 61,
@@ -607,7 +607,7 @@
     "safetyLevel": "안전",
     "description": "탄수화물 공급원으로 위장이 약하거나 장염으로 설사할 때 무염 닭가슴살과 쌀죽을 끓여주면 빠른 위장 회복에 큰 도움이 됩니다.",
     "name_en": "White Rice",
-    "description_en": "탄수화물 공급원으로 위장이 약하거나 장염으로 설사할 때 무염 닭가슴살과 쌀죽을 끓여주면 빠른 위장 회복에 큰 도움이 됩니다."
+    "description_en": "When you have a weak stomach or have diarrhea due to enteritis as a source of carbohydrates, boiling unsalted chicken breast and rice porridge can be very helpful in speeding up your stomach recovery."
   },
   {
     "id": 62,
@@ -617,7 +617,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "백미보다 영양이 우수하고 혈당 지수가 낮지만 섬유질이 억세어 강아지가 소화하기 어렵습니다. 아주 푹 익힌 진밥 형태로 소량만 주세요.",
     "name_en": "Brown Rice",
-    "description_en": "백미보다 영양이 우수하고 혈당 지수가 낮지만 섬유질이 억세어 강아지가 소화하기 어렵습니다. 아주 푹 익힌 진밥 형태로 소량만 주세요."
+    "description_en": "It is more nutritious than white rice and has a lower glycemic index, but the fiber is strong, making it difficult for dogs to digest. Please give only a small amount in the form of very well-cooked rice."
   },
   {
     "id": 63,
@@ -627,7 +627,7 @@
     "safetyLevel": "안전",
     "description": "식이섬유가 풍부하고 밀단백질(글루텐) 알레르기가 있는 강아지에게 훌륭한 대체 탄수화물입니다. 반드시 물이나 락토프리 우유에 불려 부드럽게 급여합니다.",
     "name_en": "Oatmeal",
-    "description_en": "식이섬유가 풍부하고 밀단백질(글루텐) 알레르기가 있는 강아지에게 훌륭한 대체 탄수화물입니다. 반드시 물이나 락토프리 우유에 불려 부드럽게 급여합니다."
+    "description_en": "It is rich in dietary fiber and is a great alternative carbohydrate for dogs allergic to wheat protein (gluten). Be sure to soak in water or lactose-free milk and feed gently."
   },
   {
     "id": 64,
@@ -637,7 +637,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "소화가 어려운 곡물 중 하나입니다. 보리밥을 사람이 먹듯이 그대로 주면 소화 불량과 가스를 유발하므로 가급적 주지 않는 것이 좋습니다.",
     "name_en": "Barley",
-    "description_en": "소화가 어려운 곡물 중 하나입니다. 보리밥을 사람이 먹듯이 그대로 주면 소화 불량과 가스를 유발하므로 가급적 주지 않는 것이 좋습니다."
+    "description_en": "It is one of the grains that is difficult to digest. If you give barley rice as it is to humans, it will cause indigestion and gas, so it is best not to give it as much as possible."
   },
   {
     "id": 65,
@@ -647,7 +647,7 @@
     "safetyLevel": "절대 금지",
     "description": "개들은 밀단백질(글루텐)을 분해하는 효소가 부족하여 심한 가려움증, 귓병, 설사 등 피부 알레르기 반응을 가장 많이 일으키는 주범입니다.",
     "name_en": "Flour",
-    "description_en": "개들은 밀단백질(글루텐)을 분해하는 효소가 부족하여 심한 가려움증, 귓병, 설사 등 피부 알레르기 반응을 가장 많이 일으키는 주범입니다."
+    "description_en": "Dogs lack the enzyme to break down wheat protein (gluten), which is the main culprit of skin allergic reactions such as severe itching, ear infections, and diarrhea."
   },
   {
     "id": 66,
@@ -657,7 +657,7 @@
     "safetyLevel": "절대 금지",
     "description": "밀가루, 설탕, 소금, 이스트(효모)가 모두 들어있어 백해무익합니다. 특히 발효 전의 생 반죽을 먹으면 위에서 팽창하며 알코올을 생성해 중독을 일으킵니다.",
     "name_en": "White Bread",
-    "description_en": "밀가루, 설탕, 소금, 이스트(효모)가 모두 들어있어 백해무익합니다. 특히 발효 전의 생 반죽을 먹으면 위에서 팽창하며 알코올을 생성해 중독을 일으킵니다."
+    "description_en": "It contains flour, sugar, salt, and yeast, making it completely useless. In particular, if you eat raw dough before fermentation, it expands in the stomach and produces alcohol, causing poisoning."
   },
   {
     "id": 67,
@@ -667,7 +667,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "삶거나 구운 밤은 맛이 좋고 탄수화물이 풍부하지만, 너무 커서 통째로 삼키면 기도를 막을 수 있고 비만을 유발합니다. 잘게 으깨어 맛만 보여주세요.",
     "name_en": "Chestnut",
-    "description_en": "삶거나 구운 밤은 맛이 좋고 탄수화물이 풍부하지만, 너무 커서 통째로 삼키면 기도를 막을 수 있고 비만을 유발합니다. 잘게 으깨어 맛만 보여주세요."
+    "description_en": "Boiled or roasted chestnuts are delicious and rich in carbohydrates, but they are so large that swallowing them whole can block the airways and cause obesity. Just mash it finely and give it a taste."
   },
   {
     "id": 68,
@@ -677,7 +677,7 @@
     "safetyLevel": "절대 금지",
     "description": "가을 산책 시 가장 조심해야 합니다. 은행 껍질과 열매에는 시안배당체 등 청산화합물이 있어 구토, 발작, 호흡 마비를 일으킵니다.",
     "name_en": "Ginkgo Nut",
-    "description_en": "가을 산책 시 가장 조심해야 합니다. 은행 껍질과 열매에는 시안배당체 등 청산화합물이 있어 구토, 발작, 호흡 마비를 일으킵니다."
+    "description_en": "You need to be most careful when taking a walk in the fall. Ginkgo peel and fruit contain cyanide compounds such as cyanide glycosides, which cause vomiting, seizures, and respiratory paralysis."
   },
   {
     "id": 69,
@@ -687,7 +687,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "소금이 없는 볶은 땅콩은 단백질이 풍부하지만 지방 함량이 50%가 넘어 췌장염 위험이 있습니다. 강아지 전용 무염 100% 땅콩버터는 약을 먹일 때 유용합니다.",
     "name_en": "Peanut",
-    "description_en": "소금이 없는 볶은 땅콩은 단백질이 풍부하지만 지방 함량이 50%가 넘어 췌장염 위험이 있습니다. 강아지 전용 무염 100% 땅콩버터는 약을 먹일 때 유용합니다."
+    "description_en": "Roasted peanuts without salt are rich in protein, but their fat content exceeds 50%, putting them at risk of pancreatitis. 100% unsalted peanut butter for dogs is useful when giving medication."
   },
   {
     "id": 70,
@@ -697,7 +697,7 @@
     "safetyLevel": "절대 금지",
     "description": "호두에는 곰팡이 독소(트레모르겐)가 쉽게 번식하며, 섭취 시 전신 마비, 발작, 신경계 손상을 일으킬 수 있으므로 절대 급여를 피해야 합니다.",
     "name_en": "Walnut",
-    "description_en": "호두에는 곰팡이 독소(트레모르겐)가 쉽게 번식하며, 섭취 시 전신 마비, 발작, 신경계 손상을 일으킬 수 있으므로 절대 급여를 피해야 합니다."
+    "description_en": "Walnuts are prone to mycotoxins (tremogens) and should never be fed as ingestion can cause paralysis, seizures, and nervous system damage."
   },
   {
     "id": 71,
@@ -707,7 +707,7 @@
     "safetyLevel": "절대 금지",
     "description": "포도와 맞먹는 최악의 견과류입니다. 단 몇 알만 먹어도 뒷다리 마비, 구토, 고열, 심박수 증가 등 심각한 신경계 독성 중독을 일으킵니다. 쿠키 속 마카다미아도 조심하세요.",
     "name_en": "Macadamia",
-    "description_en": "포도와 맞먹는 최악의 견과류입니다. 단 몇 알만 먹어도 뒷다리 마비, 구토, 고열, 심박수 증가 등 심각한 신경계 독성 중독을 일으킵니다. 쿠키 속 마카다미아도 조심하세요."
+    "description_en": "They are the worst nuts on par with grapes. Eating just a few pills can cause severe nervous system poisoning, including paralysis of the hind limbs, vomiting, high fever, and increased heart rate. Be careful with the macadamias in the cookies."
   },
   {
     "id": 72,
@@ -717,7 +717,7 @@
     "safetyLevel": "절대 금지",
     "description": "마카다미아처럼 독성이 있는 것은 아니지만, 강아지 위장에서는 아몬드 표면을 소화하지 못해 그대로 변으로 나오며 췌장염과 장폐색의 흔한 원인이 됩니다.",
     "name_en": "Almond",
-    "description_en": "마카다미아처럼 독성이 있는 것은 아니지만, 강아지 위장에서는 아몬드 표면을 소화하지 못해 그대로 변으로 나오며 췌장염과 장폐색의 흔한 원인이 됩니다."
+    "description_en": "Although they are not as toxic as macadamias, the surface of almonds cannot be digested in a dog's stomach, so they pass out in the feces, becoming a common cause of pancreatitis and intestinal obstruction."
   },
   {
     "id": 73,
@@ -727,7 +727,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "구운 무염 캐슈넛 한두 알은 괜찮지만, 지방과 칼로리가 너무 높아 비만과 췌장 질환을 유발할 수 있으므로 권장하지 않습니다.",
     "name_en": "Cashew Nut",
-    "description_en": "구운 무염 캐슈넛 한두 알은 괜찮지만, 지방과 칼로리가 너무 높아 비만과 췌장 질환을 유발할 수 있으므로 권장하지 않습니다."
+    "description_en": "One or two roasted unsalted cashews are fine, but they are not recommended as they are too high in fat and calories, which can lead to obesity and pancreatic disease."
   },
   {
     "id": 74,
@@ -737,7 +737,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "껍질을 완전히 까고 소금이 첨가되지 않은 알맹이는 모질 개선에 도움을 줍니다. 하지만 지방이 많아 아주 소량만 주어야 합니다.",
     "name_en": "Sunflower Seed",
-    "description_en": "껍질을 완전히 까고 소금이 첨가되지 않은 알맹이는 모질 개선에 도움을 줍니다. 하지만 지방이 많아 아주 소량만 주어야 합니다."
+    "description_en": "Completely peeled kernels without added salt help improve hair quality. However, because it is high in fat, it should be given only in very small amounts."
   },
   {
     "id": 75,
@@ -747,7 +747,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "건조한 피부와 푸석한 털을 윤기 나게 해주는 좋은 식물성 지방입니다. 사료 위에 하루 1/2 티스푼 정도만 뿌려주는 것이 적당합니다.",
     "name_en": "Olive Oil",
-    "description_en": "건조한 피부와 푸석한 털을 윤기 나게 해주는 좋은 식물성 지방입니다. 사료 위에 하루 1/2 티스푼 정도만 뿌려주는 것이 적당합니다."
+    "description_en": "It is a good vegetable fat that makes dry skin and dull hair shiny. It is appropriate to sprinkle only 1/2 teaspoon per day on top of the feed."
   },
   {
     "id": 76,
@@ -757,7 +757,7 @@
     "safetyLevel": "안전",
     "description": "천연 항균 작용과 피부 면역력 강화에 매우 좋습니다. 먹여도 좋고 발바닥 패드나 건조한 코 피부에 직접 발라주는 천연 보습제로도 훌륭합니다.",
     "name_en": "Coconut Oil",
-    "description_en": "천연 항균 작용과 피부 면역력 강화에 매우 좋습니다. 먹여도 좋고 발바닥 패드나 건조한 코 피부에 직접 발라주는 천연 보습제로도 훌륭합니다."
+    "description_en": "It is very good for natural antibacterial action and strengthening skin immunity. It is great to feed or as a natural moisturizer applied directly to the pads of your feet or dry nose skin."
   },
   {
     "id": 77,
@@ -767,7 +767,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "오메가3가 풍부하지만 산패가 매우 빨리 진행되므로 신선한 들기름 극소량만 특식에 섞어주세요. 참기름은 향이 너무 강해 거부감을 줄 수 있습니다.",
     "name_en": "Perilla Oil",
-    "description_en": "오메가3가 풍부하지만 산패가 매우 빨리 진행되므로 신선한 들기름 극소량만 특식에 섞어주세요. 참기름은 향이 너무 강해 거부감을 줄 수 있습니다."
+    "description_en": "Although it is rich in omega-3, it goes rancid very quickly, so mix only a small amount of fresh perilla oil into the special meal. Sesame oil has a very strong scent and can be repulsive."
   },
   {
     "id": 78,
@@ -777,7 +777,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "향미 증진 효과가 있어 식욕을 잃은 아이의 사료에 한 방울 떨어뜨려 주면 입맛을 돋울 수 있으나, 지방 성분이므로 남용하면 안 됩니다.",
     "name_en": "Sesame Oil",
-    "description_en": "향미 증진 효과가 있어 식욕을 잃은 아이의 사료에 한 방울 떨어뜨려 주면 입맛을 돋울 수 있으나, 지방 성분이므로 남용하면 안 됩니다."
+    "description_en": "It has a flavor-enhancing effect, so adding a drop to the food of a child who has lost his appetite can stimulate the appetite, but it should not be abused as it contains fat."
   },
   {
     "id": 79,
@@ -787,7 +787,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "훌륭한 식물성 단백질이지만 콩에 포함된 사포닌과 간수 성분이 위장을 자극할 수 있습니다. 끓는 물에 데쳐 염분을 빼고 조금만 으깨서 주세요.",
     "name_en": "Tofu",
-    "description_en": "훌륭한 식물성 단백질이지만 콩에 포함된 사포닌과 간수 성분이 위장을 자극할 수 있습니다. 끓는 물에 데쳐 염분을 빼고 조금만 으깨서 주세요."
+    "description_en": "Although it is a great plant-based protein, the saponins and bittern contained in soybeans can irritate the stomach. Blanch it in boiling water, remove the salt and mash it a little."
   },
   {
     "id": 80,
@@ -797,7 +797,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "푹 삶은 완두콩이나 강낭콩은 식이섬유가 풍부하지만, 가스를 많이 발생시켜 헛배부름의 원인이 됩니다. 익히지 않은 생콩은 절대로 주면 안 됩니다.",
     "name_en": "Soybean",
-    "description_en": "푹 삶은 완두콩이나 강낭콩은 식이섬유가 풍부하지만, 가스를 많이 발생시켜 헛배부름의 원인이 됩니다. 익히지 않은 생콩은 절대로 주면 안 됩니다."
+    "description_en": "Boiled peas or kidney beans are rich in dietary fiber, but they produce a lot of gas and cause flatulence. Raw, uncooked beans should never be given to your child."
   },
   {
     "id": 81,
@@ -807,7 +807,7 @@
     "safetyLevel": "안전",
     "description": "유당을 제거한 반려견 전용 우유(펫밀크)나 사람용 락토프리 우유는 칼슘과 수분 보충에 매우 훌륭한 영양 간식입니다.",
     "name_en": "Lactose-Free Milk",
-    "description_en": "유당을 제거한 반려견 전용 우유(펫밀크)나 사람용 락토프리 우유는 칼슘과 수분 보충에 매우 훌륭한 영양 간식입니다."
+    "description_en": "Lactose-free milk for dogs (pet milk) or lactose-free milk for humans are excellent nutritious snacks for replenishing calcium and moisture."
   },
   {
     "id": 82,
@@ -817,7 +817,7 @@
     "safetyLevel": "절대 금지",
     "description": "강아지 체내에는 소 젖에 들어있는 유당(Lactose)을 분해하는 효소가 거의 없습니다. 일반 흰 우유를 먹이면 극심한 유당불내증으로 폭풍 설사와 장염에 시달립니다.",
     "name_en": "Milk",
-    "description_en": "강아지 체내에는 소 젖에 들어있는 유당(Lactose)을 분해하는 효소가 거의 없습니다. 일반 흰 우유를 먹이면 극심한 유당불내증으로 폭풍 설사와 장염에 시달립니다."
+    "description_en": "There is almost no enzyme in a dog's body that breaks down the lactose contained in cow's milk. If you feed them regular white milk, they will suffer from severe diarrhea and enteritis due to extreme lactose intolerance."
   },
   {
     "id": 83,
@@ -827,7 +827,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "단백질과 칼슘이 풍부해 알약 먹일 때 유용합니다. 하지만 사람용 체다치즈나 슬라이스 치즈는 염분과 유당이 많으므로 코티지 치즈 같은 무염 생치즈만 가능합니다.",
     "name_en": "Cheese",
-    "description_en": "단백질과 칼슘이 풍부해 알약 먹일 때 유용합니다. 하지만 사람용 체다치즈나 슬라이스 치즈는 염분과 유당이 많으므로 코티지 치즈 같은 무염 생치즈만 가능합니다."
+    "description_en": "It is rich in protein and calcium, so it is useful when giving pills. However, cheddar cheese and sliced ​​cheese for humans are high in salt and lactose, so only unsalted raw cheese such as cottage cheese is acceptable."
   },
   {
     "id": 84,
@@ -837,7 +837,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "유산균이 장 건강에 도움을 줍니다. 단, 딸기맛처럼 과일 시럽이나 인공 감미료(특히 자일리톨)가 들어간 것은 절대 안 되며, 100% 무가당 플레인 그릭 요거트만 소량 허용됩니다.",
     "name_en": "Yogurt",
-    "description_en": "유산균이 장 건강에 도움을 줍니다. 단, 딸기맛처럼 과일 시럽이나 인공 감미료(특히 자일리톨)가 들어간 것은 절대 안 되며, 100% 무가당 플레인 그릭 요거트만 소량 허용됩니다."
+    "description_en": "Lactic acid bacteria help with intestinal health. However, fruit syrups such as strawberry flavors or artificial sweeteners (especially xylitol) are absolutely not allowed, and only small amounts of 100% unsweetened plain Greek yogurt are allowed."
   },
   {
     "id": 85,
@@ -847,7 +847,7 @@
     "safetyLevel": "안전",
     "description": "완전식품이라 불릴 만큼 훌륭한 단백질원입니다. 생계란 흰자의 아비딘 성분은 비타민 흡수를 방해하므로, 반드시 완숙으로 푹 삶아 노른자와 흰자 모두 급여하세요.",
     "name_en": "Egg",
-    "description_en": "완전식품이라 불릴 만큼 훌륭한 단백질원입니다. 생계란 흰자의 아비딘 성분은 비타민 흡수를 방해하므로, 반드시 완숙으로 푹 삶아 노른자와 흰자 모두 급여하세요."
+    "description_en": "It is an excellent source of protein, so much so that it is called a complete food. The avidin content in raw egg whites interferes with vitamin absorption, so make sure to boil them hard and feed both the yolk and white."
   },
   {
     "id": 86,
@@ -857,7 +857,7 @@
     "safetyLevel": "안전",
     "description": "계란과 마찬가지로 훌륭한 간식입니다. 소형견에게는 계란 하나가 너무 크기 때문에 메추리알 1~2개를 삶아 노른자를 으깨어 주면 적정량의 보양식이 됩니다.",
     "name_en": "Quail Egg",
-    "description_en": "계란과 마찬가지로 훌륭한 간식입니다. 소형견에게는 계란 하나가 너무 크기 때문에 메추리알 1~2개를 삶아 노른자를 으깨어 주면 적정량의 보양식이 됩니다."
+    "description_en": "Like eggs, they are a great snack. Since one egg is too large for a small dog, boiling 1-2 quail eggs and crushing the yolks provides an appropriate amount of health food."
   },
   {
     "id": 87,
@@ -867,7 +867,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "당분이 너무 높아 일상 간식으로는 부적합하지만, 저혈당 쇼크가 왔을 때나 기침이 심할 때 잇몸에 소량 발라주면 응급 처치 약으로 유용하게 쓰입니다.",
     "name_en": "Honey",
-    "description_en": "당분이 너무 높아 일상 간식으로는 부적합하지만, 저혈당 쇼크가 왔을 때나 기침이 심할 때 잇몸에 소량 발라주면 응급 처치 약으로 유용하게 쓰입니다."
+    "description_en": "It is not suitable as an everyday snack because it is too high in sugar, but it is useful as an emergency medicine when you apply a small amount to the gums when you are in hypoglycemic shock or have a severe cough."
   },
   {
     "id": 88,
@@ -877,7 +877,7 @@
     "safetyLevel": "절대 금지",
     "description": "사람용 아이스크림은 유당, 과도한 설탕, 그리고 초콜릿이나 자일리톨 등 치명적인 성분이 섞여 있을 확률이 높아 절대 주면 안 됩니다. 여름엔 무당 요거트를 얼려주세요.",
     "name_en": "Ice Cream",
-    "description_en": "사람용 아이스크림은 유당, 과도한 설탕, 그리고 초콜릿이나 자일리톨 등 치명적인 성분이 섞여 있을 확률이 높아 절대 주면 안 됩니다. 여름엔 무당 요거트를 얼려주세요."
+    "description_en": "Human ice cream should never be served as it is likely to contain lactose, excessive sugar, and potentially lethal ingredients such as chocolate and xylitol. Freeze unsweetened yogurt in the summer."
   },
   {
     "id": 89,
@@ -887,7 +887,7 @@
     "safetyLevel": "절대 금지",
     "description": "카카오에 들어있는 테오브로민(Theobromine) 성분은 개의 심장과 신경계를 파괴하는 치명적인 맹독입니다. 구토, 발작, 심정지를 일으키며 즉시 위세척을 해야 합니다.",
     "name_en": "Chocolate",
-    "description_en": "카카오에 들어있는 테오브로민(Theobromine) 성분은 개의 심장과 신경계를 파괴하는 치명적인 맹독입니다. 구토, 발작, 심정지를 일으키며 즉시 위세척을 해야 합니다."
+    "description_en": "Theobromine in cacao is a fatal poison that destroys a dog's heart and nervous system. It can cause vomiting, seizures, and cardiac arrest and requires immediate gastric lavage."
   },
   {
     "id": 90,
@@ -897,7 +897,7 @@
     "safetyLevel": "절대 금지",
     "description": "과도한 당분은 충치와 당뇨를 유발하며, 무설탕 사탕에 들어있는 '자일리톨' 성분은 단 한 알만으로도 강아지의 인슐린을 과다 분비시켜 저혈당 쇼크와 간 괴사로 즉사할 수 있습니다.",
     "name_en": "Candy",
-    "description_en": "과도한 당분은 충치와 당뇨를 유발하며, 무설탕 사탕에 들어있는 '자일리톨' 성분은 단 한 알만으로도 강아지의 인슐린을 과다 분비시켜 저혈당 쇼크와 간 괴사로 즉사할 수 있습니다."
+    "description_en": "Excessive sugar causes cavities and diabetes, and just one tablet of the 'xylitol' ingredient in sugar-free candies can cause a dog to secrete too much insulin, leading to instant death from hypoglycemic shock and liver necrosis."
   },
   {
     "id": 91,
@@ -907,7 +907,7 @@
     "safetyLevel": "절대 금지",
     "description": "사람이 씹는 자일리톨 껌을 실수로 주워 먹는 사고가 동물병원 응급실 단골 메뉴입니다. 자일리톨은 포도, 초콜릿과 함께 강아지 3대 맹독으로 불립니다.",
     "name_en": "Gum",
-    "description_en": "사람이 씹는 자일리톨 껌을 실수로 주워 먹는 사고가 동물병원 응급실 단골 메뉴입니다. 자일리톨은 포도, 초콜릿과 함께 강아지 3대 맹독으로 불립니다."
+    "description_en": "Accidents involving people accidentally picking up xylitol gum and eating it are a regular occurrence in animal hospital emergency rooms. Xylitol is considered one of the three most toxic poisons for dogs, along with grapes and chocolate."
   },
   {
     "id": 92,
@@ -917,7 +917,7 @@
     "safetyLevel": "절대 금지",
     "description": "익힌 돼지뼈(족발, 감자탕 뼈)는 씹는 순간 세로로 날카롭게 갈라져 위장관 출혈과 천공을 유발합니다. 염분과 각종 양념도 가득 배어있어 매우 위험합니다.",
     "name_en": "Pork Trotter Bone",
-    "description_en": "익힌 돼지뼈(족발, 감자탕 뼈)는 씹는 순간 세로로 날카롭게 갈라져 위장관 출혈과 천공을 유발합니다. 염분과 각종 양념도 가득 배어있어 매우 위험합니다."
+    "description_en": "Cooked pork bones (pig's feet, gamjatang bones) crack sharply vertically the moment you chew them, causing gastrointestinal bleeding and perforation. It is full of salt and various seasonings, so it is very dangerous."
   },
   {
     "id": 93,
@@ -927,7 +927,7 @@
     "safetyLevel": "절대 금지",
     "description": "배달 온 양념 치킨 뼈나 프라이드 뼈는 강아지 식도 절단기나 다름없습니다. 튀기거나 구운 조류의 뼈는 부러질 때 날카로운 바늘처럼 변하므로 쓰레기통 관리에 유의해야 합니다.",
     "name_en": "Chicken Bone",
-    "description_en": "배달 온 양념 치킨 뼈나 프라이드 뼈는 강아지 식도 절단기나 다름없습니다. 튀기거나 구운 조류의 뼈는 부러질 때 날카로운 바늘처럼 변하므로 쓰레기통 관리에 유의해야 합니다."
+    "description_en": "A seasoned chicken bone or fried bone delivered to you is like a dog gullet cutter. Bones in fried or roasted birds turn into sharp needles when broken, so be careful with litter box management."
   },
   {
     "id": 94,
@@ -938,7 +938,7 @@
     "초성": "ㅋ",
     "description": "카페인은 강아지의 중추신경계와 심장을 과도하게 자극해 빈맥, 경련, 고혈압을 일으킵니다. 아메리카노나 믹스커피가 담긴 종이컵을 핥지 않게 주의하세요.",
     "name_en": "Coffee (Caffeine)",
-    "description_en": "카페인은 강아지의 중추신경계와 심장을 과도하게 자극해 빈맥, 경련, 고혈압을 일으킵니다. 아메리카노나 믹스커피가 담긴 종이컵을 핥지 않게 주의하세요."
+    "description_en": "Caffeine overstimulates your dog's central nervous system and heart, causing tachycardia, convulsions, and high blood pressure. Be careful not to lick the paper cup containing Americano or mixed coffee."
   },
   {
     "id": 95,
@@ -948,7 +948,7 @@
     "safetyLevel": "절대 금지",
     "description": "녹차, 홍차 등의 찻잎에도 카페인이 함유되어 있어 중독을 유발합니다. 다이어트에 좋다고 녹차 티백 우린 물을 강아지에게 급여하는 것은 큰 실수입니다.",
     "name_en": "Green Tea",
-    "description_en": "녹차, 홍차 등의 찻잎에도 카페인이 함유되어 있어 중독을 유발합니다. 다이어트에 좋다고 녹차 티백 우린 물을 강아지에게 급여하는 것은 큰 실수입니다."
+    "description_en": "Tea leaves such as green tea and black tea also contain caffeine, which can cause addiction. It is a big mistake to feed your dog water made with green tea bags, which is good for diet."
   },
   {
     "id": 96,
@@ -958,7 +958,7 @@
     "safetyLevel": "안전",
     "description": "카페인이 없는 곡물 차이므로 맹물 대신 연하게 끓여 차갑게 식혀주면 여름철 음수량을 늘리는 데 탁월한 효과가 있습니다.",
     "name_en": "Barley Tea",
-    "description_en": "카페인이 없는 곡물 차이므로 맹물 대신 연하게 끓여 차갑게 식혀주면 여름철 음수량을 늘리는 데 탁월한 효과가 있습니다."
+    "description_en": "Since it is a caffeine-free grain tea, it is excellent for increasing water intake in the summer if you boil it lightly and cool it instead of plain water."
   },
   {
     "id": 97,
@@ -968,7 +968,7 @@
     "safetyLevel": "소량만 급여 가능",
     "description": "사람용 시판 두유는 설탕과 보존제가 듬뿍 들어있어 피해야 합니다. 당분이 전혀 없는 100% 무첨가 콩국물이라면 락토프리 우유 대용으로 훌륭합니다.",
     "name_en": "Soy Milk",
-    "description_en": "사람용 시판 두유는 설탕과 보존제가 듬뿍 들어있어 피해야 합니다. 당분이 전혀 없는 100% 무첨가 콩국물이라면 락토프리 우유 대용으로 훌륭합니다."
+    "description_en": "Commercial soy milk for humans should be avoided as it contains a lot of sugar and preservatives. If it is a 100% additive-free soybean broth with no sugar at all, it is an excellent substitute for lactose-free milk."
   },
   {
     "id": 98,
@@ -978,7 +978,7 @@
     "safetyLevel": "안전",
     "description": "강아지 전용으로 염분을 쫙 빼고 유당을 제거하여 만들어진 펫치즈는 기호성도 높고 칼슘 섭취에 완벽한 안전 간식입니다.",
     "name_en": "Lactose-Free Cheese",
-    "description_en": "강아지 전용으로 염분을 쫙 빼고 유당을 제거하여 만들어진 펫치즈는 기호성도 높고 칼슘 섭취에 완벽한 안전 간식입니다."
+    "description_en": "Pet cheese is made specifically for dogs by removing all salt and lactose, and is highly palatable and a safe snack that is perfect for calcium intake."
   },
   {
     "id": 99,
@@ -988,7 +988,7 @@
     "safetyLevel": "절대 금지",
     "description": "과도한 포화 지방과 유제품 성분이 뭉쳐 있어, 소량만 핥아도 췌장이 지방을 소화하지 못해 극심한 복통을 동반하는 급성 췌장염에 걸립니다.",
     "name_en": "Butter",
-    "description_en": "과도한 포화 지방과 유제품 성분이 뭉쳐 있어, 소량만 핥아도 췌장이 지방을 소화하지 못해 극심한 복통을 동반하는 급성 췌장염에 걸립니다."
+    "description_en": "Excessive saturated fats and dairy products are packed together, so even just a small lick can cause the pancreas to be unable to digest the fat, resulting in acute pancreatitis accompanied by severe abdominal pain."
   },
   {
     "id": 100,
@@ -998,6 +998,6 @@
     "safetyLevel": "절대 금지",
     "description": "사람 입맛에 맞춘 짠맛(소금)은 신장에 치명적 손상을 주며, 단맛(설탕)은 비만, 당뇨, 백내장을 가속화합니다. 강아지의 요리에는 어떤 조미료도 첨가해선 안 됩니다.",
     "name_en": "Salt/Sugar",
-    "description_en": "사람 입맛에 맞춘 짠맛(소금)은 신장에 치명적 손상을 주며, 단맛(설탕)은 비만, 당뇨, 백내장을 가속화합니다. 강아지의 요리에는 어떤 조미료도 첨가해선 안 됩니다."
+    "description_en": "Salty tastes suited to human tastes cause fatal damage to the kidneys, while sweet tastes (sugar) accelerate obesity, diabetes, and cataracts. No seasoning should be added to your dog's food."
   }
 ]
