@@ -666,10 +666,10 @@ const translations = {
         tag_safe: 'Safe',
         tag_warning: 'Moderate',
         tag_unsafe: 'Toxic',
-        modal_safe_desc: 'Safe to feed.',
+        modal_safe_desc: 'Can be fed safely.',
         modal_warning_desc: 'Feed in small amounts with caution.',
         modal_unsafe_desc: 'Absolutely do not feed.',
-        modal_warning_title: '💡 Detailed Description / Feeding Precautions',
+        modal_warning_title: '💡 Details / Feeding Precautions',
         seo_why_title: "Why is a Dog Temperament Analysis Test Necessary?",
         seo_why_desc: "Perfectly understanding each other's minds is the most important foundation for a happy life with your dog. This test was developed to objectively analyze your dog's unique temperament and innate tendencies, which can be easily overlooked in daily life, based on <strong>behavioral grounds</strong> and veterinary data. Moving beyond simply finding out cute personality types, it suggests ways to minimize stress factors for the child and share better communication.",
         seo_tips_title: "Expected Effects and Application Tips of the Test",
@@ -1299,14 +1299,6 @@ const translations = {
 function getLang() {
     return localStorage.getItem('mung_lang') || localStorage.getItem('lang') || 'ko';
 }
-
-window.t = function(key, fallback) {
-    const lang = getLang();
-    if (translations[lang] && translations[lang][key]) {
-        return translations[lang][key];
-    }
-    return fallback;
-};
 
 function applyLanguage(lang) {
     localStorage.setItem('mung_lang', lang);
