@@ -26,7 +26,7 @@ const mimeTypes = {
 const server = http.createServer((req, res) => {
     let urlPath = req.url.split('?')[0];
     
-    // Explicit clean URL aliases
+    // Explicit clean URL aliases to HTML files
     const aliases = {
         '/': 'index.html',
         '/breeds': 'breeds.html',
@@ -54,8 +54,8 @@ const server = http.createServer((req, res) => {
         const contentType = mimeTypes[extname] || 'application/octet-stream';
         fs.readFile(actualPath, (error, content) => {
             if (error) {
-                res.writeHead(500);
-                res.end('Server error: ' + error.code);
+                res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
+                res.end('Server Error: ' + error.code);
             } else {
                 res.writeHead(200, { 'Content-Type': contentType });
                 res.end(content, 'utf-8');
@@ -72,7 +72,7 @@ const server = http.createServer((req, res) => {
                 if (!err2 && stats2.isFile()) serveFile(indexPath);
                 else {
                     res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-                    res.end(`<h1>404 Not Found</h1><p>${req.url} was not found.</p>`);
+                    res.end(`<h1>404 Not Found</h1><p>${req.url} was not found on this server.</p>`);
                 }
             });
         } else if (err && !path.extname(filePath)) {
@@ -81,12 +81,12 @@ const server = http.createServer((req, res) => {
                 if (!err3 && stats3.isFile()) serveFile(htmlPath);
                 else {
                     res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-                    res.end(`<h1>404 Not Found</h1><p>${req.url} was not found.</p>`);
+                    res.end(`<h1>404 Not Found</h1><p>${req.url} was not found on this server.</p>`);
                 }
             });
         } else {
             res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-            res.end(`<h1>404 Not Found</h1><p>${req.url} was not found.</p>`);
+            res.end(`<h1>404 Not Found</h1><p>${req.url} was not found on this server.</p>`);
         }
     });
 });

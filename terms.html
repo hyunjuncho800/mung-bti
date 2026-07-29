@@ -3,208 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>서비스 이용약관 (Terms of Service) | mung-test.com</title>
-    <meta name="description" content="서비스 이용약관 (Terms of Service) 페이지입니다.">
-    <meta name="keywords" content="애견동반 여행, 강아지 비행기, 강아지 기차 탑승, 애견 펜션 에티켓, 강아지 카시트, 반려견 장거리 이동">
-    
-    
-    <link rel="canonical" href="https://mung-test.com/travel.html">
+    <title>이용약관 (Terms of Service) | mung-test.com</title>
+    <meta name="description" content="mung-test.com의 서비스 이용약관 페이지입니다. 서비스 이용 조건 및 절차, 이용자와 당사의 권리, 의무, 책임사항을 안내합니다.">
     <meta name="robots" content="index, follow">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://mung-test.com/travel.html">
-    <meta property="og:title" content="서비스 이용약관 (Terms of Service) | mung-test.com">
-    <meta property="og:description" content="서비스 이용약관 (Terms of Service) 페이지입니다.">
-    <meta property="og:image" content="https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="여행 및 아웃도어 가이드">
-    <meta name="twitter:description" content="반려견과 함께하는 장거리 여행, 펜션 에티켓, 대중교통 탑승 등 프로 아웃도어 라이프를 위한 필수 가이드입니다.">
-    <meta name="twitter:image" content="https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg">
-
-    <!-- JSON-LD 구조화 데이터 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "여행 및 아웃도어 가이드",
-      "description": "반려견과 함께하는 장거리 여행, 펜션 에티켓, 대중교통 탑승 등 프로 아웃도어 라이프를 위한 필수 가이드입니다.",
-      "author": {
-        "@type": "Organization",
-        "name": "mung-test.com"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "mung-test.com",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg"
-        }
-      },
-      "image": "https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg"
-    }
-    </script>
-
+    <link rel="canonical" href="https://mung-test.com/terms">
 
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-4790912864460441">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4790912864460441" crossorigin="anonymous"></script>
 
-    <!-- Fonts -->
+    <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css?v=original_v1">
-    <script src="i18n.js?v=2026070601"></script>
+    <link rel="stylesheet" href="style.css?v=20260730">
+    <script src="i18n.js?v=20260730"></script>
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
-        .page-header {
-            text-align: center;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, #1fa2ff 0%, #12d8fa 50%, #a6ffcb 100%);
-            padding: 40px 20px;
-            border-radius: 20px;
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
-        .page-title {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .page-desc {
-            font-size: 1.05rem;
-            margin-bottom: 0;
-            opacity: 0.9;
-            word-break: keep-all;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-            margin-top: 30px;
-        }
-        .travel-card {
-            background-color: var(--card);
-            border: 1px solid var(--border);
+        .policy-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--card);
+            padding: 40px;
             border-radius: 16px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            box-shadow: var(--shadow-sm);
-        }
-        .travel-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-            border-color: #1fa2ff;
-        }
-        .card-img-placeholder {
-            height: 160px;
-            background: #eef2f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-        .card-body {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-        .card-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-        .card-readmore {
-            margin-top: auto;
-            color: #1fa2ff;
-            font-weight: 700;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1000; 
-            left: 0; 
-            top: 0; 
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.7);
-            backdrop-filter: blur(5px);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-        }
-        .modal-content {
-            background-color: var(--card);
-            margin: auto;
-            padding: 0;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 85vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-        }
-        .modal.active .modal-content {
-            transform: translateY(0);
-        }
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 24px;
-            color: var(--text-muted);
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 10;
-        }
-        .close-btn:hover {
-            color: var(--text);
-        }
-        .modal-body {
-            padding: 40px 32px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
             color: var(--text);
             line-height: 1.8;
-            font-size: 1.05rem;
         }
-        .modal-title-wrap {
-            margin-bottom: 30px;
+        .policy-header {
+            text-align: center;
+            margin-bottom: 35px;
             padding-bottom: 20px;
-            border-bottom: none;
-            padding-right: 30px;
+            border-bottom: 2px solid var(--primary);
         }
-        .modal-title-wrap h2 {
-            margin: 0;
-            font-size: 1.6rem;
-            color: var(--text);
-            line-height: 1.4;
+        .policy-header h1 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+        .policy-section {
+            margin-bottom: 30px;
+        }
+        .policy-section h2 {
+            font-size: 1.35rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .policy-section p, .policy-section ul {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .policy-section ul {
+            padding-left: 24px;
         }
     </style>
 </head>
@@ -214,7 +69,7 @@
     <div class="header-inner">
         <a href="/" class="logo" style="color: var(--primary);">🐾 반려견 종합 라이프 가이드</a>
         <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
-                                <nav>
+                <nav>
             <ul class="nav-links">
                 <li><a href="/" data-i18n="nav_home">홈</a></li>
                 <li><a href="/breeds" data-i18n="nav_breeds">견종 백과사전</a></li>
@@ -239,63 +94,71 @@
     </div>
 </header>
 
-<main class="container" style="max-width: 800px; margin: 40px auto; min-height: 50vh;">
-            <div class="page-header">
-                <h1 class="page-title" style="margin-bottom: 20px;">서비스 이용약관</h1>
-            </div>
-            <div style="background: var(--card); padding: 40px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); line-height: 1.8; color: var(--text);">
-                
-    <h2>서비스 이용약관 (Terms of Service)</h2>
-    <p>이 약관은 mung-test.com (이하 '본 사이트')에서 제공하는 인터넷 관련 서비스의 이용조건 및 절차, 이용자와 본 사이트의 권리, 의무, 책임사항을 규정함을 목적으로 합니다.</p>
-    <br>
-    <h3>제1조 (목적 및 효력)</h3>
-    <p>본 약관은 본 사이트가 제공하는 모든 서비스의 이용과 관련하여 기본적으로 적용됩니다. 사이트를 방문하고 서비스를 이용하는 것은 본 약관에 동의하는 것으로 간주됩니다.</p>
-    <br>
-    <h3>제2조 (정보의 제공 및 한계)</h3>
-    <p>본 사이트에서 제공하는 모든 반려견 관련 정보(질병 증상, 행동 교정, 의류 사이즈 등)는 일반적인 정보 제공을 목적으로 하며, 수의사의 전문적인 의학적 진단이나 행동 교정 전문가의 상담을 대신할 수 없습니다. 따라서 사이트에서 제공된 정보를 바탕으로 취해진 조치에 대해 본 사이트는 어떠한 법적 책임도 지지 않습니다. 반려견의 건강에 심각한 이상이 있을 경우, 즉시 수의사에게 진찰을 받아야 합니다.</p>
-    <br>
-    <h3>제3조 (저작권의 귀속 및 이용 제한)</h3>
-    <p>본 사이트가 작성한 저작물에 대한 저작권 및 기타 지적재산권은 본 사이트에 귀속됩니다. 이용자는 본 사이트를 이용함으로써 얻은 정보를 본 사이트의 사전 승낙 없이 복제, 송신, 출판, 배포, 방송 등 기타 방법에 의하여 영리 목적으로 이용하거나 제3자에게 이용하게 하여서는 안 됩니다.</p>
-    <br>
-    <h3>제4조 (광고의 게재)</h3>
-    <p>본 사이트는 서비스 운영과 관련하여 서비스 화면 등에 광고를 게재할 수 있습니다. 이는 사이트 유지 관리를 위한 필수적인 부분임을 양해 부탁드립니다.</p>
+<main class="container">
+    <div class="policy-container">
+        <div class="policy-header">
+            <h1 data-i18n="terms_title">서비스 이용약관 (Terms of Service)</h1>
+            <p>시행일자: 2026년 7월 30일 | mung-test.com</p>
+        </div>
 
-            </div>
-        </main>
+        <div class="policy-section">
+            <h2>제1조 (목적)</h2>
+            <p>본 약관은 mung-test.com(이하 '사이트')이 제공하는 반려견 라이프 종합 가이드 정보 서비스(반려견 기질 검사, 의류 사이즈 추천기, 나이 계산기, 백과사전, 가이드 등 이하 '서비스')의 이용 조건 및 절차, 이용자와 사이트 간의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>제2조 (용어의 정의)</h2>
+            <p>1. '서비스'란 사이트가 웹 브라우저를 통해 이용자에게 제공하는 모든 정보성 콘텐츠 및 온디바이스 계산 도구를 의미합니다.<br>
+            2. '이용자'란 사이트에 접속하여 본 약관에 따라 사이트가 제공하는 서비스를 이용하는 방문자를 말합니다.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>제3조 (약관의 효력 및 변경)</h2>
+            <p>1. 본 약관은 사이트 내 게시함으로써 효력이 발생합니다.<br>
+            2. 사이트는 필요한 경우 관련 법령을 위배하지 않는 범위 내에서 본 약관을 개정할 수 있으며, 개정된 약관은 공지사항을 통해 고지합니다.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>제4조 (서비스의 제공 및 내용)</h2>
+            <p>사이트는 이용자에게 다음과 같은 정보 서비스를 무료로 제공합니다:</p>
+            <ul>
+                <li>반려견 성향 및 행동 패턴 기반 기질 검사 분석 시스템</li>
+                <li>체형, 체중, 견종별 반려견 의류 사이즈 알고리즘 추천기</li>
+                <li>AKC 표준 기반 반려견 사람 나이 환산 및 생애주기 계산기</li>
+                <li>견종 백과사전, 자가진단 홈케어 가이드, 음식 100종 급여 사전, 여행 팁 등 정보 콘텐츠</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2>제5조 (저작권의 귀속 및 권리)</h2>
+            <p>1. 사이트가 작성한 모든 텍스트, 알고리즘, 이미지, 디자인 요소 및 데이터베이스의 저작권은 사이트에 귀속됩니다.<br>
+            2. 이용자는 사이트의 사전 승인 없이 서비스를 복제, 출판, 배포, 양도하거나 상업적으로 이용할 수 없습니다.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>제6조 (면책 조항)</h2>
+            <p>1. 사이트에서 제공하는 진단 가이드, 나이 환산, 의류 사이즈 정보는 통계 및 일반 가이드라인에 기반한 참고 정보이며, 수의학적 전문 진단을 대체하지 않습니다.<br>
+            2. 사이트는 천재지변, 서버 점검, 통신 장애 등 불가항력으로 인하여 서비스를 제공할 수 없는 경우에는 책임을 지지 않습니다.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>제7조 (문의처)</h2>
+            <p>이용약관에 관해 궁금하신 점은 <a href="mailto:support@mung-test.com" style="color: var(--primary);">support@mung-test.com</a>으로 문의해 주시기 바랍니다.</p>
+        </div>
+    </div>
+</main>
 
 <footer class="site-footer" style="background-color: #f8f9fa; padding: 30px 20px; text-align: center; border-top: 1px solid #e9ecef; margin-top: 40px;">
     <nav style="margin-bottom: 20px;">
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-            <li><a href="about.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">사이트 소개</a></li>
-            <li><a href="terms.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">이용약관</a></li>
-            <li><a href="privacy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">개인정보처리방침</a></li>
-            <li><a href="contact.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">문의하기</a></li>
+            <li><a href="/about" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">사이트 소개</a></li>
+            <li><a href="/terms" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">이용약관</a></li>
+            <li><a href="/privacy" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">개인정보처리방침</a></li>
+            <li><a href="/contact" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">문의하기</a></li>
         </ul>
     </nav>
     <p style="font-size: 0.8rem; color:var(--text-muted); margin: 0;">&copy; 2026 mung-test.com. All rights reserved.</p>
 </footer>
 
-<!-- 모달 팝업 -->
-<div id="travel-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <div class="modal-body" id="modal-body">
-            <div class="modal-title-wrap">
-                <h2 id="modal-title">가이드 제목</h2>
-            </div>
-            <div id="modal-content-area" style="white-space: pre-line;"></div>
-            
-            <div id="modal-dynamic-btn"></div>
-        </div>
-    </div>
-</div>
-
-
-<script>
-    // 메뉴 토글 스크립트
-    document.querySelector('.menu-toggle').addEventListener('click', () => {
-        document.querySelector('nav').classList.toggle('active');
-    });
-</script>
 </body>
 </html>

@@ -1,15 +1,1 @@
-/breeds /breeds.html 200
-/diagnostics /diagnostics.html 200
-/blog /blog.html 200
-/food /food-guide.html 200
-/travel /travel.html 200
-/test /mung-test.html 200
-/personality-test /mung-test.html 200
-/size-calculator /size-calculator.html 200
-/size-recommend /size-calculator.html 200
-/age-calculator /age-calculator.html 200
-/age-calc /age-calculator.html 200
-/about /about.html 200
-/terms /terms.html 200
-/privacy /privacy.html 200
-/contact /contact.html 200
+# Static Clean URLs Redirect Rule Disabled to Prevent ERR_TOO_MANY_REDIRECTS Loop
