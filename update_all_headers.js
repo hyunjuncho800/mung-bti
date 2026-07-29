@@ -12,9 +12,9 @@ const newNav = `        <nav>
                 <li class="nav-dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-i18n="nav_calculators">추천 및 계산기 ▾</a>
                     <ul class="dropdown-menu">
-                        <li><a href="/test" data-i18n="nav_test">반려견 기질 검사</a></li>
-                        <li><a href="/size-calculator" data-i18n="nav_size">의류 사이즈 추천기</a></li>
-                        <li><a href="/age-calculator" data-i18n="nav_age">나이 계산기</a></li>
+                        <li><a href="/personality-test" data-i18n="nav_test">반려견 기질 검사</a></li>
+                        <li><a href="/size-recommend" data-i18n="nav_size">의류 사이즈 추천기</a></li>
+                        <li><a href="/age-calc" data-i18n="nav_age">나이 계산기</a></li>
                     </ul>
                 </li>
             </ul>
@@ -32,8 +32,6 @@ function processDir(dir) {
             }
         } else if (file.endsWith('.html')) {
             let content = fs.readFileSync(fullPath, 'utf8');
-            // Regex to match header <nav> ... </nav>
-            // Note: footer has a nav too, so we target <nav> inside header or first <nav> before </header>
             const headerNavRegex = /<header[\s\S]*?<\/header>/;
             const headerMatch = content.match(headerNavRegex);
 
@@ -42,7 +40,6 @@ function processDir(dir) {
                 const navRegex = /<nav>[\s\S]*?<\/nav>/;
                 if (navRegex.test(headerContent)) {
                     let updatedHeader = headerContent.replace(navRegex, newNav);
-                    // Ensure logo link points to '/'
                     updatedHeader = updatedHeader.replace(/<a href="index\.html" class="logo"/, '<a href="/" class="logo"');
                     content = content.replace(headerContent, updatedHeader);
                     fs.writeFileSync(fullPath, content, 'utf8');
