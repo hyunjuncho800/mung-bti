@@ -704,15 +704,6 @@
 
     // ===== 초기 접속 시 파라미터 확인 =====
     document.addEventListener('DOMContentLoaded', () => {
-        // 모바일 햄버거 메뉴 토글 이벤트 추가
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('nav');
-        if (menuToggle && navMenu) {
-            menuToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-            });
-        }
-
         // 참여자 수 애니메이션 실행
         const countElement = document.getElementById('participant-count');
         if (countElement && document.getElementById('intro-zone').style.display !== 'none') {

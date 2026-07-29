@@ -19,8 +19,10 @@ const translations = {
         nav_about: "소개 및 문의",
         nav_age: "나이 계산기",
         nav_size: "의류 사이즈 추천기",
-        nav_start: "반려견기질검사",
-        nav_blog: "댕댕이 팁(Blog)",
+        nav_start: "반려견 기질 검사",
+        nav_test: "반려견 기질 검사",
+        nav_calculators: "추천 및 계산기 ▾",
+        nav_blog: "댕댕이팁",
         food_logo: "🐾 음식 가이드",
         nav_food: "음식 가이드",
         nav_breeds: "견종 백과사전",
@@ -686,7 +688,9 @@ const translations = {
         nav_about: "About & Contact",
         nav_age: "Age Calculator",
         nav_size: "Size Recommender",
-        nav_start: "Start Mung-BTI",
+        nav_start: "Temperament Test",
+        nav_test: "Temperament Test",
+        nav_calculators: "Tools & Calculators ▾",
         nav_blog: "Doggy Tips",
         nav_food: "Food Guide",
         nav_breeds: "Breeds Encyclopedia",
@@ -1473,3 +1477,37 @@ function showGlobalToast(msg) {
         toast.className = toast.className.replace('show', '').trim(); 
     }, 3000);
 }
+
+// ===== Mobile Menu & Dropdown Toggle =====
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('nav');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    if (dropdownToggle) {
+        dropdownToggle.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992) {
+                e.preventDefault();
+                e.stopPropagation();
+                const parent = dropdownToggle.closest('.nav-dropdown');
+                if (parent) {
+                    parent.classList.toggle('open');
+                }
+            }
+        });
+    }
+
+    document.addEventListener('click', (e) => {
+        if (navMenu && navMenu.classList.contains('active')) {
+            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        }
+    });
+});

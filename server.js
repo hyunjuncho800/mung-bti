@@ -24,24 +24,66 @@ const mimeTypes = {
 };
 
 const server = http.createServer((req, res) => {
-    let filePath = path.join(dir, req.url === '/' ? 'index.html' : req.url.split('?')[0]);
+    let urlPath = req.url.split('?')[0];
     
-    const extname = String(path.extname(filePath)).toLowerCase();
-    const contentType = mimeTypes[extname] || 'application/octet-stream';
+    // Explicit clean URL aliases
+    const aliases = {
+        '/': 'index.html',
+        '/breeds': 'breeds.html',
+        '/diagnostics': 'diagnostics.html',
+        '/blog': 'blog.html',
+        '/food': 'food-guide.html',
+        '/travel': 'travel.html',
+        '/test': 'mung-test.html',
+        '/size-calculator': 'size-calculator.html',
+        '/age-calculator': 'age-calculator.html',
+        '/about': 'about.html',
+        '/terms': 'terms.html',
+        '/privacy': 'privacy.html',
+        '/contact': 'contact.html'
+    };
 
-    fs.readFile(filePath, (error, content) => {
-        if (error) {
-            if(error.code === 'ENOENT'){
-                res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-                res.end(`<h1>404 Not Found</h1><p>${req.url} was not found on this server.</p>`, 'utf-8');
-            } else {
+    let targetFile = aliases[urlPath] ? aliases[urlPath] : urlPath;
+    let filePath = path.join(dir, targetFile);
+
+    const serveFile = (actualPath) => {
+        const extname = String(path.extname(actualPath)).toLowerCase();
+        const contentType = mimeTypes[extname] || 'application/octet-stream';
+        fs.readFile(actualPath, (error, content) => {
+            if (error) {
                 res.writeHead(500);
-                res.end('Sorry, check with the site admin for error: '+error.code+' ..\n');
-                res.end(); 
+                res.end('Server error: ' + error.code);
+            } else {
+                res.writeHead(200, { 'Content-Type': contentType });
+                res.end(content, 'utf-8');
             }
+        });
+    };
+
+    fs.stat(filePath, (err, stats) => {
+        if (!err && stats.isFile()) {
+            serveFile(filePath);
+        } else if (!err && stats.isDirectory()) {
+            const indexPath = path.join(filePath, 'index.html');
+            fs.stat(indexPath, (err2, stats2) => {
+                if (!err2 && stats2.isFile()) serveFile(indexPath);
+                else {
+                    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+                    res.end(`<h1>404 Not Found</h1><p>${req.url} was not found.</p>`);
+                }
+            });
+        } else if (err && !path.extname(filePath)) {
+            const htmlPath = filePath + '.html';
+            fs.stat(htmlPath, (err3, stats3) => {
+                if (!err3 && stats3.isFile()) serveFile(htmlPath);
+                else {
+                    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+                    res.end(`<h1>404 Not Found</h1><p>${req.url} was not found.</p>`);
+                }
+            });
         } else {
-            res.writeHead(200, { 'Content-Type': contentType });
-            res.end(content, 'utf-8');
+            res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+            res.end(`<h1>404 Not Found</h1><p>${req.url} was not found.</p>`);
         }
     });
 });

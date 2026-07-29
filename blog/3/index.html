@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반려견 나이 계산기 알고리즘: 사람 나이 환산법과 생애 주기별 건강 관리 | 반려견 종합 라이프 가이드</title>
+    <meta name="description" content="서론: 강아지 1년은 사람의 7년과 같다는 오해오랫동안 많은 사람들은 강아지의 나이에 단순히 7을 곱하여 사람 나이로 환산해 왔습니다. 그러나 현대 수의학의 발달로 이러한 단순 계산법은 부정확하다는 것이 밝혀졌습니다. 강아지는 태어난 직후 첫 1~2년 동안 사람의 청소...">
+    <link rel="canonical" href="https://mung-test.com/blog/3">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/style.css">
+    <script src="/i18n.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <style>
+        .post-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: var(--bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+        .content-body h1 { font-size: 2rem; color: var(--primary-dark); margin-bottom: 20px; border-bottom: 2px solid var(--border); padding-bottom: 10px; line-height: 1.3; }
+        .content-body h2 { font-size: 1.4rem; color: var(--text); margin-top: 30px; margin-bottom: 16px; }
+        .content-body p { font-size: 1.05rem; line-height: 1.8; color: var(--text); margin-bottom: 16px; }
+        .content-body ul { margin-bottom: 16px; padding-left: 20px; }
+        .content-body li { font-size: 1.05rem; line-height: 1.8; color: var(--text); margin-bottom: 8px; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: var(--primary); font-weight: bold; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+        @media(max-width: 600px) {
+            .post-container { padding: 20px; margin: 20px; border-radius: 12px; }
+            .content-body h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-inner">
+        <a href="/" class="logo" style="color: var(--primary);">🐾 반려견 종합 라이프 가이드</a>
+        <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
+                        <nav>
+            <ul class="nav-links">
+                <li><a href="/" data-i18n="nav_home">홈</a></li>
+                <li><a href="/breeds" data-i18n="nav_breeds">견종 백과사전</a></li>
+                <li><a href="/diagnostics" data-i18n="nav_diagnostics">자가진단 가이드</a></li>
+                <li><a href="/blog" data-i18n="nav_blog">댕댕이팁</a></li>
+                <li><a href="/food" data-i18n="nav_food">음식 가이드</a></li>
+                <li><a href="/travel" data-i18n="nav_travel">여행 가이드</a></li>
+                <li class="nav-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-i18n="nav_calculators">추천 및 계산기 ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/test" data-i18n="nav_test">반려견 기질 검사</a></li>
+                        <li><a href="/size-calculator" data-i18n="nav_size">의류 사이즈 추천기</a></li>
+                        <li><a href="/age-calculator" data-i18n="nav_age">나이 계산기</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button id="btn-lang" class="header-btn" aria-label="언어 변경">EN</button>
+            <button id="btn-theme" class="header-btn" aria-label="테마 변경">🌙</button>
+        </div>
+    </div>
+</header>
+<main class="container">
+    <div class="post-container">
+        <div class="content-body">
+            
+        <a href="/blog.html" class="back-link">← 목록으로 돌아가기</a>
+        <h1>반려견 나이 계산기 알고리즘: 사람 나이 환산법과 생애 주기별 건강 관리</h1>
+        <div><h2>서론: 강아지 1년은 사람의 7년과 같다는 오해</h2><p>오랫동안 많은 사람들은 강아지의 나이에 단순히 7을 곱하여 사람 나이로 환산해 왔습니다. 그러나 현대 수의학의 발달로 이러한 단순 계산법은 부정확하다는 것이 밝혀졌습니다. 강아지는 태어난 직후 첫 1~2년 동안 사람의 청소년기까지 급격하게 성장하며, 그 이후의 노화 속도는 소형견, 중형견, 대형견 등 체급에 따라 확연히 다르게 진행됩니다. 우리 강아지의 생체 나이를 정확히 파악하는 것은 생애 주기에 맞는 적절한 영양 공급과 질병 예방의 핵심입니다.</p><h2>본론 1: 체급에 따른 최신 노화 속도 환산법</h2><p>일반적으로 생후 1년 된 강아지는 사람 나이로 약 15세, 생후 2년은 약 24세에 해당할 만큼 성숙합니다. 흥미로운 점은 3년 차부터 체급별 노화 속도가 갈라진다는 것입니다.</p><ul><li><strong>소형견 (10kg 미만):</strong> 노화가 상대적으로 천천히 진행됩니다. 2년 차 이후 1년마다 사람 나이로 약 4년씩 나이를 먹으며, 평균 수명도 14~16년으로 가장 깁니다.</li><li><strong>중형견 (10~25kg):</strong> 2년 차 이후 1년마다 사람 나이로 약 5년씩 나이를 먹으며, 8~9세 무렵부터 노령기로 접어듭니다.</li><li><strong>대형견 (25kg 이상):</strong> 성장은 가장 오래 걸리지만 노화 속도는 가장 빠릅니다. 2년 차 이후 1년마다 사람 나이로 약 6~7년씩 증가하며, 6~7세만 되어도 노령견에 속하게 됩니다.</li></ul><h2>본론 2: 연령대별 필수 건강 관리 및 건강 검진 체크리스트</h2><p>정확한 나이를 기반으로 생애 주기를 3단계로 나누어 맞춤 관리가 필요합니다.</p><p><strong>퍼피/성견기 (1세~6세):</strong> 충분한 운동량 확보와 올바른 식습관 형성이 중요합니다. 슬개골 탈구 예방을 위한 체중 관리, 매년 1회 심장사상충 및 종합 백신 항체가 검사를 실시합니다.<br><strong>시니어 준비기 (7세~9세):</strong> 신진대사가 느려지므로 성견용 사료에서 시니어 사료로의 점진적 교체가 필요합니다. 이 시기부터는 간 수치, 신장 수치 등을 확인하는 혈액 검사를 매년 정기적으로 받아야 합니다.<br><strong>노령기 (10세 이상):</strong> 관절염, 백내장, 심장병 발병률이 급증합니다. 6개월 단위의 세밀한 종합 건강검진(초음파, 엑스레이 포함)이 필수적이며, 소화가 잘되고 항산화 물질이 풍부한 식단을 제공해야 합니다.</p><h2>결론: 시간의 흐름을 이해하고 준비하는 자세</h2><p>반려견의 시간은 우리보다 훨씬 빠르게 흘러갑니다. 정확한 나이 환산법을 통해 내 강아지가 현재 사람 나이로 몇 살의 신체를 가지고 있는지 인지하는 것은 큰 의미가 있습니다. 미리 다가올 생애 주기를 대비하고 그에 맞는 정기적인 건강검진과 식단 관리를 실천한다면, 우리 곁에 머무는 시간을 건강하고 아름답게 늘려줄 수 있을 것입니다.</p></div>
+    
+        </div>
+        
+<div style="margin-top: 40px; padding: 30px; background: #fff; border-radius: 12px; text-align: center; border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+    <h3 style="margin-bottom: 20px; color: var(--primary-dark); font-size: 1.3rem;">더 많은 맞춤 정보를 확인해보세요!</h3>
+    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <a href="/mung-test.html" style="background-color: var(--primary); color: #fff; padding: 12px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; display: inline-block;">반려견 기질 검사하기 🐕</a>
+        <a href="/size-calculator.html" style="background-color: var(--primary); color: #fff; padding: 12px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; display: inline-block;">맞춤 의류 사이즈 찾기 👕</a>
+    </div>
+</div>
+
+    </div>
+</main>
+<footer class="site-footer" style="background-color: #f8f9fa; padding: 30px 20px; text-align: center; border-top: 1px solid #e9ecef; margin-top: 40px;">
+    <nav style="margin-bottom: 20px;">
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <li><a href="about.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">사이트 소개</a></li>
+            <li><a href="terms.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">이용약관</a></li>
+            <li><a href="privacy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">개인정보처리방침</a></li>
+            <li><a href="contact.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">문의하기</a></li>
+        </ul>
+    </nav>
+    <p style="font-size: 0.8rem; color:var(--text-muted); margin: 0;">&copy; 2026 mung-test.com. All rights reserved.</p>
+</footer>
+</body>
+</html>
