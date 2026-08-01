@@ -10,6 +10,7 @@ const mimeTypes = {
     '.js': 'text/javascript',
     '.css': 'text/css',
     '.json': 'application/json',
+    '.xml': 'application/xml; charset=utf-8',
     '.png': 'image/png',
     '.jpg': 'image/jpg',
     '.gif': 'image/gif',
@@ -29,6 +30,8 @@ const server = http.createServer((req, res) => {
     // Explicit clean URL aliases to HTML files
     const aliases = {
         '/': 'index.html',
+        '/rss': 'rss.xml',
+        '/rss.xml': 'rss.xml',
         '/breeds': 'breeds.html',
         '/diagnostics': 'diagnostics.html',
         '/blog': 'blog.html',

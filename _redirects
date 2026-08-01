@@ -1,1 +1,4 @@
 # Static Clean URLs Redirect Rule Disabled to Prevent ERR_TOO_MANY_REDIRECTS Loop
+/rss /rss.xml 200
+/rss/ /rss.xml 200
+
