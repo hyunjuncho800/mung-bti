@@ -1510,4 +1510,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // ===== Dynamic Noindex Handler for Parameterized URLs =====
+    if (window.location.search && window.location.search.length > 1) {
+        let robotsMeta = document.querySelector('meta[name="robots"]');
+        if (!robotsMeta) {
+            robotsMeta = document.createElement('meta');
+            robotsMeta.name = 'robots';
+            document.head.appendChild(robotsMeta);
+        }
+        robotsMeta.content = 'noindex, follow';
+    }
 });
+
+

@@ -7,11 +7,27 @@ const baseContent = fs.readFileSync(path.join(dir, 'travel.html'), 'utf8');
 
 const generatePage = (filename, title, heading, bodyContent) => {
     let newContent = baseContent.replace(/<title>.*?<\/title>/, `<title>${title} | mung-test.com</title>`);
+    const cleanRoute = filename.replace('.html', '');
+    const canonicalUrl = `https://mung-test.com/${cleanRoute}`;
     
-    // Replace Open Graph / Meta tags roughly
+    // canonical & robots meta update
+    if (newContent.includes('<link rel="canonical"')) {
+        newContent = newContent.replace(/<link rel="canonical" href=".*?">/, `<link rel="canonical" href="${canonicalUrl}">`);
+    } else {
+        newContent = newContent.replace('</head>', `    <link rel="canonical" href="${canonicalUrl}">\n</head>`);
+    }
+
+    if (newContent.includes('<meta name="robots"')) {
+        newContent = newContent.replace(/<meta name="robots" content=".*?">/, `<meta name="robots" content="index, follow">`);
+    } else {
+        newContent = newContent.replace('</head>', `    <meta name="robots" content="index, follow">\n</head>`);
+    }
+    
+    // Replace Open Graph / Meta tags
     newContent = newContent.replace(/<meta name="description" content=".*?">/, `<meta name="description" content="${title} 페이지입니다.">`);
     newContent = newContent.replace(/<meta property="og:title" content=".*?">/, `<meta property="og:title" content="${title} | mung-test.com">`);
     newContent = newContent.replace(/<meta property="og:description" content=".*?">/, `<meta property="og:description" content="${title} 페이지입니다.">`);
+    newContent = newContent.replace(/<meta property="og:url" content=".*?">/, `<meta property="og:url" content="${canonicalUrl}">`);
     
     const mainMatch = newContent.match(/<main[^>]*>([\s\S]*?)<\/main>/);
     if(mainMatch) {

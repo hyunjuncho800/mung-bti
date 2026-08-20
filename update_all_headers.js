@@ -64,6 +64,17 @@ function processDir(dir) {
                 content = content.replace(footerRegex, newFooter);
             }
 
+            // 3. Meta robots & Canonical check
+            if (!content.includes('<meta name="robots"')) {
+                content = content.replace('</head>', '    <meta name="robots" content="index, follow">\n</head>');
+            }
+
+            // Standardize Canonical domain if contains old domain or missing protocol
+            if (content.includes('<link rel="canonical"')) {
+                content = content.replace(/<link rel="canonical" href="http:\/\/mung-test\.com/g, '<link rel="canonical" href="https://mung-test.com');
+                content = content.replace(/<link rel="canonical" href="https:\/\/www\.mung-test\.com/g, '<link rel="canonical" href="https://mung-test.com');
+            }
+
             fs.writeFileSync(fullPath, content, 'utf8');
             count++;
         }
@@ -71,4 +82,5 @@ function processDir(dir) {
 }
 
 processDir('.');
-console.log(`Successfully updated ${count} HTML files for Header & Footer.`);
+console.log(`Successfully updated ${count} HTML files for Header, Footer, Meta Robots & Canonical URL.`);
+

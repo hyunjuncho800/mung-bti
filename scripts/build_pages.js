@@ -22,17 +22,25 @@ const dynamicLinks = `
 `;
 
 function generateHTML(title, desc, contentBody, canonicalUrl) {
+    const fullCanonical = `https://mung-test.com${canonicalUrl}`;
     return `<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${title} | 반려견 종합 라이프 가이드</title>
+    <title>${title} | mung-test.com</title>
     <meta name="description" content="${desc}">
-    <link rel="canonical" href="https://mung-test.com${canonicalUrl}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="${fullCanonical}">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- OpenGraph SEO -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="${title} | mung-test.com">
+    <meta property="og:description" content="${desc}">
+    <meta property="og:url" content="${fullCanonical}">
+    <meta property="og:site_name" content="mung-test.com">
+    <meta property="og:image" content="https://mung-test.com/share_thumbnail.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="/style.css">

@@ -4,73 +4,207 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>개인정보처리방침 (Privacy Policy) | mung-test.com</title>
-    <meta name="description" content="mung-test.com의 개인정보처리방침입니다. 쿠키 이용, 구글 애드센스 맞춤형 광고, 사용자 개인정보 보호에 관한 규정을 안내합니다.">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="개인정보처리방침 (Privacy Policy) 페이지입니다.">
+    <meta name="keywords" content="애견동반 여행, 강아지 비행기, 강아지 기차 탑승, 애견 펜션 에티켓, 강아지 카시트, 반려견 장거리 이동">
+    
+    
     <link rel="canonical" href="https://mung-test.com/privacy">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mung-test.com/privacy">
+    <meta property="og:title" content="개인정보처리방침 (Privacy Policy) | mung-test.com">
+    <meta property="og:description" content="개인정보처리방침 (Privacy Policy) 페이지입니다.">
+    <meta property="og:image" content="https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="여행 및 아웃도어 가이드">
+    <meta name="twitter:description" content="반려견과 함께하는 장거리 여행, 펜션 에티켓, 대중교통 탑승 등 프로 아웃도어 라이프를 위한 필수 가이드입니다.">
+    <meta name="twitter:image" content="https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg">
+
+    <!-- JSON-LD 구조화 데이터 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "여행 및 아웃도어 가이드",
+      "description": "반려견과 함께하는 장거리 여행, 펜션 에티켓, 대중교통 탑승 등 프로 아웃도어 라이프를 위한 필수 가이드입니다.",
+      "author": {
+        "@type": "Organization",
+        "name": "mung-test.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "mung-test.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg"
+        }
+      },
+      "image": "https://hyunjuncho800.github.io/mung-bti/share_thumbnail.jpg"
+    }
+    </script>
+
 
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-4790912864460441">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4790912864460441" crossorigin="anonymous"></script>
 
-    <!-- Fonts & CSS -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20260730">
-    <script src="i18n.js?v=20260730"></script>
+    
+    <link rel="stylesheet" href="style.css?v=original_v1">
+    <script src="i18n.js?v=2026070601"></script>
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
-        .policy-container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: var(--card);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border);
-            color: var(--text);
-            line-height: 1.8;
-        }
-        .policy-header {
+        .page-header {
             text-align: center;
-            margin-bottom: 35px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--primary);
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #1fa2ff 0%, #12d8fa 50%, #a6ffcb 100%);
+            padding: 40px 20px;
+            border-radius: 20px;
+            color: white;
+            box-shadow: var(--shadow-md);
         }
-        .policy-header h1 {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 10px;
+        .page-title {
+            font-size: 2rem;
             font-weight: 800;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .policy-section {
-            margin-bottom: 30px;
+        .page-desc {
+            font-size: 1.05rem;
+            margin-bottom: 0;
+            opacity: 0.9;
+            word-break: keep-all;
         }
-        .policy-section h2 {
-            font-size: 1.35rem;
-            color: var(--primary-dark);
-            margin-bottom: 12px;
-            font-weight: 700;
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+        .travel-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-sm);
+        }
+        .travel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+            border-color: #1fa2ff;
+        }
+        .card-img-placeholder {
+            height: 160px;
+            background: #eef2f5;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            font-size: 3rem;
         }
-        .policy-section p, .policy-section ul {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: 12px;
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
-        .policy-section ul {
-            padding-left: 24px;
-        }
-        .policy-highlight {
-            background: var(--bg);
-            padding: 16px 20px;
-            border-left: 4px solid var(--primary);
-            border-radius: 8px;
-            margin: 15px 0;
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
             color: var(--text);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .card-readmore {
+            margin-top: auto;
+            color: #1fa2ff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        .modal-content {
+            background-color: var(--card);
+            margin: auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            color: var(--text-muted);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .close-btn:hover {
+            color: var(--text);
+        }
+        .modal-body {
+            padding: 40px 32px;
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .modal-title-wrap {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: none;
+            padding-right: 30px;
+        }
+        .modal-title-wrap h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--text);
+            line-height: 1.4;
         }
     </style>
 </head>
@@ -80,7 +214,7 @@
     <div class="header-inner">
         <a href="/" class="logo" style="color: var(--primary);">🐾 반려견 종합 라이프 가이드</a>
         <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
-                <nav>
+                                                        <nav>
             <ul class="nav-links">
                 <li><a href="/" data-i18n="nav_home">홈</a></li>
                 <li><a href="/breeds" data-i18n="nav_breeds">견종 백과사전</a></li>
@@ -105,56 +239,34 @@
     </div>
 </header>
 
-<main class="container">
-    <div class="policy-container">
-        <div class="policy-header">
-            <h1 data-i18n="privacy_title">개인정보처리방침 (Privacy Policy)</h1>
-            <p>최종 수정일: 2026년 7월 30일 | mung-test.com</p>
-        </div>
-
-        <div class="policy-section">
-            <h2>1. 개인정보의 수집 항목 및 수집 방법</h2>
-            <p>mung-test.com(이하 '본 사이트')은 별도의 회원가입 없이 누구나 자율적으로 서비스를 이용할 수 있는 정적 웹 플랫폼입니다. 본 사이트는 사용자의 이름, 주민등록번호, 연락처 등 고유 식별 정보를 직접 수집하거나 저장하지 않습니다.</p>
-            <p>다만, 서비스 이용 및 웹사이트 방문 과정에서 웹 브라우저 접속 기록, IP 주소, 쿠키(Cookie), 접속 로그, 방문 일시 등 서비스 이용 기록이 시스템에 의해 자동으로 생성되어 수집될 수 있습니다.</p>
-        </div>
-
-        <div class="policy-section">
-            <h2>2. 개인정보 및 데이터의 이용 목적</h2>
-            <p>자동 수집된 트래픽 및 접속 데이터는 다음과 같은 목적으로만 활용됩니다:</p>
-            <ul>
-                <li>웹사이트 트래픽 측정 및 데이터 분석을 통한 사용자 경험(UX) 개선</li>
-                <li>접속 기기(모바일/데스크톱)에 최적화된 반응형 UI 및 서비스 제공</li>
-                <li>구글 애드센스(Google AdSense) 광고 서버 연동 및 광고 서빙 데이터 최적화</li>
-            </ul>
-        </div>
-
-        <div class="policy-section">
-            <h2>3. 구글 애드센스 (Google AdSense) 및 쿠키(Cookie) 정책</h2>
-            <p>본 사이트는 Google Inc.에서 제공하는 웹 광고 서비스인 <strong>Google AdSense</strong>를 게시하고 있습니다.</p>
-            <div class="policy-highlight">
-                <strong>Google AdSense 쿠키 안내:</strong><br>
-                Google 및 그 파트너는 쿠키(Cookie)를 사용하여 사용자의 본 사이트 및 인터넷상의 다른 웹사이트 방문 기록을 기반으로 타겟팅 맞춤형 광고를 제공합니다. 사용자는 Google 광고 설정(<a href="https://adssettings.google.com" target="_blank" style="color: var(--primary);">Google Ad Settings</a>)에서 맞춤 광고용 쿠키 사용을 해제할 수 있습니다.
+<main class="container" style="max-width: 800px; margin: 40px auto; min-height: 50vh;">
+            <div class="page-header">
+                <h1 class="page-title" style="margin-bottom: 20px;">개인정보처리방침</h1>
             </div>
-            <p>또한 이용자는 웹 브라우저의 옵션을 설정하여 모든 쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을 거치거나, 모든 쿠키의 저장을 거부할 수 있습니다.</p>
-        </div>
+            <div style="background: var(--card); padding: 40px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); line-height: 1.8; color: var(--text);">
+                
+    <h2>개인정보처리방침 (Privacy Policy)</h2>
+    <p>mung-test.com (이하 '본 사이트')은(는) 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 개인정보보호법 등 관련 법령에 따라 이용자의 개인정보를 보호하고, 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 다음과 같이 개인정보처리방침을 수립 및 공개합니다.</p>
+    <br>
+    <h3>1. 수집하는 개인정보의 항목 및 수집 방법</h3>
+    <p>본 사이트는 회원가입 기능을 제공하지 않으며, 서비스 이용 과정에서 별도의 개인 식별 정보를 수집하거나 저장하지 않습니다. 다만, 서비스 이용 과정이나 사업 처리 과정에서 다음과 같은 정보들이 자동으로 생성되어 수집될 수 있습니다.</p>
+    <ul>
+        <li>IP 주소, 쿠키, 방문 일시, 서비스 이용 기록, 불량 이용 기록</li>
+    </ul>
+    <br>
+    <h3>2. 개인정보의 수집 및 이용 목적</h3>
+    <p>자동으로 수집되는 정보는 사이트의 접속 빈도 파악, 통계 분석, 서비스 개선 및 구글 애드센스와 같은 맞춤형 광고 제공을 위한 목적으로만 사용됩니다.</p>
+    <br>
+    <h3>3. 구글 애드센스 (Google AdSense) 및 쿠키 사용</h3>
+    <p>본 사이트는 제3자 광고 사업자인 Google의 애드센스를 게재하고 있습니다. Google은 쿠키를 사용하여 본 사이트나 다른 웹사이트에 대한 사용자의 이전 방문을 기반으로 맞춤 광고를 제공합니다. 사용자는 구글 광고 설정 페이지를 통해 맞춤 광고에 사용되는 쿠키의 사용을 거부할 수 있습니다.</p>
+    <br>
+    <h3>4. 개인정보의 파기절차 및 방법</h3>
+    <p>본 사이트는 원칙적으로 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다.</p>
+    <br>
+    <p>본 방침은 2026년 7월 16일부터 시행됩니다.</p>
 
-        <div class="policy-section">
-            <h2>4. 개인정보의 제3자 제공 및 위탁</h2>
-            <p>본 사이트는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 관련 법령의 규정에 의하거나 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우는 예외로 합니다.</p>
-        </div>
-
-        <div class="policy-section">
-            <h2>5. 이용자의 권리 및 관리 방법</h2>
-            <p>이용자는 언제든지 웹 브라우저 쿠키 삭제 및 트래킹 차단을 통해 정보 수집을 거부할 수 있습니다. (Internet Explorer, Chrome, Safari, Firefox 등 브라우저 설정 메뉴 참고)</p>
-        </div>
-
-        <div class="policy-section">
-            <h2>6. 개인정보 보호책임자 및 문의처</h2>
-            <p>개인정보 보호 정책에 관한 궁금한 사항이나 제안 사항이 있으신 경우 아래 공식 이메일로 문의해 주시기 바랍니다.</p>
-            <p><strong>이메일 문의:</strong> <a href="mailto:support@mung-test.com" style="color: var(--primary); font-weight: bold;">support@mung-test.com</a> / <a href="mailto:mungtest12@gmail.com" style="color: var(--primary);">mungtest12@gmail.com</a></p>
-        </div>
-    </div>
-</main>
+            </div>
+        </main>
 
 <footer class="site-footer" style="background-color: #f8f9fa; padding: 30px 20px; text-align: center; border-top: 1px solid #e9ecef; margin-top: 40px;">
     <nav style="margin-bottom: 20px;">
@@ -168,5 +280,27 @@
     <p style="font-size: 0.8rem; color:var(--text-muted); margin: 0;">&copy; 2026 mung-test.com. All rights reserved.</p>
 </footer>
 
+<!-- 모달 팝업 -->
+<div id="travel-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="modal-body" id="modal-body">
+            <div class="modal-title-wrap">
+                <h2 id="modal-title">가이드 제목</h2>
+            </div>
+            <div id="modal-content-area" style="white-space: pre-line;"></div>
+            
+            <div id="modal-dynamic-btn"></div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // 메뉴 토글 스크립트
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+        document.querySelector('nav').classList.toggle('active');
+    });
+</script>
 </body>
 </html>
