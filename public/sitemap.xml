@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 메인 홈 -->
+  <url>
+    <loc>https://mung-test.com/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- 주요 메뉴 및 정보 가이드 -->
+  <url>
+    <loc>https://mung-test.com/encyclopedia</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mung-test.com/self-diagnosis</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mung-test.com/travel</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 주요 도구 대표 진입로 (결과 URL 제외) -->
+  <url>
+    <loc>https://mung-test.com/test</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mung-test.com/size-calculator</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mung-test.com/age-calculator</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 필수 정책 페이지 -->
+  <url>
+    <loc>https://mung-test.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://mung-test.com/privacy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://mung-test.com/terms</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://mung-test.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- 정보성 블로그 상세 포스팅 정적 개별 글 -->
+  <url><loc>https://mung-test.com/blog/1</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/2</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/3</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/4</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/5</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/6</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/7</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/8</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/9</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/10</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/11</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/12</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/13</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/14</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/15</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/16</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/17</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/18</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/19</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/20</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/21</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/22</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/23</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/24</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/25</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/26</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/27</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/28</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/29</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mung-test.com/blog/30</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+</urlset>
