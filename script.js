@@ -53,7 +53,7 @@
     function startTest() {
         const testZone = document.getElementById('test-zone');
         if (!testZone) {
-            window.location.href = 'mung-test.html?start=true';
+            window.location.href = '/mung-test';
             return;
         }
 

@@ -256,7 +256,7 @@ function shareKakao() {
         const currentStage = currentStageRaw.replace('🐾 ', '').trim();
         
         // 쿼리 파라미터 조립 (기질 검사처럼 결과값 전송)
-        const shareUrl = `https://mung-test.com/age-calculator.html?name=${encodeURIComponent(dogName)}&humanAge=${humanAge}&stage=${encodeURIComponent(currentStage)}`;
+        const shareUrl = `https://mung-test.com/age-calculator?name=${encodeURIComponent(dogName)}&humanAge=${humanAge}&stage=${encodeURIComponent(currentStage)}`;
 
         Kakao.Share.sendDefault({
             objectType: 'feed',
