@@ -23,7 +23,7 @@ const translations = {
         nav_test: "반려견 기질 검사",
         nav_calculators: "추천 및 계산기 ▾",
         nav_blog: "댕댕이팁",
-        food_logo: "🐾 음식 가이드",
+        food_logo: "음식 가이드",
         nav_food: "음식 가이드",
         nav_breeds: "견종 백과사전",
         nav_diagnostics: "자가진단 가이드",
@@ -34,7 +34,7 @@ const translations = {
         empty_search_result_1: "앗, '<b>",
         empty_search_result_2: "</b>'에 대한 검색 결과가 없어요!<br>다른 음식을 검색해보시거나 필터를 변경해보세요.",
         empty_search_default: "해당하는 음식을 찾지 못했어요.",
-        btn_load_more: "더보기 ⬇️",
+        btn_load_more: "더보기",
         tag_safe: "안전",
         tag_warning: "소량만 급여 가능",
         tag_unsafe: "절대금지",
@@ -51,22 +51,22 @@ const translations = {
         modal_safe_desc: '안전하게 급여할 수 있습니다.',
         modal_warning_desc: '소량만 주의해서 급여하세요.',
         modal_unsafe_desc: '절대 급여하지 마세요.',
-        modal_warning_title: '💡 상세 내용 / 주의 사항',
+        modal_warning_title: '상세 내용 / 주의 사항',
         desc_breeds: "말티즈, 푸들 등 인기 반려견의 성격, 역사, 건강 정보 등 모든 것을 담은 심도 깊은 가이드입니다.",
         desc_diagnostics: "우리 아이의 이상 행동이나 증상의 원인이 궁금하신가요? 심리적, 신체적 원인과 대처법을 확인하세요.",
         desc_travel: "반려견과 함께 떠나는 완벽한 여행을 위한 준비부터 펫티켓까지.",
-        logo_food: "🐾 반려견 음식 가이드",
-        logo_blog: "🐾 댕댕이 팁(Blog)",
-        res_detail_title: "🔍 기질 성향 상세 분석",
-        res_stress_title: "⚡ 이럴 때 가장 스트레스 받아요",
-        res_guide_title: "💡 보호자를 위한 맞춤형 양육 가이드",
-        res_summary_data: "📊 수치 데이터 요약 보기 (Click)",
-        res_chemistry_title_main: "🐾 찰떡궁합 & 상극 추천",
+        logo_food: "반려견 음식 가이드",
+        logo_blog: "댕댕이 팁(Blog)",
+        res_detail_title: "기질 성향 상세 분석",
+        res_stress_title: "이럴 때 가장 스트레스 받아요",
+        res_guide_title: "보호자를 위한 맞춤형 양육 가이드",
+        res_summary_data: "수치 데이터 요약 보기",
+        res_chemistry_title_main: "찰떡궁합 & 상극 추천",
         res_owner_prefix: "보호자",
         res_dog_prefix: "강아지",
 
         // Index Content
-        index_logo: "🐾 반려견 라이프 종합 가이드",
+        index_logo: "반려견 라이프 종합 가이드",
         index_hero_title: "우리집 댕댕이의 모든 것,<br><span>한 곳에서 확인하세요!</span>",
         index_hero_desc: "행복한 반려 생활을 위해 어디서부터 시작해야 할지 고민이셨나요? 아이를 위한 모든 것을 한곳에 모았습니다.<br><br>단순한 정보 제공을 넘어, 아이의 내면을 깊이 이해하는 과학적인 기질 검사부터 견종별 다양한 체형을 반영한 의류 사이즈 추천 시스템, 그리고 실전 양육 가이드까지 제공하는 대한민국 유일의 종합 반려견 라이프 솔루션입니다.<br><br>지금 바로 우리 강아지를 위한 맞춤형 라이프 가이드를 확인해 보세요.",
         index_value1_title: "데이터 기반:",
@@ -76,31 +76,31 @@ const translations = {
         index_value3_title: "전문 가이드:",
         index_value3_desc: "일상 케어부터 음식 급여 가이드까지 건강한 라이프스타일을 지원합니다.",
         index_stat_label: "마음을 알아본 보호자 수",
-        index_stat_desc: "오늘도 많은 댕댕이들이 참여하고 있어요! 🐶",
+        index_stat_desc: "오늘도 많은 댕댕이들이 참여하고 있어요!",
         index_service1_title: "반려견 기질 검사",
         index_service1_desc: "동물행동학을 기반으로 우리 아이의 타고난 기질과 후천적 조율 성향을 정밀 분석합니다.",
-        index_service1_btn: "검사 시작하기 →",
+        index_service1_btn: "검사 시작하기",
         index_service2_title: "댕댕이 팁(Blog)",
         index_service2_desc: "분리불안, 사회화, 식습관 등 반려 생활의 고민을 해결하는 풍성한 훈련 및 케어 노하우를 만나보세요.",
-        index_service2_btn: "유용한 팁 읽기 →",
+        index_service2_btn: "유용한 팁 읽기",
         index_service3_title: "음식 가이드",
         index_service3_desc: "우리 강아지가 먹어도 되는 음식과 절대 먹으면 안 되는 음식을 한눈에 확인하세요.",
-        index_service3_btn: "가이드 보기 →",
+        index_service3_btn: "가이드 보기",
         index_service4_title: "의류 사이즈 추천기",
         index_service4_desc: "견종별 다양한 체형을 반영한 맞춤형 의류 사이즈 추천 가이드입니다.",
-        index_service4_btn: "사이즈 확인하기 →",
+        index_service4_btn: "사이즈 확인하기",
         index_service5_title: "나이 계산기",
         index_service5_desc: "소형견부터 대형견까지! 우리 강아지의 사람 나이를 정확하게 계산해 드립니다.",
-        index_service5_btn: "나이 계산하기 →",
+        index_service5_btn: "나이 계산하기",
         index_service6_title: "견종 백과사전",
         index_service6_desc: "말티즈, 푸들, 포메라니안 등 우리나라 인기 반려견의 성격, 역사, 건강 정보 등 모든 것을 담은 심도 깊은 백과사전입니다.",
-        index_service6_btn: "견종 정보 보기 →",
+        index_service6_btn: "견종 정보 보기",
         index_service7_title: "자가진단 가이드",
         index_service7_desc: "우리 아이의 이상 행동이나 증상의 원인이 궁금하신가요? 심리적/신체적 원인과 집에서 할 수 있는 홈케어 방법을 알아보세요.",
-        index_service7_btn: "증상 진단하기 →",
+        index_service7_btn: "증상 진단하기",
         index_service8_title: "여행 및 아웃도어 가이드",
         index_service8_desc: "반려견과 함께하는 장거리 여행, 펜션 에티켓, 대중교통 탑승 훈련 등 프로 아웃도어 라이프를 위한 필수 가이드입니다.",
-        index_service8_btn: "여행 팁 확인하기 →",
+        index_service8_btn: "여행 팁 확인하기",
         
         // Blog Data (Hero, Categories, Cards)
         blog_hero_title: "반려견 양육 가이드 및 칼럼",
@@ -142,7 +142,7 @@ const translations = {
             
             <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">우리 아이의 행동학적 기질이 더 궁금하다면?</h3>
-                <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">반려견 기질 검사하러 가기 🐾</a>
+                <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">반려견 기질 검사하러 가기</a>
             </div>
         `,
 
@@ -207,7 +207,7 @@ const translations = {
             
             <div style="margin-top: 40px; padding: 24px; background: #f0f8ff; border: 2px dashed #3498db; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #2980b9; font-size: 1.15rem; margin-bottom: 12px;">옷 사이즈 고르기가 너무 어렵다면?</h3>
-                <a href="size-calculator.html" style="display: inline-block; background: #3498db; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">의류 사이즈 추천기 바로가기 👕</a>
+                <a href="size-calculator.html" style="display: inline-block; background: #3498db; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">의류 사이즈 추천기 바로가기</a>
             </div>
         `,
 
@@ -246,7 +246,7 @@ const translations = {
 
             <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">우리 아이의 행동학적 기질이 더 궁금하다면?</h3>
-                <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">반려견 기질 검사하러 가기 🐾</a>
+                <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">반려견 기질 검사하러 가기</a>
             </div>
         `,
 
@@ -273,7 +273,7 @@ const translations = {
             <h2>3. 집에서 해주는 재활/관절 마사지 방법</h2>
             <p>마사지는 근육의 긴장을 풀어주고 혈액순환을 촉진하여 관절 주변 조직을 튼튼하게 유지하는 데 큰 도움을 줍니다. 단, 아이가 편안하게 이완된 상태에서 진행해야 하며 힘을 주어 억지로 눌러서는 안 됩니다.</p>
 
-            <h3>⚠️ 마사지 전 주의사항</h3>
+            <h3>마사지 전 주의사항</h3>
             <p>아이가 심한 통증을 호소하거나 다리를 만졌을 때 물려고 하는 등 염증기의 급성 증상이 의심될 때는 절대 마사지를 하지 말고 수의사의 진료를 먼저 받아야 합니다. 마사지는 통증이 없는 평온한 휴식 시간에 가볍게 해주는 '예방 및 이완'의 목적임을 명심해 주세요.</p>
 
             <h3>대퇴사두근(허벅지 앞쪽 근육) 이완 마사지</h3>
@@ -294,7 +294,7 @@ const translations = {
             
             <div style="margin-top: 40px; padding: 24px; background: #eef2f3; border: 2px dashed #8e44ad; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #6c3483; font-size: 1.15rem; margin-bottom: 12px;">우리 아이의 체형에 맞는 매트나 옷 사이즈가 궁금하다면?</h3>
-                <a href="size-calculator.html" style="display: inline-block; background: #9b59b6; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">의류 사이즈 추천기 활용해보기 👕</a>
+                <a href="size-calculator.html" style="display: inline-block; background: #9b59b6; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">의류 사이즈 추천기 활용해보기</a>
             </div>
         `,
         blog_post7_title: "초보 견주 필독! 강아지가 절대 먹으면 안 되는 치명적인 음식 3가지",
@@ -326,7 +326,7 @@ const translations = {
             
             <div style="margin-top: 40px; padding: 24px; background: #E6F4EA; border: 2px dashed #1E8E3E; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #137333; font-size: 1.15rem; margin-bottom: 12px;">더 많은 안전/위험 음식이 궁금하시다면?</h3>
-                <a href="food-guide.html" style="display: inline-block; background: #1E8E3E; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">댕댕이 음식 가이드 확인하기 🔍</a>
+                <a href="food-guide.html" style="display: inline-block; background: #1E8E3E; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">댕댕이 음식 가이드 확인하기</a>
             </div>
         `,
 
@@ -342,17 +342,17 @@ const translations = {
         btn_lang_toggle: "EN",
         
         // --- Index Page ---
-        logo_main: "🐾 반려견기질검사",
+        logo_main: "반려견기질검사",
         hero_title: "우리집 댕댕이 속마음<br><span>얼마나 알고 계시나요?</span>",
-        hero_btn: "3분 반려견 기질 검사 시작하기 →",
+        hero_btn: "3분 반려견 기질 검사 시작하기",
         mini_tools_title: "반려견 라이프 가이드",
         mini_tool_age: "반려견 나이 계산기",
         mini_tool_size: "의류 사이즈 추천기",
         stat_label: "지금까지 마음을 알아본 보호자 수",
-        stat_desc: "오늘도 많은 댕댕이들이 참여하고 있어요! 🐶",
-        btn_prev: "← 이전",
-        btn_next: "다음 문항으로 →",
-        btn_next_finish: "종합 성향 리포트 확인하기 🐾",
+        stat_desc: "오늘도 많은 댕댕이들이 참여하고 있어요!",
+        btn_prev: "이전",
+        btn_next: "다음 문항으로",
+        btn_next_finish: "종합 성향 리포트 확인하기",
         
         // Content Grid (Main Page)
         content_card1_title: "검사의 원리",
@@ -369,10 +369,10 @@ const translations = {
         content_card3_li3: "<strong>유연성:</strong> 생활 환경 변화에 적응하는 회복탄력성",
 
         // MBTI Zone
-        mbti_title: "마지막 단계! 🐾",
+        mbti_title: "마지막 단계!",
         mbti_desc: "강아지와의 궁합을 확인하기 위해<br>보호자님의 MBTI를 알려주세요!",
         mbti_select_default: "MBTI 선택",
-        mbti_submit_btn: "최종 결과 보기 ✨",
+        mbti_submit_btn: "최종 결과 보기",
         alert_mbti: "강아지와의 궁합을 확인하기 위해 보호자님의 MBTI를 선택해주세요!",
 
         // Result Zone
@@ -383,13 +383,13 @@ const translations = {
         res_chart2_title: "후천적 조율 성향 지표",
         res_chart2_sub: "양육과 사회화의 결과 — 독립성·사교성·유연성",
         res_report_title: "우리 강아지의 진짜 모습은?<br><span>반려견 기질 검사</span>",
-        res_report_sub1: "🧬 타고난 내재적 기질 매칭 리포트",
-        res_report_sub2: "🏡 후천적 조율 성향 분석 및 솔루션",
-        res_chemistry_title: "💞 동반자 궁합 리포트",
-        btn_save: "결과 이미지로 저장하기 📥",
-        btn_kakao: "카카오톡 공유하기 💬",
-        btn_restart: "다시 테스트하기 🔄",
-        btn_share_other: "나도 우리 강아지 기질 검사 알아보기 🐾",
+        res_report_sub1: "타고난 내재적 기질 매칭 리포트",
+        res_report_sub2: "후천적 조율 성향 분석 및 솔루션",
+        res_chemistry_title: "동반자 궁합 리포트",
+        btn_save: "결과 이미지로 저장하기",
+        btn_kakao: "카카오톡 공유하기",
+        btn_restart: "다시 테스트하기",
+        btn_share_other: "나도 우리 강아지 기질 검사 알아보기",
         
         // Likert Scale Options
         likert_1: "전혀<br>아님",
@@ -401,7 +401,7 @@ const translations = {
         scale_end2: "완전히 해당됨",
 
         // --- Age Calculator ---
-        logo_age: "🐾 반려견 나이계산기",
+        logo_age: "반려견 나이계산기",
         age_calc_title: "반려견 나이계산기",
         age_calc_subtitle: "우리 아이는 지금 사람 나이로 몇 살일까요?<br>크기와 견종을 고려한 AKC 기준으로 정확하게 알려드려요.",
         label_dog_name: "강아지 이름",
@@ -411,7 +411,7 @@ const translations = {
         label_current_age: "현재 나이",
         age_unit_year: "년",
         age_unit_month: "개월",
-        btn_age_calc: "결과 확인하기 🐾",
+        btn_age_calc: "결과 확인하기",
         res_badge_age: "Age Calculator Result",
         res_age_text1: "의 사람 나이는",
         res_age_text2: "세 입니다!",
@@ -419,7 +419,7 @@ const translations = {
         alert_name: "강아지 이름을 입력해주세요.",
         alert_breed: "견종을 선택해주세요.",
         alert_age: "나이를 입력해주세요.",
-        btn_age_restart: "다시 계산하기 🔄",
+        btn_age_restart: "다시 계산하기",
         age_story_stage1: "영유아기",
         age_story_text1: "(이)는 눈 뜨고 걷기 시작하며 세상 모든 것이 신기한 꼬마 시절입니다. 호기심이 넘쳐 사고도 치지만, 존재만으로도 미소를 짓게 하는 천사 같은 시기입니다.",
         age_story_stage2: "질풍노도 퍼피",
@@ -436,14 +436,14 @@ const translations = {
         age_story_text7: "(이)는 예전처럼 멀리 걷지 못하고 눈동자가 조금 탁해질 수 있습니다. 아픈 곳을 숨기려 할 수 있으니, 아주 세심한 관찰과 따뜻한 품이 필요한 귀중하고 애틋한 시간입니다.",
 
         // --- Size Calculator ---
-        logo_size: "🐾 의류 사이즈 추천기",
-        size_calc_title: "우리 아이에게 딱 맞는 사이즈를 찾아보세요! 👕",
+        logo_size: "의류 사이즈 추천기",
+        size_calc_title: "우리 아이에게 딱 맞는 사이즈를 찾아보세요!",
         size_calc_subtitle: "견종, 몸무게, 털 길이를 입력하면 최적의 옷 사이즈를 추천해 드립니다.",
         label_weight: "몸무게 (kg)",
         label_hair: "털 길이",
-        hair_short: "✂️ 미용 직후(짧음)",
-        hair_medium: "🐕 보통",
-        hair_long: "☁️ 길고 풍성함",
+        hair_short: "미용 직후(짧음)",
+        hair_medium: "보통",
+        hair_long: "길고 풍성함",
         btn_size_calc: "계산하기",
         res_badge_size: "Size Recommendation",
         res_size_heading: "추천 사이즈",
@@ -501,37 +501,37 @@ const translations = {
         q20: "집안 가구 배치가 크게 바뀌거나 새로운 가전제품이 거실에 들어와도 크게 경계하지 않고 편안하게 스쳐 지나간다.",
 
         // Results
-        res1_title: '🔥 호기심 천국 겁쟁이 — "이중인격 브레이크형"',
+        res1_title: '호기심 천국 겁쟁이 — "이중인격 브레이크형"',
         res1_inherent: "탐험성({{ E }})과 안전성({{ S }})이 모두 높은 독특한 유전적 배열입니다. 새로운 자극을 보면 심장이 요동치며 돌진하다가도, 막상 대상을 코앞에서 마주하면 '앗 깜짝이야!' 하며 전력 후진하는 웰메이드 양가감정을 장착했습니다. 세상 모든 택배 상자는 다 뜯어야 직성이 풀리지만 초인종 소리에는 침대 밑 전용 벙커로 빛의 속도로 도피하는 유쾌한 매력이 돋보입니다. 교감성({{ M }})과 집중성({{ F }}) 수치도 함께 확인하여 학습 방향을 설정하세요.",
         res1_letter: "엄마 아빠! 세상엔 재밌고 궁금한 게 너무 많아요. 하지만 갑자기 낯선 게 다가오거나 큰 소리가 나면 덜컥 겁이 나니까, 그럴 땐 제 방패가 되어주세요!",
         res1_features: "<p>이 유형의 반려견들은 내면에 강한 호기심(탐험성)과 방어적 본능(안전성)이 공존하는 매우 입체적이고 매력적인 성향을 지니고 있습니다. 새로운 환경에 대한 탐구욕이 높아 산책을 나가면 앞장서서 걸어가지만, 낯선 소음이나 자전거 등이 훅 지나가면 즉각적으로 보호자 뒤로 숨거나 멈춰서서 상황을 예의주시합니다.</p><p>이런 '액셀'과 '브레이크'가 동시에 작동하는 특성 때문에 어떤 날은 두려움 없는 탐험가 같고, 어떤 날은 세상에서 제일 소심한 겁쟁이처럼 보이기도 합니다. 하지만 이는 결코 성격이 불안정한 것이 아닙니다. 낯선 자극을 탐색하려는 본능과, 스스로를 보호하려는 고도의 생존 본능이 훌륭하게 밸런스를 맞추어 작동하고 있다는 증거입니다.</p><p>낯선 사람이나 강아지에게 관심은 많아 멀리서 꼬리를 흔들며 다가가려 하지만, 상대방이 갑작스럽게 스킨십을 시도하면 당황하여 짖거나 피할 수 있습니다. 자기만의 페이스로 충분히 관찰하고 안전을 확인한 뒤 세상을 탐색할 때 가장 큰 성취감과 행복을 느끼는 아주 영리한 아이들입니다.</p>",
         res1_stress: "예상치 못한 큰 소음(청소기, 오토바이 소리)이 갑자기 들리거나, 낯선 사람이나 다혈질의 다른 강아지가 아이의 의사를 묻지 않고 무작정 가까이 다가와 스킨십을 시도할 때 극심한 스트레스를 받습니다.",
         res1_tips: "<p><strong>1. 기다림의 미학 발휘하기:</strong> 낯선 환경이나 대상을 만났을 때 억지로 다가가게 밀어 넣지 마세요. 아이가 스스로 냄새를 맡고 '안전하구나'라고 판단할 때까지 멈춰서서 기다려주는 것이 최고의 보호입니다.</p><p><strong>2. 점진적 노출(체계적 둔감화) 교육:</strong> 소리에 예민하다면 두려워하는 소리를 아주 작게 틀어놓고 가장 좋아하는 간식을 주는 훈련을 반복하세요. 무서운 자극을 즐거운 보상과 연결하여 공포심을 천천히 덮어씌워야 합니다.</p><p><strong>3. 완벽한 도피처 '아지트' 만들기:</strong> 집 안에 뚜껑이 덮인 켄넬이나 구석진 방석 등 아이가 언제든 도피하여 외부의 시선을 차단하고 쉴 수 있는 안식처를 마련해 주세요. 아이가 그곳에 숨었을 때는 절대 억지로 꺼내거나 만지지 않는 것이 규칙입니다.</p>",
-        res1_match: "🐶 찰떡궁합: 천천히 다가오고 선을 지켜주는 젠틀한 리트리버나 무던한 시츄 유형.<br>⚡ 상극 유형: 다짜고짜 뛰어오르며 과도한 스킨십을 시도하는 극강의 하이텐션 에너자이저.",
+        res1_match: "찰떡궁합: 천천히 다가오고 선을 지켜주는 젠틀한 리트리버나 무던한 시츄 유형.<br>상극 유형: 다짜고짜 뛰어오르며 과도한 스킨십을 시도하는 극강의 하이텐션 에너자이저.",
 
-        res2_title: '🚀 브레이크 고장난 탐험가 — "폭주 호기심형"',
+        res2_title: '브레이크 고장난 탐험가 — "폭주 호기심형"',
         res2_inherent: "타고난 탐험성({{ E }})이 최상위권인 반면 안전성({{ S }})은 거의 발동하지 않는 '용감무쌍형' DNA입니다. 세상에 무서울 것이 없고 낙엽이 굴러가도 '저것은 무엇인가!' 하며 몸을 던질 기세입니다. 겁이 없어 온 동네 참견쟁이가 될 수 있으므로 충동 조절 훈련이 절대적입니다. 집중성({{ F }})이 높다면 노즈워크나 어질리티 스포츠로 에너지를 건강하게 해소시켜 주세요.",
         res2_letter: "우와! 저기 날아가는 새 봤어요? 저기 지나가는 친구한테 인사해도 되죠? 세상은 너무 신나고 재밌는 놀이터 같아요. 저랑 매일매일 뛰어놀아 주실 거죠?",
         res2_features: "<p>지칠 줄 모르는 에너지와 세상 모든 것에 대한 무한한 사랑을 가진 '직진형' 반려견입니다. 두려움이나 경계심을 담당하는 안전성 지표가 현저히 낮아 새로운 장소, 낯선 사람, 처음 보는 동물들을 마주했을 때 주저함 없이 돌진하는 경향이 있습니다.</p><p>택배 기사님을 마치 10년 만에 이산가족 상봉하듯 반기고, 산책로의 모든 이웃에게 인사를 건네야만 직성이 풀리는 극강의 '핵인싸' 기질을 자랑합니다. 보호자와 함께 활동하는 것을 무엇보다 즐기며, 어떤 훈련이든 게임처럼 신나게 받아들이는 긍정적인 에너지가 넘칩니다.</p><p>하지만 이 넘치는 호기심과 에너지는 때때로 아슬아슬한 무모함으로 이어질 수 있습니다. 호기심에 이끌려 도로로 튀어나가거나, 상대방 강아지의 기분(거절의 카밍 시그널)을 파악하지 못하고 과도하게 놀이를 요구하다가 마찰을 빚는 경우도 종종 발생합니다. 지루함을 참지 못하기 때문에 육체적 활동량이 충족되지 않으면 벽지를 뜯거나 물건을 부수는 등 파괴적 행동으로 스트레스를 표출할 확률이 높습니다.</p>",
         res2_stress: "에너지를 발산하지 못하고 좁은 실내에 오래 갇혀 있을 때, 혹은 보호자가 바빠서 자신의 격렬한 놀이 요청을 계속해서 무시하거나 거절할 때 심각한 답답함과 스트레스를 느낍니다.",
         res2_tips: "<p><strong>1. 흥분 가라앉히기(Calming) 교육:</strong> 무작정 뛰게 해서 체력을 방전시키는 것만으로는 부족합니다. 오히려 흥분도가 높아질 수 있으므로, 산책 중간이나 놀이 중간에 '앉아', '기다려'를 지시하여 스스로 흥분을 가라앉히고 보호자와 눈을 맞추는 충동 조절 훈련이 반드시 필요합니다.</p><p><strong>2. 리쉬 워킹(나란히 걷기) 마스터하기:</strong> 산책 시 무언가에 꽂혀 보호자를 끌고 가는 일이 잦습니다. 줄이 팽팽해지면 멈춰 서고, 아이가 보호자 쪽으로 돌아와 느슨해지면 다시 출발하는 규칙을 철저히 지켜 안전사고를 예방하세요.</p><p><strong>3. 두뇌를 쓰는 고난도 활동 제공:</strong> 단순한 걷기 산책 외에 머리를 써야 하는 어려운 노즈워크 장난감이나 어질리티 훈련을 제공하세요. 후각과 두뇌를 적극적으로 사용하는 활동은 1시간 뛰는 것 이상으로 아이의 에너지를 건강하게 소모시켜 줍니다.</p>",
-        res2_match: "🐶 찰떡궁합: 체력이 넘치고 같이 뛰어놀 수 있는 에너자이저 그룹 (보더콜리, 잭 러셀 테리어 유형)<br>⚡ 상극 유형: 조용히 쉬고 싶어 하는 소심하고 예민한 노령견이나 혼자만의 시간을 중시하는 독립적인 강아지.",
+        res2_match: "찰떡궁합: 체력이 넘치고 같이 뛰어놀 수 있는 에너자이저 그룹 (보더콜리, 잭 러셀 테리어 유형)<br>상극 유형: 조용히 쉬고 싶어 하는 소심하고 예민한 노령견이나 혼자만의 시간을 중시하는 독립적인 강아지.",
 
-        res3_title: '🛡️ 신중하고 세심한 파수꾼 — "소심형 철학자"',
+        res3_title: '신중하고 세심한 파수꾼 — "소심형 철학자"',
         res3_inherent: "탐험성({{ E }})은 낮고 안전성({{ S }})이 높아 낯선 자극을 만나면 흥분보다 회피 반응이 지배적입니다. 동물병원 대기실이나 새로운 공간에서 큰 스트레스를 표현합니다. 내면적으로는 일상의 변화에 긴장 속에 살아가고 있을 확률이 높으니 체계적 둔감화 훈련이 필요합니다. 교감성({{ M }})이 높다면 보호자의 안심 시그널이 큰 안정제가 됩니다.",
         res3_letter: "낯선 곳은 조금 무섭고 시끄러운 소리는 귀가 아파요. 하지만 늘 익숙한 우리 집 소파 위에서 엄마 아빠 무릎을 베고 누워있는 이 시간이 전 세상에서 제일 좋아요.",
         res3_features: "<p>조심성이 매우 많고 외부 환경의 미세한 변화에도 깊이 반응하는 세심한 감수성의 소유자입니다. 익숙한 공간인 집 안과 친숙한 보호자 곁에서는 한없이 애교가 많고 편안하지만, 일상의 바운더리를 조금만 벗어나거나 낯선 사람이 집을 방문하면 극도로 긴장하여 꼬리를 내리고 구석으로 숨는 회피 반응을 보입니다.</p><p>동물행동학적으로 이들은 청각이나 후각 등 감각 기관의 역치가 낮아 자극을 남들보다 훨씬 크게 받아들입니다. 멀리서 들리는 천둥소리, 청소기 소리, 낯선 물건의 등장에 강하게 경계하며 바들바들 떠는 경우도 많습니다. 위험을 피하려는 본능이 강하기 때문에 무모한 행동을 하지 않아 큰 사고를 칠 확률은 낮습니다.</p><p>모험보다는 평온함을 사랑하며, 매일 늘 가던 산책길, 늘 먹던 밥, 늘 자던 방석 등 일상의 루틴이 철저하게 지켜질 때 가장 깊은 안정감과 행복을 느낍니다. 억지로 두려움을 이겨내라고 강요하기보다는 아이의 속도에 맞춰주는 섬세한 배려가 필요한 은은한 매력의 철학자입니다.</p>",
         res3_stress: "예측 불가능한 낯선 장소(애견 카페, 복잡한 거리)에 억지로 끌려가 수많은 낯선 사람이나 강아지들에게 둘러싸일 때 공황 상태에 빠질 정도로 큰 스트레스를 받습니다.",
         res3_tips: "<p><strong>1. 안전 기지(Secure Base) 되어주기:</strong> 아이가 낯선 환경에서 겁을 먹었을 때 다그치거나 억지로 걷게 하지 마세요. 부드러운 목소리로 안심시키며 안아주거나, 보호자 다리 뒤로 숨을 수 있도록 허용하여 보호자가 자신의 가장 든든한 방패임을 인식시켜 주세요.</p><p><strong>2. 예측 가능한 루틴 유지하기:</strong> 산책 코스를 매일 바꾸기보다는 아이가 완벽하게 마스터하고 편안함을 느끼는 고정적인 코스 몇 개를 반복하는 것이 심리적 안정에 훨씬 큰 도움이 됩니다. 식사 및 수면 시간도 가급적 일정한 스케줄을 유지하세요.</p><p><strong>3. 아주 작은 성취에 폭풍 칭찬하기:</strong> 낯선 물건에 코를 한 번 대보거나, 무서워하던 길을 스스로 한 발짝 내디뎠을 때 평소보다 과장된 목소리로 칭찬하고 최고급 간식으로 보상해 주세요. 아주 작은 성공의 경험이 쌓여 아이의 내면적 자신감을 성장시킵니다.</p>",
-        res3_match: "🐶 찰떡궁합: 옆에 있는지 없는지 모를 정도로 고요하고 무던한 평화주의자 유형.<br>⚡ 상극 유형: 앞뒤 안 가리고 얼굴부터 들이밀며 냄새를 맡으려 드는 과잉 친화력 강아지.",
+        res3_match: "찰떡궁합: 옆에 있는지 없는지 모를 정도로 고요하고 무던한 평화주의자 유형.<br>상극 유형: 앞뒤 안 가리고 얼굴부터 들이밀며 냄새를 맡으려 드는 과잉 친화력 강아지.",
 
-        res4_title: '🛋️ 평화로운 안방 현자 — "무소유 집돌이형"',
+        res4_title: '평화로운 안방 현자 — "무소유 집돌이형"',
         res4_inherent: "탐험성({{ E }})과 안전성({{ S }})이 모두 낮은 매우 평온하고 무던한 기질입니다. 이불 밖은 위험하다는 진리를 퍼피 시기부터 깨달은 현자 DNA입니다. 거창한 모험보다는 늘 가던 산책로 300m를 편안하게 왕복하는 것에 깊은 안락함을 느낍니다. 집중성({{ F }})을 활용한 차분한 교육으로 천천히 활력을 불어넣어 주세요.",
         res4_letter: "오늘 산책은 10분만 하고 들어가면 안 될까요? 푹신한 방석 위에서 나른하게 낮잠을 자면서 엄마 아빠가 일하는 걸 구경하는 게 제 삶의 낙이거든요.",
         res4_features: "<p>세상사에 큰 욕심이 없고, 웬만한 자극 앞에서는 평정심을 잃지 않는 해탈한 현자 같은 기질을 보여줍니다. 호기심(탐험성)과 경계심(안전성)이 모두 낮게 세팅되어 있어, 초인종 소리에도 꼬리만 한 번 툭 치고 다시 잠에 빠져들며 낯선 강아지가 다가와도 시큰둥하게 반응합니다.</p><p>산책을 나갈 때도 다른 강아지들처럼 방방 뛰기보다는 '가자면 가야지' 하는 느긋하고 달관한 태도로 나섭니다. 흥분하거나 사고를 칠 확률이 매우 낮아 현대 사회의 실내 환경에서 반려하기에는 굉장히 수월하고 얌전한 편에 속합니다. 하지만 때로는 무기력해 보이거나 세상에 흥미를 느끼지 못하는 것처럼 비쳐 보호자를 내심 섭섭하게 만들기도 합니다.</p><p>새로운 장난감이나 화려한 이벤트 앞에서도 큰 동요가 없고, 하루 중 대부분의 시간을 편안한 소파나 푹신한 방석 위에서 명상하듯 누워 보내는 것을 세상에서 가장 사랑하는 진정한 '집돌이/집순이' 유형입니다. 이들에게 평온함은 훈련의 결과가 아니라 타고난 삶의 방식 그 자체입니다.</p>",
         res4_stress: "조용히 잠을 자고 쉬고 싶은데, 보호자나 어린아이가 계속해서 만지고 쓰다듬거나 억지로 일으켜 세워 격렬한 놀이를 강요할 때 피로감과 은근한 스트레스를 느낍니다.",
         res4_tips: "<p><strong>1. 가벼운 동기 부여와 산책 유지:</strong> 무리하게 뛰게 하거나 애견 운동장에 데려가는 것은 오히려 피로를 가중시킵니다. 하지만 활동량이 너무 적으면 비만과 관절 약화로 이어질 수 있으므로, 흥미를 보일 만한 짧고 가벼운 동네 산책을 매일 꾸준히 유지해 최소한의 신체 건강을 챙겨주세요.</p><p><strong>2. 시각/청각보다 후각 활용하기:</strong> 움직이는 장난감보다는 코를 쓰는 활동에 조용히 반응할 확률이 높습니다. 평소 먹는 사료를 집안 곳곳에 숨겨두거나, 냄새가 강한 육포 간식을 활용한 정적인 노즈워크 놀이로 무료함을 달래주고 뇌를 자극해 주세요.</p><p><strong>3. 건강 및 체중 관리에 각별히 신경 쓰기:</strong> 활동 에너지가 매우 적은 기질이므로 섭취량이 활동량을 쉽게 초과하여 비만이 되기 십상입니다. 간식 급여량을 철저히 조절하고 정기적인 체중 체크를 통해 과체중으로 인한 질환을 예방하는 것이 이 아이들을 돌보는 핵심 포인트입니다.</p>",
-        res4_match: "🐶 찰떡궁합: 같이 나란히 누워 숨만 쉬어도 행복한 동급의 현자견, 혹은 게으른 성향의 고양이.<br>⚡ 상극 유형: 쉴 새 없이 놀자고 귀를 물어뜯거나 주변을 뱅뱅 도는 부산스러운 에너자이저 강아지.",
+        res4_match: "찰떡궁합: 같이 나란히 누워 숨만 쉬어도 행복한 동급의 현자견, 혹은 게으른 성향의 고양이.<br>상극 유형: 쉴 새 없이 놀자고 귀를 물어뜯거나 주변을 뱅뱅 도는 부산스러운 에너자이저 강아지.",
         
         res1_acquired: "후천적 독립성({{ I }})과 사교성({{ O }})이 조화롭게 발달한 아주 훌륭한 상태입니다. 보호자님이 그동안 눈물겨운 간식 보상과 일관성 있는 규칙으로 아이에게 엄청난 정서적 신뢰를 제공했음을 방증합니다. 혼자 있을 때는 고독을 즐길 줄 아는 쿨한 강아지이면서도, 미용·케어 시에는 전문가 손길을 묵묵히 받아들이는 '선비형' 성격을 완성했습니다. 유연성({{ X }})까지 높다면 여행도 함께 떠나도 좋습니다.",
         res1_humor: "처방전: 이미 완벽합니다. 보호자님은 내일 당장 강아지 훈육 학원 차리셔도 됩니다. 지금처럼만 맛있는 동결건조 트릿을 지속 공급하십시오.",
@@ -576,8 +576,8 @@ const translations = {
         
         // Kakao Text
         kakao_share_text: "저희 아이는 [{{ dogType }}], 저는 [{{ ownerMbti }}]가 나와서 궁합 점수 {{ score }}점 나왔어요!\n\n우리 궁합 보러 가기",
-        kakao_share_title: "🐾 우리 강아지 반려견기질검사 결과 도출!",
-        kakao_share_btn: "나도 궁합 보러 가기 🐾",
+        kakao_share_title: "우리 강아지 반려견기질검사 결과 도출!",
+        kakao_share_btn: "나도 궁합 보러 가기",
         kakao_share_error: "카카오톡 공유를 실행할 수 없습니다.\n카카오 디벨로퍼스에 현재 도메인이 등록되어 있는지 확인해주세요.\n\n대신 결과 링크를 복사합니다.",
         kakao_copy_success: "링크가 클립보드에 복사되었습니다!",
 
@@ -588,8 +588,8 @@ const translations = {
         age_alert_img_err: "이미지 저장 중 오류가 발생했습니다. 브라우저 설정을 확인해주세요.",
         age_alert_kakao_key: "카카오톡 공유 기능이 설정되지 않았습니다. (JS 키 누락)",
         age_alert_kakao_sdk: "카카오톡 SDK가 초기화되지 않았습니다.",
-        age_save_loading: "이미지 생성 중... ⏳",
-        age_save_btn: "결과 이미지로 저장하기 📥",
+        age_save_loading: "이미지 생성 중...",
+        age_save_btn: "결과 이미지로 저장하기",
 
         age_stage1: "영유아기",
         age_story1: "{{ name }}(이)는 눈 뜨고 걷기 시작하며 세상 모든 것이 신기한 꼬마 시절입니다. 호기심이 넘쳐 사고도 치지만, {{ name }}의 존재만으로도 미소를 짓게 하는 천사 같은 시기입니다.",
@@ -606,7 +606,7 @@ const translations = {
         age_stage7: "노령견",
         age_story7: "{{ name }}(이)는 예전처럼 멀리 걷지 못하고 눈동자가 조금 탁해질 수 있습니다. 아픈 곳을 숨기려 할 수 있으니, 아주 세심한 관찰과 따뜻한 품이 필요한 귀중하고 애틋한 시간입니다.",
 
-        age_kakao_title: "우리의 시간은 다르게 흐릅니다 🕰️",
+        age_kakao_title: "우리의 시간은 다르게 흐릅니다",
         age_kakao_desc: "{{ name }}의 진짜 나이는 사람으로 치면 몇 살일까요? 지금 확인해 보세요.",
         age_kakao_btn: "결과 확인하기",
 
@@ -614,7 +614,7 @@ const translations = {
         size_alert_breed: "견종을 선택해주세요.",
         size_alert_kakao: "카카오톡 공유 기능이 설정되지 않았습니다.",
         size_alert_kakao_sdk: "카카오톡 SDK가 초기화되지 않았습니다.",
-        size_kakao_title: "의류 사이즈 추천 결과 👕",
+        size_kakao_title: "의류 사이즈 추천 결과",
         size_kakao_desc: "우리 강아지의 예상 가슴둘레는 {{ chest }}cm, 추천 사이즈는 [{{ size }}] 입니다!",
         size_kakao_btn: "사이즈 확인하기",
 
@@ -637,8 +637,8 @@ const translations = {
         seo_s3_p2: "저희 mung-test.com의 반려견 맞춤형 의류 사이즈 추천기는 다년간의 데이터를 바탕으로 견종과 몸무게, 털 길이 변수를 종합적으로 연산하여 <strong>가장 이상적인 예상 가슴둘레와 추천 사이즈</strong>를 무료로 제공합니다. 우리 강아지의 편안한 일상을 위해 지금 바로 계산해보세요!",
         
         // Share Feature
-        btn_share_link: "링크 공유하기 🔗",
-        toast_link_copied: "링크가 클립보드에 복사되었습니다! (Link copied!)",
+        btn_share_link: "링크 공유하기",
+        toast_link_copied: "링크를 복사했어요. 친구에게 보내 보세요.",
         
         // Food Guide
         nav_food: "음식 가이드",
@@ -649,13 +649,13 @@ const translations = {
         tab_unsafe: "먹으면 안 돼요"
     },
     en: {
-        food_logo: "🐾 Food Guide",
+        food_logo: "Food Guide",
         // Food Guide Extras
         failed_to_load_data: "Failed to load data.",
         empty_search_result_1: "Oops, no search results for '<b>",
         empty_search_result_2: "</b>'!<br>Please search for another food or change the filter.",
         empty_search_default: "We couldn't find matching food.",
-        btn_load_more: "Load More ⬇️",
+        btn_load_more: "Load More",
         category_all: 'All',
         category_fruit: 'Fruits',
         category_veg: 'Vegetables',
@@ -671,7 +671,7 @@ const translations = {
         modal_safe_desc: 'Safe to feed.',
         modal_warning_desc: 'Feed in small amounts with caution.',
         modal_unsafe_desc: 'Absolutely do not feed.',
-        modal_warning_title: '💡 Detailed Description / Feeding Precautions',
+        modal_warning_title: 'Detailed Description / Feeding Precautions',
         seo_why_title: "Why is a Dog Temperament Analysis Test Necessary?",
         seo_why_desc: "Perfectly understanding each other's minds is the most important foundation for a happy life with your dog. This test was developed to objectively analyze your dog's unique temperament and innate tendencies, which can be easily overlooked in daily life, based on <strong>behavioral grounds</strong> and veterinary data. Moving beyond simply finding out cute personality types, it suggests ways to minimize stress factors for the child and share better communication.",
         seo_tips_title: "Expected Effects and Application Tips of the Test",
@@ -700,13 +700,13 @@ const translations = {
         desc_breeds: "An in-depth guide covering the personality, history, and health information of popular dogs like Maltese and Poodles.",
         desc_diagnostics: "Curious about the causes of your dog's unusual behavior? Discover psychological and physical causes along with home care tips.",
         desc_travel: "Everything you need for a perfect trip with your dog, from preparation to petiquette.",
-        logo_food: "🐾 Dog Food Guide",
-        logo_blog: "🐾 Dog Tips",
-        res_detail_title: "🔍 Detailed Temperament Analysis",
-        res_stress_title: "⚡ Most Stressful Situations",
-        res_guide_title: "💡 Tailored Parenting Guide for Owners",
-        res_summary_data: "📊 Summary of Numerical Data (Click)",
-        res_chemistry_title_main: "🐾 Perfect Matches & Dislikes",
+        logo_food: "Dog Food Guide",
+        logo_blog: "Dog Tips",
+        res_detail_title: "Detailed Temperament Analysis",
+        res_stress_title: "Most Stressful Situations",
+        res_guide_title: "Tailored Parenting Guide for Owners",
+        res_summary_data: "Summary of Numerical Data",
+        res_chemistry_title_main: "Perfect Matches & Dislikes",
         res_owner_prefix: "Owner",
         res_dog_prefix: "Dog",
         
@@ -719,7 +719,7 @@ const translations = {
         blog_cat_lifestyle: "Lifestyle",
 
         // Index
-        index_logo: "🐾 Dog Life Comprehensive Guide",
+        index_logo: "Dog Life Comprehensive Guide",
         index_hero_title: "Everything for your dog,<br><span>in one place!</span>",
         index_hero_desc: "Have you been wondering where to start for a happy journey with your dog? We have gathered everything for your child in one place.<br><br>Going beyond simple information provision, our platform is Korea's only comprehensive dog life solution that provides a scientific temperament test to deeply understand your dog's inner self, a clothing size recommendation system reflecting various body types of different breeds, and practical parenting guides.<br><br>Discover the customized life guide for your dog right now.",
         index_value1_title: "Data-Driven:",
@@ -729,31 +729,31 @@ const translations = {
         index_value3_title: "Expert Guide:",
         index_value3_desc: "Supports a healthy lifestyle from daily care to food intake guides.",
         index_stat_label: "Number of guardians who have discovered their dogs' minds",
-        index_stat_desc: "Many dogs are participating today too! 🐶",
+        index_stat_desc: "Many dogs are participating today too!",
         index_service1_title: "Dog Temperament Test",
         index_service1_desc: "Precisely analyzes your dog's innate temperament and acquired tuning tendency based on ethology.",
-        index_service1_btn: "Start Test →",
+        index_service1_btn: "Start Test",
         index_service2_title: "Dog Tips (Blog)",
         index_service2_desc: "Discover rich training and care know-how to solve concerns while raising a dog, such as separation anxiety, socialization, and eating habits.",
-        index_service2_btn: "Read Useful Tips →",
+        index_service2_btn: "Read Useful Tips",
         index_service3_title: "Food Guide",
         index_service3_desc: "Find out at a glance the foods your dog can eat and the foods they should never eat.",
-        index_service3_btn: "View Guide →",
+        index_service3_btn: "View Guide",
         index_service4_title: "Size Recommender",
         index_service4_desc: "A customized clothing size recommendation guide reflecting the various body types of different breeds.",
-        index_service4_btn: "Check Size →",
+        index_service4_btn: "Check Size",
         index_service5_title: "Age Calculator",
         index_service5_desc: "From small dogs to large dogs! We accurately calculate your dog's age in human years.",
-        index_service5_btn: "Calculate Age →",
+        index_service5_btn: "Calculate Age",
         index_service6_title: "Dog Breeds Encyclopedia",
         index_service6_desc: "An in-depth encyclopedia covering the personality, history, and health information of popular dog breeds like Maltese, Poodles, and Pomeranians.",
-        index_service6_btn: "View Breed Info →",
+        index_service6_btn: "View Breed Info",
         index_service7_title: "Diagnostics Guide",
         index_service7_desc: "Curious about the cause of your dog's unusual behavior or symptoms? Discover psychological/physical causes and home care methods you can try.",
-        index_service7_btn: "Diagnose Symptoms →",
+        index_service7_btn: "Diagnose Symptoms",
         index_service8_title: "Travel & Outdoor Guide",
         index_service8_desc: "Essential guides for a pro-outdoor life, including long-distance travel, pension etiquette, and public transportation training with your dog.",
-        index_service8_btn: "Check Travel Tips →",
+        index_service8_btn: "Check Travel Tips",
         
         blog_post1_title: "Why Does My Dog Follow Me Everywhere? Separation Anxiety Explained",
         blog_post1_excerpt: "A dog following you to the bathroom—is it just affection or separation anxiety? We explain the difference between healthy attachment and stress, and how to foster independence.",
@@ -787,7 +787,7 @@ const translations = {
             
             <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">Curious about your dog's behavioral temperament?</h3>
-                <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Go to Dog Temperament Test 🐾</a>
+                <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Go to Dog Temperament Test</a>
             </div>
         `,
         
@@ -852,7 +852,7 @@ const translations = {
             
             <div style="margin-top: 40px; padding: 24px; background: #f0f8ff; border: 2px dashed #3498db; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #2980b9; font-size: 1.15rem; margin-bottom: 12px;">Is choosing a clothes size too difficult?</h3>
-                <a href="size-calculator.html" style="display: inline-block; background: #3498db; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Go to Clothing Size Recommender 👕</a>
+                <a href="size-calculator.html" style="display: inline-block; background: #3498db; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Go to Clothing Size Recommender</a>
             </div>
         `,
 
@@ -891,7 +891,7 @@ const translations = {
 
             <div style="margin-top: 40px; padding: 24px; background: #fffaf0; border: 2px dashed #f39c12; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #d35400; font-size: 1.15rem; margin-bottom: 12px;">Curious about your dog's behavioral temperament?</h3>
-                <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Go to Dog Temperament Test 🐾</a>
+                <a href="index.html?start=true" style="display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Go to Dog Temperament Test</a>
             </div>
         `,
 
@@ -918,7 +918,7 @@ const translations = {
             <h2>3. Home Rehabilitation/Joint Massage Methods</h2>
             <p>Massage is of great help in relaxing muscle tension and promoting blood circulation to keep the tissues around the joints strong. However, it should be done while the child is in a comfortably relaxed state and you should not forcefully press down.</p>
 
-            <h3>⚠️ Precautions Before Massage</h3>
+            <h3>Precautions Before Massage</h3>
             <p>If acute symptoms of the inflammatory phase are suspected, such as the child complaining of severe pain or trying to bite when you touch the leg, you should absolutely not massage and consult a vet first. Please keep in mind that massage is for the purpose of 'prevention and relaxation' done lightly during a peaceful rest time without pain.</p>
 
             <h3>Quadriceps (Front Thigh Muscle) Relaxation Massage</h3>
@@ -939,7 +939,7 @@ const translations = {
             
             <div style="margin-top: 40px; padding: 24px; background: #eef2f3; border: 2px dashed #8e44ad; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #6c3483; font-size: 1.15rem; margin-bottom: 12px;">Curious about a mat or clothes size suitable for your child's body shape?</h3>
-                <a href="size-calculator.html" style="display: inline-block; background: #9b59b6; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Try using the Clothing Size Recommender 👕</a>
+                <a href="size-calculator.html" style="display: inline-block; background: #9b59b6; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Try using the Clothing Size Recommender</a>
             </div>
         `,
 
@@ -972,7 +972,7 @@ const translations = {
             
             <div style="margin-top: 40px; padding: 24px; background: #E6F4EA; border: 2px dashed #1E8E3E; border-radius: 12px; text-align: center;">
                 <h3 style="margin-top: 0; color: #137333; font-size: 1.15rem; margin-bottom: 12px;">Curious about more safe/unsafe foods?</h3>
-                <a href="food-guide.html" style="display: inline-block; background: #1E8E3E; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Check out the Dog Food Guide 🔍</a>
+                <a href="food-guide.html" style="display: inline-block; background: #1E8E3E; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s;">Check out the Dog Food Guide</a>
             </div>
         `,
 
@@ -988,17 +988,17 @@ const translations = {
         btn_lang_toggle: "KR",
 
         // --- Index Page ---
-        logo_main: "🐾 Dog Temperament Test",
+        logo_main: "Dog Temperament Test",
         hero_title: "How much do you know<br><span>about your dog's mind?</span>",
-        hero_btn: "Start 3-min Temperament Test →",
+        hero_btn: "Start 3-min Temperament Test",
         mini_tools_title: "Mini Diagnostic Tools",
         mini_tool_age: "Dog Age Calculator",
         mini_tool_size: "Size Recommender",
         stat_label: "Guardians who participated so far",
-        stat_desc: "Many dogs are participating today! 🐶",
-        btn_prev: "← Prev",
-        btn_next: "Next Question →",
-        btn_next_finish: "View Comprehensive Report 🐾",
+        stat_desc: "Many dogs are participating today!",
+        btn_prev: "Prev",
+        btn_next: "Next Question",
+        btn_next_finish: "View Comprehensive Report",
         
         // Content Grid
         content_card1_title: "Test Principles",
@@ -1015,10 +1015,10 @@ const translations = {
         content_card3_li3: "<strong>Resilience:</strong> Adaptability to environmental changes",
 
         // MBTI Zone
-        mbti_title: "Final Step! 🐾",
+        mbti_title: "Final Step!",
         mbti_desc: "To check the chemistry with your dog,<br>please tell us your MBTI!",
         mbti_select_default: "Select MBTI",
-        mbti_submit_btn: "See Final Result ✨",
+        mbti_submit_btn: "See Final Result",
         alert_mbti: "Please select your MBTI to check the chemistry!",
 
         // Result Zone
@@ -1029,13 +1029,13 @@ const translations = {
         res_chart2_title: "Acquired Trait Indicators",
         res_chart2_sub: "Results of rearing & socialization — Independence, Sociability, Resilience",
         res_report_title: "Your Dog's True Self<br><span>Temperament Test</span>",
-        res_report_sub1: "🧬 Inherent Instinct Match Report",
-        res_report_sub2: "🏡 Acquired Trait Analysis & Solutions",
-        res_chemistry_title: "💞 Guardian Chemistry Report",
-        btn_save: "Save as Image 📥",
-        btn_kakao: "Share on KakaoTalk 💬",
-        btn_restart: "Restart Test 🔄",
-        btn_share_other: "Test my dog's temperament too 🐾",
+        res_report_sub1: "Inherent Instinct Match Report",
+        res_report_sub2: "Acquired Trait Analysis & Solutions",
+        res_chemistry_title: "Guardian Chemistry Report",
+        btn_save: "Save as Image",
+        btn_kakao: "Share on KakaoTalk",
+        btn_restart: "Restart Test",
+        btn_share_other: "Test my dog's temperament too",
 
         // Likert
         likert_1: "Not at<br>all",
@@ -1047,7 +1047,7 @@ const translations = {
         scale_end2: "Strongly Agree",
 
         // --- Age Calculator ---
-        logo_age: "🐾 Dog Age Calculator",
+        logo_age: "Dog Age Calculator",
         age_calc_title: "Dog Age Calculator",
         age_calc_subtitle: "How old is your dog in human years?<br>We accurately calculate based on AKC standards considering breed and size.",
         label_dog_name: "Dog Name",
@@ -1057,7 +1057,7 @@ const translations = {
         label_current_age: "Current Age",
         age_unit_year: " Y",
         age_unit_month: " M",
-        btn_age_calc: "Check Result 🐾",
+        btn_age_calc: "Check Result",
         res_badge_age: "Age Calculator Result",
         res_age_text1: "'s human age is",
         res_age_text2: "years old!",
@@ -1065,7 +1065,7 @@ const translations = {
         alert_name: "Please enter your dog's name.",
         alert_breed: "Please select a breed.",
         alert_age: "Please enter the age.",
-        btn_age_restart: "Calculate Again 🔄",
+        btn_age_restart: "Calculate Again",
         age_story_stage1: "Infancy",
         age_story_text1: " is in their curious puppy days, just opening their eyes and walking. They might cause some trouble, but their existence alone brings angelic smiles.",
         age_story_stage2: "Rebellious Puppy",
@@ -1082,14 +1082,14 @@ const translations = {
         age_story_text7: " can't walk as far, and their eyes might get a bit cloudy. They need careful observation and warm embraces in this precious, tender time.",
 
         // --- Size Calculator ---
-        logo_size: "🐾 Size Recommender",
-        size_calc_title: "Find the Perfect Size! 👕",
+        logo_size: "Size Recommender",
+        size_calc_title: "Find the Perfect Size!",
         size_calc_subtitle: "Enter breed, weight, and hair length to get the optimal clothing size.",
         label_weight: "Weight (kg)",
         label_hair: "Hair Length",
-        hair_short: "✂️ Just Groomed(Short)",
-        hair_medium: "🐕 Medium",
-        hair_long: "☁️ Long & Fluffy",
+        hair_short: "Just Groomed(Short)",
+        hair_medium: "Medium",
+        hair_long: "Long & Fluffy",
         btn_size_calc: "Calculate",
         res_badge_size: "Size Recommendation",
         res_size_heading: "Recommended Size",
@@ -1147,38 +1147,38 @@ const translations = {
         q20: "Even if furniture arrangements change significantly or new appliances enter the living room, they casually pass by without much wariness.",
 
         // Results
-        res1_title: '🔥 Curious Coward — "Dual Personality Brakes"',
+        res1_title: 'Curious Coward — "Dual Personality Brakes"',
         res1_inherent: "A unique genetic arrangement with high Exploration({{ E }}) and Safety({{ S }}). When seeing a new stimulus, their heart races and they charge, but face-to-face they say 'Oh my!' and reverse in full speed—a well-made ambivalence. They must tear open every delivery box, but flee under the bed at the doorbell. Check Empathy({{ M }}) and Focus({{ F }}) to set learning directions.",
-        res2_title: '🚀 Explorer with Broken Brakes — "Runaway Curiosity"',
+        res2_title: 'Explorer with Broken Brakes — "Runaway Curiosity"',
         res2_inherent: "A 'fearless' DNA where Exploration({{ E }}) is top-tier while Safety({{ S }}) barely triggers. They fear nothing and throw themselves at rolling leaves! Since they lack fear, they can be a neighborhood busybody, so impulse control training is absolute. If Focus({{ F }}) is high, safely relieve their energy with nosework or agility.",
-        res3_title: '🛡️ Cautious Watchman — "Timid Philosopher"',
+        res3_title: 'Cautious Watchman — "Timid Philosopher"',
         res3_inherent: "With low Exploration({{ E }}) and high Safety({{ S }}), avoidance dominates over excitement upon meeting unfamiliar stimuli. They express great stress at the vet or new spaces. They likely live with internal tension regarding daily changes, needing systematic desensitization. If Empathy({{ M }}) is high, your reassuring signals act as a great stabilizer.",
-        res4_title: '🛋️ Peaceful Indoor Sage — "Minimalist Homebody"',
+        res4_title: 'Peaceful Indoor Sage — "Minimalist Homebody"',
         res4_inherent: "A very calm and mild temperament with low Exploration({{ E }}) and Safety({{ S }}). A sage DNA that realized 'outside the blanket is dangerous' since puppyhood. Rather than grand adventures, they find deep comfort in casually walking the usual 300m route. Use calm education leveraging Focus({{ F }}) to slowly infuse vitality.",
 
         res1_letter: "Mom, Dad! There are so many fun and curious things in the world. But when something unfamiliar suddenly approaches or there's a loud noise, I get scared. At those times, please be my shield!",
         res1_features: "<p>Dogs of this type possess a highly multi-dimensional and charming temperament, where a strong curiosity (Exploration) and defensive instinct (Safety) coexist. Driven by a high desire to explore new environments, they take the lead during walks. However, if a sudden noise or a bicycle rushes by, they immediately hide behind their guardian or stop to carefully observe the situation.</p><p>Because these 'accelerator' and 'brake' instincts operate simultaneously, they might look like fearless explorers on some days, and the most timid cowards on others. However, this doesn't mean their personality is unstable. It is proof that their instinct to explore unfamiliar stimuli and their highly evolved survival instinct to protect themselves are working in perfect balance.</p><p>They are very interested in strangers or other dogs and try to approach with wagging tails from a distance, but if the other party suddenly attempts physical contact, they might get flustered and bark or avoid them. They are very smart dogs who feel the greatest sense of accomplishment and happiness when they explore the world after observing enough at their own pace and confirming their safety.</p>",
         res1_stress: "They experience severe stress when unexpected loud noises (like vacuum cleaners or motorcycles) suddenly occur, or when strangers or hot-tempered dogs approach without warning and attempt physical contact without asking for their consent.",
         res1_tips: "<p><strong>1. The Art of Waiting:</strong> When encountering unfamiliar environments or objects, do not force them to approach. The best protection is to stop and wait until your dog sniffs and decides 'it is safe' on their own.</p><p><strong>2. Gradual Exposure (Systematic Desensitization):</strong> If they are sensitive to sounds, play the feared sound at a very low volume and give them their favorite treat. You must slowly overwrite their fear by associating scary stimuli with joyful rewards.</p><p><strong>3. Create a Perfect 'Hideout':</strong> Provide a safe haven, such as a covered kennel or a corner cushion, where they can escape to block out outside stares and rest at any time. When they hide there, the absolute rule is to never force them out or touch them.</p>",
-        res1_match: "🐶 Perfect Match: Gentle Retrievers or easygoing Shih Tzus who approach slowly and respect boundaries.<br>⚡ Worst Match: Extreme high-tension energizers who jump blindly and attempt excessive physical contact.",
+        res1_match: "Perfect Match: Gentle Retrievers or easygoing Shih Tzus who approach slowly and respect boundaries.<br>Worst Match: Extreme high-tension energizers who jump blindly and attempt excessive physical contact.",
 
         res2_letter: "Wow! Did you see that bird flying over there? Can I go say hi to that friend passing by? The world feels like a huge, exciting playground. You'll run and play with me every single day, right?",
         res2_features: "<p>This is a 'straight-forward' dog with tireless energy and an infinite love for everything in the world. With an extremely low safety indicator—which governs fear and wariness—they tend to charge without hesitation when facing new places, strangers, or animals they've never seen before.</p><p>They boast the ultimate 'social butterfly' temperament, greeting the delivery person as if they're reuniting with a long-lost family member after 10 years, and they won't be satisfied until they've said hello to every neighbor on the walking trail. They enjoy activities with their guardians above all else, overflowing with positive energy that turns any training into a fun game.</p><p>However, this overflowing curiosity and energy can sometimes lead to risky recklessness. Driven by curiosity, they might dart into the street, or they may fail to read another dog's mood (calming signals of rejection) and demand excessive play, which can lead to friction. Since they cannot tolerate boredom, if their physical activity needs are not met, there is a high probability they will express their stress through destructive behaviors like tearing up wallpaper or destroying objects.</p>",
         res2_stress: "They feel severe frustration and stress when they are unable to release their energy, stuck in a narrow indoor space for a long time, or when their guardian is too busy and repeatedly ignores or rejects their passionate requests for playtime.",
         res2_tips: "<p><strong>1. Calming Education:</strong> Just making them run to drain their stamina is not enough. In fact, it might increase their excitement levels. It is absolutely necessary to teach impulse control by asking them to 'sit' and 'wait' during walks or play, allowing them to calm down and make eye contact with you.</p><p><strong>2. Mastering Leash Walking (Heeling):</strong> During walks, they often fixate on something and drag their guardian along. Strictly enforce the rule: when the leash becomes tight, stop walking; only when the dog returns to you and the leash loosens do you start moving again to prevent accidents.</p><p><strong>3. High-Difficulty Brain Activities:</strong> Beyond simple walking, provide challenging nosework toys or agility training that requires them to use their brains. Activities that actively engage their sense of smell and brain consume their energy much more healthily than simply running for an hour.</p>",
-        res2_match: "🐶 Perfect Match: Energizer groups with boundless stamina who can run and play together (Border Collie, Jack Russell Terrier types).<br>⚡ Worst Match: Timid, sensitive senior dogs who want to rest quietly, or independent dogs who value their alone time.",
+        res2_match: "Perfect Match: Energizer groups with boundless stamina who can run and play together (Border Collie, Jack Russell Terrier types).<br>Worst Match: Timid, sensitive senior dogs who want to rest quietly, or independent dogs who value their alone time.",
 
         res3_letter: "Unfamiliar places are a bit scary, and loud noises hurt my ears. But lying on my favorite spot on our living room sofa, resting my head on your lap... that's the best time in the whole world for me.",
         res3_features: "<p>They possess a deeply sensitive and cautious nature, reacting profoundly to even the slightest changes in their external environment. In the familiar space of their home and beside their beloved guardian, they are endlessly affectionate and relaxed. However, if they step just slightly out of their daily boundaries or if a stranger visits the house, they become extremely tense, tucking their tails and showing an avoidance response by hiding in corners.</p><p>From an animal behavioral perspective, their sensory organs (like hearing and smell) have a low threshold, meaning they process stimuli much more intensely than others. They are often highly vigilant and may tremble at distant thunder, vacuum cleaners, or the appearance of unfamiliar objects. Because their instinct to avoid danger is strong, they rarely engage in reckless behaviors, making the probability of them causing a major accident quite low.</p><p>They love tranquility over adventure, feeling the deepest sense of security and happiness when their daily routine is strictly maintained—the same walking path, the same food, the same bed. Rather than forcing them to overcome their fears, they are subtle philosophers who require delicate consideration tailored to their own pace.</p>",
         res3_stress: "They experience immense stress, bordering on panic, when they are forcibly dragged to unpredictable, unfamiliar places (like dog cafes or crowded streets) and surrounded by numerous strangers or other dogs.",
         res3_tips: "<p><strong>1. Becoming a Secure Base:</strong> When your dog gets scared in an unfamiliar environment, do not scold them or force them to walk. Reassure them with a soft voice, hold them, or allow them to hide behind your legs, making them realize that you are their strongest and most reliable shield.</p><p><strong>2. Maintaining a Predictable Routine:</strong> Rather than changing the walking route every day, repeating a few fixed routes that your dog has perfectly mastered and feels comfortable with is much more beneficial for their psychological stability. Try to maintain a consistent schedule for meals and sleep as well.</p><p><strong>3. Lavish Praise for Tiny Achievements:</strong> When they take a single sniff of an unfamiliar object or take one step on a scary path on their own, praise them with an exaggerated voice and reward them with a premium treat. Experiencing these tiny successes gradually builds their inner confidence.</p>",
-        res3_match: "🐶 Perfect Match: Peaceful, easygoing dogs who are so quiet you barely notice they are there.<br>⚡ Worst Match: Overly friendly dogs who lack boundaries and thrust their faces forward to sniff without hesitation.",
+        res3_match: "Perfect Match: Peaceful, easygoing dogs who are so quiet you barely notice they are there.<br>Worst Match: Overly friendly dogs who lack boundaries and thrust their faces forward to sniff without hesitation.",
 
         res4_letter: "Can we just walk for 10 minutes today and go back inside? Taking a lazy nap on my fluffy cushion while watching you work... that's the greatest joy in my life.",
         res4_features: "<p>They show the temperament of an enlightened sage, having little greed for worldly affairs and rarely losing their composure in the face of most stimuli. With both curiosity (Exploration) and wariness (Safety) set low, they might just give a single wag of their tail at the doorbell before falling back asleep, and they react with indifference when unfamiliar dogs approach.</p><p>Even when going out for a walk, rather than jumping around excitedly like other dogs, they step out with a relaxed, philosophical attitude of 'if we must go, we go.' Because the probability of them getting overly excited or causing trouble is very low, they are exceptionally easy and calm to live with in modern indoor environments. However, their occasional lethargy or seeming lack of interest in the world can sometimes make guardians feel a bit disappointed.</p><p>They remain unfazed by new toys or flashy events, truly embodying the ultimate 'homebody' type who loves nothing more than spending most of their day lying peacefully on a comfortable sofa or fluffy cushion, as if meditating. For them, tranquility is not the result of training, but their innate way of life.</p>",
         res4_stress: "They feel a subtle sense of stress and fatigue when they just want to sleep and rest quietly, but a guardian or young child repeatedly touches, strokes, or forces them to stand up for vigorous play.",
         res4_tips: "<p><strong>1. Gentle Motivation and Sustained Walks:</strong> Forcing them to run or taking them to a dog park will only add to their fatigue. However, too little physical activity can lead to obesity and weakened joints. Keep them healthy by maintaining short, light daily neighborhood walks that might spark their mild interest.</p><p><strong>2. Utilizing Smell over Sight/Hearing:</strong> They are much more likely to respond quietly to activities involving their nose rather than moving toys. Stimulate their brains and relieve boredom with static nosework games, such as hiding their regular kibble around the house or using strong-smelling jerky treats.</p><p><strong>3. Paying Special Attention to Weight Management:</strong> Because their active energy is so low, their caloric intake can easily exceed their physical activity, making them prone to obesity. Strictly managing their treat intake and preventing obesity-related illnesses through regular weight checks is the core aspect of caring for these dogs.</p>",
-        res4_match: "🐶 Perfect Match: A fellow sage-like dog who is happy just lying side-by-side breathing, or a lazy cat.<br>⚡ Worst Match: A restless, energizer dog who constantly bites their ears wanting to play or runs in circles around them.",
+        res4_match: "Perfect Match: A fellow sage-like dog who is happy just lying side-by-side breathing, or a lazy cat.<br>Worst Match: A restless, energizer dog who constantly bites their ears wanting to play or runs in circles around them.",
         
         res1_acquired: "A very excellent state where Acquired Independence({{ I }}) and Sociability({{ O }}) developed harmoniously. This proves you provided immense emotional trust with tearful treat rewards and consistent rules. A cool dog enjoying solitude when alone, while acting 'scholarly' accepting expert touches during grooming. If Resilience({{ X }}) is also high, traveling together is great.",
         res1_humor: "Prescription: Already perfect. You could open a dog training academy tomorrow. Just keep supplying tasty freeze-dried treats as you do now.",
@@ -1223,8 +1223,8 @@ const translations = {
 
         // Kakao Text
         kakao_share_text: "My dog got [{{ dogType }}], and I got [{{ ownerMbti }}], resulting in a chemistry score of {{ score }}!\n\nCheck our chemistry",
-        kakao_share_title: "🐾 Our Dog's Temperament Result!",
-        kakao_share_btn: "Check chemistry too 🐾",
+        kakao_share_title: "Our Dog's Temperament Result!",
+        kakao_share_btn: "Check chemistry too",
         kakao_share_error: "Cannot execute KakaoTalk sharing.\nPlease check if the current domain is registered.\n\nCopying result link instead.",
         kakao_copy_success: "Link copied to clipboard!",
 
@@ -1235,8 +1235,8 @@ const translations = {
         age_alert_img_err: "An error occurred while saving the image. Please check your browser settings.",
         age_alert_kakao_key: "KakaoTalk sharing is not configured. (JS key missing)",
         age_alert_kakao_sdk: "KakaoTalk SDK is not initialized.",
-        age_save_loading: "Generating image... ⏳",
-        age_save_btn: "Save Result as Image 📥",
+        age_save_loading: "Generating image...",
+        age_save_btn: "Save Result as Image",
 
         age_stage1: "Infancy",
         age_story1: "{{ name }} is just opening their eyes and learning to walk, finding everything in the world fascinating. Though their curiosity might cause little troubles, it's an angelic period where {{ name }}'s mere existence brings smiles.",
@@ -1253,7 +1253,7 @@ const translations = {
         age_stage7: "Geriatric",
         age_story7: "{{ name }} can't walk as far as before, and their eyes might look a bit cloudy. They might try to hide their pain, so this is a precious and affectionate time that requires very careful observation and a warm embrace.",
 
-        age_kakao_title: "Our time flows differently 🕰️",
+        age_kakao_title: "Our time flows differently",
         age_kakao_desc: "How old is {{ name }} in human years? Check it out now.",
         age_kakao_btn: "Check Results",
 
@@ -1261,7 +1261,7 @@ const translations = {
         size_alert_breed: "Please select a breed.",
         size_alert_kakao: "KakaoTalk sharing is not configured.",
         size_alert_kakao_sdk: "KakaoTalk SDK is not initialized.",
-        size_kakao_title: "Clothing Size Recommendation 👕",
+        size_kakao_title: "Clothing Size Recommendation",
         size_kakao_desc: "Our dog's estimated chest girth is {{ chest }}cm, and recommended size is [{{ size }}]!",
         size_kakao_btn: "Check Size",
 
@@ -1284,7 +1284,7 @@ const translations = {
         seo_s3_p2: "mung-test.com's size recommender uses years of data to compute breed, weight, and hair length variables to provide the <strong>most ideal estimated chest girth and recommended size</strong> for free. Calculate now for your dog's comfortable daily life!",
         
         // Share Feature
-        btn_share_link: "Share Link 🔗",
+        btn_share_link: "Share Link",
         toast_link_copied: "Link copied to clipboard!",
         
         // Food Guide
@@ -1376,29 +1376,16 @@ function toggleTheme() {
     const isDark = body.classList.contains('dark-mode');
     localStorage.setItem('mung_theme', isDark ? 'dark' : 'light');
     const btnTheme = document.getElementById('btn-theme');
-    if (btnTheme) btnTheme.textContent = isDark ? '☀️' : '🌙';
+    if (btnTheme) btnTheme.textContent = isDark ? '밝게' : '어둡게';
 }
 
+// 화면 밝기(다크 모드)는 site.js가 맡음
 function initI18nAndTheme() {
-    // 다크모드 초기화
-    const savedTheme = localStorage.getItem('mung_theme');
-    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.body.classList.add('dark-mode');
-        const btnTheme = document.getElementById('btn-theme');
-        if (btnTheme) btnTheme.textContent = '☀️';
-    } else {
-        const btnTheme = document.getElementById('btn-theme');
-        if (btnTheme) btnTheme.textContent = '🌙';
-    }
-    
     // 다국어 초기화
     const savedLang = getLang();
     applyLanguage(savedLang);
 
     // 이벤트 리스너 등록
-    const btnTheme = document.getElementById('btn-theme');
-    if (btnTheme) btnTheme.addEventListener('click', toggleTheme);
-
     const btnLang = document.getElementById('btn-lang');
     if (btnLang) btnLang.addEventListener('click', toggleLanguage);
 }

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강아지가 먹어도 되는 음식, 안 되는 음식 100가지 | 멍테스트</title>
+    <meta name="description" content="포도, 초콜릿, 양파부터 사과, 고구마, 수박까지. 강아지가 먹어도 되는 음식과 먹이면 안 되는 음식 100가지를 검색해 보세요.">
+    <link rel="canonical" href="https://mung-test.com/food/">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="google-adsense-account" content="ca-pub-4790912864460441">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4790912864460441" crossorigin="anonymous"></script>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="멍테스트">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:url" content="https://mung-test.com/food/">
+    <meta property="og:title" content="강아지가 먹어도 되는 음식, 안 되는 음식 100가지 | 멍테스트">
+    <meta property="og:description" content="포도, 초콜릿, 양파부터 사과, 고구마, 수박까지. 강아지가 먹어도 되는 음식과 먹이면 안 되는 음식 100가지를 검색해 보세요.">
+    <meta property="og:image" content="https://mung-test.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/site.css?v=2026-11-13">
+    <script src="/site.js?v=2026-11-13"></script>
+    
+    <style>
+        .food-search { display: grid; gap: 14px; }
+        .food-search input { width: 100%; height: 60px; border-radius: 16px; border: 2px solid var(--border); background: var(--card); color: var(--text); padding: 0 20px; font: inherit; font-size: 1.1rem; }
+        .food-search input:focus { outline: none; border-color: var(--primary); }
+        .food-list { list-style: none; display: grid; gap: 10px; }
+        .food-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px; scroll-margin-top: 140px; }
+        .food-item:target { border: 2px solid var(--primary); }
+        .food-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+        .food-head h3 { font-size: 1.15rem; font-weight: 800; }
+        .food-item p { color: var(--text-muted); line-height: 1.75; word-break: keep-all; }
+        .food-empty { padding: 24px 0; }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <div class="header-inner">
+        <a href="/" class="logo">멍테스트</a>
+        <nav class="site-nav" aria-label="주요 메뉴"><ul><li><a href="/">성격 테스트</a></li><li><a href="/food/" aria-current="page">먹어도 돼?</a></li><li><a href="/health/">건강</a></li><li><a href="/breeds/">견종</a></li><li><a href="/blog/">생활 가이드</a></li></ul></nav>
+        <button type="button" id="btn-theme" class="theme-btn" aria-pressed="false">어둡게</button>
+    </div>
+</header>
+<main>
+
+<div class="page-hero" style="--band:var(--mustard)">
+    <div class="wrap">
+        <div>
+            
+            <h1>강아지가 먹어도 되는 음식</h1>
+            <p>음식 이름을 검색하면 강아지에게 줘도 되는지 바로 알려드려요. 과일, 채소, 고기, 가공식품 100가지를 정리했어요.</p>
+        </div>
+        <img src="/img/hub-food.webp" alt="음식 냄새를 맡는 강아지 그림" width="400" height="400">
+    </div>
+</div><div class="narrow">
+                <div class="food-search section">
+                    <label for="food-q" class="section-title" style="margin:0">어떤 음식이 궁금해요?</label>
+                    <input id="food-q" type="search" placeholder="예: 포도, 고구마, 치즈" autocomplete="off">
+                    <div class="chips" aria-label="많이 찾는 음식"><a class="chip" href="#f-16">포도</a><a class="chip" href="#f-89">초콜릿</a><a class="chip" href="#f-39">양파</a><a class="chip" href="#f-1">사과</a><a class="chip" href="#f-3">바나나</a><a class="chip" href="#f-29">고구마</a><a class="chip" href="#f-4">수박</a></div>
+                    <div class="chips" role="group" aria-label="판정으로 거르기">
+                        <button type="button" class="chip" data-filter="all" aria-pressed="true">전체 100</button>
+                        <button type="button" class="chip" data-filter="ok" aria-pressed="false">먹어도 돼요 21</button><button type="button" class="chip" data-filter="warn" aria-pressed="false">조금만 줘요 47</button><button type="button" class="chip" data-filter="no" aria-pressed="false">먹이면 안 돼요 32</button>
+                    </div>
+                </div>
+                <section class="callout callout-danger section">
+                    <h2>먹이면 안 되는 음식을 먹었다면</h2>
+                    <p>먹은 음식과 양, 먹은 시간을 적어 두고 바로 동물병원에 전화하세요. 수의사가 시키지 않았다면 억지로 토하게 하지 마세요. 증상이 늦게 나타나는 음식도 있어서, 지금 괜찮아 보여도 상담을 받는 게 안전해요.</p>
+                </section>
+                <p id="food-empty" class="food-empty section" hidden>아직 정리하지 못한 음식이에요. 확실하지 않으면 먹이지 말고 동물병원에 물어보세요.</p>
+                
+        <section class="food-group section" data-group>
+            <h2 class="section-title">과일류</h2>
+            <ul class="food-list"><li id="f-1" class="food-item" data-level="warn" data-search="사과 apple 과일류">
+                    <div class="food-head"><h3>사과</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>비타민 A와 C, 섬유질이 풍부해 좋은 간식이 됩니다. 단, 씨앗에는 시안화물이라는 맹독이 있으므로 씨와 심은 완벽히 제거하고 껍질을 벗겨 작게 썰어주세요.</p>
+                </li><li id="f-2" class="food-item" data-level="warn" data-search="배 pear 과일류">
+                    <div class="food-head"><h3>배</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>수분이 많아 여름철 수분 보충에 탁월하며 기침 완화에 도움을 줍니다. 사과와 마찬가지로 씨앗은 절대 먹지 못하게 하고 작게 잘라 급여하세요.</p>
+                </li><li id="f-3" class="food-item" data-level="warn" data-search="바나나 banana 과일류">
+                    <div class="food-head"><h3>바나나</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>칼륨과 비타민 B6, 비타민 C가 풍부하지만 당분이 매우 높아 비만이나 당뇨가 있는 강아지에게는 피하는 것이 좋습니다. 하루 권장 칼로리의 10% 미만으로만 주세요.</p>
+                </li><li id="f-4" class="food-item" data-level="warn" data-search="수박 watermelon 과일류">
+                    <div class="food-head"><h3>수박</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>92%가 수분으로 이루어져 있어 더운 여름철 열사병 예방에 좋습니다. 수박씨는 장폐색을 유발할 수 있으므로 완전히 제거하고 껍질도 주면 안 됩니다.</p>
+                </li><li id="f-5" class="food-item" data-level="warn" data-search="멜론 melon 과일류">
+                    <div class="food-head"><h3>멜론</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>눈 건강에 좋은 베타카로틴이 풍부합니다. 당도가 높아 살이 찌기 쉬우므로 아주 소량만 과육 부분만 잘라서 주어야 합니다.</p>
+                </li><li id="f-6" class="food-item" data-level="warn" data-search="딸기 strawberry 과일류">
+                    <div class="food-head"><h3>딸기</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>항산화 물질이 풍부하고 치아 미백 효과를 주는 효소가 있습니다. 깨끗이 씻어 꼭지를 떼고 반으로 잘라 소화하기 쉽게 주세요.</p>
+                </li><li id="f-7" class="food-item" data-level="ok" data-search="블루베리 blueberry 과일류">
+                    <div class="food-head"><h3>블루베리</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>반려견에게 최고의 슈퍼푸드로 꼽힙니다. 강력한 항산화 작용으로 세포 손상을 막고 노령견의 두뇌 건강과 시력 보호에 아주 좋습니다.</p>
+                </li><li id="f-8" class="food-item" data-level="warn" data-search="라즈베리 raspberry 과일류">
+                    <div class="food-head"><h3>라즈베리</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>비타민 C와 망간이 풍부하지만 천연 자일리톨 성분이 미량 함유되어 있으므로, 체중 10kg 기준 하루 2~3개 이하로 제한해야 합니다.</p>
+                </li><li id="f-9" class="food-item" data-level="warn" data-search="크랜베리 cranberry 과일류">
+                    <div class="food-head"><h3>크랜베리</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>방광염이나 요로결석 예방에 효과적입니다. 생과일은 너무 시어서 잘 먹지 않으며, 건조 크랜베리는 설탕이 많으므로 피하는 것이 낫습니다.</p>
+                </li><li id="f-10" class="food-item" data-level="warn" data-search="망고 mango 과일류">
+                    <div class="food-head"><h3>망고</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>비타민이 풍부하고 식감이 부드럽지만 당류가 엄청나게 높습니다. 커다란 씨앗은 삼킬 경우 식도나 장이 막혀 치명적이니 과육만 잘라주세요.</p>
+                </li><li id="f-11" class="food-item" data-level="warn" data-search="감 persimmon 과일류">
+                    <div class="food-head"><h3>감</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>탄닌 성분 때문에 많이 먹으면 변비를 유발할 수 있습니다. 떫은맛이 없는 단감의 과육만 씨앗을 완벽히 제거하여 극소량 급여하세요.</p>
+                </li><li id="f-12" class="food-item" data-level="no" data-search="복숭아 peach 과일류">
+                    <div class="food-head"><h3>복숭아</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>과육 자체는 독성이 없으나, 복숭아의 커다란 씨앗에는 시안화물이 들어있고 삼키면 장폐색을 일으켜 사망에 이를 수 있습니다. 씨앗을 버린 쓰레기통도 뒤지지 않게 주의하세요.</p>
+                </li><li id="f-13" class="food-item" data-level="no" data-search="자두 plum 과일류">
+                    <div class="food-head"><h3>자두</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>자두 역시 씨앗이 작지만 단단하고 시안화물을 함유하고 있어 장 폐색의 원인이 됩니다. 줄기나 잎에도 독성이 있으므로 피하는 것이 안전합니다.</p>
+                </li><li id="f-14" class="food-item" data-level="no" data-search="살구 apricot 과일류">
+                    <div class="food-head"><h3>살구</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>살구 씨앗, 잎, 줄기 모두에 청산가리 성분인 시안화물이 포함되어 있어 호흡 곤란, 쇼크를 유발하므로 근처에 가지 못하게 해야 합니다.</p>
+                </li><li id="f-15" class="food-item" data-level="no" data-search="체리 cherry 과일류">
+                    <div class="food-head"><h3>체리</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>체리 씨앗 주변의 과육을 제외한 모든 부분(씨앗, 줄기, 잎)에 시안화물이 들어있습니다. 씨를 발라내기 번거로우며 중독 시 동공 확장과 붉은 점막 증상이 나타납니다.</p>
+                </li><li id="f-16" class="food-item" data-level="no" data-search="포도 grape 과일류">
+                    <div class="food-head"><h3>포도</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>반려견에게 가장 치명적인 과일 1순위입니다. 단 한 알만 먹어도 급성 신부전(신장 파괴)을 일으켜 사망에 이를 수 있습니다. 포도즙이나 껍질도 절대 안 됩니다.</p>
+                </li><li id="f-17" class="food-item" data-level="no" data-search="건포도 raisin 과일류">
+                    <div class="food-head"><h3>건포도</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>포도를 말린 건포도는 독성 성분이 고농축되어 있어 생포도보다 훨씬 더 치명적입니다. 건포도가 들어간 빵이나 쿠키도 절대 급여 금지입니다.</p>
+                </li><li id="f-18" class="food-item" data-level="no" data-search="아보카도 avocado 과일류">
+                    <div class="food-head"><h3>아보카도</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>아보카도의 잎, 씨앗, 과육에는 '페르신(Persin)'이라는 독성 물질이 있어 반려견에게 구토, 설사, 호흡 곤란을 유발할 수 있습니다.</p>
+                </li><li id="f-19" class="food-item" data-level="warn" data-search="귤 tangerine 과일류">
+                    <div class="food-head"><h3>귤</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>비타민 C가 풍부하지만 산성이 강해 빈속에 먹으면 위염이나 구토를 유발할 수 있습니다. 껍질의 흰 귤락을 벗기고 속 알맹이만 조금 줍니다.</p>
+                </li><li id="f-20" class="food-item" data-level="warn" data-search="오렌지 orange 과일류">
+                    <div class="food-head"><h3>오렌지</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>귤과 마찬가지로 산도가 높아 소화 불량을 일으키기 쉽습니다. 두꺼운 껍질에는 소화하기 힘든 에센셜 오일이 있으므로 알맹이만 소량 급여하세요.</p>
+                </li></ul>
+        </section>
+        <section class="food-group section" data-group>
+            <h2 class="section-title">채소 및 야채류</h2>
+            <ul class="food-list"><li id="f-21" class="food-item" data-level="ok" data-search="당근 carrot 채소 및 야채류">
+                    <div class="food-head"><h3>당근</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>베타카로틴과 섬유질이 풍부하여 눈 건강과 장 건강에 최고입니다. 딱딱한 생당근은 치석 제거에 좋으나 어린 강아지에겐 익혀서 부드럽게 주세요.</p>
+                </li><li id="f-22" class="food-item" data-level="warn" data-search="브로콜리 broccoli 채소 및 야채류">
+                    <div class="food-head"><h3>브로콜리</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>항암 효과가 뛰어나지만 '이소티오시아네이트' 성분이 들어있어 많이 먹으면 위장 자극이 옵니다. 반드시 끓는 물에 데쳐서 작게 잘라 식사에 섞어주세요.</p>
+                </li><li id="f-23" class="food-item" data-level="warn" data-search="양배추 cabbage 채소 및 야채류">
+                    <div class="food-head"><h3>양배추</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>위염 완화와 다이어트에 좋지만, 소화되는 과정에서 가스가 많이 발생하여 헛배부름(가스 참)을 유발할 수 있습니다. 살짝 데쳐 소량만 급여하세요.</p>
+                </li><li id="f-24" class="food-item" data-level="ok" data-search="오이 cucumber 채소 및 야채류">
+                    <div class="food-head"><h3>오이</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>칼로리가 거의 없고 수분이 가득해 훌륭한 다이어트 간식입니다. 비타민 K도 풍부하여 관절 건강에 도움을 줄 수 있습니다.</p>
+                </li><li id="f-25" class="food-item" data-level="ok" data-search="상추 lettuce 채소 및 야채류">
+                    <div class="food-head"><h3>상추</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>수분이 많고 독성이 없어 먹어도 안전합니다. 다만 잎이 넓어 목에 걸릴 수 있으므로 잘게 찢어서 사료 위에 토핑으로 올려주세요.</p>
+                </li><li id="f-26" class="food-item" data-level="warn" data-search="시금치 spinach 채소 및 야채류">
+                    <div class="food-head"><h3>시금치</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>철분이 풍부하지만 옥살산(수산) 성분이 있어 신장 결석을 유발할 수 있습니다. 신장이 안 좋은 아이는 피하고, 건강하다면 살짝 데쳐 소량만 주세요.</p>
+                </li><li id="f-27" class="food-item" data-level="ok" data-search="호박 pumpkin 채소 및 야채류">
+                    <div class="food-head"><h3>호박</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>소화 불량이나 설사, 변비가 있을 때 탁월한 천연 소화제 역할을 합니다. 찌거나 삶아서 속살만 급여하면 건강에 매우 좋습니다.</p>
+                </li><li id="f-28" class="food-item" data-level="ok" data-search="단호박 kabocha squash 채소 및 야채류">
+                    <div class="food-head"><h3>단호박</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>베타카로틴이 풍부하고 기호성이 매우 뛰어납니다. 다이어트나 보양식으로 좋으며, 껍질과 씨를 제거하고 푹 삶아 으깨어 급여하세요.</p>
+                </li><li id="f-29" class="food-item" data-level="warn" data-search="고구마 sweet potato 채소 및 야채류">
+                    <div class="food-head"><h3>고구마</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>비타민과 식이섬유가 풍부하지만 탄수화물과 당분이 매우 높습니다. 매일 주면 비만의 지름길이 되므로 반드시 삶거나 쪄서 간식으로만 조금 주세요.</p>
+                </li><li id="f-30" class="food-item" data-level="warn" data-search="감자 potato 채소 및 야채류">
+                    <div class="food-head"><h3>감자</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>익히지 않은 생감자와 싹이 난 초록색 껍질에는 솔라닌이라는 독성이 있어 절대 금물입니다. 껍질을 깎고 푹 삶은 익은 감자만 소량 가능합니다.</p>
+                </li><li id="f-31" class="food-item" data-level="warn" data-search="토마토 tomato 채소 및 야채류">
+                    <div class="food-head"><h3>토마토</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>라이코펜이 풍부해 좋으나, 덜 익은 초록색 토마토나 잎, 줄기에는 토마틴이라는 독성 성분이 있습니다. 완전히 빨갛게 익은 과육만 작게 썰어 주세요.</p>
+                </li><li id="f-32" class="food-item" data-level="warn" data-search="방울토마토 cherry tomato 채소 및 야채류">
+                    <div class="food-head"><h3>방울토마토</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>큰 토마토와 성분은 동일하나 한 입에 삼키다 식도에 걸려 질식할 위험이 매우 높습니다. 반드시 4등분으로 작게 쪼개어 급여해야 합니다.</p>
+                </li><li id="f-33" class="food-item" data-level="ok" data-search="파프리카 paprika 채소 및 야채류">
+                    <div class="food-head"><h3>파프리카</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>비타민 A와 C가 풍부하며 색깔별로 영양소가 다양합니다. 매운맛이 없고 아삭하여 간식으로 제격입니다. 씨앗을 제거하고 썰어주세요.</p>
+                </li><li id="f-34" class="food-item" data-level="warn" data-search="피망 bell pepper 채소 및 야채류">
+                    <div class="food-head"><h3>피망</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>파프리카와 달리 약간의 쓴맛이나 매운 향이 날 수 있어 위장을 자극할 수 있습니다. 굳이 권장하지 않으나 소량은 괜찮습니다.</p>
+                </li><li id="f-35" class="food-item" data-level="warn" data-search="아스파라거스 asparagus 채소 및 야채류">
+                    <div class="food-head"><h3>아스파라거스</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>영양가는 높지만 너무 질겨서 생으로 먹으면 장폐색을 유발합니다. 완전히 부드러워질 때까지 익혀서 아주 잘게 썰어야만 소화가 가능합니다.</p>
+                </li><li id="f-36" class="food-item" data-level="ok" data-search="셀러리 celery 채소 및 야채류">
+                    <div class="food-head"><h3>셀러리</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>칼로리가 낮고 심장 건강에 좋은 비타민이 함유되어 있으며 입 냄새 제거 효과도 있습니다. 길고 질긴 섬유질은 잘게 잘라서 질식 위험을 없애주세요.</p>
+                </li><li id="f-37" class="food-item" data-level="warn" data-search="무 radish 채소 및 야채류">
+                    <div class="food-head"><h3>무</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>수분이 많아 좋지만 생무는 특유의 알싸한 매운맛 때문에 위가 놀라 구토할 수 있습니다. 무국에 들어있는 것처럼 푹 익혀 매운맛을 없앤 후 소량만 줍니다.</p>
+                </li><li id="f-38" class="food-item" data-level="no" data-search="버섯 mushroom 채소 및 야채류">
+                    <div class="food-head"><h3>버섯</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>사람이 먹는 표고버섯, 팽이버섯 등 마트용 버섯은 소화가 어렵습니다. 특히 야생 버섯은 맹독이 있으므로 산책 시 절대 주워 먹지 못하게 차단해야 합니다.</p>
+                </li><li id="f-39" class="food-item" data-level="no" data-search="양파 onion 채소 및 야채류">
+                    <div class="food-head"><h3>양파</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>엔-프로필 디설파이드 성분이 강아지의 적혈구를 파괴하여 심각한 '용혈성 빈혈'을 유발합니다. 익히거나 끓여도 독성이 사라지지 않으니 짜장면 등 양파가 들어간 음식은 절대 금물입니다.</p>
+                </li><li id="f-40" class="food-item" data-level="no" data-search="마늘 garlic 채소 및 야채류">
+                    <div class="food-head"><h3>마늘</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>양파와 동일한 원리로 적혈구를 파괴하며, 양파보다 독성이 더 강할 수 있습니다. 다진 마늘이 듬뿍 들어간 한국식 국물이나 반찬은 절대로 주면 안 됩니다.</p>
+                </li></ul>
+        </section>
+        <section class="food-group section" data-group>
+            <h2 class="section-title">육류 및 해산물류</h2>
+            <ul class="food-list"><li id="f-41" class="food-item" data-level="ok" data-search="닭고기 chicken 육류 및 해산물류">
+                    <div class="food-head"><h3>닭고기</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>고단백 저지방의 가장 대표적인 강아지 영양원입니다. 삶아서 살코기만 주어야 하며, 닭 뼈는 익히면 날카롭게 쪼개져 장을 찌르므로 절대 금지입니다.</p>
+                </li><li id="f-42" class="food-item" data-level="ok" data-search="소고기 beef 육류 및 해산물류">
+                    <div class="food-head"><h3>소고기</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>철분과 아미노산이 풍부하여 면역력 강화와 근육 발달에 좋습니다. 지방 부위를 제거한 살코기 위주로 완전히 익혀서 급여하세요.</p>
+                </li><li id="f-43" class="food-item" data-level="warn" data-search="돼지고기 pork 육류 및 해산물류">
+                    <div class="food-head"><h3>돼지고기</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>삼겹살 등 지방이 많은 부위는 급성 췌장염을 유발하는 치명적인 원인이 됩니다. 반드시 안심, 등심처럼 기름기 없는 부위만 수육으로 푹 삶아주세요.</p>
+                </li><li id="f-44" class="food-item" data-level="ok" data-search="오리고기 duck 육류 및 해산물류">
+                    <div class="food-head"><h3>오리고기</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>닭고기 알레르기가 있는 아이들에게 훌륭한 대체 단백질입니다. 불포화 지방산이 풍부해 피부와 모질을 윤기 나게 해줍니다.</p>
+                </li><li id="f-45" class="food-item" data-level="warn" data-search="양고기 lamb 육류 및 해산물류">
+                    <div class="food-head"><h3>양고기</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>저알러지 식품으로 인기가 많지만 지방 함량이 높아 비만을 유발할 수 있습니다. 살코기만 적당량 삶아서 특별식으로 제공하세요.</p>
+                </li><li id="f-46" class="food-item" data-level="ok" data-search="연어 salmon 육류 및 해산물류">
+                    <div class="food-head"><h3>연어</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>오메가3 지방산이 가득해 두뇌 발달과 관절 염증 완화에 탁월합니다. 단, 생연어는 기생충 위험이 있으니 반드시 찌거나 구워서 완벽히 익혀 급여합니다.</p>
+                </li><li id="f-47" class="food-item" data-level="warn" data-search="황태 dried pollock 육류 및 해산물류">
+                    <div class="food-head"><h3>황태</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>기력 회복에 최고의 보양식이지만 바닷물 염분이 가득합니다. 반드시 물에 반나절 이상 담가 염분을 완전히 빼내고 가시를 손으로 다 발라낸 후 급여해야 합니다.</p>
+                </li><li id="f-48" class="food-item" data-level="warn" data-search="북어 dried alaska pollock 육류 및 해산물류">
+                    <div class="food-head"><h3>북어</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>황태와 마찬가지로 염분 제거와 뾰족한 가시 제거가 생명입니다. 노령견이나 수술 후 회복 중인 아이에게 북엇국을 끓여 식혀주면 아주 좋습니다.</p>
+                </li><li id="f-49" class="food-item" data-level="warn" data-search="멸치 anchovy 육류 및 해산물류">
+                    <div class="food-head"><h3>멸치</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>천연 칼슘 공급원이지만 염분이 극도로 높습니다. 끓는 물에 여러 번 데쳐 짠맛을 완전히 제거하고 자연 건조한 뒤 사료에 소량 토핑으로 줍니다.</p>
+                </li><li id="f-50" class="food-item" data-level="warn" data-search="고등어 mackerel 육류 및 해산물류">
+                    <div class="food-head"><h3>고등어</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>오메가3가 풍부하지만 기름기가 너무 많아 소화 불량을 일으킬 수 있습니다. 가시를 완벽히 제거하고 구운 고등어 살 한두 점만 별미로 줍니다.</p>
+                </li><li id="f-51" class="food-item" data-level="no" data-search="오징어 squid 육류 및 해산물류">
+                    <div class="food-head"><h3>오징어</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>오징어나 문어 등 두족류는 위 속에서 수분을 머금고 팽창하여 심각한 장폐색과 극심한 소화불량을 유발합니다. 마른오징어는 위를 뚫을 수도 있습니다.</p>
+                </li><li id="f-52" class="food-item" data-level="no" data-search="문어 octopus 육류 및 해산물류">
+                    <div class="food-head"><h3>문어</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>오징어와 마찬가지로 질기고 소화가 전혀 되지 않습니다. 구토와 설사를 유발하며 최악의 경우 장을 막아 개복 수술을 해야 합니다.</p>
+                </li><li id="f-53" class="food-item" data-level="warn" data-search="새우 shrimp 육류 및 해산물류">
+                    <div class="food-head"><h3>새우</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>콜레스테롤이 높고 갑각류 알레르기를 일으킬 수 있습니다. 머리, 꼬리, 껍질을 완벽히 제거하고 푹 삶은 새우 속살 1~2개 정도만 안전합니다.</p>
+                </li><li id="f-54" class="food-item" data-level="no" data-search="게(갑각류) crab (crustacean) 육류 및 해산물류">
+                    <div class="food-head"><h3>게(갑각류)</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>게 껍데기는 씹혔을 때 유리조각처럼 날카로워 식도와 장을 찢습니다. 살코기 또한 나트륨 덩어리이므로 식탁 위에 올려둔 게를 훔쳐먹지 않게 주의하세요.</p>
+                </li><li id="f-55" class="food-item" data-level="no" data-search="조개(패류) clam (shellfish) 육류 및 해산물류">
+                    <div class="food-head"><h3>조개(패류)</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>조개, 홍합, 굴 등의 해산물은 티아미나제라는 효소가 비타민 B1을 파괴하며, 염분이 지나치게 높고 패각 삼킴 사고가 발생할 수 있어 금지합니다.</p>
+                </li><li id="f-56" class="food-item" data-level="warn" data-search="전복 abalone 육류 및 해산물류">
+                    <div class="food-head"><h3>전복</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>미네랄이 풍부하지만 소화하기 매우 질깁니다. 내장을 제거하고 아주 부드럽게 푹 삶아 잘게 다져야만 흡수가 가능합니다.</p>
+                </li><li id="f-57" class="food-item" data-level="ok" data-search="닭가슴살 chicken breast 육류 및 해산물류">
+                    <div class="food-head"><h3>닭가슴살</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>최고의 저지방 다이어트 식품이자 단백질 보충원입니다. 생으로 주면 살모넬라균 위험이 있으니 안쪽까지 푹 익도록 삶아서 결대로 찢어주세요.</p>
+                </li><li id="f-58" class="food-item" data-level="warn" data-search="소간 beef liver 육류 및 해산물류">
+                    <div class="food-head"><h3>소간</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>철분과 비타민 A가 매우 풍부해 눈물 자국 개선에 좋다고 알려져 있습니다. 하지만 과다 복용 시 비타민 A 중독증(관절 기형 등)이 올 수 있으니 일주일에 한두 번만 건조 간식으로 급여합니다.</p>
+                </li><li id="f-59" class="food-item" data-level="warn" data-search="돼지귀 pig ear 육류 및 해산물류">
+                    <div class="food-head"><h3>돼지귀</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>건조된 돼지 귀는 콜라겐이 풍부하고 오래 씹을 수 있어 스트레스 해소용 개껌으로 훌륭합니다. 하지만 지방이 많아 비만인 아이는 조심해야 합니다.</p>
+                </li><li id="f-60" class="food-item" data-level="no" data-search="생선가시 fish bone 육류 및 해산물류">
+                    <div class="food-head"><h3>생선가시</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>닭 뼈와 마찬가지로 생선 가시는 바늘처럼 뾰족하여 삼킬 경우 목구멍과 식도를 찌르고 파고들어 치명적인 내부 출혈을 유발합니다.</p>
+                </li></ul>
+        </section>
+        <section class="food-group section" data-group>
+            <h2 class="section-title">곡물, 견과류 및 유지류</h2>
+            <ul class="food-list"><li id="f-61" class="food-item" data-level="ok" data-search="쌀(백미) white rice 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>쌀(백미)</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>탄수화물 공급원으로 위장이 약하거나 장염으로 설사할 때 무염 닭가슴살과 쌀죽을 끓여주면 빠른 위장 회복에 큰 도움이 됩니다.</p>
+                </li><li id="f-62" class="food-item" data-level="warn" data-search="현미 brown rice 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>현미</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>백미보다 영양이 우수하고 혈당 지수가 낮지만 섬유질이 억세어 강아지가 소화하기 어렵습니다. 아주 푹 익힌 진밥 형태로 소량만 주세요.</p>
+                </li><li id="f-63" class="food-item" data-level="ok" data-search="오트밀(귀리) oatmeal 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>오트밀(귀리)</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>식이섬유가 풍부하고 밀단백질(글루텐) 알레르기가 있는 강아지에게 훌륭한 대체 탄수화물입니다. 반드시 물이나 락토프리 우유에 불려 부드럽게 급여합니다.</p>
+                </li><li id="f-64" class="food-item" data-level="warn" data-search="보리 barley 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>보리</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>소화가 어려운 곡물 중 하나입니다. 보리밥을 사람이 먹듯이 그대로 주면 소화 불량과 가스를 유발하므로 가급적 주지 않는 것이 좋습니다.</p>
+                </li><li id="f-65" class="food-item" data-level="no" data-search="밀가루 flour 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>밀가루</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>개들은 밀단백질(글루텐)을 분해하는 효소가 부족하여 심한 가려움증, 귓병, 설사 등 피부 알레르기 반응을 가장 많이 일으키는 주범입니다.</p>
+                </li><li id="f-66" class="food-item" data-level="no" data-search="식빵 white bread 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>식빵</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>밀가루, 설탕, 소금, 이스트(효모)가 모두 들어있어 백해무익합니다. 특히 발효 전의 생 반죽을 먹으면 위에서 팽창하며 알코올을 생성해 중독을 일으킵니다.</p>
+                </li><li id="f-67" class="food-item" data-level="warn" data-search="밤 chestnut 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>밤</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>삶거나 구운 밤은 맛이 좋고 탄수화물이 풍부하지만, 너무 커서 통째로 삼키면 기도를 막을 수 있고 비만을 유발합니다. 잘게 으깨어 맛만 보여주세요.</p>
+                </li><li id="f-68" class="food-item" data-level="no" data-search="은행 ginkgo nut 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>은행</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>가을 산책 시 가장 조심해야 합니다. 은행 껍질과 열매에는 시안배당체 등 청산화합물이 있어 구토, 발작, 호흡 마비를 일으킵니다.</p>
+                </li><li id="f-69" class="food-item" data-level="warn" data-search="땅콩 peanut 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>땅콩</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>소금이 없는 볶은 땅콩은 단백질이 풍부하지만 지방 함량이 50%가 넘어 췌장염 위험이 있습니다. 강아지 전용 무염 100% 땅콩버터는 약을 먹일 때 유용합니다.</p>
+                </li><li id="f-70" class="food-item" data-level="no" data-search="호두 walnut 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>호두</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>호두에는 곰팡이 독소(트레모르겐)가 쉽게 번식하며, 섭취 시 전신 마비, 발작, 신경계 손상을 일으킬 수 있으므로 절대 급여를 피해야 합니다.</p>
+                </li><li id="f-71" class="food-item" data-level="no" data-search="마카다미아 macadamia 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>마카다미아</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>포도와 맞먹는 최악의 견과류입니다. 단 몇 알만 먹어도 뒷다리 마비, 구토, 고열, 심박수 증가 등 심각한 신경계 독성 중독을 일으킵니다. 쿠키 속 마카다미아도 조심하세요.</p>
+                </li><li id="f-72" class="food-item" data-level="no" data-search="아몬드 almond 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>아몬드</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>마카다미아처럼 독성이 있는 것은 아니지만, 강아지 위장에서는 아몬드 표면을 소화하지 못해 그대로 변으로 나오며 췌장염과 장폐색의 흔한 원인이 됩니다.</p>
+                </li><li id="f-73" class="food-item" data-level="warn" data-search="캐슈넛 cashew nut 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>캐슈넛</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>구운 무염 캐슈넛 한두 알은 괜찮지만, 지방과 칼로리가 너무 높아 비만과 췌장 질환을 유발할 수 있으므로 권장하지 않습니다.</p>
+                </li><li id="f-74" class="food-item" data-level="warn" data-search="해바라기씨 sunflower seed 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>해바라기씨</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>껍질을 완전히 까고 소금이 첨가되지 않은 알맹이는 모질 개선에 도움을 줍니다. 하지만 지방이 많아 아주 소량만 주어야 합니다.</p>
+                </li><li id="f-75" class="food-item" data-level="warn" data-search="올리브유 olive oil 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>올리브유</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>건조한 피부와 푸석한 털을 윤기 나게 해주는 좋은 식물성 지방입니다. 사료 위에 하루 1/2 티스푼 정도만 뿌려주는 것이 적당합니다.</p>
+                </li><li id="f-76" class="food-item" data-level="ok" data-search="코코넛오일 coconut oil 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>코코넛오일</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>천연 항균 작용과 피부 면역력 강화에 매우 좋습니다. 먹여도 좋고 발바닥 패드나 건조한 코 피부에 직접 발라주는 천연 보습제로도 훌륭합니다.</p>
+                </li><li id="f-77" class="food-item" data-level="warn" data-search="들기름 perilla oil 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>들기름</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>오메가3가 풍부하지만 산패가 매우 빨리 진행되므로 신선한 들기름 극소량만 특식에 섞어주세요. 참기름은 향이 너무 강해 거부감을 줄 수 있습니다.</p>
+                </li><li id="f-78" class="food-item" data-level="warn" data-search="참기름 sesame oil 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>참기름</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>향미 증진 효과가 있어 식욕을 잃은 아이의 사료에 한 방울 떨어뜨려 주면 입맛을 돋울 수 있으나, 지방 성분이므로 남용하면 안 됩니다.</p>
+                </li><li id="f-79" class="food-item" data-level="warn" data-search="두부 tofu 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>두부</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>훌륭한 식물성 단백질이지만 콩에 포함된 사포닌과 간수 성분이 위장을 자극할 수 있습니다. 끓는 물에 데쳐 염분을 빼고 조금만 으깨서 주세요.</p>
+                </li><li id="f-80" class="food-item" data-level="warn" data-search="콩 soybean 곡물, 견과류 및 유지류">
+                    <div class="food-head"><h3>콩</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>푹 삶은 완두콩이나 강낭콩은 식이섬유가 풍부하지만, 가스를 많이 발생시켜 헛배부름의 원인이 됩니다. 익히지 않은 생콩은 절대로 주면 안 됩니다.</p>
+                </li></ul>
+        </section>
+        <section class="food-group section" data-group>
+            <h2 class="section-title">유제품 및 기타 가공식품류</h2>
+            <ul class="food-list"><li id="f-81" class="food-item" data-level="ok" data-search="락토프리 우유 lactose-free milk 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>락토프리 우유</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>유당을 제거한 반려견 전용 우유(펫밀크)나 사람용 락토프리 우유는 칼슘과 수분 보충에 매우 훌륭한 영양 간식입니다.</p>
+                </li><li id="f-82" class="food-item" data-level="no" data-search="일반 우유 milk 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>일반 우유</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>강아지 체내에는 소 젖에 들어있는 유당(Lactose)을 분해하는 효소가 거의 없습니다. 일반 흰 우유를 먹이면 극심한 유당불내증으로 폭풍 설사와 장염에 시달립니다.</p>
+                </li><li id="f-83" class="food-item" data-level="warn" data-search="치즈 cheese 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>치즈</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>단백질과 칼슘이 풍부해 알약 먹일 때 유용합니다. 하지만 사람용 체다치즈나 슬라이스 치즈는 염분과 유당이 많으므로 코티지 치즈 같은 무염 생치즈만 가능합니다.</p>
+                </li><li id="f-84" class="food-item" data-level="warn" data-search="요거트(요플레) yogurt 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>요거트(요플레)</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>유산균이 장 건강에 도움을 줍니다. 단, 딸기맛처럼 과일 시럽이나 인공 감미료(특히 자일리톨)가 들어간 것은 절대 안 되며, 100% 무가당 플레인 그릭 요거트만 소량 허용됩니다.</p>
+                </li><li id="f-85" class="food-item" data-level="ok" data-search="계란(달걀) egg 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>계란(달걀)</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>완전식품이라 불릴 만큼 훌륭한 단백질원입니다. 생계란 흰자의 아비딘 성분은 비타민 흡수를 방해하므로, 반드시 완숙으로 푹 삶아 노른자와 흰자 모두 급여하세요.</p>
+                </li><li id="f-86" class="food-item" data-level="ok" data-search="메추리알 quail egg 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>메추리알</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>계란과 마찬가지로 훌륭한 간식입니다. 소형견에게는 계란 하나가 너무 크기 때문에 메추리알 1~2개를 삶아 노른자를 으깨어 주면 적정량의 보양식이 됩니다.</p>
+                </li><li id="f-87" class="food-item" data-level="warn" data-search="꿀 honey 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>꿀</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>당분이 너무 높아 일상 간식으로는 부적합하지만, 저혈당 쇼크가 왔을 때나 기침이 심할 때 잇몸에 소량 발라주면 응급 처치 약으로 유용하게 쓰입니다.</p>
+                </li><li id="f-88" class="food-item" data-level="no" data-search="아이스크림 ice cream 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>아이스크림</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>사람용 아이스크림은 유당, 과도한 설탕, 그리고 초콜릿이나 자일리톨 등 치명적인 성분이 섞여 있을 확률이 높아 절대 주면 안 됩니다. 여름엔 무당 요거트를 얼려주세요.</p>
+                </li><li id="f-89" class="food-item" data-level="no" data-search="초콜릿 chocolate 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>초콜릿</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>카카오에 들어있는 테오브로민(Theobromine) 성분은 개의 심장과 신경계를 파괴하는 치명적인 맹독입니다. 구토, 발작, 심정지를 일으키며 즉시 위세척을 해야 합니다.</p>
+                </li><li id="f-90" class="food-item" data-level="no" data-search="사탕 candy 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>사탕</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>과도한 당분은 충치와 당뇨를 유발하며, 무설탕 사탕에 들어있는 '자일리톨' 성분은 단 한 알만으로도 강아지의 인슐린을 과다 분비시켜 저혈당 쇼크와 간 괴사로 즉사할 수 있습니다.</p>
+                </li><li id="f-91" class="food-item" data-level="no" data-search="껌 gum 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>껌</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>사람이 씹는 자일리톨 껌을 실수로 주워 먹는 사고가 동물병원 응급실 단골 메뉴입니다. 자일리톨은 포도, 초콜릿과 함께 강아지 3대 맹독으로 불립니다.</p>
+                </li><li id="f-92" class="food-item" data-level="no" data-search="족발 뼈 pork trotter bone 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>족발 뼈</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>익힌 돼지뼈(족발, 감자탕 뼈)는 씹는 순간 세로로 날카롭게 갈라져 위장관 출혈과 천공을 유발합니다. 염분과 각종 양념도 가득 배어있어 매우 위험합니다.</p>
+                </li><li id="f-93" class="food-item" data-level="no" data-search="치킨 뼈 chicken bone 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>치킨 뼈</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>배달 온 양념 치킨 뼈나 프라이드 뼈는 강아지 식도 절단기나 다름없습니다. 튀기거나 구운 조류의 뼈는 부러질 때 날카로운 바늘처럼 변하므로 쓰레기통 관리에 유의해야 합니다.</p>
+                </li><li id="f-94" class="food-item" data-level="no" data-search="커피(카페인) coffee (caffeine) 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>커피(카페인)</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>카페인은 강아지의 중추신경계와 심장을 과도하게 자극해 빈맥, 경련, 고혈압을 일으킵니다. 아메리카노나 믹스커피가 담긴 종이컵을 핥지 않게 주의하세요.</p>
+                </li><li id="f-95" class="food-item" data-level="no" data-search="녹차 green tea 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>녹차</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>녹차, 홍차 등의 찻잎에도 카페인이 함유되어 있어 중독을 유발합니다. 다이어트에 좋다고 녹차 티백 우린 물을 강아지에게 급여하는 것은 큰 실수입니다.</p>
+                </li><li id="f-96" class="food-item" data-level="ok" data-search="보리차 barley tea 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>보리차</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>카페인이 없는 곡물 차이므로 맹물 대신 연하게 끓여 차갑게 식혀주면 여름철 음수량을 늘리는 데 탁월한 효과가 있습니다.</p>
+                </li><li id="f-97" class="food-item" data-level="warn" data-search="두유 soy milk 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>두유</h3><span class="badge badge-warn">조금만 줘요</span></div>
+                    <p>사람용 시판 두유는 설탕과 보존제가 듬뿍 들어있어 피해야 합니다. 당분이 전혀 없는 100% 무첨가 콩국물이라면 락토프리 우유 대용으로 훌륭합니다.</p>
+                </li><li id="f-98" class="food-item" data-level="ok" data-search="락토프리 치즈 lactose-free cheese 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>락토프리 치즈</h3><span class="badge badge-ok">먹어도 돼요</span></div>
+                    <p>강아지 전용으로 염분을 쫙 빼고 유당을 제거하여 만들어진 펫치즈는 기호성도 높고 칼슘 섭취에 완벽한 안전 간식입니다.</p>
+                </li><li id="f-99" class="food-item" data-level="no" data-search="버터 butter 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>버터</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>과도한 포화 지방과 유제품 성분이 뭉쳐 있어, 소량만 핥아도 췌장이 지방을 소화하지 못해 극심한 복통을 동반하는 급성 췌장염에 걸립니다.</p>
+                </li><li id="f-100" class="food-item" data-level="no" data-search="소금/설탕 salt/sugar 유제품 및 기타 가공식품류">
+                    <div class="food-head"><h3>소금/설탕</h3><span class="badge badge-no">먹이면 안 돼요</span></div>
+                    <p>사람 입맛에 맞춘 짠맛(소금)은 신장에 치명적 손상을 주며, 단맛(설탕)은 비만, 당뇨, 백내장을 가속화합니다. 강아지의 요리에는 어떤 조미료도 첨가해선 안 됩니다.</p>
+                </li></ul>
+        </section>
+                <section class="section">
+                    <h2 class="section-title">음식에 관한 글</h2>
+                    <ul class="rows">
+<li><a class="row-link" href="/blog/4/" style="--tone:var(--mustard)">
+    <div class="thumb"><img src="/img/hub-food.webp" alt="" width="56" height="56" loading="lazy"></div>
+    <div><b>강아지가 먹으면 안 되는 치명적인 위험한 음식 Top 5와 응급처치</b><span>일상 속 숨겨진 식탁 위의 독(Poison) 사람에게는 건강하고 맛있는 음식이 반려견에게는 치명적인 독이…</span></div>
+</a></li>
+<li><a class="row-link" href="/blog/9/" style="--tone:var(--mustard)">
+    <div class="thumb"><img src="/img/hub-food.webp" alt="" width="56" height="56" loading="lazy"></div>
+    <div><b>사료 라벨 읽는 법: 좋은 사료 고르는 원료 성분 분석 가이드</b><span>화려한 포장지에 속지 않고 건강한 밥상 차려주기 마트나 온라인 쇼핑몰에 진열된 수많은 강아지 사료들. 화려…</span></div>
+</a></li>
+<li><a class="row-link" href="/blog/18/" style="--tone:var(--mustard)">
+    <div class="thumb"><img src="/img/hub-food.webp" alt="" width="56" height="56" loading="lazy"></div>
+    <div><b>자연식(화식/생식) 급여 가이드: 필수 영양 성분 비율과 주의점</b><span>내 손으로 직접 차려주는 건강한 밥상, 하지만 독이 될 수도 있습니다 최근 가공된 건사료에서 벗어나 신선한…</span></div>
+</a></li>
+<li><a class="row-link" href="/blog/26/" style="--tone:var(--mustard)">
+    <div class="thumb"><img src="/img/hub-food.webp" alt="" width="56" height="56" loading="lazy"></div>
+    <div><b>반려견 사료 급여량 계산법: 활동량과 기초대사량(RER) 기반 맞춤 정량 구하기</b><span>사료 봉투 뒷면의 기준량, 믿어도 될까요? 초보 보호자들이 가장 흔히 하는 질문 중 하나는 &quot;우리 강아지…</span></div>
+</a></li></ul>
+                </section>
+                <p class="callout callout-note section">일반적인 정보예요. 수의사의 진찰과 진단을 대신하지 않아요. 증상이 심하거나 오래가면 동물병원에서 진료를 받아 주세요.</p>
+            </div>
+</main>
+<footer class="site-footer">
+    <ul>
+        <li><a href="/about">사이트 소개</a></li>
+        <li><a href="/terms">이용약관</a></li>
+        <li><a href="/privacy">개인정보처리방침</a></li>
+        <li><a href="/contact">문의하기</a></li>
+    </ul>
+    <p>&copy; 2026 mung-test.com</p>
+</footer>
+<script>
+    (function () {
+        var input = document.getElementById('food-q'), filters = document.querySelectorAll('[data-filter]'), level = 'all';
+        var items = document.querySelectorAll('.food-item'), groups = document.querySelectorAll('[data-group]'), empty = document.getElementById('food-empty');
+        function run() {
+            var q = input.value.trim().toLowerCase(), shown = 0;
+            items.forEach(function (el) {
+                var ok = (!q || el.dataset.search.indexOf(q) > -1) && (level === 'all' || el.dataset.level === level);
+                el.hidden = !ok; if (ok) shown++;
+            });
+            groups.forEach(function (g) { g.hidden = !g.querySelector('.food-item:not([hidden])'); });
+            empty.hidden = shown > 0;
+        }
+        input.addEventListener('input', run);
+        filters.forEach(function (b) {
+            b.addEventListener('click', function () {
+                level = b.dataset.filter;
+                filters.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+                run();
+            });
+        });
+    })();
+    </script>
+</body>
+</html>

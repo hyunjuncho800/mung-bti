@@ -1,0 +1,194 @@
+/* 멍테스트 공통 스타일: 헤더, 푸터, 본문, 공통 부품.
+   성격 테스트(index.html)와 계산기 페이지는 예전 style.css 위에 이 파일을 덮어씀. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+
+:root {
+    --bg: #F2F4F0;
+    --card: #FFFFFF;
+    --text: #1F2622;
+    --text-muted: #5C665F;
+    --border: #DCE2DB;
+    --primary: #1F7A5A;
+    --primary-dark: #165C44;
+    --primary-light: #DDEFE5;
+    --on-primary: #FFFFFF;
+    --ink: #1F2622;
+    --danger: #C23A2E;
+    --danger-bg: #FDE6E2;
+    /* 유형·주제 색 (다크 모드에서도 그대로, 위 글자는 항상 --ink) */
+    --pink: #FFB8C6;
+    --mustard: #FFCF5C;
+    --sky: #A9D6F5;
+    --green: #BFE3A8;
+    --lav: #D9CCF2;
+    --display: 'Bagel Fat One', 'Pretendard', sans-serif;
+}
+body.dark-mode {
+    --bg: #151A17;
+    --card: #1E2521;
+    --text: #E8EDE9;
+    --text-muted: #A3ADA6;
+    --border: #2D3832;
+    --primary: #278A5F;
+    --primary-dark: #9BE0BC;
+    --primary-light: #1F3229;
+    --danger: #FF8A7D;
+    --danger-bg: #3A1F1C;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.7; letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--primary-dark); }
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+
+/* ---------- 헤더 ---------- */
+.site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--card); border-bottom: 1px solid var(--border);
+    padding: 0; box-shadow: none;
+}
+.site-header .header-inner {
+    max-width: 1080px; margin: 0 auto; padding: 0 20px; height: 64px;
+    display: flex; align-items: center; gap: 28px;
+}
+.site-header .logo {
+    font-family: var(--display); font-weight: 400; font-size: 1.5rem; letter-spacing: 0;
+    color: var(--primary); text-decoration: none; flex: none;
+}
+/* 예전 style.css의 모바일 메뉴 규칙(세로 목록, 숨김)을 덮어쓰기 위해 속성을 모두 명시 */
+.site-nav { display: block; margin: 0; flex: 1; min-width: 0; position: static; width: auto; background: none; border: 0; box-shadow: none; padding: 0; z-index: auto; }
+.site-nav ul { list-style: none; display: flex; flex-direction: row; gap: 4px; margin: 0; padding: 0; justify-content: flex-start; flex-wrap: nowrap; }
+.site-nav li { border: 0; text-align: left; }
+.site-nav a {
+    display: block; padding: 8px 12px; border-radius: 10px; white-space: nowrap; border-bottom: 0;
+    color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.97rem;
+}
+.site-nav a:hover { background: var(--primary-light); color: var(--text); }
+.site-nav a[aria-current="page"] { background: var(--primary-light); color: var(--primary-dark); font-weight: 800; }
+.theme-btn {
+    flex: none; border: 1px solid var(--border); background: var(--card); color: var(--text);
+    border-radius: 99px; padding: 6px 14px; font: inherit; font-size: 0.88rem; font-weight: 700; cursor: pointer;
+}
+
+@media (max-width: 760px) {
+    .site-header .header-inner { height: auto; flex-wrap: wrap; gap: 0; padding: 10px 16px 0; }
+    .site-header .logo { flex: 1; }
+    .site-nav { order: 3; flex-basis: 100%; overflow-x: auto; margin: 8px -16px 0; padding: 0 12px 8px; scrollbar-width: none; }
+    .site-nav::-webkit-scrollbar { display: none; }
+    .site-nav a { padding: 7px 11px; font-size: 0.92rem; }
+}
+
+/* ---------- 푸터 ---------- */
+.site-footer {
+    background: var(--card) !important; border-top: 1px solid var(--border) !important;
+    margin-top: 64px; padding: 32px 20px; text-align: center; color: var(--text-muted);
+}
+.site-footer ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 12px; }
+.site-footer a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+.site-footer a:hover { color: var(--text); text-decoration: underline; }
+.site-footer p { font-size: 0.8rem; }
+
+/* ---------- 레이아웃 ---------- */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.narrow { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+.section { margin-top: 56px; }
+.section-title { font-family: var(--display); font-weight: 400; letter-spacing: 0; font-size: 1.6rem; line-height: 1.25; margin-bottom: 16px; word-break: keep-all; }
+.lead { font-size: 1.08rem; color: var(--text-muted); word-break: keep-all; max-width: 34em; }
+.crumbs { font-size: 0.88rem; margin: 20px 0 0; color: var(--text-muted); }
+.crumbs a { color: var(--text-muted); }
+
+/* 페이지 머리: 색 띠 위에 제목과 그림 */
+.page-hero {
+    --band: var(--green);
+    background: var(--band); color: var(--ink);
+}
+.page-hero .wrap, .page-hero .narrow {
+    display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+    padding-top: 40px; padding-bottom: 40px;
+}
+.page-hero h1 { font-family: var(--display); font-weight: 400; letter-spacing: 0; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.12; word-break: keep-all; }
+.page-hero p { margin-top: 12px; font-size: 1.05rem; max-width: 34em; word-break: keep-all; }
+.page-hero .eyebrow-link { color: var(--ink); font-weight: 700; font-size: 0.9rem; opacity: 0.75; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+.page-hero .eyebrow-link:hover { text-decoration: underline; opacity: 1; }
+.page-hero img { height: 210px; width: auto; max-width: 320px; object-fit: cover; background: #fff; border-radius: 26px; transform: rotate(2deg); box-shadow: 0 10px 24px rgba(31,38,34,0.14); }
+@media (max-width: 640px) {
+    .page-hero .wrap, .page-hero .narrow { grid-template-columns: 1fr; padding-top: 28px; padding-bottom: 24px; }
+    .page-hero img { height: 150px; justify-self: end; margin-top: -8px; }
+}
+
+/* ---------- 글 본문 ---------- */
+.prose { font-size: 1.04rem; line-height: 1.9; word-break: keep-all; }
+.prose > * + * { margin-top: 16px; }
+.prose h1 { font-family: var(--display); font-weight: 400; font-size: 2rem; line-height: 1.2; letter-spacing: 0; }
+.prose h2 { font-size: 1.35rem; line-height: 1.4; margin-top: 40px; font-weight: 800; }
+.prose h3 { font-size: 1.12rem; margin-top: 28px; font-weight: 800; }
+.prose ul, .prose ol { padding-left: 1.3em; }
+.prose li + li { margin-top: 6px; }
+.prose br + br { display: none; }
+
+/* ---------- 공통 부품 ---------- */
+.btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 52px; padding: 0 24px; border-radius: 14px; border: 0; cursor: pointer;
+    background: var(--primary); color: var(--on-primary); font: inherit; font-weight: 800; text-decoration: none;
+}
+.btn:hover { filter: brightness(0.94); }
+.btn-ghost { background: var(--card); color: var(--text); border: 2px solid var(--border); }
+
+.callout { border-radius: 16px; padding: 18px 20px; line-height: 1.8; word-break: keep-all; }
+.callout h2, .callout h3 { font-size: 1.08rem; font-weight: 800; margin: 0 0 6px; }
+.callout-danger { background: var(--danger-bg); border-left: 6px solid var(--danger); }
+.callout-danger h2 { color: var(--danger); }
+.callout-note { background: var(--primary-light); }
+
+.badge { display: inline-block; border-radius: 99px; padding: 3px 12px; font-size: 0.85rem; font-weight: 800; color: var(--ink); white-space: nowrap; }
+.badge-ok { background: var(--green); }
+.badge-warn { background: var(--mustard); }
+.badge-no { background: var(--pink); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+    border: 2px solid var(--border); background: var(--card); color: var(--text);
+    border-radius: 99px; padding: 6px 14px; font: inherit; font-size: 0.92rem; font-weight: 700; cursor: pointer; text-decoration: none;
+}
+.chip:hover { border-color: var(--primary); }
+.chip[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+
+/* 목록 한 줄: 작은 그림 + 제목 + 설명 */
+.rows { list-style: none; }
+.rows > li { border-bottom: 1px solid var(--border); }
+.row-link { display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: center; padding: 16px 0; text-decoration: none; color: var(--text); }
+.row-link .thumb { width: 64px; height: 64px; border-radius: 16px; background: var(--tone, var(--green)); display: grid; place-items: center; overflow: hidden; padding: 4px; }
+.row-link .thumb img { width: 100%; height: 100%; object-fit: cover; background: #fff; border-radius: 12px; }
+.row-link b { display: block; font-size: 1.05rem; line-height: 1.45; }
+.row-link span { display: block; font-size: 0.92rem; color: var(--text-muted); margin-top: 2px; }
+.row-link:hover b { color: var(--primary-dark); text-decoration: underline; }
+.row-link.plain { grid-template-columns: 1fr; padding: 14px 0; }
+
+/* 그림 타일 (견종, 메뉴 소개) */
+.tiles { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.tile { display: block; text-decoration: none; color: var(--ink); background: var(--tone, var(--green)); border-radius: 22px; padding: 16px 18px 18px; }
+.tile img { width: 100%; height: 170px; object-fit: contain; background: #fff; border-radius: 16px; margin-bottom: 10px; }
+.tile b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.3rem; line-height: 1.2; }
+.tile span { display: block; font-size: 0.9rem; margin-top: 4px; }
+.tile:hover { filter: brightness(0.97); }
+
+/* 우리 강아지 맞춤 추천 상자 */
+.my-dog { background: var(--card); border: 2px dashed var(--primary); border-radius: 18px; padding: 18px 20px; }
+.my-dog h2 { font-size: 1.1rem; font-weight: 800; margin-bottom: 6px; }
+.my-dog ul { padding-left: 1.2em; }
+
+/* 테스트로 이어지는 상자 */
+.cta-box { background: var(--mustard); color: var(--ink); border-radius: 22px; padding: 24px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center; }
+.cta-box img { width: 110px; height: 110px; object-fit: contain; }
+.cta-box b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.35rem; line-height: 1.25; margin-bottom: 4px; }
+.cta-box p { margin-bottom: 12px; }
+@media (max-width: 520px) { .cta-box { grid-template-columns: 1fr; } .cta-box img { width: 90px; height: 90px; } }

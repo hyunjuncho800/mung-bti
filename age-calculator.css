@@ -9,10 +9,10 @@
 }
 
 .calc-card {
-    background: var(--card, #ffffff);
+    background: var(--card);
     border-radius: var(--radius, 16px);
     padding: 36px 32px;
-    border: 1px solid var(--border, #e9e4dc);
+    border: 1px solid var(--border);
     box-shadow: var(--shadow-md, 0 8px 24px rgba(0,0,0,0.08));
     margin-bottom: 28px;
     animation: fadeInSlide 0.5s ease;
@@ -26,7 +26,7 @@
 .calc-title {
     font-size: 1.8rem;
     font-weight: 900;
-    color: var(--text, #2c3e50);
+    color: var(--text);
     text-align: center;
     margin-bottom: 12px;
     font-family: 'Noto Sans KR', sans-serif;
@@ -49,7 +49,7 @@
     display: block;
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--text, #2c3e50);
+    color: var(--text);
     margin-bottom: 8px;
 }
 
@@ -57,17 +57,17 @@
     width: 100%;
     padding: 14px 18px;
     font-size: 1rem;
-    border: 2px solid var(--border, #e9e4dc);
+    border: 2px solid var(--border);
     border-radius: 12px;
-    background-color: var(--bg, #faf8f5);
-    color: var(--text, #2c3e50);
+    background-color: var(--bg);
+    color: var(--text);
     transition: all 0.2s ease;
     outline: none;
     font-family: inherit;
 }
 
 .input-group input[type="text"]:focus {
-    border-color: var(--primary, #4a90e2);
+    border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
     background-color: #fff;
 }
@@ -81,10 +81,10 @@
     width: 100%;
     padding: 14px 18px;
     font-size: 1rem;
-    border: 2px solid var(--border, #e9e4dc);
+    border: 2px solid var(--border);
     border-radius: 12px;
-    background-color: var(--bg, #faf8f5);
-    color: var(--text, #2c3e50);
+    background-color: var(--bg);
+    color: var(--text);
     appearance: none;
     -webkit-appearance: none;
     outline: none;
@@ -94,7 +94,7 @@
 }
 
 .select-wrapper select:focus {
-    border-color: var(--primary, #4a90e2);
+    border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
     background-color: #fff;
 }
@@ -125,14 +125,14 @@
     margin-left: 8px;
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--text-muted, #7f8c8d);
+    color: var(--text-muted);
     white-space: nowrap;
 }
 
 /* Calculate Button */
 .btn-calc {
     width: 100%;
-    background: linear-gradient(135deg, var(--accent, #f5a623) 0%, #ff8c00 100%);
+    background: var(--primary);
     color: #fff;
     border: none;
     padding: 18px;
@@ -143,18 +143,18 @@
     transition: all 0.25s ease;
     text-align: center;
     margin-top: 10px;
-    box-shadow: 0 4px 14px rgba(245, 166, 35, 0.35);
+    box-shadow: 0 4px 14px rgba(31, 122, 90, 0.35);
 }
 
 .btn-calc:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(245, 166, 35, 0.5);
+    box-shadow: 0 6px 20px rgba(31, 122, 90, 0.5);
 }
 
 /* ===================== RESULT CARD (Capture Area) ===================== */
 .result-card {
-    background: #fffdf9;
-    border: 2px solid #f3e8d6;
+    background: var(--card);
+    border: 2px solid var(--border);
     border-radius: 20px;
     padding: 40px 30px;
     position: relative;
@@ -165,7 +165,7 @@
 }
 
 .result-card::before {
-    content: '🐾';
+    content: none;
     position: absolute;
     font-size: 140px;
     opacity: 0.03;
@@ -176,8 +176,8 @@
 }
 
 .result-badge {
-    background: var(--bg, #faf8f5);
-    color: #b08d57;
+    background: var(--bg);
+    color: var(--text-muted);
     font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 1.5px;
@@ -185,33 +185,33 @@
     border-radius: 20px;
     display: inline-block;
     margin-bottom: 16px;
-    border: 1px solid #e8decb;
+    border: 1px solid var(--border);
     text-transform: uppercase;
 }
 
 .result-heading {
     font-size: 1.6rem;
     font-weight: 700;
-    color: #4a3f35;
+    color: var(--text);
     line-height: 1.5;
     margin-bottom: 20px;
     word-break: keep-all;
 }
 
 .highlight-name {
-    color: var(--primary, #4a90e2);
+    color: var(--primary);
     font-weight: 900;
 }
 
 .highlight-age {
     font-size: 2.2rem;
-    color: var(--accent, #f5a623);
+    color: var(--primary-dark);
     font-weight: 900;
 }
 
 .stage-tag {
-    background: linear-gradient(135deg, #e8f8ef, #c8f0db);
-    color: var(--green, #27ae60);
+    background: var(--green);
+    color: var(--ink);
     display: inline-block;
     padding: 6px 16px;
     border-radius: 12px;
@@ -221,8 +221,8 @@
 }
 
 .story-box {
-    background: rgba(250, 248, 245, 0.8);
-    border-left: 4px solid #b08d57;
+    background: var(--bg);
+    border-left: 4px solid var(--text-muted);
     padding: 20px 24px;
     border-radius: 0 12px 12px 0;
     margin-bottom: 30px;
@@ -230,7 +230,7 @@
 
 .story-text {
     font-size: 1rem;
-    color: #5c5146;
+    color: var(--text);
     line-height: 1.7;
     text-align: justify;
     word-break: keep-all;
@@ -238,16 +238,16 @@
 
 .quote-box {
     text-align: center;
-    background: #fdfaf6;
+    background: var(--bg);
     padding: 20px;
     border-radius: 12px;
-    border: 1px dashed #deb887;
+    border: 1px dashed var(--border);
     margin-top: 10px;
 }
 
 .quote-box p {
     font-size: 0.9rem;
-    color: #7b6a58;
+    color: var(--text-muted);
     line-height: 1.6;
 }
 
@@ -255,13 +255,13 @@
     display: block;
     margin-top: 10px;
     font-size: 0.95rem;
-    color: #d35400;
+    color: var(--primary-dark);
 }
 
 .result-watermark {
     text-align: center;
     font-size: 0.75rem;
-    color: #cccccc;
+    color: var(--text-muted);
     margin-top: 20px;
     font-family: 'Outfit', sans-serif;
     letter-spacing: 1px;
@@ -269,10 +269,10 @@
 
 /* ===================== SEO ARTICLES ===================== */
 .seo-article {
-    background: var(--card, #ffffff);
+    background: var(--card);
     border-radius: var(--radius, 16px);
     padding: 32px;
-    border: 1px solid var(--border, #e9e4dc);
+    border: 1px solid var(--border);
     margin-bottom: 24px;
     box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.04));
 }
@@ -280,15 +280,15 @@
 .seo-article h2 {
     font-size: 1.25rem;
     font-weight: 800;
-    color: #357abd;
+    color: var(--primary-dark);
     margin-bottom: 16px;
     padding-bottom: 10px;
-    border-bottom: 2px solid var(--bg, #faf8f5);
+    border-bottom: 2px solid var(--bg);
 }
 
 .seo-article p {
     font-size: 0.95rem;
-    color: #4a5568;
+    color: var(--text-muted);
     line-height: 1.8;
     margin-bottom: 14px;
     text-align: justify;
@@ -301,13 +301,13 @@
 
 .seo-article li {
     font-size: 0.95rem;
-    color: #4a5568;
+    color: var(--text-muted);
     line-height: 1.7;
     margin-bottom: 12px;
 }
 
 .seo-article li strong {
-    color: #2c3e50;
+    color: var(--text);
     font-weight: 700;
 }
 

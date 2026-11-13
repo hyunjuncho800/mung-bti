@@ -40,7 +40,7 @@ function checkAndRenderSharedResult() {
             stage = storyInfo.stage;
         }
 
-        document.getElementById('res-stage-tag').textContent = `🐾 ${stage}`;
+        document.getElementById('res-stage-tag').textContent = `${stage}`;
         document.getElementById('res-story-text').textContent = storyInfo.text;
 
         // 결과창 표시
@@ -151,7 +151,7 @@ function calculateAge() {
     // DOM 업데이트
     document.getElementById('res-dog-name').textContent = dogName;
     document.getElementById('res-human-age').textContent = humanAge;
-    document.getElementById('res-stage-tag').textContent = `🐾 ${storyInfo.stage}`;
+    document.getElementById('res-stage-tag').textContent = `${storyInfo.stage}`;
     document.getElementById('res-story-text').textContent = storyInfo.text;
 
     // 결과창 표시 및 스크롤 이동
@@ -253,7 +253,7 @@ function shareKakao() {
         const dogName = document.getElementById('res-dog-name').textContent || '강아지';
         const humanAge = document.getElementById('res-human-age').textContent || '0';
         const currentStageRaw = document.getElementById('res-stage-tag').textContent || '';
-        const currentStage = currentStageRaw.replace('🐾 ', '').trim();
+        const currentStage = currentStageRaw.trim();
         
         // 쿼리 파라미터 조립 (기질 검사처럼 결과값 전송)
         const shareUrl = `https://mung-test.com/age-calculator?name=${encodeURIComponent(dogName)}&humanAge=${humanAge}&stage=${encodeURIComponent(currentStage)}`;
@@ -316,7 +316,7 @@ window.addEventListener('languageChanged', (e) => {
         const dogName = document.getElementById('res-dog-name').textContent;
         if (!isNaN(humanAge) && dogName) {
             const storyInfo = getStoryByAge(humanAge, dogName);
-            document.getElementById('res-stage-tag').textContent = `🐾 ${storyInfo.stage}`;
+            document.getElementById('res-stage-tag').textContent = `${storyInfo.stage}`;
             document.getElementById('res-story-text').textContent = storyInfo.text;
         }
     }
