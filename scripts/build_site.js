@@ -251,28 +251,48 @@ function buildBlog() {
 
 // ---------------------------------------------------------------- 먹어도 돼?
 const VERDICT = {
-    '안전': { cls: 'ok', label: '먹어도 돼요', key: 'ok' },
-    '소량만 급여 가능': { cls: 'warn', label: '조금만 줘요', key: 'warn' },
-    '절대 금지': { cls: 'no', label: '먹이면 안 돼요', key: 'no' },
+    '안전': { cls: 'ok', label: '먹어도 돼요', key: 'ok', tone: 'var(--green)' },
+    '소량만 급여 가능': { cls: 'warn', label: '조금만 줘요', key: 'warn', tone: 'var(--mustard)' },
+    '절대 금지': { cls: 'no', label: '먹이면 안 돼요', key: 'no', tone: 'var(--pink)' },
 };
+// 음식 데이터 + 다시 쓴 설명(content/food_notes) + 상세 페이지 여부(content/food_pages)
+function loadFoods() {
+    const notes = {};
+    const dir = path.join(ROOT, 'content/food_notes');
+    if (fs.existsSync(dir)) {
+        for (const f of fs.readdirSync(dir).filter(n => n.endsWith('.json'))) {
+            for (const n of JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'))) notes[n.id] = n;
+        }
+    }
+    return readJson('food_data.json').map(f => {
+        const n = notes[f.id] || {};
+        const level = n.level || f.safetyLevel;
+        const page = path.join(ROOT, 'content/food_pages', `${f.id}.html`);
+        return { ...f, v: VERDICT[level], desc: n.desc || f.description, how: n.how || '', eaten: n.eaten || '', page: fs.existsSync(page) ? page : null };
+    });
+}
+
 function buildFood() {
-    const foods = readJson('food_data.json');
+    const foods = loadFoods();
     const cats = [...new Set(foods.map(f => f.category))];
     const groups = cats.map(c => `
         <section class="food-group section" data-group>
             <h2 class="section-title">${esc(c)}</h2>
-            <ul class="food-list">${foods.filter(f => f.category === c).map(f => {
-                const v = VERDICT[f.safetyLevel];
-                return `<li id="f-${f.id}" class="food-item" data-level="${v.key}" data-search="${esc((f.name + ' ' + (f.name_en || '') + ' ' + f.category).toLowerCase())}">
-                    <div class="food-head"><h3>${esc(f.name)}</h3><span class="badge badge-${v.cls}">${v.label}</span></div>
-                    <p>${esc(f.description)}</p>
-                </li>`;
-            }).join('')}</ul>
+            <ul class="food-list">${foods.filter(f => f.category === c).map(f => `
+                <li id="f-${f.id}" class="food-item" data-level="${f.v.key}" data-search="${esc((f.name + ' ' + (f.name_en || '') + ' ' + f.category).toLowerCase())}">
+                    <div class="food-head"><h3>${esc(f.name)}</h3><span class="badge badge-${f.v.cls}">${f.v.label}</span></div>
+                    <p>${esc(f.desc)}</p>
+                    ${f.how ? `<p class="food-tip"><b>주는 법</b>${esc(f.how)}</p>` : ''}
+                    ${f.eaten ? `<p class="food-tip food-tip-no"><b>먹었다면</b>${esc(f.eaten)}</p>` : ''}
+                    ${f.page ? `<a class="food-more" href="/food/${f.id}/">${esc(f.name)} 자세히 보기</a>` : ''}
+                </li>`).join('')}</ul>
         </section>`).join('');
-    const popular = ['포도', '초콜릿', '양파', '사과', '바나나', '고구마', '수박', '우유']
-        .map(n => foods.find(f => f.name === n)).filter(Boolean)
-        .map(f => `<a class="chip" href="#f-${f.id}">${esc(f.name)}</a>`).join('');
-    const counts = Object.values(VERDICT).map(v => [v, foods.filter(f => VERDICT[f.safetyLevel].key === v.key).length]);
+    const foodLink = f => (f.page ? `/food/${f.id}/` : `#f-${f.id}`);
+    const popular = ['포도', '초콜릿', '양파', '사과', '바나나', '고구마', '수박', '우유', '계란', '치즈']
+        .map(n => foods.find(f => f.name.startsWith(n))).filter(Boolean)
+        .map(f => `<a class="chip" href="${foodLink(f)}">${esc(f.name)}</a>`).join('');
+    const counts = Object.values(VERDICT).map(v => [v, foods.filter(f => f.v.key === v.key).length]);
+    const detailed = foods.filter(f => f.page);
 
     const style = `<style>
         .food-search { display: grid; gap: 14px; }
@@ -284,6 +304,10 @@ function buildFood() {
         .food-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
         .food-head h3 { font-size: 1.15rem; font-weight: 800; }
         .food-item p { color: var(--text-muted); line-height: 1.75; word-break: keep-all; }
+        .food-item .food-tip { color: var(--text); margin-top: 8px; }
+        .food-tip b { color: var(--primary-dark); margin-right: 8px; }
+        .food-tip-no b { color: var(--danger); }
+        .food-more { display: inline-block; margin-top: 8px; font-weight: 700; }
         .food-empty { padding: 24px 0; }
     </style>`;
     const script = `<script>
@@ -312,9 +336,9 @@ function buildFood() {
 
     write('food/index.html', layout({
         title: '강아지가 먹어도 되는 음식, 안 되는 음식 100가지 | 멍테스트',
-        desc: '포도, 초콜릿, 양파부터 사과, 고구마, 수박까지. 강아지가 먹어도 되는 음식과 먹이면 안 되는 음식 100가지를 검색해 보세요.',
+        desc: '포도, 초콜릿, 양파부터 사과, 고구마, 수박까지. 강아지가 먹어도 되는 음식과 먹이면 안 되는 음식 100가지, 주는 법과 먹었을 때 할 일을 정리했어요.',
         url: '/food/', section: 'food', extraHead: style, extraBody: script,
-        body: hero({ tone: 'var(--mustard)', title: '강아지가 먹어도 되는 음식', text: '음식 이름을 검색하면 강아지에게 줘도 되는지 바로 알려드려요. 과일, 채소, 고기, 가공식품 100가지를 정리했어요.', image: img('hub-food', '음식 냄새를 맡는 강아지 그림').replace(' loading="lazy"', '') }) +
+        body: hero({ tone: 'var(--mustard)', title: '강아지가 먹어도 되는 음식', text: '음식 이름을 검색하면 강아지에게 줘도 되는지, 어떻게 주면 되는지, 먹었을 때 무엇을 해야 하는지 알려드려요. 과일, 채소, 고기, 가공식품 100가지를 정리했어요.', image: img('hub-food', '음식 냄새를 맡는 강아지 그림').replace(' loading="lazy"', '') }) +
             `<div class="narrow">
                 <div class="food-search section">
                     <label for="food-q" class="section-title" style="margin:0">어떤 음식이 궁금해요?</label>
@@ -329,6 +353,10 @@ function buildFood() {
                     <h2>먹이면 안 되는 음식을 먹었다면</h2>
                     <p>먹은 음식과 양, 먹은 시간을 적어 두고 바로 동물병원에 전화하세요. 수의사가 시키지 않았다면 억지로 토하게 하지 마세요. 증상이 늦게 나타나는 음식도 있어서, 지금 괜찮아 보여도 상담을 받는 게 안전해요.</p>
                 </section>
+                <section class="section">
+                    <h2 class="section-title">자세히 정리한 음식</h2>
+                    <ul class="rows">${detailed.map(f => row(`/food/${f.id}/`, f.name, f.v.label, '', f.v.tone)).join('')}</ul>
+                </section>
                 <p id="food-empty" class="food-empty section" hidden>아직 정리하지 못한 음식이에요. 확실하지 않으면 먹이지 말고 동물병원에 물어보세요.</p>
                 ${groups}
                 <section class="section">
@@ -338,8 +366,37 @@ function buildFood() {
                 ${DISCLAIMER}
             </div>`,
     }));
-    // 내용이 짧은 음식별 페이지는 목록 안의 해당 음식으로 보냄
-    for (const f of foods) redirect(`food/${f.id}/index.html`, `/food/#f-${f.id}`);
+
+    // 많이 찾는 음식은 상세 페이지, 나머지는 목록 안의 해당 음식으로 보냄
+    const detailStyle = `<style>
+        .prose .answer { font-size: 1.12rem; font-weight: 800; background: var(--card); border: 2px solid var(--border); border-radius: 16px; padding: 16px 18px; }
+        .page-hero .badge { font-size: 0.95rem; padding: 5px 14px; background: #fff; }
+    </style>`;
+    for (const f of foods) {
+        if (!f.page) { redirect(`food/${f.id}/index.html`, `/food/#f-${f.id}`); continue; }
+        const src = fs.readFileSync(f.page, 'utf8');
+        const title = meta(src, 'title') || `강아지 ${f.name} 먹어도 될까요`;
+        const body = src.replace(/^(<!--.*?-->\n)+/, '').trim();
+        const answer = plain((body.match(/<p class="answer">([\s\S]*?)<\/p>/) || ['', ''])[1]);
+        const others = [...detailed.filter(o => o.id !== f.id && o.v.key === f.v.key), ...detailed.filter(o => o.v.key !== f.v.key)].slice(0, 5);
+        write(`food/${f.id}/index.html`, layout({
+            title: `${title} | 멍테스트`,
+            desc: cut(`${answer} ${f.desc}`, 155),
+            url: `/food/${f.id}/`, section: 'food', extraHead: detailStyle,
+            ld: { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [{ '@type': 'Question', name: `강아지가 ${f.name}${/[가-힣]$/.test(f.name) && (f.name.charCodeAt(f.name.length - 1) - 0xAC00) % 28 ? '을' : '를'} 먹어도 되나요?`, acceptedAnswer: { '@type': 'Answer', text: `${answer} ${f.desc}` } }] },
+            body: hero({ tone: f.v.tone, width: 'narrow', eyebrow: `<a class="eyebrow-link" href="/food/">먹어도 돼? / ${esc(f.category)}</a>`, title: esc(title), text: `<span class="badge badge-${f.v.cls}">${f.v.label}</span>`, image: img('hub-food', '').replace(' loading="lazy"', '') }) +
+                `<div class="narrow">
+                    <article class="prose section">${body}</article>
+                    ${DISCLAIMER}
+                    <section class="section">
+                        <h2 class="section-title">다른 음식도 확인해 보세요</h2>
+                        <ul class="rows">${others.map(o => row(`/food/${o.id}/`, o.name, o.v.label, '', o.v.tone)).join('')}</ul>
+                        <p style="margin-top:16px"><a class="btn btn-ghost" href="/food/">음식 100가지 전체 보기</a></p>
+                    </section>
+                    ${TEST_CTA}
+                </div>`,
+        }));
+    }
     redirect('food-guide.html', '/food/');
 }
 
