@@ -462,41 +462,85 @@ function buildHealth() {
 }
 
 // ---------------------------------------------------------------- 견종
+// 원본: content/breeds/N.html (머리 주석에 기본 정보, 아래는 본문)
+const FACTS = [['size', '크기'], ['weight', '몸무게'], ['life', '평균 수명'], ['shed', '털 빠짐'], ['energy', '활동량'], ['bark', '짖음'], ['alone', '혼자 있기']];
+function loadBreeds() {
+    const dir = path.join(ROOT, 'content/breeds');
+    return fs.readdirSync(dir).filter(n => /^\d+\.html$/.test(n))
+        .map(n => {
+            const src = fs.readFileSync(path.join(dir, n), 'utf8');
+            const b = { id: Number(n.replace('.html', '')), body: src.replace(/^(<!--.*?-->\n)+/, '').trim() };
+            for (const k of ['nameKo', 'nameEn', 'summary', ...FACTS.map(f => f[0])]) b[k] = meta(src, k);
+            return b;
+        })
+        .sort((a, b) => a.id - b.id);
+}
+
 function buildBreeds() {
-    const breeds = readJson('breeds_data.json');
+    const breeds = loadBreeds();
+    const sizes = ['소형', '중형', '대형'];
+    const tone = b => TONES[(b.id - 1) % TONES.length];
+    const listStyle = `<style>
+        .tile .tile-meta { font-size: 0.85rem; opacity: 0.8; margin-top: 2px; }
+    </style>`;
+    const listScript = `<script>
+    (function () {
+        var chips = document.querySelectorAll('[data-size]'), tiles = document.querySelectorAll('[data-breed-size]');
+        chips.forEach(function (c) {
+            c.addEventListener('click', function () {
+                var s = c.dataset.size;
+                chips.forEach(function (o) { o.setAttribute('aria-pressed', String(o === c)); });
+                tiles.forEach(function (t) { t.hidden = s !== 'all' && t.dataset.breedSize !== s; });
+            });
+        });
+    })();
+    </script>`;
     write('breeds/index.html', layout({
-        title: '견종 백과: 말티즈, 푸들, 포메라니안 성격과 건강 | 멍테스트',
-        desc: '말티즈, 푸들, 포메라니안, 비숑, 웰시코기, 진돗개 등 우리나라에서 많이 키우는 견종의 성격, 건강 주의점, 옷과 털 관리법.',
-        url: '/breeds/', section: 'breeds',
-        body: hero({ tone: 'var(--green)', title: '견종 백과', text: '우리나라에서 많이 키우는 견종의 성격 경향, 건강하게 키우는 법, 옷과 털 관리법을 정리했어요.', image: img('hub-breeds', '여러 견종 강아지 그림', 480, 320).replace(' loading="lazy"', '') }) +
-            `<div class="wrap section"><ul class="tiles">${breeds.map((b, i) => `<li><a class="tile" href="/breeds/${b.id}/" style="--tone:${TONES[i % TONES.length]}">
-                ${img(`breed-${b.id}`, `${b.breedNameKo} 그림`)}
-                <b>${esc(b.breedNameKo)}</b><span>${esc(b.breedNameEn)}</span></a></li>`).join('')}</ul></div>`,
+        title: '견종 백과: 말티즈, 푸들, 포메라니안 등 인기 견종 20가지 성격과 건강 | 멍테스트',
+        desc: '말티즈, 푸들, 포메라니안, 비숑, 웰시코기, 진돗개, 시바견, 비글 등 우리나라에서 많이 키우는 견종 20가지의 성격, 크기, 털 빠짐, 운동량, 건강 주의점을 정리했어요.',
+        url: '/breeds/', section: 'breeds', extraHead: listStyle, extraBody: listScript,
+        body: hero({ tone: 'var(--green)', title: '견종 백과', text: '우리나라에서 많이 키우는 견종 20가지의 성격, 크기, 털 빠짐, 운동량, 건강하게 키우는 법을 정리했어요. 같은 견종이라도 강아지마다 차이가 크다는 점도 함께 기억해 주세요.', image: img('hub-breeds', '여러 견종 강아지 그림', 480, 320).replace(' loading="lazy"', '') }) +
+            `<div class="wrap section">
+                <div class="chips" role="group" aria-label="크기로 거르기" style="margin-bottom:20px">
+                    <button type="button" class="chip" data-size="all" aria-pressed="true">전체 ${breeds.length}</button>
+                    ${sizes.map(s => `<button type="button" class="chip" data-size="${s}" aria-pressed="false">${s}견 ${breeds.filter(b => b.size === s).length}</button>`).join('')}
+                </div>
+                <ul class="tiles">${breeds.map(b => `<li data-breed-size="${esc(b.size)}"><a class="tile" href="/breeds/${b.id}/" style="--tone:${tone(b)}">
+                    ${img(`breed-${b.id}`, `${b.nameKo} 그림`)}
+                    <b>${esc(b.nameKo)}</b><span>${esc(b.nameEn)}</span><span class="tile-meta">${esc(b.size)}견, ${esc(b.weight.split(' (')[0])}</span></a></li>`).join('')}</ul>
+            </div>`,
     }));
-    breeds.forEach((b, i) => {
-        const tone = TONES[i % TONES.length];
-        const others = breeds.filter(o => o.id !== b.id).slice(0, 4);
+
+    const detailStyle = `<style>
+        .facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+        .facts div { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; }
+        .facts dt { font-size: 0.85rem; color: var(--text-muted); }
+        .facts dd { font-weight: 800; word-break: keep-all; }
+        .facts-note { font-size: 0.88rem; color: var(--text-muted); margin-top: 8px; }
+    </style>`;
+    for (const b of breeds) {
+        const others = [...breeds.filter(o => o.id !== b.id && o.size === b.size), ...breeds.filter(o => o.size !== b.size)].slice(0, 5);
         write(`breeds/${b.id}/index.html`, layout({
-            title: `${b.breedNameKo} 성격, 건강, 털 관리 (${b.breedNameEn}) | 멍테스트`,
-            desc: cut(`${b.breedNameKo}(${b.breedNameEn}) 성격과 건강 주의점, 옷과 털 관리법. ${firstSentence(b.ko.personality)}`, 155),
-            url: `/breeds/${b.id}/`, section: 'breeds', image: '/og-image.png',
-            body: hero({ tone, width: 'narrow', eyebrow: '<a class="eyebrow-link" href="/breeds/">견종 백과</a>', title: esc(b.breedNameKo), text: esc(firstSentence(b.ko.personality)), image: img(`breed-${b.id}`, `${b.breedNameKo} 그림`).replace(' loading="lazy"', '') }) +
+            title: `${b.nameKo} 성격, 크기, 털 빠짐, 건강 관리 (${b.nameEn}) | 멍테스트`,
+            desc: cut(`${b.nameKo}(${b.nameEn}) ${b.summary} 몸무게 ${b.weight}, 평균 수명 ${b.life}. 성격, 잘 맞는 집, 운동량, 건강 주의점, 털 관리를 정리했어요.`, 155),
+            url: `/breeds/${b.id}/`, section: 'breeds', extraHead: detailStyle,
+            body: hero({ tone: tone(b), width: 'narrow', eyebrow: `<a class="eyebrow-link" href="/breeds/">견종 백과 / ${esc(b.size)}견</a>`, title: esc(b.nameKo), text: esc(b.summary), image: img(`breed-${b.id}`, `${b.nameKo} 그림`).replace(' loading="lazy"', '') }) +
                 `<div class="narrow">
-                    <article class="prose section">
-                        <h2>성격</h2>${toParagraphs(b.ko.personality)}
-                        <h2>건강하게 키우려면</h2>${toParagraphs(b.ko.health)}
-                        <h2>옷과 털 관리</h2>${toParagraphs(b.ko.clothing)}
-                        <h2>어디서 왔나요</h2>${toParagraphs(b.ko.history)}
-                    </article>
-                    <p class="callout callout-note section">옷을 고를 때는 <a href="/size-calculator">옷 사이즈 계산기</a>로 치수를 먼저 확인해 보세요.</p>
+                    <section class="section" aria-labelledby="facts-title">
+                        <h2 class="section-title" id="facts-title">한눈에 보기</h2>
+                        <dl class="facts">${FACTS.map(([k, label]) => `<div><dt>${label}</dt><dd>${esc(k === 'size' ? b[k] + '견' : b[k])}</dd></div>`).join('')}</dl>
+                        <p class="facts-note">일반적인 경향이에요. 같은 견종이라도 강아지마다 차이가 커요.</p>
+                    </section>
+                    <article class="prose section">${b.body}</article>
+                    <p class="callout callout-note section">옷을 고를 때는 <a href="/size-calculator">옷 사이즈 계산기</a>로 치수를 먼저 확인해 보세요. 나이에 맞는 관리가 궁금하다면 <a href="/age-calculator">나이 계산기</a>로 사람 나이를 확인해 보세요.</p>
                     ${TEST_CTA}
                     <section class="section">
                         <h2 class="section-title">다른 견종</h2>
-                        <ul class="rows">${others.map((o, j) => row(`/breeds/${o.id}/`, o.breedNameKo, o.breedNameEn, img(`breed-${o.id}`, '', 56, 56), TONES[(j + 1) % TONES.length])).join('')}</ul>
+                        <ul class="rows">${others.map(o => row(`/breeds/${o.id}/`, o.nameKo, `${o.size}견, ${o.summary}`, img(`breed-${o.id}`, '', 56, 56), tone(o))).join('')}</ul>
                     </section>
                 </div>`,
         }));
-    });
+    }
 }
 
 // ---------------------------------------------------------------- 계산기, 안내 페이지
