@@ -184,6 +184,14 @@ for (const p of readJson('blog_data.json')) {
 for (const t of readJson('travel_data.json')) {
     posts.push({ id: 30 + Number(t.id), title: t.titleKo, topic: 'walk', html: toParagraphs(t.ko.content), image: `travel-${t.id}` });
 }
+// 다시 쓴 글(content/posts/N.html)이 있으면 원래 데이터 대신 사용
+for (const p of posts) {
+    const file = path.join(ROOT, 'content/posts', `${p.id}.html`);
+    if (!fs.existsSync(file)) continue;
+    const src = fs.readFileSync(file, 'utf8');
+    p.title = meta(src, 'title') || p.title;
+    p.html = src.replace(/^(<!--.*?-->\n)+/, '').trim();
+}
 posts.forEach(p => { p.desc = cut(plain(p.html), 150); p.url = `/blog/${p.id}/`; });
 const postById = Object.fromEntries(posts.map(p => [p.id, p]));
 
