@@ -443,7 +443,8 @@ function buildTools() {
     const tools = { 'age-calculator': 'health', 'size-calculator': 'blog' };
     for (const [name, section] of Object.entries(tools)) {
         const src = fs.readFileSync(path.join(ROOT, 'content/tools', `${name}.html`), 'utf8');
-        const body = src.replace(/^(<!--.*?-->\n)+/, '');
+        // 계산기 원본에 있던 <main>은 레이아웃의 <main>과 겹치므로 <div>로 바꿈
+        const body = src.replace(/^(<!--.*?-->\n)+/, '').replace(/<main\b/g, '<div').replace(/<\/main>/g, '</div>');
         const css = meta(src, 'css').split(/\s+/).filter(Boolean).map(c => `<link rel="stylesheet" href="/${c}">`).join('\n    ');
         const scripts = meta(src, 'scripts').split(/\s+/).filter(Boolean)
             .map(s => `<script src="${/^https?:/.test(s) ? s : '/' + s}"></script>`).join('\n');

@@ -1,3 +1,7 @@
+# 애드센스 광고 크롤러는 공유된 결과 페이지(?e=...)까지 볼 수 있게 허용
+User-agent: Mediapartners-Google
+Allow: /
+
 User-agent: *
 Allow: /
 Disallow: /*?*
