@@ -25,7 +25,7 @@ let foodData = [];
 let breedsData = [];
 
 try {
-    const blogRaw = fs.readFileSync(path.join(rootDir, 'blog_data_merged.json'), 'utf-8');
+    const blogRaw = fs.readFileSync(path.join(rootDir, 'blog_data.json'), 'utf-8');
     blogData = JSON.parse(blogRaw);
 } catch (e) {
     console.error('Error loading blog data:', e);
