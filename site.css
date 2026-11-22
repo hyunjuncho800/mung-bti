@@ -265,3 +265,48 @@ a { color: var(--primary-dark); }
     .site-nav.at-end { -webkit-mask-image: none; mask-image: none; }
     .site-nav a { min-height: 44px; }
 }
+
+/* ---------- 멍설명서 · 멍궁합 ---------- */
+.man-steps { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+.man-steps::-webkit-scrollbar { display: none; }
+.man-steps a { flex: none; min-height: 40px; display: flex; align-items: center; padding: 0 12px; border-radius: 99px; background: var(--primary-light); color: var(--primary-dark); font-weight: 700; font-size: 0.88rem; text-decoration: none; }
+.man-step { border-top: 1px solid var(--border); padding-top: 18px; scroll-margin-top: 80px; }
+.man-step > * + * { margin-top: 12px; }
+.man-step h2 { font-size: 1.2rem; font-weight: 800; }
+.man-sub { font-size: 0.95rem; font-weight: 800; }
+.man-field { display: grid; gap: 6px; }
+.man-field label { font-weight: 700; display: flex; justify-content: space-between; gap: 8px; }
+.man-count { font-weight: 600; font-size: 0.85rem; color: var(--text-muted); }
+.man-field input, .man-field textarea { font: inherit; padding: 12px 14px; min-height: 48px; border-radius: 12px; border: 2px solid var(--border); background: var(--card); color: var(--text); width: 100%; resize: vertical; }
+.man-field input:focus, .man-field textarea:focus { outline: none; border-color: var(--primary); }
+.man-photo { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: start; }
+.man-photo label.btn { cursor: pointer; }
+.man-photo .btn { margin: 0 8px 8px 0; }
+.man-thumb img { width: 96px; height: 96px; object-fit: cover; border-radius: 18px; background: #fff; border: 1px solid var(--border); }
+.man-preview { background: var(--bg); border-radius: 16px; padding: 12px; display: grid; place-items: center; min-height: 200px; }
+.man-preview canvas { width: 100%; max-width: 420px; height: auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(31,38,34,0.15); }
+.man-check { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; padding: 10px 0; cursor: pointer; min-height: 44px; }
+.man-check input { width: 22px; height: 22px; margin-top: 2px; accent-color: var(--primary); }
+.man-check b { display: block; }
+.man-check small { display: block; color: var(--text-muted); font-size: 0.86rem; word-break: keep-all; }
+.man-doc { display: grid; gap: 14px; }
+.man-type { font-size: 1.05rem; }
+.man-sec h3 { font-size: 1.02rem; font-weight: 800; margin-bottom: 6px; }
+.man-sec ul { list-style: none; display: grid; gap: 8px; }
+.man-sec li { word-break: keep-all; line-height: 1.7; }
+.src { display: inline-block; font-size: 0.75rem; font-weight: 800; border-radius: 99px; padding: 1px 8px; margin-right: 6px; vertical-align: 1px; color: var(--ink); }
+.src-test { background: var(--sky); }
+.src-owner { background: var(--mustard); }
+.src-general { background: var(--border); color: var(--text); }
+.man-linkinfo ul { padding-left: 1.2em; margin-top: 4px; font-size: 0.92rem; word-break: keep-all; }
+.man-share { display: grid; gap: 10px; }
+.man-shared-head { display: flex; gap: 14px; align-items: center; }
+.man-shared-head img { width: 80px; height: 80px; object-fit: contain; background: #fff; border-radius: 18px; flex: none; }
+.match-modes { display: grid; gap: 10px; }
+.next-card { display: block; width: 100%; text-align: left; padding: 16px 18px; min-height: 64px; border: 0; border-radius: 16px; background: var(--tone); color: var(--ink); font: inherit; text-decoration: none; cursor: pointer; word-break: keep-all; }
+.next-card b { display: block; font-size: 1.05rem; }
+.next-card span { display: block; font-size: 0.9rem; margin-top: 2px; }
+.match-nick { font-family: var(--display); font-weight: 400; font-size: 1.8rem; letter-spacing: 0; }
+.match-info { background: var(--bg); border-radius: 14px; padding: 12px 14px; }
+.match-info ul, .check-panel .man-sec ul { padding-left: 0; }
+.match-info li::before, .check-panel .man-sec li::before { content: ''; }

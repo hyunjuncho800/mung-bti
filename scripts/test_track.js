@@ -32,10 +32,14 @@ eq(clean('behavior_check_complete', { check: 'barking', result: 'fear', causes: 
 const siteSrc = fs.readFileSync(path.join(ROOT, 'site.js'), 'utf8');
 const spec = {};
 for (const m of siteSrc.matchAll(/^\s{8}(\w+): \{([^}]*)\},?$/gm)) spec[m[1]] = [...m[2].matchAll(/(\w+):/g)].map(x => x[1]);
-const required = ['behavior_check_view', 'behavior_check_start', 'behavior_check_complete', 'temperament_test_start', 'temperament_test_complete', 'routine_start', 'routine_day_complete', 'result_share', 'shared_link_visit'];
-eq(Object.keys(spec).sort(), required.slice().sort(), '요청된 이벤트 9개가 모두 정의됨');
+const required = ['behavior_check_view', 'behavior_check_start', 'behavior_check_complete', 'temperament_test_start', 'temperament_test_complete', 'routine_start', 'routine_day_complete', 'result_share', 'shared_link_visit',
+    'guide_view', 'guide_generate', 'guide_edit', 'guide_image_download', 'guide_share_click', 'guide_public_link_create', 'guide_public_link_visit',
+    'match_start', 'match_complete', 'match_share_click', 'match_invite_create', 'match_invite_visit', 'match_invite_accept', 'match_invite_complete',
+    'shared_visitor_test_start', 'shared_visitor_test_complete'];
+eq(Object.keys(spec).sort(), required.slice().sort(), `요청된 이벤트 ${required.length}개가 모두 정의됨`);
 const used = new Set();
-for (const f of ['script.js', 'check.js', 'routine.js']) {
+for (const f of ['script.js', 'check.js', 'routine.js', 'manual.js', 'match.js']) {
+    if (!fs.existsSync(path.join(ROOT, f))) continue;
     const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
     for (const m of src.matchAll(/track\('(\w+)'(?:, \{([^}]*)\})?\)/g)) {
         used.add(m[1]);
@@ -43,7 +47,7 @@ for (const f of ['script.js', 'check.js', 'routine.js']) {
         for (const k of [...(m[2] || '').matchAll(/(\w+):/g)].map(x => x[1])) ok(spec[m[1]].includes(k), `${f}: ${m[1]}에 허용 안 된 항목 ${k}`);
     }
 }
-eq([...used].sort(), required.slice().sort(), '9개 이벤트가 모두 코드에서 쓰임');
+eq(required.filter(e => !used.has(e)), [], '정의한 이벤트가 모두 코드에서 쓰임');
 
 // 3) 기질검사를 이름·MBTI 넣고 끝까지 했을 때 실제로 나가는 값
 const sent = [];

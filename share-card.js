@@ -139,6 +139,110 @@
         });
     }
 
+    // ---------------------------------------------------------------- 멍설명서·멍궁합 카드
+    // d: { format: feed|story|og, theme: pastel|minimal|character, type, name, headline, sub, photo(Image|null), blocks:[{title, items:[...]}], footer }
+    // 규격마다 안전 여백 안에만 글자를 둔다. 스토리는 인스타 위·아래 UI(약 250px, 300px)를 피한다.
+    var FORMATS = {
+        feed: { w: 1080, h: 1350, pad: 90, brandY: 112, photo: [340, 160, 400, 400], nameY: 670, headY: 742, subY: 796, blockY: 860, blockEnd: 1215, footY: 1290 },
+        story: { w: 1080, h: 1920, pad: 100, brandY: 300, photo: [300, 360, 480, 480], nameY: 960, headY: 1040, subY: 1098, blockY: 1170, blockEnd: 1570, footY: 1640 },
+        og: { w: 1200, h: 630, pad: 60, og: true },
+    };
+    // 한 줄 넘치면 말줄임
+    function fitLine(ctx, s, maxW) {
+        if (ctx.measureText(s).width <= maxW) return s;
+        while (s.length > 1 && ctx.measureText(s + '…').width > maxW) s = s.slice(0, -1);
+        return s + '…';
+    }
+    function drawPhoto(ctx, im, x, y, w, h, round, ring) {
+        ctx.save();
+        if (ring) { ctx.fillStyle = '#FFFFFF'; rr(ctx, x - 14, y - 14, w + 28, h + 28, round + 14); ctx.fill(); }
+        rr(ctx, x, y, w, h, round); ctx.clip();
+        ctx.fillStyle = '#FFFFFF'; ctx.fillRect(x, y, w, h);
+        if (im) {
+            var iw = im.naturalWidth || im.width, ih = im.naturalHeight || im.height;
+            if (im.__illustration) { contain(ctx, im, x + 20, y + 20, w - 40, h - 40); }
+            else { var k = Math.max(w / iw, h / ih); ctx.drawImage(im, x + (w - iw * k) / 2, y + (h - ih * k) / 2, iw * k, ih * k); } // 사진은 꽉 채워 자름
+        }
+        ctx.restore();
+    }
+    // 블록(제목 + 항목) 그리기. 영역을 넘기면 남은 항목은 그리지 않는다.
+    function drawBlocks(ctx, blocks, x, y, maxW, yEnd, sizes) {
+        ctx.textAlign = 'left'; // 앞에서 가운데 정렬로 그린 글이 있어도 항목은 왼쪽 정렬
+        for (var b = 0; b < blocks.length; b++) {
+            var bl = blocks[b];
+            if (bl.title) {
+                if (y + sizes.title > yEnd) return;
+                ctx.font = '800 ' + sizes.title + 'px ' + BODY; ctx.textAlign = 'left';
+                ctx.fillText(fitLine(ctx, bl.title, maxW), x, y + sizes.title); y += sizes.title + 14;
+            }
+            for (var i = 0; i < bl.items.length; i++) {
+                ctx.font = '600 ' + sizes.item + 'px ' + BODY;
+                var lines = wrap(ctx, bl.items[i], maxW - 34);
+                if (lines.length > 2) { lines = lines.slice(0, 2); lines[1] = fitLine(ctx, lines[1] + '…', maxW - 34); }
+                if (y + sizes.item * 1.35 * lines.length > yEnd) return;
+                ctx.beginPath(); ctx.arc(x + 9, y + sizes.item * 0.62, 7, 0, Math.PI * 2); ctx.fill();
+                lines.forEach(function (l) { ctx.fillText(l, x + 34, y + sizes.item); y += sizes.item * 1.35; });
+                y += 8;
+            }
+            y += 18;
+        }
+    }
+    function profile(d) {
+        var f = FORMATS[d.format] || FORMATS.feed;
+        var tone = TONE[d.type] || TONE[2];
+        var sample = JSON.stringify(d.blocks) + d.name + d.headline + d.sub + 'MUNG TEST 멍테스트' + (d.footer || '');
+        return Promise.all([fontsReady(sample), d.photo ? Promise.resolve(d.photo) : loadImg('/img/type-' + d.type + '.webp').then(function (im) { if (im) im.__illustration = true; return im; })]).then(function (r) {
+            var im = r[1];
+            var bg = d.theme === 'minimal' ? '#FFFFFF' : tone;
+            var k = canvas(f.w, f.h, bg), ctx = k.c.getContext('2d');
+            ctx.fillStyle = INK;
+            if (d.theme === 'minimal') {
+                ctx.strokeStyle = INK; ctx.lineWidth = 4; rr(ctx, 36, 36, f.w - 72, f.h - 72, 36); ctx.stroke();
+                ctx.fillStyle = tone; ctx.fillRect(36 + 36, 36, f.w - 144, 14); ctx.fillStyle = INK;
+            } else if (d.theme === 'character') {
+                ctx.fillStyle = 'rgba(255,255,255,0.35)';
+                [[0.12, 0.08, 0.16], [0.9, 0.2, 0.12], [0.08, 0.9, 0.2], [0.92, 0.82, 0.14]].forEach(function (c) { ctx.beginPath(); ctx.arc(f.w * c[0], f.h * c[1], f.w * c[2], 0, Math.PI * 2); ctx.fill(); });
+                ctx.fillStyle = INK;
+            }
+            var brand = function (x, y, align) {
+                ctx.globalAlpha = 0.8; text(ctx, 'MUNG TEST · 멍테스트', x, y, '800 30px ' + BODY, align); ctx.globalAlpha = 1;
+            };
+            var foot = function (x, y, align) { ctx.globalAlpha = 0.7; text(ctx, d.footer || 'mung-test.com', x, y, '700 28px ' + BODY, align); ctx.globalAlpha = 1; };
+            var nameFont = function (max) {
+                var size = max; ctx.font = size + 'px ' + DISPLAY;
+                while (ctx.measureText(d.name).width > (f.og ? 520 : f.w - f.pad * 2) && size > 40) { size -= 4; ctx.font = size + 'px ' + DISPLAY; }
+                return size + 'px ' + DISPLAY;
+            };
+            if (f.og) {
+                // 미리보기: 왼쪽 사진/그림, 오른쪽 글
+                drawPhoto(ctx, im, 70, 70, 470, 470, d.theme === 'character' ? 235 : 40, d.theme !== 'minimal');
+                ctx.fillStyle = INK;
+                brand(620, 120, 'left');
+                text(ctx, d.name, 620, 225, nameFont(72), 'left');
+                ctx.font = '800 36px ' + BODY; text(ctx, fitLine(ctx, d.headline, 520), 620, 290, '800 36px ' + BODY, 'left');
+                var items = [];
+                d.blocks.forEach(function (b) { items = items.concat(b.items); });
+                drawBlocks(ctx, [{ items: items.slice(0, 3) }], 620, 330, 520, 540, { title: 30, item: 28 });
+                foot(620, 585, 'left');
+                return k.c;
+            }
+            brand(f.w / 2, f.brandY, 'center');
+            var p = f.photo;
+            if (d.theme === 'character') drawPhoto(ctx, im, p[0], p[1], p[2], p[3], p[2] / 2, true);
+            else drawPhoto(ctx, im, p[0], p[1], p[2], p[3], 44, d.theme === 'pastel');
+            ctx.fillStyle = INK;
+            text(ctx, d.name, f.w / 2, f.nameY, nameFont(d.theme === 'character' ? 92 : 84), 'center');
+            ctx.font = '800 40px ' + BODY; text(ctx, fitLine(ctx, d.headline, f.w - f.pad * 2), f.w / 2, f.headY, '800 40px ' + BODY, 'center');
+            if (d.sub) { ctx.font = '600 32px ' + BODY; text(ctx, fitLine(ctx, d.sub, f.w - f.pad * 2), f.w / 2, f.subY, '600 32px ' + BODY, 'center'); }
+            // 블록 영역: 파스텔·캐릭터는 흰 판 위에
+            var bx = f.pad, bw = f.w - f.pad * 2;
+            if (d.theme !== 'minimal') { ctx.fillStyle = '#FFFFFF'; rr(ctx, bx - 30, f.blockY - 24, bw + 60, f.blockEnd - f.blockY + 40, 36); ctx.fill(); ctx.fillStyle = INK; }
+            drawBlocks(ctx, d.blocks, bx, f.blockY, bw, f.blockEnd, { title: 32, item: 32 });
+            foot(f.w / 2, f.footY, 'center');
+            return k.c;
+        });
+    }
+
     // 모바일은 공유 시트(인스타, 카톡 등으로 바로), 아니면 파일로 저장
     function deliver(c, fileName, shareText) {
         return new Promise(function (done) {
@@ -161,5 +265,5 @@
         });
     }
 
-    window.MungCard = { temperament: temperament, check: check, og: og, deliver: deliver };
+    window.MungCard = { temperament: temperament, check: check, og: og, profile: profile, deliver: deliver };
 })();

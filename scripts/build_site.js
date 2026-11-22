@@ -20,6 +20,8 @@ const sitemap = [];
 // ---------------------------------------------------------------- 레이아웃
 const NAV = [
     ['/', '성격 테스트', 'test'],
+    ['/manual/', '멍설명서', 'manual'],
+    ['/match/', '멍궁합', 'match'],
     ['/check/', '멍고민', 'check'],
     ['/food/', '먹어도 돼?', 'food'],
     ['/health/', '건강', 'health'],
@@ -700,6 +702,80 @@ function buildRoutine() {
     }));
 }
 
+// ---------------------------------------------------------------- 멍설명서 · 멍궁합
+// 화면은 브라우저에서 그린다(manual.js, match.js). 여기서는 페이지 틀, 검색엔진용 소개, 공유 미리보기 페이지를 만든다.
+// 공유 페이지(/manual/s/, /match/s/, /match/invite/)는 검색에 안 나오게 하고, 미리보기 봇이 읽을 og 정보만 둔다.
+const KAKAO_SDK = '<script src="https://developers.kakao.com/sdk/js/kakao.min.js" defer></script>';
+const appScripts = names => KAKAO_SDK + '\n' + names.map(n => `<script src="/${n}.js?v=${TODAY}"></script>`).join('\n');
+const appShell = (attr, intro) => `
+    <div class="check-app section" ${attr}>
+        <div class="check-panel" data-panel tabindex="-1">${intro}
+            <noscript><p class="check-note">이 화면은 자바스크립트를 켜야 동작해요.</p></noscript>
+        </div>
+    </div>`;
+function sharePage(rel, { title, desc, image, h1, attr, scripts, tone }) {
+    write(rel, layout({
+        title, desc, url: '/' + rel.replace(/index\.html$/, ''), section: '', noindex: true, image, extraBody: appScripts(scripts),
+        body: hero({ tone, width: 'narrow', title: esc(h1) }) + `<div class="narrow">${appShell(attr, '<p>불러오는 중이에요...</p>')}</div>`,
+    }), { index: false });
+}
+function buildManual() {
+    const { TYPES } = require(path.join(ROOT, 'mung-profile.js'));
+    const R = require(path.join(ROOT, 'manual-rules.js'));
+    const scripts = ['mung-profile', 'manual-rules', 'share-card', 'manual'];
+    const sample = { trait: '주요 기질 특성', env: '편안하게 느끼는 환경', approach: '다가올 때 배려할 점', activity: '함께 즐기기 좋은 활동' };
+    write('manual/index.html', layout({
+        title: '멍설명서: 우리 강아지 사용설명서 카드 만들기 | 멍테스트',
+        desc: '강아지 기질검사 결과로 성격 소개 카드, 사용설명서, 인사하는 방법 카드를 만들고 인스타 피드·스토리 이미지로 저장하거나 링크로 공유해 보세요.',
+        url: '/manual/', section: 'manual', extraBody: appScripts(scripts),
+        body: hero({ tone: 'var(--mustard)', title: '멍설명서', text: '기질검사 결과로 우리 강아지 사용설명서를 만들어요. 이름과 사진을 넣고, 이미지로 저장하거나 링크로 공유할 수 있어요.', image: img('type-2', '설명서 카드 그림', 440, 370).replace(' loading="lazy"', '') }) +
+            `<div class="narrow">${appShell('data-manual', '<p>불러오는 중이에요...</p>')}
+                <section class="section prose">
+                    <h2>설명서에 들어가는 것</h2>
+                    <p>설명서는 세 가지 종류가 있어요. <b>성격 소개 카드</b>는 이름, 대표 성향, 특징 세 가지를 담고, <b>사용설명서</b>는 좋아하는 것과 불편해하는 것, 편하게 대하는 법을, <b>인사하는 방법</b>은 처음 만날 때 배려할 점을 담아요.</p>
+                    <p>문장은 기질검사 점수가 높거나 낮게 나온 부분에서만 골라요. 점수가 보통인 부분은 아무 말도 하지 않고, 검사가 묻지 않은 것(예: 안기는 걸 좋아하는지)은 쓰지 않아요. 좋아하는 것, 불편해하는 상황처럼 검사로 알 수 없는 건 보호자가 직접 적고, 설명서에도 "보호자가 알려 줌"으로 따로 표시돼요.</p>
+                    <h2>검사 결과로 고르는 문장들</h2>
+                    ${Object.entries(sample).map(([k, t]) => `<h3>${t}</h3><ul>${R.RULES.filter(r => r.target === k).slice(0, 4).map(r => `<li>${esc(r.text)}</li>`).join('')}</ul>`).join('')}
+                    <h2>사진과 공유</h2>
+                    <p>사진은 이 기기 안에서만 쓰고 서버로 보내지 않아요. 저장하는 이미지에만 들어가요. 공유 링크에는 고른 공개 항목(이름, 특성 문장, 보호자 글)만 들어가고, 점수와 사진은 들어가지 않아요.</p>
+                </section>
+                ${DISCLAIMER}
+            </div>`,
+    }));
+    for (const t of Object.keys(TYPES)) {
+        sharePage(`manual/s/${t}/index.html`, {
+            title: `${TYPES[t].name} 강아지 설명서 | 멍테스트`, desc: `${TYPES[t].sub}, 우리 강아지 사용설명서를 받았어요. 우리 강아지 설명서도 만들어 보세요.`,
+            image: `/img/og-guide-${t}.jpg`, h1: '우리 강아지 설명서', attr: `data-manual data-manual-shared="${t}"`, scripts, tone: TYPES[t].tone,
+        });
+    }
+}
+function buildMatch() {
+    const M = require(path.join(ROOT, 'match.js'));
+    const scripts = ['mung-profile', 'share-card', 'match'];
+    write('match/index.html', layout({
+        title: '멍궁합: 보호자와 강아지 생활 궁합, 친구 강아지와 성향 궁합 | 멍테스트',
+        desc: '기질검사 결과로 보호자와 우리 강아지의 생활 궁합, 친구 강아지와의 성향 궁합을 재미로 비교해 보세요. 비슷한 점, 다른 점, 함께 할 활동을 알려 드려요.',
+        url: '/match/', section: 'match', extraBody: appScripts(scripts),
+        body: hero({ tone: 'var(--pink)', title: '멍궁합', text: '보호자와 우리 강아지, 우리 강아지와 친구 강아지의 성향을 재미로 비교해요. 비슷한 점과 다른 점, 함께 해 볼 활동을 알려 드려요.', image: img('type-1', '두 강아지 그림', 440, 370).replace(' loading="lazy"', '') }) +
+            `<div class="narrow">${appShell('data-match="main"', '<p>불러오는 중이에요...</p>')}
+                <section class="section prose">
+                    <h2>어떻게 비교하나요</h2>
+                    <p><b>보호자와 우리 강아지</b>: 보호자의 생활 패턴 ${M.OWNER_Q.length}문항에 답하면, 기질검사에서 실제로 잰 성향(새로운 것에 대한 태도, 교감, 만남, 환경 변화, 혼자 있기)과 나란히 놓고 비슷한 점과 다른 점을 보여 줘요. 활동량처럼 검사에 없는 항목은 비교하지 않고 생활 정보로만 따로 보여 줘요.</p>
+                    <p><b>친구 강아지와</b>: 초대 링크를 보내고 친구가 자기 강아지 결과로 참여하면, 두 강아지의 탐험성, 조심성, 사교성, 환경 적응, 놀이 몰두를 높음·보통·낮음으로 비교해요. 처음 만날 때 주의할 점도 함께 알려 드려요.</p>
+                    <p>궁합 이름은 재미로 붙인 표현이고, 점수나 백분율은 만들지 않아요. 적합성을 검사하거나 잘 지낼지를 판단하는 결과가 아니에요. 실제로 만날 땐 두 강아지의 몸짓과 스트레스 신호를 살펴 주세요.</p>
+                </section>
+            </div>`,
+    }));
+    sharePage('match/invite/index.html', { title: '우리 강아지와 궁합 볼래요? | 멍테스트', desc: '친구가 강아지 성향 궁합 초대를 보냈어요. 우리 강아지 기질검사 결과로 참여해 보세요.', image: '/img/og-match-invite.jpg', h1: '강아지 궁합 초대', attr: 'data-match="invite"', scripts, tone: 'var(--pink)' });
+    for (const [k, name] of Object.entries(M.NICKNAMES)) {
+        const friend = k.startsWith('f_');
+        sharePage(`match/s/${k}/index.html`, {
+            title: `${name} | ${friend ? '강아지 친구 성향 궁합' : '보호자와 강아지 생활 궁합'} | 멍테스트`, desc: `멍궁합 결과는 "${name}"이에요. 재미로 보는 비교예요. 우리 강아지 궁합도 확인해 보세요.`,
+            image: `/img/og-match-${friend ? 'friend' : 'owner'}.jpg`, h1: name, attr: 'data-match="shared"', scripts, tone: friend ? 'var(--pink)' : 'var(--mustard)',
+        });
+    }
+}
+
 // ---------------------------------------------------------------- 기질검사 결과 공유 페이지 (/r/1/ ~ /r/4/)
 // 카톡·SNS 미리보기는 자바스크립트를 실행하지 않으므로 유형마다 고정 페이지에 미리보기 정보를 둔다.
 // 점수는 주소의 # 뒤에 담겨(서버와 검색봇에 전달되지 않음) 성격 테스트 화면으로 그대로 넘긴다.
@@ -813,6 +889,8 @@ buildHealth();
 buildBreeds();
 buildCheck();
 buildRoutine();
+buildManual();
+buildMatch();
 buildShare();
 buildTools();
 patchHome();

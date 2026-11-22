@@ -246,6 +246,13 @@
         #result-zone.is-shared .shared-note, #result-zone.is-shared .shared-cta { display: block; }
         #result-zone.is-shared .share-row, #result-zone.is-shared .restart-wrap, #result-zone.is-shared .routine-cta { display: none; }
         .routine-cta .btn-main { display: inline-flex; align-items: center; justify-content: center; margin-top: 12px; text-decoration: none; }
+        .next-grid { display: grid; gap: 10px; }
+        .next-card { display: block; padding: 16px 18px; min-height: 64px; border-radius: 16px; background: var(--tone); color: var(--ink); text-decoration: none; word-break: keep-all; }
+        .next-card b { display: block; font-size: 1.05rem; }
+        .next-card span { display: block; font-size: 0.9rem; margin-top: 2px; }
+        .next-card:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+        .next-box { background: var(--card); border: 2px dashed var(--primary); border-radius: 16px; padding: 16px 18px; margin-bottom: 20px; }
+        .next-box[hidden] { display: none; }
 
         .res-sec { margin-top: 40px; }
         .res-sec h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; color: var(--text); }
@@ -284,7 +291,7 @@
 <header class="site-header">
     <div class="header-inner">
         <a href="/" class="logo">멍테스트</a>
-        <nav class="site-nav" aria-label="주요 메뉴"><ul><li><a href="/" aria-current="page">성격 테스트</a></li><li><a href="/check/">멍고민</a></li><li><a href="/food/">먹어도 돼?</a></li><li><a href="/health/">건강</a></li><li><a href="/breeds/">견종</a></li><li><a href="/blog/">생활 가이드</a></li></ul></nav>
+        <nav class="site-nav" aria-label="주요 메뉴"><ul><li><a href="/" aria-current="page">성격 테스트</a></li><li><a href="/manual/">멍설명서</a></li><li><a href="/match/">멍궁합</a></li><li><a href="/check/">멍고민</a></li><li><a href="/food/">먹어도 돼?</a></li><li><a href="/health/">건강</a></li><li><a href="/breeds/">견종</a></li><li><a href="/blog/">생활 가이드</a></li></ul></nav>
         <button type="button" id="btn-theme" class="theme-btn" aria-pressed="false">어둡게</button>
     </div>
 </header>
@@ -500,9 +507,17 @@
         </section>
 
         <section class="res-sec routine-cta">
-            <h3>7일 맞춤 활동</h3>
-            <p>이 유형에 맞춘 하루 5~10분 활동을 7일 동안 해 보세요. 매일 체크하면 진행 상황이 이 브라우저에 저장돼요.</p>
-            <a class="btn-main" href="/routine/">멍루틴 시작하기</a>
+            <div class="next-box" id="res-invite" hidden>
+                <b>친구가 보낸 궁합 초대가 있어요</b>
+                <p>방금 결과로 친구 강아지와의 궁합을 이어서 볼 수 있어요.</p>
+                <a class="btn-main" href="/match/">친구 궁합 이어서 보기</a>
+            </div>
+            <h3>결과로 더 해 볼 수 있어요</h3>
+            <div class="next-grid">
+                <a class="next-card" href="/manual/" style="--tone:#FFCF5C"><b>우리 강아지 설명서 만들기</b><span>성격 카드와 사용설명서를 이미지로 저장하고 공유해요</span></a>
+                <a class="next-card" href="/match/" style="--tone:#FFB8C6"><b>우리 강아지 궁합 확인하기</b><span>보호자와 생활 궁합, 친구 강아지와 성향 궁합</span></a>
+                <a class="next-card" href="/routine/" style="--tone:#BFE3A8"><b>7일 맞춤 활동</b><span>이 유형에 맞춘 하루 5~10분 활동</span></a>
+            </div>
         </section>
 
         <section class="res-sec">

@@ -25,6 +25,25 @@
         routine_day_complete: { type: 'int', day: 'int', days_since_start: 'int' },
         result_share: { content: 'key', method: 'key', with_name: 'bool' },
         shared_link_visit: { content: 'key', via: 'key' },
+        // 멍설명서
+        guide_view: { has_result: 'bool' },
+        guide_generate: { type: 'int', card: 'key', has_scores: 'bool' },
+        guide_edit: { field: 'key' },
+        guide_image_download: { format: 'key', card: 'key', theme: 'key', has_photo: 'bool' },
+        guide_share_click: { method: 'key', card: 'key' },
+        guide_public_link_create: { card: 'key', with_name: 'bool', with_owner_text: 'bool' },
+        guide_public_link_visit: { via: 'key', card: 'key' },
+        // 멍궁합
+        match_start: { mode: 'key' },
+        match_complete: { mode: 'key', nickname: 'key' },
+        match_share_click: { mode: 'key', method: 'key' },
+        match_invite_create: { with_name: 'bool' },
+        match_invite_visit: { via: 'key', state: 'key' },
+        match_invite_accept: {},
+        match_invite_complete: { nickname: 'key' },
+        // 공유 링크로 들어온 사람이 직접 검사를 하는지
+        shared_visitor_test_start: { from: 'key' },
+        shared_visitor_test_complete: { from: 'key' },
     };
     function clean(name, params) {
         var spec = EVENTS[name];

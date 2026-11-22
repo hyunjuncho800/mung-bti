@@ -1,5 +1,9 @@
     // ===== 분석 이벤트 (site.js의 mungTrack, 허용된 항목만 전송) =====
     function track(name, params) { if (window.mungTrack) window.mungTrack(name, params); }
+    // 공유 링크로 들어온 방문자가 직접 검사를 하는지 (mung-profile.js의 markShared와 같은 저장값, 7일 안)
+    function sharedFrom() {
+        try { const f = JSON.parse(localStorage.getItem('mung_from_share') || 'null'); return f && Date.now() - f.at < 7 * 86400000 ? f.c : null; } catch (e) { return null; }
+    }
     const withNameNow = () => { const b = document.getElementById('share-name'); return !!(b && b.checked && window.currentShare && window.currentShare.name); };
     // 공유 링크에 어떤 방법으로 보냈는지 표시 (받은 사람이 들어올 때 유입 경로로 기록)
     const viaUrl = (url, via) => url + (url.includes('#') ? '&' : '#') + 'via=' + via;
@@ -68,6 +72,7 @@
         window.dogName = nameInput ? nameInput.value.trim().slice(0, 10) : '';
         questions = shuffle(baseQuestions);
         track('temperament_test_start');
+        if (sharedFrom()) track('shared_visitor_test_start', { from: sharedFrom() });
         currentIdx = 0;
         answers = {};
         show('test-zone');
@@ -233,7 +238,15 @@
         // 내 결과면 다른 메뉴에서 맞춤 추천에 쓰도록 저장 (친구가 보낸 결과는 저장 안 함)
         if (!passed) {
             try { localStorage.setItem('mung_dog', JSON.stringify({ name, type: typeNo, typeName })); } catch (e) {}
+            // 멍설명서·멍궁합이 쓰도록 7개 축 점수도 저장 (이 브라우저에만, 채점은 그대로)
+            try { localStorage.setItem('mung_result', JSON.stringify({ v: 1, type: typeNo, e: E, s: S, m: M, f: F, i: I, o: O, x: X, at: (d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`)(new Date()) })); } catch (e) {}
             track('temperament_test_complete', { type: typeNo, has_mbti: hasMbti });
+            if (sharedFrom()) track('shared_visitor_test_complete', { from: sharedFrom() });
+            // 친구 궁합 초대를 받고 검사하러 왔다면 이어서 볼 수 있게
+            let inv = null;
+            try { inv = localStorage.getItem('mung_pending_invite'); } catch (e) {}
+            const invBox = document.getElementById('res-invite');
+            if (invBox) { invBox.hidden = !(inv && /^\/match\/invite\/#p=[A-Za-z0-9_-]+$/.test(inv)); if (!invBox.hidden) invBox.querySelector('a').href = inv; }
         }
 
         // --- 공유용 데이터 ---
