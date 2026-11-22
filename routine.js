@@ -221,6 +221,9 @@
         ]);
     }
 
+    function track(name, params) { if (window.mungTrack) window.mungTrack(name, params); }
+    function begin(type, day) { save(newState(type, day)); track('routine_start', { type: type }); }
+
     function start(app) {
         var panel = app.querySelector('[data-panel]');
         var today = ymd(new Date());
@@ -244,7 +247,7 @@
                         return h('li', {}, [h('b', { text: (i + 1) + '일차 ' }), ids.map(function (id) { return ACTIVITIES[id].name; }).join(', ')]);
                     })));
                     kids.push(h('p', { class: 'check-note', text: '하루 5~10분이면 돼요. 기록은 이 브라우저에만 저장되고, 방문 기록을 지우거나 다른 기기에서 열면 보이지 않아요.' }));
-                    kids.push(h('button', { type: 'button', class: 'btn', text: '오늘부터 7일 시작하기', disabled: !storageOk, on: function () { save(newState(dog.type, today)); render(); } }));
+                    kids.push(h('button', { type: 'button', class: 'btn', text: '오늘부터 7일 시작하기', disabled: !storageOk, on: function () { begin(dog.type, today); render(); } }));
                 }
                 return panel.replaceChildren.apply(panel, kids);
             }
@@ -259,7 +262,7 @@
             if (dog && dog.type !== state.type) {
                 kids.push(h('div', { class: 'callout callout-note' }, [
                     h('p', { text: '기질검사 결과가 바뀌었어요(지금 결과: ' + (dog.typeName || TYPE_NAMES[dog.type]) + '). 새 결과에 맞춘 루틴으로 다시 시작할 수 있어요.' }),
-                    h('button', { type: 'button', class: 'btn btn-ghost', text: '새 결과로 다시 시작', on: function () { save(newState(dog.type, today)); render(); } }),
+                    h('button', { type: 'button', class: 'btn btn-ghost', text: '새 결과로 다시 시작', on: function () { begin(dog.type, today); render(); } }),
                 ]));
             }
 
@@ -268,7 +271,11 @@
                 return h('details', { class: 'routine-day' + (done ? ' is-done' : ''), open: day === p.next }, [
                     h('summary', {}, [h('span', { class: 'routine-dot', 'aria-hidden': 'true', text: done ? '✓' : String(day) }), h('b', { text: day + '일차' }), h('span', { text: ids.map(function (id) { return ACTIVITIES[id].name; }).join(', ') }), h('span', { class: 'sr-only', text: done ? ' (완료)' : '' })]),
                     h('div', { class: 'routine-body' }, ids.map(activityCard).concat([
-                        h('button', { type: 'button', class: done ? 'btn btn-ghost' : 'btn', 'aria-pressed': String(done), text: done ? day + '일차 완료 취소' : day + '일차 활동을 마쳤어요', on: function () { save(toggleDay(state, day, today)); render(); } }),
+                        h('button', { type: 'button', class: done ? 'btn btn-ghost' : 'btn', 'aria-pressed': String(done), text: done ? day + '일차 완료 취소' : day + '일차 활동을 마쳤어요', on: function () {
+                            save(toggleDay(state, day, today));
+                            if (!done) track('routine_day_complete', { type: state.type, day: day, days_since_start: dayNumber(state.start, today) - 1 });
+                            render();
+                        } }),
                     ])),
                 ]);
             })));
@@ -295,7 +302,7 @@
                     h('h3', { text: '다음에 해 볼 것' }), list(tips),
                     note.memo ? h('p', { class: 'check-note', text: '내 관찰 메모: ' + note.memo }) : null,
                     h('div', { class: 'check-actions' }, [
-                        h('button', { type: 'button', class: 'btn', text: '7일 다시 시작하기', on: function () { var d = myDog(); save(newState(d ? d.type : state.type, ymd(new Date()))); render(); } }),
+                        h('button', { type: 'button', class: 'btn', text: '7일 다시 시작하기', on: function () { var d = myDog(); begin(d ? d.type : state.type, ymd(new Date())); render(); } }),
                         h('a', { class: 'btn btn-ghost', href: '/check/', text: '행동 고민 체크' }),
                     ]),
                 ]);

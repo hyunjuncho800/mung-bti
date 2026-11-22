@@ -66,6 +66,12 @@ const server = http.createServer((req, res) => {
         });
     };
 
+    // 운영(Cloudflare Pages)처럼 없는 주소는 404.html을 404 상태로
+    const notFound = () => fs.readFile(path.join(dir, '404.html'), (e, b) => {
+        res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+        res.end(e ? 'Not Found' : b);
+    });
+
     fs.stat(filePath, (err, stats) => {
         if (!err && stats.isFile()) {
             serveFile(filePath);
@@ -74,8 +80,7 @@ const server = http.createServer((req, res) => {
             fs.stat(indexPath, (err2, stats2) => {
                 if (!err2 && stats2.isFile()) serveFile(indexPath);
                 else {
-                    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-                    res.end(`<h1>404 Not Found</h1><p>${req.url} was not found on this server.</p>`);
+                    notFound();
                 }
             });
         } else if (err && !path.extname(filePath)) {
@@ -83,13 +88,11 @@ const server = http.createServer((req, res) => {
             fs.stat(htmlPath, (err3, stats3) => {
                 if (!err3 && stats3.isFile()) serveFile(htmlPath);
                 else {
-                    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-                    res.end(`<h1>404 Not Found</h1><p>${req.url} was not found on this server.</p>`);
+                    notFound();
                 }
             });
         } else {
-            res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-            res.end(`<h1>404 Not Found</h1><p>${req.url} was not found on this server.</p>`);
+            notFound();
         }
     });
 });

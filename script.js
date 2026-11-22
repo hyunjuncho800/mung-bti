@@ -1,8 +1,16 @@
-    // ===== 카카오 SDK 초기화 =====
-    try {
-        Kakao.init('9c311733c910878af9ea27cd77bb3f4b');
-    } catch(e) {
-        console.log("Kakao SDK Initialization error: ", e);
+    // ===== 분석 이벤트 (site.js의 mungTrack, 허용된 항목만 전송) =====
+    function track(name, params) { if (window.mungTrack) window.mungTrack(name, params); }
+    const withNameNow = () => { const b = document.getElementById('share-name'); return !!(b && b.checked && window.currentShare && window.currentShare.name); };
+    // 공유 링크에 어떤 방법으로 보냈는지 표시 (받은 사람이 들어올 때 유입 경로로 기록)
+    const viaUrl = (url, via) => url + (url.includes('#') ? '&' : '#') + 'via=' + via;
+
+    // ===== 카카오 SDK: defer로 불러오므로 공유 버튼을 누를 때 초기화 =====
+    function kakaoReady() {
+        try {
+            if (typeof Kakao === 'undefined') return false;
+            if (!Kakao.isInitialized()) Kakao.init('9c311733c910878af9ea27cd77bb3f4b');
+            return Kakao.isInitialized();
+        } catch (e) { return false; }
     }
 
     const SITE_URL = 'https://mung-test.com/';
@@ -59,6 +67,7 @@
         const nameInput = document.getElementById('dog-name');
         window.dogName = nameInput ? nameInput.value.trim().slice(0, 10) : '';
         questions = shuffle(baseQuestions);
+        track('temperament_test_start');
         currentIdx = 0;
         answers = {};
         show('test-zone');
@@ -224,6 +233,7 @@
         // 내 결과면 다른 메뉴에서 맞춤 추천에 쓰도록 저장 (친구가 보낸 결과는 저장 안 함)
         if (!passed) {
             try { localStorage.setItem('mung_dog', JSON.stringify({ name, type: typeNo, typeName })); } catch (e) {}
+            track('temperament_test_complete', { type: typeNo, has_mbti: hasMbti });
         }
 
         // --- 공유용 데이터 ---
@@ -376,11 +386,11 @@
 
     // ===== 카카오톡 공유 =====
     function shareKakao() {
-        const url = window.currentResultUrl || SITE_URL;
+        const url = viaUrl(window.currentResultUrl || SITE_URL, 'kakao');
         const title = window.currentCardTitle || '강아지 성격 테스트';
         const text = window.currentShareText || '우리 강아지는 어떤 성격일까요?';
 
-        if (typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
+        if (kakaoReady()) {
             try {
                 (Kakao.Share || Kakao.Link).sendDefault({
                     objectType: 'feed',
@@ -392,6 +402,7 @@
                     },
                     buttons: [{ title: '우리 강아지도 해보기', link: { mobileWebUrl: url, webUrl: url } }]
                 });
+                track('result_share', { content: 'temperament', method: 'kakao', with_name: withNameNow() });
                 return;
             } catch (err) {
                 console.error('카카오 공유 에러:', err);
@@ -402,7 +413,8 @@
 
     // ===== 링크 공유 (모바일은 공유 시트, PC는 복사) =====
     function shareResultLink() {
-        const url = window.currentResultUrl || window.location.href;
+        const url = viaUrl(window.currentResultUrl || window.location.href, 'link');
+        track('result_share', { content: 'temperament', method: 'link', with_name: withNameNow() });
         const text = window.currentShareText || '';
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         if (isMobile && navigator.share) {
@@ -426,6 +438,7 @@
         btn.disabled = true;
 
         const d = window.currentShare;
+        track('result_share', { content: 'temperament', method: 'image', with_name: withNameNow() });
         MungCard.temperament({
             type: d.typeNo, subject: window.currentCardSubject, typeName: d.typeName, typeSub: d.typeSub,
             stats: d.stats, chem: d.chem ? `보호자 ${d.ownerMbti}와 궁합 ${d.chem.score}점` : '',
@@ -462,6 +475,7 @@
             show('result-zone');
             document.getElementById('result-zone').classList.add('is-shared');
             calculateAndShowResults(passed);
+            track('shared_link_visit', { content: 'temperament', via: p.get('via') || 'unknown' });
         } else if (p.get('start') === 'true') {
             startTest();
         }

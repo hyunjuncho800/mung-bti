@@ -1,4 +1,10 @@
-# Static Clean URLs Redirect Rule Disabled to Prevent ERR_TOO_MANY_REDIRECTS Loop
+# Cloudflare Pages 규칙. 깨끗한 주소(/about -> about.html)는 Pages가 알아서 처리하므로 여기에 넣지 않음 (무한 리디렉션 방지)
 /rss /rss.xml 200
 /rss/ /rss.xml 200
 
+# 예전 메뉴에서 쓰던 주소 (404.html을 두면서 더는 홈으로 자동 연결되지 않으므로 직접 연결)
+/test / 301
+/personality-test / 301
+/size-recommend /size-calculator 301
+/age-calc /age-calculator 301
+/self-diagnosis /health/ 301

@@ -1,7 +1,6 @@
 /* 멍테스트 공통 스타일: 헤더, 푸터, 본문, 공통 부품.
    성격 테스트(index.html)와 계산기 페이지는 예전 style.css 위에 이 파일을 덮어씀. */
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+/* 글꼴(Pretendard, Bagel Fat One)은 각 페이지 <head>에서 <link>로 불러옴 (@import는 이 파일을 다 받은 뒤에야 시작돼 느림) */
 
 :root {
     --bg: #F2F4F0;
@@ -59,7 +58,7 @@ a { color: var(--primary-dark); }
     max-width: 1080px; margin: 0 auto; padding: 0 20px; height: 64px;
     display: flex; align-items: center; gap: 28px;
 }
-.site-header .logo {
+.site-header .logo { min-height: 44px; display: flex; align-items: center;
     font-family: var(--display); font-weight: 400; font-size: 1.5rem; letter-spacing: 0;
     color: var(--primary); text-decoration: none; flex: none;
 }
@@ -253,3 +252,16 @@ a { color: var(--primary-dark); }
 @media (max-width: 520px) { .prose table { font-size: 0.86rem; } .prose th, .prose td { padding: 8px 5px; } }
 .prose th, .prose td { border-bottom: 1px solid var(--border); padding: 10px 8px; text-align: left; vertical-align: top; word-break: keep-all; }
 .prose th { font-weight: 800; background: var(--primary-light); }
+
+/* ---------- 터치 영역 (최소 44px) ---------- */
+.site-nav a { min-height: 44px; display: flex; align-items: center; }
+.theme-btn { min-height: 44px; }
+.site-footer ul a { display: inline-block; padding: 10px 4px; }
+.row-link { min-height: 56px; }
+.chip { min-height: 40px; }
+@media (max-width: 760px) {
+    /* 메뉴가 옆으로 더 있다는 걸 오른쪽 끝을 흐리게 해서 알려 줌 */
+    .site-nav { -webkit-mask-image: linear-gradient(to right, #000 82%, transparent); mask-image: linear-gradient(to right, #000 82%, transparent); }
+    .site-nav.at-end { -webkit-mask-image: none; mask-image: none; }
+    .site-nav a { min-height: 44px; }
+}

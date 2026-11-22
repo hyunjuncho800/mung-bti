@@ -71,6 +71,11 @@ function layout({ title, desc, url, section, body, noindex = false, preCss = '',
     <meta property="og:image" content="${SITE}${image}">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap">
     ${preCss}
     <link rel="stylesheet" href="/site.css?v=${TODAY}">
     <script src="/site.js?v=${TODAY}"></script>
@@ -782,6 +787,20 @@ function patchHome() {
     sitemap.unshift('/');
 }
 
+// 없는 주소 (Cloudflare Pages는 이 파일이 있으면 404 상태로 보여 줌. 없으면 모든 주소에 홈을 200으로 내줌)
+function build404() {
+    write('404.html', layout({
+        title: '페이지를 찾을 수 없어요 | 멍테스트', desc: '주소가 바뀌었거나 없는 페이지예요.', url: '/404', section: '', noindex: true,
+        body: hero({ tone: 'var(--mustard)', title: '페이지를 찾을 수 없어요', text: '주소가 바뀌었거나 없는 페이지예요. 아래에서 하려던 걸 골라 주세요.', image: img('type-3', '갸웃거리는 강아지 그림').replace(' loading="lazy"', '') }) +
+            `<div class="narrow"><section class="section"><ul class="rows">
+                ${row('/', '우리 강아지 기질 알아보기', '20개 질문, 3분이면 끝나요', img('type-2', '', 56, 56), 'var(--mustard)')}
+                ${row('/check/', '행동 고민 체크', '짖음, 혼자 있을 때, 산책 거부', img('guide-training', '', 56, 56), 'var(--pink)')}
+                ${row('/routine/', '7일 맞춤 활동', '기질에 맞춘 하루 5~10분 활동', img('type-4', '', 56, 56), 'var(--green)')}
+                ${row('/blog/', '생활 가이드', '훈련, 건강, 산책, 용품 글 모음', img('hub-guide', '', 56, 56), 'var(--sky)')}
+            </ul></section></div>`,
+    }), { index: false });
+}
+
 function buildSitemap() {
     const urls = [...new Set(sitemap)].map(u => `  <url>\n    <loc>${SITE}${u}</loc>\n    <lastmod>${TODAY}</lastmod>\n  </url>`).join('\n');
     fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
@@ -797,5 +816,6 @@ buildRoutine();
 buildShare();
 buildTools();
 patchHome();
+build404();
 buildSitemap();
 console.log(`pages in sitemap: ${new Set(sitemap).size}`);

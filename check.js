@@ -335,6 +335,8 @@
         try { return JSON.parse(localStorage.getItem('mung_dog') || 'null'); } catch (e) { return null; }
     }
 
+    function track(name, params) { if (window.mungTrack) window.mungTrack(name, params); }
+
     function start(app) {
         var key = app.getAttribute('data-check');
         var check = CHECKS[key];
@@ -375,7 +377,12 @@
             Object.keys(answers).forEach(function (id) { if (!qs.some(function (x) { return x.id === id; })) delete answers[id]; });
             panel.querySelectorAll('.check-opt').forEach(function (b, j) { b.setAttribute('aria-pressed', String(j === i)); });
             setTimeout(function () {
-                if (idx + 1 >= qs.length) renderResult(analyze(check, answers), false);
+                if (idx + 1 >= qs.length) {
+                    var res = analyze(check, answers);
+                    // 답변과 위험 신호는 보내지 않고, 가장 가까운 원인 이름과 개수만
+                    track('behavior_check_complete', { check: key, result: res.causes[0] || 'none', causes: res.causes.length });
+                    renderResult(res, false);
+                }
                 else { idx++; renderQuestion(); }
             }, 180);
         }
@@ -416,13 +423,13 @@
             var dog = myDog();
             var actions = [];
             if (shared) {
-                actions.push(h('button', { type: 'button', class: 'btn', text: '우리 강아지도 체크하기', on: function () { history.replaceState(null, '', location.pathname); answers = {}; idx = 0; renderQuestion(); } }));
+                actions.push(h('button', { type: 'button', class: 'btn', text: '우리 강아지도 체크하기', on: function () { track('behavior_check_start', { check: key }); history.replaceState(null, '', location.pathname); answers = {}; idx = 0; renderQuestion(); } }));
             } else {
                 if (r.causes.length) {
                     actions.push(h('button', { type: 'button', class: 'btn', text: '결과 링크 공유', on: function (e) { share(r, e.currentTarget); } }));
                     if (window.MungCard) actions.push(h('button', { type: 'button', class: 'btn btn-ghost', text: '카드 이미지 저장', on: function (e) { saveCard(r, e.currentTarget); } }));
                 }
-                actions.push(h('button', { type: 'button', class: 'btn btn-ghost', text: '다시 체크하기', on: function () { answers = {}; idx = 0; renderQuestion(); } }));
+                actions.push(h('button', { type: 'button', class: 'btn btn-ghost', text: '다시 체크하기', on: function () { track('behavior_check_start', { check: key }); answers = {}; idx = 0; renderQuestion(); } }));
             }
             kids.push(h('div', { class: 'check-actions' }, actions));
             kids.push(h('div', { class: 'cta-box check-test' }, [
@@ -440,7 +447,8 @@
         }
 
         function share(r, btn) {
-            var url = location.origin + location.pathname + '#r=' + r.causes.join('.');
+            var url = location.origin + location.pathname + '#r=' + r.causes.join('.') + '&via=link';
+            track('result_share', { content: 'check', method: 'link' });
             var text = check.title + ' 체크 결과: ' + check.causes[r.causes[0]].name;
             var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             if (isMobile && navigator.share) {
@@ -455,6 +463,7 @@
         // 세로 카드(1080x1350): 원인 이름과 요약만. 답변과 위험 신호는 넣지 않음
         function saveCard(r, btn) {
             var label = btn.textContent;
+            track('result_share', { content: 'check', method: 'image' });
             btn.textContent = '이미지 만드는 중...'; btn.disabled = true;
             var done = function () { btn.textContent = label; btn.disabled = false; };
             MungCard.check({
@@ -467,15 +476,20 @@
 
         function renderIntro() {
             panel.replaceChildren.apply(panel, Array.prototype.slice.call(intro.cloneNode(true).childNodes));
-            panel.querySelector('[data-start]').addEventListener('click', function () { idx = 0; renderQuestion(); });
+            panel.querySelector('[data-start]').addEventListener('click', function () { track('behavior_check_start', { check: key }); idx = 0; renderQuestion(); });
         }
 
         var intro = panel.cloneNode(true);
         // 공유 링크(#r=원인.원인, 예전 링크는 ?r=)로 들어오면 원인 요약만 보여 줌. 답변 원문은 주소에 담지 않음.
         var hash = new URLSearchParams(location.hash.slice(1));
         var shared = (hash.get('r') || params.get('r') || '').split('.').filter(function (k) { return check.causes[k]; }).slice(0, 3);
-        if (shared.length) renderResult({ causes: shared, flags: [] }, true);
-        else renderIntro();
+        if (shared.length) {
+            renderResult({ causes: shared, flags: [] }, true);
+            track('shared_link_visit', { content: 'check', via: hash.get('via') || params.get('via') || 'unknown' });
+        } else {
+            renderIntro();
+            track('behavior_check_view', { check: key });
+        }
     }
 
     document.addEventListener('DOMContentLoaded', function () {
