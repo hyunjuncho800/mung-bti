@@ -10,6 +10,9 @@ const TODAY = new Date().toISOString().slice(0, 10);
 const ADSENSE = 'ca-pub-4790912864460441';
 
 const readJson = f => JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8'));
+// 정적 파일 주소 뒤 버전: 파일 내용의 해시. 내용이 바뀔 때만 주소가 바뀌어서, 브라우저가 4시간 동안 잡고 있는 예전 파일을 쓰지 않는다.
+// (날짜로 하면 같은 날 두 번 배포할 때 주소가 같아 예전 파일이 남는다)
+const V = f => require('crypto').createHash('sha1').update(fs.readFileSync(path.join(ROOT, f))).digest('hex').slice(0, 10);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const plain = html => String(html).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 const cut = (s, n) => (s.length > n ? s.slice(0, n - 1).trim() + '…' : s);
@@ -79,8 +82,8 @@ function layout({ title, desc, url, section, body, noindex = false, preCss = '',
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap">
     ${preCss}
-    <link rel="stylesheet" href="/site.css?v=${TODAY}">
-    <script src="/site.js?v=${TODAY}"></script>
+    <link rel="stylesheet" href="/site.css?v=${V('site.css')}">
+    <script src="/site.js?v=${V('site.js')}"></script>
     ${ld ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : ''}
     ${extraHead}
 </head>
@@ -630,7 +633,7 @@ function buildCheck() {
         const reads = [guideByCheck[key] && { url: guideByCheck[key].url, title: guideByCheck[key].h1, desc: guideByCheck[key].desc }, ...c.read.map(id => postById[id])].filter(Boolean);
         write(`check/${key}/index.html`, layout({
             title: `${c.seoTitle} | 멍테스트`, desc: c.desc, url: `/check/${key}/`, section: 'check',
-            extraBody: `<script src="/share-card.js?v=${TODAY}"></script>\n<script src="/check.js?v=${TODAY}"></script>`,
+            extraBody: `<script src="/share-card.js?v=${V('share-card.js')}"></script>\n<script src="/check.js?v=${V('check.js')}"></script>`,
             body: hero({ tone: c.tone, width: 'narrow', eyebrow: '<a class="eyebrow-link" href="/check/">멍고민 행동 체크</a>', title: esc(c.title), text: esc(c.short) }) +
                 `<div class="narrow">
                     <div class="check-app section" data-check="${key}">
@@ -675,7 +678,7 @@ function buildRoutine() {
         title: '멍루틴: 강아지 기질별 7일 맞춤 활동 | 멍테스트',
         desc: '강아지 기질검사 유형에 맞춰 하루 5~10분, 7일 동안 해 볼 노즈워크, 쉬기 연습, 산책 활동을 골라 드려요. 가입 없이 진행 기록을 브라우저에 저장할 수 있어요.',
         url: '/routine/', section: '',
-        extraBody: `<script src="/routine.js?v=${TODAY}"></script>`,
+        extraBody: `<script src="/routine.js?v=${V('routine.js')}"></script>`,
         body: hero({ tone: 'var(--mustard)', title: '멍루틴 7일 맞춤 활동', text: '기질검사 결과에 맞춰 하루 5~10분씩 7일 동안 해 볼 활동을 골라 드려요. 매일 체크하면서 진행 상황을 볼 수 있어요.', image: img('type-4', '쉬고 있는 강아지 그림', 440, 370).replace(' loading="lazy"', '') }) +
             `<div class="narrow">
                 <div class="check-app section" data-routine>
@@ -706,7 +709,7 @@ function buildRoutine() {
 // 화면은 브라우저에서 그린다(manual.js, match.js). 여기서는 페이지 틀, 검색엔진용 소개, 공유 미리보기 페이지를 만든다.
 // 공유 페이지(/manual/s/, /match/s/, /match/invite/)는 검색에 안 나오게 하고, 미리보기 봇이 읽을 og 정보만 둔다.
 const KAKAO_SDK = '<script src="https://developers.kakao.com/sdk/js/kakao.min.js" defer></script>';
-const appScripts = names => KAKAO_SDK + '\n' + names.map(n => `<script src="/${n}.js?v=${TODAY}"></script>`).join('\n');
+const appScripts = names => KAKAO_SDK + '\n' + names.map(n => `<script src="/${n}.js?v=${V(n + '.js')}"></script>`).join('\n');
 const appShell = (attr, intro) => `
     <div class="check-app section" ${attr}>
         <div class="check-panel" data-panel tabindex="-1">${intro}
@@ -832,13 +835,14 @@ function buildTools() {
         const src = fs.readFileSync(path.join(ROOT, 'content/tools', `${name}.html`), 'utf8');
         // 계산기 원본에 있던 <main>은 레이아웃의 <main>과 겹치므로 <div>로 바꿈
         const body = src.replace(/^(<!--.*?-->\n)+/, '').replace(/<main\b/g, '<div').replace(/<\/main>/g, '</div>');
-        const css = meta(src, 'css').split(/\s+/).filter(Boolean).map(c => `<link rel="stylesheet" href="/${c}">`).join('\n    ');
+        const local = f => { const name = f.split('?')[0]; return `/${name}?v=${V(name)}`; };
+        const css = meta(src, 'css').split(/\s+/).filter(Boolean).map(c => `<link rel="stylesheet" href="${local(c)}">`).join('\n    ');
         const scripts = meta(src, 'scripts').split(/\s+/).filter(Boolean)
-            .map(s => `<script src="${/^https?:/.test(s) ? s : '/' + s}"></script>`).join('\n');
+            .map(s => `<script src="${/^https?:/.test(s) ? s : local(s)}"></script>`).join('\n');
         write(`${name}.html`, layout({
             title: meta(src, 'title').replace(' | mung-test.com', ' | 멍테스트'), desc: meta(src, 'desc'),
             url: `/${name}`, section,
-            preCss: '<link rel="stylesheet" href="/style.css?v=card_v1">', extraHead: css,
+            preCss: `<link rel="stylesheet" href="/style.css?v=${V('style.css')}">`, extraHead: css,
             body: `<div class="tool-page">${body}</div>`, extraBody: scripts,
         }));
     }
@@ -859,6 +863,7 @@ function patchHome() {
     let s = fs.readFileSync(file, 'utf8');
     s = s.replace(/<header[\s\S]*?<\/header>/, header('test'));
     s = s.replace(/<footer[\s\S]*?<\/footer>/, FOOTER);
+    s = s.replace(/"\/((?:share-card|i18n|site|script)\.js|(?:style|site)\.css)\?v=[^"]*"/g, (m, f) => `"/${f}?v=${V(f)}"`);
     fs.writeFileSync(file, s);
     sitemap.unshift('/');
 }
