@@ -229,7 +229,8 @@
         .shared-cta { display: none; max-width: 360px; margin: 16px auto 0; }
         .shared-cta .btn-main { width: 100%; }
         #result-zone.is-shared .shared-note, #result-zone.is-shared .shared-cta { display: block; }
-        #result-zone.is-shared .share-row, #result-zone.is-shared .restart-wrap { display: none; }
+        #result-zone.is-shared .share-row, #result-zone.is-shared .restart-wrap, #result-zone.is-shared .routine-cta { display: none; }
+        .routine-cta .btn-main { display: inline-flex; align-items: center; justify-content: center; margin-top: 12px; text-decoration: none; }
 
         .res-sec { margin-top: 40px; }
         .res-sec h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; color: var(--text); }
@@ -268,7 +269,7 @@
 <header class="site-header">
     <div class="header-inner">
         <a href="/" class="logo">멍테스트</a>
-        <nav class="site-nav" aria-label="주요 메뉴"><ul><li><a href="/" aria-current="page">성격 테스트</a></li><li><a href="/food/">먹어도 돼?</a></li><li><a href="/health/">건강</a></li><li><a href="/breeds/">견종</a></li><li><a href="/blog/">생활 가이드</a></li></ul></nav>
+        <nav class="site-nav" aria-label="주요 메뉴"><ul><li><a href="/" aria-current="page">성격 테스트</a></li><li><a href="/check/">멍고민</a></li><li><a href="/food/">먹어도 돼?</a></li><li><a href="/health/">건강</a></li><li><a href="/breeds/">견종</a></li><li><a href="/blog/">생활 가이드</a></li></ul></nav>
         <button type="button" id="btn-theme" class="theme-btn" aria-pressed="false">어둡게</button>
     </div>
 </header>
@@ -472,6 +473,12 @@
         <section class="res-sec">
             <h3 data-i18n="res_chemistry_title_main">찰떡궁합 &amp; 상극 추천</h3>
             <div class="res-body" id="res-match-desc"></div>
+        </section>
+
+        <section class="res-sec routine-cta">
+            <h3>7일 맞춤 활동</h3>
+            <p>이 유형에 맞춘 하루 5~10분 활동을 7일 동안 해 보세요. 매일 체크하면 진행 상황이 이 브라우저에 저장돼요.</p>
+            <a class="btn-main" href="/routine/">멍루틴 시작하기</a>
         </section>
 
         <section class="res-sec">

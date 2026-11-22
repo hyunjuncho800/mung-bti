@@ -20,6 +20,7 @@ const sitemap = [];
 // ---------------------------------------------------------------- 레이아웃
 const NAV = [
     ['/', '성격 테스트', 'test'],
+    ['/check/', '멍고민', 'check'],
     ['/food/', '먹어도 돼?', 'food'],
     ['/health/', '건강', 'health'],
     ['/breeds/', '견종', 'breeds'],
@@ -543,6 +544,104 @@ function buildBreeds() {
     }
 }
 
+// ---------------------------------------------------------------- 멍고민 행동 체크
+// 문항과 결과 문구는 /check.js 한 곳에만 있음. 여기서는 검색엔진이 읽을 소개와 문항 목록을 HTML로 만든다.
+function buildCheck() {
+    const { CHECKS } = require(path.join(ROOT, 'check.js'));
+    const entries = Object.entries(CHECKS);
+    write('check/index.html', layout({
+        title: '멍고민 행동 체크: 짖음, 분리불안, 산책 거부 | 멍테스트',
+        desc: '산책 중 짖음, 혼자 있을 때 불안, 산책 거부처럼 자주 겪는 강아지 행동 고민을 상황 질문으로 체크하고, 가능한 원인과 관찰 포인트, 안전한 대응 방법을 확인해 보세요.',
+        url: '/check/', section: 'check',
+        body: hero({ tone: 'var(--pink)', title: '멍고민 행동 체크', text: '우리 강아지가 왜 그러는지 궁금할 때, 상황 질문 몇 개에 답하면 가능한 원인과 지켜볼 점, 집에서 해 볼 방법을 정리해 드려요. 가입 없이 1~2분이면 끝나요.', image: img('guide-training', '강아지 그림').replace(' loading="lazy"', '') }) +
+            `<div class="narrow">
+                <section class="section">
+                    <h2 class="section-title">어떤 고민인가요?</h2>
+                    <ul class="rows">${entries.map(([k, c]) => row(`/check/${k}/`, c.title, c.short, img(c.img, '', 56, 56), c.tone)).join('')}</ul>
+                </section>
+                <p class="callout callout-note section">체크 결과는 답변을 바탕으로 한 참고 정보예요. 진단이 아니에요. 물거나 물려고 하는 행동, 심한 스트레스, 통증이 의심되거나 행동이 갑자기 바뀌었다면 동물병원이나 반려견 행동 전문가와 상담해 주세요.</p>
+                ${TEST_CTA}
+            </div>`,
+    }));
+
+    for (const [key, c] of entries) {
+        const base = c.questions.filter(q => !q.showIf);
+        const others = entries.filter(([k]) => k !== key);
+        const reads = c.read.map(id => postById[id]).filter(Boolean);
+        write(`check/${key}/index.html`, layout({
+            title: `${c.seoTitle} | 멍테스트`, desc: c.desc, url: `/check/${key}/`, section: 'check',
+            extraBody: `<script src="/check.js?v=${TODAY}"></script>`,
+            body: hero({ tone: c.tone, width: 'narrow', eyebrow: '<a class="eyebrow-link" href="/check/">멍고민 행동 체크</a>', title: esc(c.title), text: esc(c.short) }) +
+                `<div class="narrow">
+                    <div class="check-app section" data-check="${key}">
+                        <div class="check-panel" data-panel tabindex="-1">
+                            <p class="check-eyebrow">질문 ${base.length}~${c.questions.length}개, 1~2분</p>
+                            <h2 class="check-q">최근 한 달 모습을 떠올리며 답해 주세요</h2>
+                            <p>답에 따라 가능한 원인, 지켜볼 점, 집에서 해 볼 방법, 하지 말아야 할 것을 정리해 드려요. 답변은 서버로 보내지 않고 이 화면에서만 계산해요.</p>
+                            <button type="button" class="btn" data-start>체크 시작하기</button>
+                            <noscript><p class="check-note">체크는 자바스크립트를 켜야 동작해요.</p></noscript>
+                        </div>
+                    </div>
+                    <section class="section prose">
+                        <h2>이 체크에서 묻는 것</h2>
+                        <ol>${base.map(q => `<li>${esc(q.q)}</li>`).join('')}</ol>
+                        <h2>결과로 살펴보는 원인</h2>
+                        <ul>${Object.values(c.causes).map(x => `<li><b>${esc(x.name)}</b>: ${esc(x.summary)}</li>`).join('')}</ul>
+                        <h2>하지 말아 주세요</h2>
+                        <ul>${c.avoid.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
+                    </section>
+                    ${reads.length ? `<section class="section"><h2 class="section-title">함께 읽으면 좋은 글</h2><ul class="rows">${reads.map(p => row(p.url, p.title, cut(p.desc, 60))).join('')}</ul></section>` : ''}
+                    <section class="section">
+                        <h2 class="section-title">다른 고민도 체크해 보세요</h2>
+                        <ul class="rows">${others.map(([k, o]) => row(`/check/${k}/`, o.title, o.short, img(o.img, '', 56, 56), o.tone)).join('')}</ul>
+                    </section>
+                </div>`,
+        }));
+    }
+}
+
+// ---------------------------------------------------------------- 멍루틴 (기질별 7일 활동)
+// 활동과 일정은 /routine.js 한 곳에만 있음. 여기서는 유형별 일정 미리 보기를 HTML로 만든다.
+function buildRoutine() {
+    const { ACTIVITIES, PLANS, TYPE_NAMES, STOP } = require(path.join(ROOT, 'routine.js'));
+    const plans = Object.entries(PLANS).map(([type, p]) => `
+        <section class="section" id="type-${type}">
+            <h3 class="routine-type">${img(`type-${type}`, '', 56, 56)}<span>${esc(TYPE_NAMES[type])}<small>${esc(p.goal)}</small></span></h3>
+            <p>${esc(p.why)}</p>
+            <ol>${p.days.map((ids, i) => `<li><b>${i + 1}일차</b> ${ids.map(id => `${esc(ACTIVITIES[id].name)}(${ACTIVITIES[id].min}분)`).join(', ')}</li>`).join('')}</ol>
+        </section>`).join('');
+    const acts = Object.values(ACTIVITIES).map(a => `<li><b>${esc(a.name)}</b>: ${esc(a.purpose)}</li>`).join('');
+    write('routine/index.html', layout({
+        title: '멍루틴: 강아지 기질별 7일 맞춤 활동 | 멍테스트',
+        desc: '강아지 기질검사 유형에 맞춰 하루 5~10분, 7일 동안 해 볼 노즈워크, 쉬기 연습, 산책 활동을 골라 드려요. 가입 없이 진행 기록을 브라우저에 저장할 수 있어요.',
+        url: '/routine/', section: '',
+        extraBody: `<script src="/routine.js?v=${TODAY}"></script>`,
+        body: hero({ tone: 'var(--mustard)', title: '멍루틴 7일 맞춤 활동', text: '기질검사 결과에 맞춰 하루 5~10분씩 7일 동안 해 볼 활동을 골라 드려요. 매일 체크하면서 진행 상황을 볼 수 있어요.', image: img('type-4', '쉬고 있는 강아지 그림', 440, 370).replace(' loading="lazy"', '') }) +
+            `<div class="narrow">
+                <div class="check-app section" data-routine>
+                    <div class="check-panel" data-panel tabindex="-1">
+                        <h2 class="check-q">기질검사 유형에 맞춘 7일 활동</h2>
+                        <p>기질검사를 마치면 이 화면에서 우리 강아지 유형에 맞춘 7일 루틴을 시작할 수 있어요.</p>
+                        <a class="btn" href="/?start=true">우리 강아지 기질 알아보기</a>
+                        <noscript><p class="check-note">진행 기록은 자바스크립트를 켜야 동작해요. 아래 일정은 그대로 볼 수 있어요.</p></noscript>
+                    </div>
+                </div>
+                <section class="callout callout-danger section">
+                    <h2>이럴 땐 그날 활동을 멈춰 주세요</h2>
+                    <ul>${STOP.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
+                    <p>쉬었다가 다음 날 더 쉬운 단계로 돌아가면 돼요. 관절이나 심장 질환처럼 운동 제한이 있는 강아지는 수의사가 권한 범위 안에서 해 주세요.</p>
+                </section>
+                <section class="section prose">
+                    <h2>유형별 7일 일정</h2>
+                    ${plans}
+                    <h2>활동 목록</h2>
+                    <ul>${acts}</ul>
+                </section>
+                <p class="callout callout-note section">기질검사와 멍루틴은 일반적인 성향을 바탕으로 한 참고 활동이에요. 강아지마다 좋아하는 것과 힘들어하는 게 달라서, 반응을 보며 강도를 조절해 주세요.</p>
+            </div>`,
+    }));
+}
+
 // ---------------------------------------------------------------- 계산기, 안내 페이지
 function meta(src, key) {
     const m = src.match(new RegExp(`<!-- ${key}: (.*?) -->`));
@@ -594,6 +693,8 @@ buildBlog();
 buildFood();
 buildHealth();
 buildBreeds();
+buildCheck();
+buildRoutine();
 buildTools();
 patchHome();
 buildSitemap();
