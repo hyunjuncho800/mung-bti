@@ -61,7 +61,7 @@
           {"@type": "Question", "name": "여러 마리를 키우는데 어떻게 하나요?",
            "acceptedAnswer": {"@type": "Answer", "text": "한 마리씩 따로 검사해 주세요. 다른 강아지와 같이 있을 때 행동이 달라지는 아이라면 혼자 있을 때 모습을 기준으로 답해 주세요."}},
           {"@type": "Question", "name": "답변 내용이 저장되나요?",
-           "acceptedAnswer": {"@type": "Answer", "text": "답변과 결과는 서버로 보내지 않고 사용 중인 브라우저 안에서만 계산돼요. 공유 링크에는 점수, 강아지 이름, MBTI만 들어가요."}}
+           "acceptedAnswer": {"@type": "Answer", "text": "답변과 결과는 서버로 보내지 않고 사용 중인 브라우저 안에서만 계산돼요. 공유 링크에는 점수와 보호자가 고른 MBTI만 들어가고, 강아지 이름은 공유할 때 이름 넣기를 고른 경우에만 들어가요."}}
         ]
       }
     ]
@@ -72,7 +72,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap" rel="stylesheet">
 
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+    <script src="/share-card.js?v=2026-11-23" defer></script>
 
     <script src="/i18n.js?v=card_v2"></script>
     <link rel="stylesheet" href="/style.css?v=card_v1">
@@ -227,6 +227,10 @@
         .share-row button { height: 52px; border-radius: 14px; border: 2px solid var(--border); background: var(--card); color: var(--text); font: inherit; font-weight: 700; cursor: pointer; }
         .share-row .kakao { grid-column: 1 / -1; background: #FEE500; border-color: #FEE500; color: #191919; font-size: 1.05rem; }
         .shared-cta { display: none; max-width: 360px; margin: 16px auto 0; }
+        .share-name-opt { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; margin: 14px auto 0; font-weight: 700; cursor: pointer; }
+        .share-name-opt[hidden] { display: none; }
+        .share-name-opt input { width: 22px; height: 22px; accent-color: var(--primary); }
+        #result-zone.is-shared .share-name-opt { display: none; }
         .shared-cta .btn-main { width: 100%; }
         #result-zone.is-shared .shared-note, #result-zone.is-shared .shared-cta { display: block; }
         #result-zone.is-shared .share-row, #result-zone.is-shared .restart-wrap, #result-zone.is-shared .routine-cta { display: none; }
@@ -380,7 +384,7 @@
                 </details>
                 <details>
                     <summary>답변 내용이 저장되나요?</summary>
-                    <p>답변과 결과는 서버로 보내지 않고 사용 중인 브라우저 안에서만 계산돼요. 공유 링크에는 점수, 강아지 이름, MBTI만 들어가요. 자세한 내용은 <a href="/privacy">개인정보처리방침</a>에 있어요.</p>
+                    <p>답변과 결과는 서버로 보내지 않고 사용 중인 브라우저 안에서만 계산돼요. 공유 링크에는 점수와 보호자가 고른 MBTI만 들어가고, 강아지 이름은 공유할 때 이름 넣기를 고른 경우에만 들어가요. 자세한 내용은 <a href="/privacy">개인정보처리방침</a>에 있어요.</p>
                 </details>
             </section>
         </div>
@@ -435,6 +439,10 @@
             <div class="card-foot">mung-test.com</div>
         </div>
 
+        <label class="share-name-opt" id="share-name-opt" hidden>
+            <input type="checkbox" id="share-name" onchange="updateShareData()">
+            <span id="share-name-label"></span>
+        </label>
         <div class="share-row">
             <button type="button" class="kakao" id="btn-kakao" onclick="shareKakao()">카카오톡으로 보내기</button>
             <button type="button" id="btn-save" onclick="saveAsImage()">카드 이미지 저장</button>

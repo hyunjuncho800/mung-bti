@@ -227,16 +227,38 @@
         }
 
         // --- 공유용 데이터 ---
-        const params = new URLSearchParams({ e: E, s: S, m: M, f: F, i: I, o: O, x: X });
-        if (hasMbti) params.set('owner', ownerMbti);
-        if (name) params.set('name', name);
-        window.currentResultUrl = SITE_URL + '?' + params.toString();
-        window.currentCardTitle = `${subject} ${typeName}`.trim();
-        window.currentShareText = chem
-            ? `${window.currentCardTitle}, 보호자(${ownerMbti})랑 궁합은 ${chem.score}점이래요. 우리 강아지는 어떤 성격일까요?`
-            : `${window.currentCardTitle}${/[가-힣]$/.test(typeName) && (typeName.charCodeAt(typeName.length - 1) - 0xAC00) % 28 ? '이래요' : '래요'}. 우리 강아지는 어떤 성격일까요?`;
+        window.currentShare = { E, S, M, F, I, O, X, ownerMbti, hasMbti, name, typeNo, typeName, typeSub, chem, stats: inherent };
+        const nameOpt = document.getElementById('share-name-opt');
+        if (nameOpt) {
+            nameOpt.hidden = !name || !!passed;
+            document.getElementById('share-name-label').textContent = name ? `공유할 때 이름(${name}) 넣기` : '';
+            document.getElementById('share-name').checked = false;
+        }
+        updateShareData();
         // 주소창도 결과 링크로 바꿔서 새로고침/주소 복사로도 같은 결과가 보이게 함
-        history.replaceState(null, '', '/?' + params.toString());
+        history.replaceState(null, '', '/?' + shareParams(!!passed).toString());
+    }
+
+    // 공유 링크에는 점수와(보호자가 고른 경우) MBTI만. 강아지 이름은 '이름 넣기'를 골랐을 때만 넣음.
+    function shareParams(withName) {
+        const d = window.currentShare;
+        const params = new URLSearchParams({ e: d.E, s: d.S, m: d.M, f: d.F, i: d.I, o: d.O, x: d.X });
+        if (d.hasMbti) params.set('owner', d.ownerMbti);
+        if (withName && d.name) params.set('name', d.name);
+        return params;
+    }
+    function updateShareData() {
+        const d = window.currentShare;
+        const box = document.getElementById('share-name');
+        const withName = !!(box && box.checked);
+        const subject = withName && d.name ? withTopic(d.name) : '우리 강아지는';
+        // 유형별 공유 페이지(/r/N/)에 미리보기 이미지가 있고, 점수는 # 뒤에 담아 서버로 가지 않게 함
+        window.currentResultUrl = `${SITE_URL}r/${d.typeNo}/#${shareParams(withName).toString()}`;
+        window.currentCardSubject = subject;
+        window.currentCardTitle = `${subject} ${d.typeName}`;
+        window.currentShareText = d.chem
+            ? `${window.currentCardTitle}, 보호자(${d.ownerMbti})랑 궁합은 ${d.chem.score}점이래요. 우리 강아지는 어떤 성격일까요?`
+            : `${window.currentCardTitle}${/[가-힣]$/.test(d.typeName) && (d.typeName.charCodeAt(d.typeName.length - 1) - 0xAC00) % 28 ? '이래요' : '래요'}. 우리 강아지는 어떤 성격일까요?`;
     }
 
     // 다국어 변경 시 현재 화면 갱신
@@ -365,7 +387,7 @@
                     content: {
                         title,
                         description: text,
-                        imageUrl: SITE_URL + 'og-image.png',
+                        imageUrl: window.currentShare ? `${SITE_URL}img/og-type-${window.currentShare.typeNo}.jpg` : SITE_URL + 'og-image.png',
                         link: { mobileWebUrl: url, webUrl: url }
                     },
                     buttons: [{ title: '우리 강아지도 해보기', link: { mobileWebUrl: url, webUrl: url } }]
@@ -395,39 +417,20 @@
         copyToClipboard(text, translations[getLang()]);
     }
 
-    // ===== 결과 카드 이미지 저장 =====
+    // ===== 결과 카드 이미지 저장 (1080x1350 세로 카드, share-card.js) =====
     function saveAsImage() {
-        const card = document.getElementById('share-card');
         const btn = document.getElementById('btn-save');
         const label = btn.textContent;
         const done = () => { btn.textContent = label; btn.disabled = false; };
         btn.textContent = '이미지 만드는 중...';
         btn.disabled = true;
 
-        html2canvas(card, { scale: 3, backgroundColor: null, useCORS: true }).then(canvas => {
-            canvas.toBlob(async blob => {
-                const fileName = `mungtest-${window.currentDogType || 'result'}.png`;
-                const file = new File([blob], fileName, { type: 'image/png' });
-                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                // 모바일은 공유 시트로 바로 인스타 스토리/카톡에 올릴 수 있게
-                if (isMobile && navigator.canShare && navigator.canShare({ files: [file] })) {
-                    try {
-                        await navigator.share({ files: [file], text: window.currentShareText || '' });
-                        return done();
-                    } catch (e) {
-                        if (e.name === 'AbortError') return done();
-                    }
-                }
-                const link = document.createElement('a');
-                link.download = fileName;
-                link.href = URL.createObjectURL(blob);
-                document.body.appendChild(link);
-                link.click();
-                link.remove();
-                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-                done();
-            }, 'image/png');
-        }).catch(err => {
+        const d = window.currentShare;
+        MungCard.temperament({
+            type: d.typeNo, subject: window.currentCardSubject, typeName: d.typeName, typeSub: d.typeSub,
+            stats: d.stats, chem: d.chem ? `보호자 ${d.ownerMbti}와 궁합 ${d.chem.score}점` : '',
+        }).then(canvas => MungCard.deliver(canvas, `mungtest-${d.typeName}.png`, window.currentShareText || ''))
+        .then(done).catch(err => {
             console.error('이미지 저장 에러:', err);
             alert('이미지를 만들지 못했어요. 화면을 캡처해서 공유해 주세요.');
             done();

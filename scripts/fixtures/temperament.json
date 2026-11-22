@@ -13,7 +13,7 @@
     },
     "type": "이중인격 브레이크형",
     "card": "/img/type-1.webp",
-    "url": "https://mung-test.com/?e=5&s=5&m=5&f=5&i=5&o=5&x=5&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/1/#e=5&s=5&m=5&f=5&i=5&o=5&x=5",
     "saved": "{\"name\":\"초코\",\"type\":1,\"typeName\":\"이중인격 브레이크형\"}"
   },
   "answers_all5_enfp": {
@@ -30,7 +30,7 @@
     },
     "type": "이중인격 브레이크형",
     "card": "/img/type-1.webp",
-    "url": "https://mung-test.com/?e=5&s=5&m=5&f=5&i=5&o=5&x=5&owner=ENFP&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/1/#e=5&s=5&m=5&f=5&i=5&o=5&x=5&owner=ENFP",
     "saved": "{\"name\":\"초코\",\"type\":1,\"typeName\":\"이중인격 브레이크형\"}"
   },
   "answers_all5_istj": {
@@ -47,7 +47,7 @@
     },
     "type": "이중인격 브레이크형",
     "card": "/img/type-1.webp",
-    "url": "https://mung-test.com/?e=5&s=5&m=5&f=5&i=5&o=5&x=5&owner=ISTJ&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/1/#e=5&s=5&m=5&f=5&i=5&o=5&x=5&owner=ISTJ",
     "saved": "{\"name\":\"초코\",\"type\":1,\"typeName\":\"이중인격 브레이크형\"}"
   },
   "answers_all1": {
@@ -64,7 +64,7 @@
     },
     "type": "무소유 집돌이형",
     "card": "/img/type-4.webp",
-    "url": "https://mung-test.com/?e=1&s=1&m=1&f=1&i=1&o=1&x=1&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/4/#e=1&s=1&m=1&f=1&i=1&o=1&x=1",
     "saved": "{\"name\":\"초코\",\"type\":4,\"typeName\":\"무소유 집돌이형\"}"
   },
   "answers_all1_enfp": {
@@ -81,7 +81,7 @@
     },
     "type": "무소유 집돌이형",
     "card": "/img/type-4.webp",
-    "url": "https://mung-test.com/?e=1&s=1&m=1&f=1&i=1&o=1&x=1&owner=ENFP&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/4/#e=1&s=1&m=1&f=1&i=1&o=1&x=1&owner=ENFP",
     "saved": "{\"name\":\"초코\",\"type\":4,\"typeName\":\"무소유 집돌이형\"}"
   },
   "answers_all1_istj": {
@@ -98,7 +98,7 @@
     },
     "type": "무소유 집돌이형",
     "card": "/img/type-4.webp",
-    "url": "https://mung-test.com/?e=1&s=1&m=1&f=1&i=1&o=1&x=1&owner=ISTJ&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/4/#e=1&s=1&m=1&f=1&i=1&o=1&x=1&owner=ISTJ",
     "saved": "{\"name\":\"초코\",\"type\":4,\"typeName\":\"무소유 집돌이형\"}"
   },
   "answers_all3": {
@@ -115,7 +115,7 @@
     },
     "type": "무소유 집돌이형",
     "card": "/img/type-4.webp",
-    "url": "https://mung-test.com/?e=3&s=3&m=3&f=3&i=3&o=3&x=3&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/4/#e=3&s=3&m=3&f=3&i=3&o=3&x=3",
     "saved": "{\"name\":\"초코\",\"type\":4,\"typeName\":\"무소유 집돌이형\"}"
   },
   "answers_all3_enfp": {
@@ -132,7 +132,7 @@
     },
     "type": "무소유 집돌이형",
     "card": "/img/type-4.webp",
-    "url": "https://mung-test.com/?e=3&s=3&m=3&f=3&i=3&o=3&x=3&owner=ENFP&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/4/#e=3&s=3&m=3&f=3&i=3&o=3&x=3&owner=ENFP",
     "saved": "{\"name\":\"초코\",\"type\":4,\"typeName\":\"무소유 집돌이형\"}"
   },
   "answers_all3_istj": {
@@ -149,7 +149,7 @@
     },
     "type": "무소유 집돌이형",
     "card": "/img/type-4.webp",
-    "url": "https://mung-test.com/?e=3&s=3&m=3&f=3&i=3&o=3&x=3&owner=ISTJ&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/4/#e=3&s=3&m=3&f=3&i=3&o=3&x=3&owner=ISTJ",
     "saved": "{\"name\":\"초코\",\"type\":4,\"typeName\":\"무소유 집돌이형\"}"
   },
   "answers_all4": {
@@ -166,7 +166,7 @@
     },
     "type": "이중인격 브레이크형",
     "card": "/img/type-1.webp",
-    "url": "https://mung-test.com/?e=4&s=4&m=4&f=4&i=4&o=4&x=4&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/1/#e=4&s=4&m=4&f=4&i=4&o=4&x=4",
     "saved": "{\"name\":\"초코\",\"type\":1,\"typeName\":\"이중인격 브레이크형\"}"
   },
   "answers_all4_enfp": {
@@ -183,7 +183,7 @@
     },
     "type": "이중인격 브레이크형",
     "card": "/img/type-1.webp",
-    "url": "https://mung-test.com/?e=4&s=4&m=4&f=4&i=4&o=4&x=4&owner=ENFP&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/1/#e=4&s=4&m=4&f=4&i=4&o=4&x=4&owner=ENFP",
     "saved": "{\"name\":\"초코\",\"type\":1,\"typeName\":\"이중인격 브레이크형\"}"
   },
   "answers_all4_istj": {
@@ -200,7 +200,7 @@
     },
     "type": "이중인격 브레이크형",
     "card": "/img/type-1.webp",
-    "url": "https://mung-test.com/?e=4&s=4&m=4&f=4&i=4&o=4&x=4&owner=ISTJ&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/1/#e=4&s=4&m=4&f=4&i=4&o=4&x=4&owner=ISTJ",
     "saved": "{\"name\":\"초코\",\"type\":1,\"typeName\":\"이중인격 브레이크형\"}"
   },
   "answers_mixA": {
@@ -217,7 +217,7 @@
     },
     "type": "폭주 호기심형",
     "card": "/img/type-2.webp",
-    "url": "https://mung-test.com/?e=3.7&s=3.3&m=5&f=2&i=3.7&o=3.3&x=3.5&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/2/#e=3.7&s=3.3&m=5&f=2&i=3.7&o=3.3&x=3.5",
     "saved": "{\"name\":\"초코\",\"type\":2,\"typeName\":\"폭주 호기심형\"}"
   },
   "answers_mixA_enfp": {
@@ -234,7 +234,7 @@
     },
     "type": "폭주 호기심형",
     "card": "/img/type-2.webp",
-    "url": "https://mung-test.com/?e=3.7&s=3.3&m=5&f=2&i=3.7&o=3.3&x=3.5&owner=ENFP&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/2/#e=3.7&s=3.3&m=5&f=2&i=3.7&o=3.3&x=3.5&owner=ENFP",
     "saved": "{\"name\":\"초코\",\"type\":2,\"typeName\":\"폭주 호기심형\"}"
   },
   "answers_mixA_istj": {
@@ -251,7 +251,7 @@
     },
     "type": "폭주 호기심형",
     "card": "/img/type-2.webp",
-    "url": "https://mung-test.com/?e=3.7&s=3.3&m=5&f=2&i=3.7&o=3.3&x=3.5&owner=ISTJ&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/2/#e=3.7&s=3.3&m=5&f=2&i=3.7&o=3.3&x=3.5&owner=ISTJ",
     "saved": "{\"name\":\"초코\",\"type\":2,\"typeName\":\"폭주 호기심형\"}"
   },
   "answers_mixB": {
@@ -268,7 +268,7 @@
     },
     "type": "소심형 철학자",
     "card": "/img/type-3.webp",
-    "url": "https://mung-test.com/?e=2.3&s=4.3&m=2&f=4&i=2&o=5&x=3&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/3/#e=2.3&s=4.3&m=2&f=4&i=2&o=5&x=3",
     "saved": "{\"name\":\"초코\",\"type\":3,\"typeName\":\"소심형 철학자\"}"
   },
   "answers_mixB_enfp": {
@@ -285,7 +285,7 @@
     },
     "type": "소심형 철학자",
     "card": "/img/type-3.webp",
-    "url": "https://mung-test.com/?e=2.3&s=4.3&m=2&f=4&i=2&o=5&x=3&owner=ENFP&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/3/#e=2.3&s=4.3&m=2&f=4&i=2&o=5&x=3&owner=ENFP",
     "saved": "{\"name\":\"초코\",\"type\":3,\"typeName\":\"소심형 철학자\"}"
   },
   "answers_mixB_istj": {
@@ -302,7 +302,7 @@
     },
     "type": "소심형 철학자",
     "card": "/img/type-3.webp",
-    "url": "https://mung-test.com/?e=2.3&s=4.3&m=2&f=4&i=2&o=5&x=3&owner=ISTJ&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/3/#e=2.3&s=4.3&m=2&f=4&i=2&o=5&x=3&owner=ISTJ",
     "saved": "{\"name\":\"초코\",\"type\":3,\"typeName\":\"소심형 철학자\"}"
   },
   "answers_mixC": {
@@ -319,7 +319,7 @@
     },
     "type": "폭주 호기심형",
     "card": "/img/type-2.webp",
-    "url": "https://mung-test.com/?e=4.7&s=1.7&m=3&f=3&i=4.3&o=1.3&x=4&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/2/#e=4.7&s=1.7&m=3&f=3&i=4.3&o=1.3&x=4",
     "saved": "{\"name\":\"초코\",\"type\":2,\"typeName\":\"폭주 호기심형\"}"
   },
   "answers_mixC_enfp": {
@@ -336,7 +336,7 @@
     },
     "type": "폭주 호기심형",
     "card": "/img/type-2.webp",
-    "url": "https://mung-test.com/?e=4.7&s=1.7&m=3&f=3&i=4.3&o=1.3&x=4&owner=ENFP&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/2/#e=4.7&s=1.7&m=3&f=3&i=4.3&o=1.3&x=4&owner=ENFP",
     "saved": "{\"name\":\"초코\",\"type\":2,\"typeName\":\"폭주 호기심형\"}"
   },
   "answers_mixC_istj": {
@@ -353,7 +353,7 @@
     },
     "type": "폭주 호기심형",
     "card": "/img/type-2.webp",
-    "url": "https://mung-test.com/?e=4.7&s=1.7&m=3&f=3&i=4.3&o=1.3&x=4&owner=ISTJ&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/2/#e=4.7&s=1.7&m=3&f=3&i=4.3&o=1.3&x=4&owner=ISTJ",
     "saved": "{\"name\":\"초코\",\"type\":2,\"typeName\":\"폭주 호기심형\"}"
   },
   "answers_edge": {
@@ -370,7 +370,7 @@
     },
     "type": "이중인격 브레이크형",
     "card": "/img/type-1.webp",
-    "url": "https://mung-test.com/?e=3.7&s=3.7&m=3.3&f=3.3&i=3.7&o=3.3&x=3.5&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/1/#e=3.7&s=3.7&m=3.3&f=3.3&i=3.7&o=3.3&x=3.5",
     "saved": "{\"name\":\"초코\",\"type\":1,\"typeName\":\"이중인격 브레이크형\"}"
   },
   "answers_edge_enfp": {
@@ -387,7 +387,7 @@
     },
     "type": "이중인격 브레이크형",
     "card": "/img/type-1.webp",
-    "url": "https://mung-test.com/?e=3.7&s=3.7&m=3.3&f=3.3&i=3.7&o=3.3&x=3.5&owner=ENFP&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/1/#e=3.7&s=3.7&m=3.3&f=3.3&i=3.7&o=3.3&x=3.5&owner=ENFP",
     "saved": "{\"name\":\"초코\",\"type\":1,\"typeName\":\"이중인격 브레이크형\"}"
   },
   "answers_edge_istj": {
@@ -404,7 +404,7 @@
     },
     "type": "이중인격 브레이크형",
     "card": "/img/type-1.webp",
-    "url": "https://mung-test.com/?e=3.7&s=3.7&m=3.3&f=3.3&i=3.7&o=3.3&x=3.5&owner=ISTJ&name=%EC%B4%88%EC%BD%94",
+    "url": "https://mung-test.com/r/1/#e=3.7&s=3.7&m=3.3&f=3.3&i=3.7&o=3.3&x=3.5&owner=ISTJ",
     "saved": "{\"name\":\"초코\",\"type\":1,\"typeName\":\"이중인격 브레이크형\"}"
   },
   "shared_e5_s5": {

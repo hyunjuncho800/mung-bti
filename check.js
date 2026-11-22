@@ -7,7 +7,7 @@
         barking: {
             title: '산책 중 다른 강아지를 보면 짖어요',
             short: '다른 강아지만 보면 짖거나 달려들려고 할 때',
-            seoTitle: '강아지가 산책 중 다른 강아지를 보고 짖는 이유 체크',
+            seoTitle: '산책 중 짖는 강아지 행동 체크: 상황 질문으로 원인 좁혀 보기',
             desc: '산책 중 다른 강아지를 보면 짖는 우리 강아지, 무서워서인지 반가워서인지 상황 질문 몇 개로 가능한 원인과 관찰 포인트, 안전한 대응 방법을 정리해 드려요.',
             tone: 'var(--pink)', img: 'guide-training',
             causes: {
@@ -99,7 +99,7 @@
         alone: {
             title: '혼자 있을 때 힘들어해요',
             short: '외출 준비만 해도 불안해하거나, 혼자 있을 때 짖고 망가뜨릴 때',
-            seoTitle: '강아지 혼자 있을 때 불안해하는 행동 체크: 분리불안일까?',
+            seoTitle: '강아지 혼자 있을 때 행동 체크: 1분 상황 질문',
             desc: '보호자가 외출할 때 짖고 울거나 물건을 망가뜨리는 우리 강아지. 혼자 남는 게 힘든 건지 심심한 건지 상황 질문으로 가능한 원인과 대응 방법을 정리해 드려요.',
             tone: 'var(--lav)', img: 'guide-care',
             causes: {
@@ -191,7 +191,7 @@
         walk: {
             title: '산책 중에 멈추고 안 걸어요',
             short: '걷다가 주저앉거나, 집 쪽으로만 가려고 할 때',
-            seoTitle: '강아지 산책 거부, 걷다가 멈추는 이유 체크',
+            seoTitle: '강아지 산책 거부 행동 체크: 1분 상황 질문',
             desc: '산책하다 주저앉거나 안 걸으려는 우리 강아지. 아파서인지, 무서운 게 있어서인지, 냄새를 맡고 싶어서인지 상황 질문으로 가능한 원인과 대응 방법을 정리해 드려요.',
             tone: 'var(--green)', img: 'hub-guide',
             causes: {
@@ -418,7 +418,10 @@
             if (shared) {
                 actions.push(h('button', { type: 'button', class: 'btn', text: '우리 강아지도 체크하기', on: function () { history.replaceState(null, '', location.pathname); answers = {}; idx = 0; renderQuestion(); } }));
             } else {
-                if (r.causes.length) actions.push(h('button', { type: 'button', class: 'btn', text: '결과 공유하기', on: function (e) { share(r, e.currentTarget); } }));
+                if (r.causes.length) {
+                    actions.push(h('button', { type: 'button', class: 'btn', text: '결과 링크 공유', on: function (e) { share(r, e.currentTarget); } }));
+                    if (window.MungCard) actions.push(h('button', { type: 'button', class: 'btn btn-ghost', text: '카드 이미지 저장', on: function (e) { saveCard(r, e.currentTarget); } }));
+                }
                 actions.push(h('button', { type: 'button', class: 'btn btn-ghost', text: '다시 체크하기', on: function () { answers = {}; idx = 0; renderQuestion(); } }));
             }
             kids.push(h('div', { class: 'check-actions' }, actions));
@@ -437,7 +440,7 @@
         }
 
         function share(r, btn) {
-            var url = location.origin + location.pathname + '?r=' + r.causes.join('.');
+            var url = location.origin + location.pathname + '#r=' + r.causes.join('.');
             var text = check.title + ' 체크 결과: ' + check.causes[r.causes[0]].name;
             var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             if (isMobile && navigator.share) {
@@ -449,14 +452,28 @@
             else prompt('링크를 복사해 주세요', url);
         }
 
+        // 세로 카드(1080x1350): 원인 이름과 요약만. 답변과 위험 신호는 넣지 않음
+        function saveCard(r, btn) {
+            var label = btn.textContent;
+            btn.textContent = '이미지 만드는 중...'; btn.disabled = true;
+            var done = function () { btn.textContent = label; btn.disabled = false; };
+            MungCard.check({
+                title: check.title, tone: getComputedStyle(document.documentElement).getPropertyValue(check.tone.slice(4, -1)).trim(), img: check.img,
+                causes: r.causes.map(function (k) { return { name: check.causes[k].name, summary: check.causes[k].summary }; }),
+            }).then(function (c) { return MungCard.deliver(c, 'mungtest-check-' + key + '.png', check.title + ' 체크 결과'); }).then(done, function () {
+                alert('이미지를 만들지 못했어요. 화면을 캡처해서 공유해 주세요.'); done();
+            });
+        }
+
         function renderIntro() {
             panel.replaceChildren.apply(panel, Array.prototype.slice.call(intro.cloneNode(true).childNodes));
             panel.querySelector('[data-start]').addEventListener('click', function () { idx = 0; renderQuestion(); });
         }
 
         var intro = panel.cloneNode(true);
-        // 공유 링크(?r=원인.원인)로 들어오면 원인 요약만 보여 줌. 답변 원문은 주소에 담지 않음.
-        var shared = (params.get('r') || '').split('.').filter(function (k) { return check.causes[k]; }).slice(0, 3);
+        // 공유 링크(#r=원인.원인, 예전 링크는 ?r=)로 들어오면 원인 요약만 보여 줌. 답변 원문은 주소에 담지 않음.
+        var hash = new URLSearchParams(location.hash.slice(1));
+        var shared = (hash.get('r') || params.get('r') || '').split('.').filter(function (k) { return check.causes[k]; }).slice(0, 3);
         if (shared.length) renderResult({ causes: shared, flags: [] }, true);
         else renderIntro();
     }

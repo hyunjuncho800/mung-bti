@@ -211,6 +211,58 @@ function myDogBox() {
     </section>`;
 }
 
+// ---------------------------------------------------------------- 행동 이해하기 (검색 의도별 정보 페이지)
+// 원본: content/guides/<주소>.html (머리 주석에 제목, 설명, 연결할 체크와 글)
+const GUIDE_ORDER = ['barking-on-walks', 'alone-anxiety', 'walk-refusal', 'temperament-socialization', 'personality-test-vs-temperament'];
+const guides = GUIDE_ORDER.map(slug => {
+    const src = fs.readFileSync(path.join(ROOT, 'content/guides', `${slug}.html`), 'utf8');
+    const g = { slug, url: `/guide/${slug}/`, body: src.replace(/^(<!--.*?-->\n)+/, '').trim() };
+    for (const k of ['title', 'h1', 'desc', 'short', 'tone', 'img', 'check', 'read', 'published']) g[k] = meta(src, k);
+    g.read = g.read.split(/\s+/).filter(Boolean).map(Number);
+    return g;
+});
+const guideByCheck = Object.fromEntries(guides.filter(g => g.check).map(g => [g.check, g]));
+const guideRows = list => list.map(g => row(g.url, g.h1, g.short, img(g.img, '', 56, 56), g.tone)).join('');
+
+function buildGuides() {
+    const { CHECKS } = require(path.join(ROOT, 'check.js'));
+    for (const g of guides) {
+        const c = g.check && CHECKS[g.check];
+        const reads = g.read.map(id => postById[id]).filter(Boolean);
+        const others = guides.filter(o => o !== g);
+        const checkBox = c ? `
+            <aside class="cta-box section" style="background:${g.tone}">
+                ${img(c.img, '', 110, 110)}
+                <div>
+                    <b>우리 강아지는 어느 쪽일까?</b>
+                    <p>상황 질문 7~8개에 답하면 가능한 원인과 지켜볼 점을 정리해 드려요. 1~2분이면 끝나요.</p>
+                    <a class="btn" href="/check/${g.check}/">1분 행동 체크 하기</a>
+                </div>
+            </aside>` : '';
+        write(`guide/${g.slug}/index.html`, layout({
+            title: `${g.title} | 멍테스트`, desc: g.desc, url: g.url, section: 'blog',
+            ld: [
+                { '@context': 'https://schema.org', '@type': 'Article', headline: g.h1, description: g.desc, inLanguage: 'ko', datePublished: g.published, dateModified: g.published, image: `${SITE}/img/${g.img}.webp`, author: { '@type': 'Organization', name: '멍테스트', url: `${SITE}/` }, publisher: { '@type': 'Organization', name: '멍테스트' }, mainEntityOfPage: `${SITE}${g.url}` },
+                { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: '멍테스트', item: `${SITE}/` },
+                    { '@type': 'ListItem', position: 2, name: '생활 가이드', item: `${SITE}/blog/` },
+                    { '@type': 'ListItem', position: 3, name: g.h1, item: `${SITE}${g.url}` },
+                ] },
+            ],
+            body: hero({ tone: g.tone, width: 'narrow', eyebrow: '<a class="eyebrow-link" href="/blog/#understand">생활 가이드 / 행동 이해하기</a>', title: esc(g.h1), image: img(g.img, '', 400, 400).replace(' loading="lazy"', '') }) +
+                `<div class="narrow">
+                    <p class="guide-meta">${g.published} 작성 · 멍테스트 편집</p>
+                    <article class="prose section">${g.body}</article>
+                    ${DISCLAIMER}
+                    ${checkBox}
+                    ${TEST_CTA}
+                    ${reads.length ? `<section class="section"><h2 class="section-title">함께 읽으면 좋은 글</h2><ul class="rows">${reads.map(p => row(p.url, p.title, cut(p.desc, 60))).join('')}</ul></section>` : ''}
+                    <section class="section"><h2 class="section-title">행동 이해하기 다른 글</h2><ul class="rows">${guideRows(others)}</ul></section>
+                </div>`,
+        }));
+    }
+}
+
 // ---------------------------------------------------------------- 생활 가이드
 function buildBlog() {
     const sections = Object.entries(TOPICS).map(([key, t]) => {
@@ -227,7 +279,7 @@ function buildBlog() {
         desc: '강아지 훈련과 행동, 건강 관리, 음식과 영양, 산책과 여행, 생활 용품까지 주제별로 정리한 반려견 생활 가이드예요.',
         url: '/blog/', section: 'blog',
         body: hero({ tone: 'var(--green)', title: '생활 가이드', text: '훈련, 건강 관리, 음식, 산책과 여행, 생활 용품까지. 강아지와 사는 데 필요한 글을 주제별로 모았어요.', image: img('hub-guide', '산책하는 강아지 그림', 400, 400, ' fetchpriority="high"').replace(' loading="lazy"', '') }) +
-            `<div class="narrow">${myDogBox()}<nav class="chips section" aria-label="주제">${chips}</nav>${sections}</div>`,
+            `<div class="narrow">${myDogBox()}<nav class="chips section" aria-label="주제"><a class="chip" href="#understand">행동 이해하기</a>${chips}</nav><section class="section" id="understand"><h2 class="section-title">행동 이해하기</h2><p class="lead">자주 묻는 행동 고민을 원인부터 차근차근 풀었어요.</p><ul class="rows">${guideRows(guides)}</ul></section>${sections}</div>`,
     }));
 
     for (const p of posts) {
@@ -559,6 +611,7 @@ function buildCheck() {
                     <h2 class="section-title">어떤 고민인가요?</h2>
                     <ul class="rows">${entries.map(([k, c]) => row(`/check/${k}/`, c.title, c.short, img(c.img, '', 56, 56), c.tone)).join('')}</ul>
                 </section>
+                <section class="section"><h2 class="section-title">행동 이해하기</h2><ul class="rows">${guideRows(guides)}</ul></section>
                 <p class="callout callout-note section">체크 결과는 답변을 바탕으로 한 참고 정보예요. 진단이 아니에요. 물거나 물려고 하는 행동, 심한 스트레스, 통증이 의심되거나 행동이 갑자기 바뀌었다면 동물병원이나 반려견 행동 전문가와 상담해 주세요.</p>
                 ${TEST_CTA}
             </div>`,
@@ -567,10 +620,10 @@ function buildCheck() {
     for (const [key, c] of entries) {
         const base = c.questions.filter(q => !q.showIf);
         const others = entries.filter(([k]) => k !== key);
-        const reads = c.read.map(id => postById[id]).filter(Boolean);
+        const reads = [guideByCheck[key] && { url: guideByCheck[key].url, title: guideByCheck[key].h1, desc: guideByCheck[key].desc }, ...c.read.map(id => postById[id])].filter(Boolean);
         write(`check/${key}/index.html`, layout({
             title: `${c.seoTitle} | 멍테스트`, desc: c.desc, url: `/check/${key}/`, section: 'check',
-            extraBody: `<script src="/check.js?v=${TODAY}"></script>`,
+            extraBody: `<script src="/share-card.js?v=${TODAY}"></script>\n<script src="/check.js?v=${TODAY}"></script>`,
             body: hero({ tone: c.tone, width: 'narrow', eyebrow: '<a class="eyebrow-link" href="/check/">멍고민 행동 체크</a>', title: esc(c.title), text: esc(c.short) }) +
                 `<div class="narrow">
                     <div class="check-app section" data-check="${key}">
@@ -642,6 +695,51 @@ function buildRoutine() {
     }));
 }
 
+// ---------------------------------------------------------------- 기질검사 결과 공유 페이지 (/r/1/ ~ /r/4/)
+// 카톡·SNS 미리보기는 자바스크립트를 실행하지 않으므로 유형마다 고정 페이지에 미리보기 정보를 둔다.
+// 점수는 주소의 # 뒤에 담겨(서버와 검색봇에 전달되지 않음) 성격 테스트 화면으로 그대로 넘긴다.
+const TYPE_SHARE = {
+    1: { sub: '호기심 천국 겁쟁이', line: '궁금한 건 많은데 겁도 많은 아이' },
+    2: { sub: '브레이크 고장난 탐험가', line: '일단 달려가고 보는 아이' },
+    3: { sub: '신중하고 세심한 파수꾼', line: '멀리서 오래 지켜보고 움직이는 아이' },
+    4: { sub: '평화로운 안방 현자', line: '내 방석이 세상의 전부인 아이' },
+};
+function buildShare() {
+    for (const [type, t] of Object.entries(TYPE_SHARE)) {
+        const name = TYPE_NAMES[type];
+        const title = `우리 강아지는 ${name} | 강아지 성격 테스트`;
+        const desc = `${t.sub}, ${t.line}. 20개 질문으로 우리 강아지 성격 유형도 알아보세요.`;
+        write(`r/${type}/index.html`, `<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${esc(title)}</title>
+    <meta name="description" content="${esc(desc)}">
+    <link rel="canonical" href="${SITE}/">
+    <meta name="robots" content="noindex, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="멍테스트">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:url" content="${SITE}/r/${type}/">
+    <meta property="og:title" content="${esc(title)}">
+    <meta property="og:description" content="${esc(desc)}">
+    <meta property="og:image" content="${SITE}/img/og-type-${type}.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="${esc(name)} 강아지 성격 카드">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="${SITE}/img/og-type-${type}.jpg">
+    <script>location.replace('/' + (location.hash.length > 1 ? '?' + location.hash.slice(1) : ''));</script>
+</head>
+<body>
+    <p><a href="/">${esc(name)} 결과 보러 가기</a></p>
+</body>
+</html>
+`, { index: false });
+    }
+}
+
 // ---------------------------------------------------------------- 계산기, 안내 페이지
 function meta(src, key) {
     const m = src.match(new RegExp(`<!-- ${key}: (.*?) -->`));
@@ -689,12 +787,14 @@ function buildSitemap() {
     fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
 }
 
+buildGuides();
 buildBlog();
 buildFood();
 buildHealth();
 buildBreeds();
 buildCheck();
 buildRoutine();
+buildShare();
 buildTools();
 patchHome();
 buildSitemap();
