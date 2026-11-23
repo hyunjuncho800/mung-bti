@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const port = 3000;
+const port = process.env.PORT || 3000; // 미리보기 도구가 다른 포트를 주면 그걸 씀
 const dir = __dirname;
 
 const mimeTypes = {

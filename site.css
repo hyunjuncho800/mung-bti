@@ -310,3 +310,25 @@ a { color: var(--primary-dark); }
 .match-info { background: var(--bg); border-radius: 14px; padding: 12px 14px; }
 .match-info ul, .check-panel .man-sec ul { padding-left: 0; }
 .match-info li::before, .check-panel .man-sec li::before { content: ''; }
+
+/* ---------- 반려동물 해외여행 ---------- */
+.facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+.facts div { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; }
+.facts dt { font-size: 0.85rem; color: var(--text-muted); }
+.facts dd { font-weight: 800; word-break: keep-all; }
+.abroad-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; line-height: 1.55; min-width: 760px; }
+.abroad-table th, .abroad-table td { border-bottom: 1px solid var(--border); padding: 10px 8px; text-align: left; vertical-align: top; word-break: keep-all; }
+.abroad-table thead th { background: var(--primary-light); font-weight: 800; }
+.abroad-table tbody th { font-weight: 800; white-space: nowrap; }
+.abroad-table tbody th a { color: var(--primary-dark); }
+.src-list { padding-left: 1.2em; display: grid; gap: 8px; word-break: keep-all; }
+/* 휴대폰: 표를 나라별 카드로 */
+@media (max-width: 640px) {
+    .abroad-table { min-width: 0; }
+    .abroad-table thead { display: none; }
+    .abroad-table, .abroad-table tbody, .abroad-table tr, .abroad-table th, .abroad-table td { display: block; width: 100%; }
+    .abroad-table tr { border: 1px solid var(--border); border-radius: 14px; background: var(--card); padding: 12px 14px; margin-bottom: 10px; }
+    .abroad-table tbody th { border: 0; padding: 0 0 6px; font-size: 1.05rem; }
+    .abroad-table td { border: 0; padding: 4px 0; display: grid; grid-template-columns: 7.5em 1fr; gap: 8px; }
+    .abroad-table td::before { content: attr(data-label); color: var(--text-muted); font-size: 0.85rem; }
+}

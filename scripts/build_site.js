@@ -280,7 +280,7 @@ function buildBlog() {
         return `<section class="section" id="${key}">
             <h2 class="section-title">${t.name}</h2>
             <p class="lead">${t.text}</p>
-            <ul class="rows">${list.map(p => row(p.url, p.title, cut(p.desc, 70), img(p.image || t.img, '', 56, 56), t.tone)).join('')}</ul>
+            <ul class="rows">${key === 'walk' ? row('/abroad/', '반려동물 해외여행 나라별 입국 조건', '일본, 미국, 유럽, 대만 등 항체검사와 대기 기간 비교', img('travel-7', '', 56, 56), t.tone) : ''}${list.map(p => row(p.url, p.title, cut(p.desc, 70), img(p.image || t.img, '', 56, 56), t.tone)).join('')}</ul>
         </section>`;
     }).join('');
     const chips = Object.entries(TOPICS).map(([key, t]) => `<a class="chip" href="#${key}">${t.name}</a>`).join('');
@@ -295,7 +295,8 @@ function buildBlog() {
     for (const p of posts) {
         const t = TOPICS[p.topic];
         const related = posts.filter(o => o.topic === p.topic && o.id !== p.id).slice(0, 3);
-        const toolLink = p.topic === 'gear' ? `<p class="callout callout-note section">옷을 사기 전에 <a href="/size-calculator">옷 사이즈 계산기</a>로 우리 강아지 치수를 확인해 보세요.</p>` : '';
+        const toolLink = p.topic === 'gear' ? `<p class="callout callout-note section">옷을 사기 전에 <a href="/size-calculator">옷 사이즈 계산기</a>로 우리 강아지 치수를 확인해 보세요.</p>`
+            : p.topic === 'walk' ? `<p class="callout callout-note section">해외로 간다면 <a href="/abroad/">나라별 반려동물 입국 조건</a>을 먼저 확인해 보세요. 일본은 준비에만 8개월 이상 걸려요.</p>` : '';
         write(`blog/${p.id}/index.html`, layout({
             title: `${p.title} | 멍테스트`, desc: p.desc, url: p.url, section: 'blog',
             ld: { '@context': 'https://schema.org', '@type': 'Article', headline: p.title, inLanguage: 'ko', image: `${SITE}/img/${p.image || t.img}.webp`, publisher: { '@type': 'Organization', name: '멍테스트' } },
@@ -779,6 +780,91 @@ function buildMatch() {
     }
 }
 
+// ---------------------------------------------------------------- 반려동물 해외여행: 나라별 입국 조건 (/abroad/)
+// 원본: content/abroad/<주소>.html (머리 주석에 한눈에 보기 항목과 공식 출처). 내용은 각국 정부 사이트를 직접 확인해 쓴다.
+const ABROAD_CHECKED = '2026-11-23'; // 공식 사이트를 마지막으로 확인한 날. 내용을 다시 확인하면 같이 바꾼다.
+const ABROAD_FACTS = [['test', '광견병 항체검사'], ['wait', '채혈 후 기다리는 기간'], ['prior', '미리 할 일'], ['quarantine', '도착 후 격리'], ['prep', '넉넉히 잡을 준비 기간']];
+function loadAbroad() {
+    const dir = path.join(ROOT, 'content/abroad');
+    return fs.readdirSync(dir).filter(n => n.endsWith('.html')).map(n => {
+        const src = fs.readFileSync(path.join(dir, n), 'utf8');
+        const a = { slug: n.replace('.html', ''), body: src.replace(/^(<!--[\s\S]*?-->\n)+/, '').replace(/<!-- sources:[\s\S]*?-->\s*$/, '').trim() };
+        for (const k of ['name', 'title', 'desc', 'order', ...ABROAD_FACTS.map(f => f[0])]) a[k] = meta(src, k);
+        a.order = Number(a.order) || 50;
+        a.sources = (src.match(/<!-- sources: ([\s\S]*?) -->/) || ['', ''])[1].split(' ; ').filter(Boolean).map(s => { const [label, url] = s.split('|'); return { label: label.trim(), url: url.trim() }; });
+        a.url = `/abroad/${a.slug}/`;
+        return a;
+    }).sort((x, y) => x.order - y.order);
+}
+function buildAbroad() {
+    const all = loadAbroad();
+    const countries = all.filter(a => a.slug !== 'return-to-korea');
+    const back = all.find(a => a.slug === 'return-to-korea');
+    const CHECK_NOTE = `<p class="callout callout-note section">${ABROAD_CHECKED}에 각 나라 정부의 공식 안내를 직접 확인해 정리했어요. 입국 조건은 예고 없이 바뀌기도 해서, 출국 전에 아래 공식 사이트와 농림축산검역본부, 항공사 규정을 꼭 다시 확인해 주세요. 판매나 입양 목적의 이동, 경유 노선은 조건이 다를 수 있어요.</p>`;
+    const sourceList = a => `<section class="section"><h2 class="section-title">공식 확인처</h2><ul class="src-list">${a.sources.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join('')}</ul></section>`;
+    const table = `<div class="table-wrap"><table class="abroad-table">
+        <thead><tr><th>나라</th>${ABROAD_FACTS.map(([, l]) => `<th>${l}</th>`).join('')}</tr></thead>
+        <tbody>${countries.map(a => `<tr><th scope="row"><a href="${a.url}">${esc(a.name)}</a></th>${ABROAD_FACTS.map(([k, l]) => `<td data-label="${l}">${esc(a[k])}</td>`).join('')}</tr>`).join('')}</tbody>
+    </table></div>`;
+    write('abroad/index.html', layout({
+        title: '반려동물 해외여행 나라별 입국 조건: 일본, 미국, 유럽, 대만 | 멍테스트',
+        desc: '강아지, 고양이와 해외여행 갈 때 나라마다 다른 입국 조건을 한 표로 비교했어요. 일본, 미국, 캐나다, 유럽연합, 영국, 대만, 싱가포르, 호주의 항체검사, 대기 기간, 격리와 한국 귀국 조건까지 공식 자료로 정리했어요.',
+        url: '/abroad/', section: 'blog',
+        ld: { '@context': 'https://schema.org', '@type': 'Article', headline: '반려동물 해외여행 나라별 입국 조건', inLanguage: 'ko', dateModified: ABROAD_CHECKED, author: { '@type': 'Organization', name: '멍테스트' }, publisher: { '@type': 'Organization', name: '멍테스트' } },
+        body: hero({ tone: 'var(--sky)', title: '반려동물과 해외여행, 나라별 입국 조건', text: '강아지, 고양이와 함께 해외에 가려면 나라마다 준비할 것과 기간이 크게 달라요. 가려는 나라의 조건과 한국으로 돌아올 때 필요한 것을 함께 확인하세요.', image: img('travel-7', '여행 가방 옆 강아지 그림').replace(' loading="lazy"', '') }) +
+            `<div class="wrap">
+                <section class="section"><h2 class="section-title">한눈에 비교</h2>${table}
+                <p class="check-note">준비 기간은 광견병 접종을 처음 하는 경우를 기준으로 공식 조건의 날짜를 더해 어림한 값이에요.</p></section>
+            </div>
+            <div class="narrow">
+                <section class="section prose">
+                    <h2>어느 나라든 공통으로 거치는 순서</h2>
+                    <ol>
+                        <li><b>가려는 나라 조건 확인.</b> 아래 나라별 페이지와 그 나라 정부 사이트, 항공사 규정을 함께 봐요. 기내에 함께 탈 수 있는지, 이동장 크기와 무게 제한은 항공사마다 달라요.</li>
+                        <li><b>마이크로칩.</b> 대부분의 나라가 ISO 11784/11785 규격 칩을 요구하고, 광견병 접종보다 먼저 심어야 해요.</li>
+                        <li><b>광견병 접종.</b> 나라마다 인정하는 백신 종류와 접종 횟수가 달라요.</li>
+                        <li><b>광견병 항체검사.</b> 가는 나라가 요구하지 않아도 한국으로 돌아올 때 필요해요. 검사기관도 나라마다 인정하는 곳이 달라요.</li>
+                        <li><b>기다리는 기간과 사전 신고·허가.</b> 일본은 180일, 유럽과 영국은 3개월이에요. 일본은 도착 40일 전 신고, 대만·싱가포르·호주는 수입허가가 필요해요.</li>
+                        <li><b>출국 전 검역증명서.</b> 동물병원 건강증명서를 챙겨 농림축산검역본부에서 검역증명서를 받아요. 반려동물을 꼭 데리고 가야 해요.</li>
+                        <li><b>돌아올 때 공항 검역.</b> <a href="${back.url}">한국으로 돌아올 때</a>를 꼭 미리 읽어 두세요.</li>
+                    </ol>
+                </section>
+                <section class="section"><h2 class="section-title">나라별 자세히 보기</h2>
+                    <ul class="rows">${all.map(a => row(a.url, a.name, cut(a.desc, 70), img('travel-7', '', 56, 56), 'var(--sky)')).join('')}</ul>
+                </section>
+                ${CHECK_NOTE}
+                <section class="section"><h2 class="section-title">함께 읽으면 좋은 글</h2><ul class="rows">${[37, 33].map(id => postById[id]).filter(Boolean).map(p => row(p.url, p.title, cut(p.desc, 60))).join('')}</ul></section>
+            </div>`,
+    }));
+    for (const a of all) {
+        const others = all.filter(o => o !== a);
+        write(`abroad/${a.slug}/index.html`, layout({
+            title: `${a.title} | 멍테스트`, desc: a.desc, url: a.url, section: 'blog',
+            ld: [
+                { '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description: a.desc, inLanguage: 'ko', dateModified: ABROAD_CHECKED, author: { '@type': 'Organization', name: '멍테스트' }, publisher: { '@type': 'Organization', name: '멍테스트' }, mainEntityOfPage: `${SITE}${a.url}` },
+                { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: '멍테스트', item: `${SITE}/` },
+                    { '@type': 'ListItem', position: 2, name: '반려동물 해외여행 나라별 입국 조건', item: `${SITE}/abroad/` },
+                    { '@type': 'ListItem', position: 3, name: a.name, item: `${SITE}${a.url}` },
+                ] },
+            ],
+            body: hero({ tone: 'var(--sky)', width: 'narrow', eyebrow: '<a class="eyebrow-link" href="/abroad/">반려동물 해외여행 / 나라별 입국 조건</a>', title: esc(a.slug === 'return-to-korea' ? '해외여행 후 한국으로 돌아올 때' : `반려동물과 ${a.name.replace(/ \(.*\)$/, '')} 가기`) }) +
+                `<div class="narrow">
+                    <p class="guide-meta">${ABROAD_CHECKED} 공식 안내 확인 · 멍테스트 편집</p>
+                    <section class="section" aria-labelledby="facts-title">
+                        <h2 class="section-title" id="facts-title">한눈에 보기</h2>
+                        <dl class="facts">${ABROAD_FACTS.map(([k, label]) => a[k] ? `<div><dt>${label}</dt><dd>${esc(a[k])}</dd></div>` : '').join('')}</dl>
+                    </section>
+                    <article class="prose section">${a.body}</article>
+                    ${sourceList(a)}
+                    ${CHECK_NOTE}
+                    <section class="section"><h2 class="section-title">다른 나라 조건</h2><ul class="rows">${others.map(o => row(o.url, o.name, o.prep ? `준비 기간 ${o.prep}` : '', '', 'var(--sky)')).join('')}</ul></section>
+                    ${TEST_CTA}
+                </div>`,
+        }));
+    }
+}
+
 // ---------------------------------------------------------------- 기질검사 결과 공유 페이지 (/r/1/ ~ /r/4/)
 // 카톡·SNS 미리보기는 자바스크립트를 실행하지 않으므로 유형마다 고정 페이지에 미리보기 정보를 둔다.
 // 점수는 주소의 # 뒤에 담겨(서버와 검색봇에 전달되지 않음) 성격 테스트 화면으로 그대로 넘긴다.
@@ -896,6 +982,7 @@ buildCheck();
 buildRoutine();
 buildManual();
 buildMatch();
+buildAbroad();
 buildShare();
 buildTools();
 patchHome();
