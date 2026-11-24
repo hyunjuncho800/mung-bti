@@ -332,3 +332,7 @@ a { color: var(--primary-dark); }
     .abroad-table td { border: 0; padding: 4px 0; display: grid; grid-template-columns: 7.5em 1fr; gap: 8px; }
     .abroad-table td::before { content: attr(data-label); color: var(--text-muted); font-size: 0.85rem; }
 }
+
+/* 문의하기: 이메일 강조 */
+.contact-mail { background: var(--primary-light); border-radius: 14px; padding: 14px 18px; font-size: 1.1rem; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.contact-mail a { font-weight: 800; word-break: break-all; }
