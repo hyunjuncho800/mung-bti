@@ -8,6 +8,11 @@ const ROOT = path.join(__dirname, '..');
 const SITE = 'https://mung-test.com';
 const TODAY = new Date().toISOString().slice(0, 10);
 const ADSENSE = 'ca-pub-4790912864460441';
+// 애드센스 스크립트는 운영 주소(mung-test.com)에서, 사람이 보는 브라우저일 때만 불러온다.
+// - 로컬 미리보기, 다른 주소, 자동화 브라우저(navigator.webdriver)에서는 불러오지 않음 → 무효 트래픽 예방
+// - 주소 뒤에 ?noads=1 을 붙여 한 번 열면 그 기기에서는 계속 안 불러옴 (?noads=0 으로 되돌림). 운영자 본인 기기용
+// 소유 확인은 <meta name="google-adsense-account">로 하므로 심사에는 영향 없음.
+const ADS_LOADER = `<!-- ads-loader --><script>(function(){var off=false;try{var q=location.search;if(/[?&]noads=1(&|$)/.test(q))localStorage.setItem('mung_noads','1');if(/[?&]noads=0(&|$)/.test(q))localStorage.removeItem('mung_noads');off=localStorage.getItem('mung_noads')==='1';}catch(e){}if(off||navigator.webdriver||location.hostname!=='mung-test.com')return;var s=document.createElement('script');s.async=true;s.crossOrigin='anonymous';s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE}';document.head.appendChild(s);})();</script><!-- /ads-loader -->`;
 
 const readJson = f => JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8'));
 // 정적 파일 주소 뒤 버전: 파일 내용의 해시. 내용이 바뀔 때만 주소가 바뀌어서, 브라우저가 4시간 동안 잡고 있는 예전 파일을 쓰지 않는다.
@@ -66,7 +71,7 @@ function layout({ title, desc, url, section, body, noindex = false, preCss = '',
     <link rel="canonical" href="${canonical}">
     <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'}">
     <meta name="google-adsense-account" content="${ADSENSE}">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE}" crossorigin="anonymous"></script>
+    ${ADS_LOADER}
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="멍테스트">
     <meta property="og:locale" content="ko_KR">
@@ -950,6 +955,7 @@ function patchHome() {
     s = s.replace(/<header[\s\S]*?<\/header>/, header('test'));
     s = s.replace(/<footer[\s\S]*?<\/footer>/, FOOTER);
     s = s.replace(/"\/((?:share-card|i18n|site|script)\.js|(?:style|site)\.css)\?v=[^"]*"/g, (m, f) => `"/${f}?v=${V(f)}"`);
+    s = s.replace(/<!-- ads-loader -->[\s\S]*?<!-- \/ads-loader -->|<script async src="https:\/\/pagead2\.googlesyndication\.com[^>]*><\/script>/, ADS_LOADER);
     fs.writeFileSync(file, s);
     sitemap.unshift('/');
 }
