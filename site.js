@@ -121,6 +121,33 @@
             edge();
         }
 
+        // 해외여행 체크리스트: 나라별로 체크한 항목 id를 이 브라우저에 저장
+        document.querySelectorAll('[data-checklist]').forEach(function (box) {
+            var key = 'mung_abroad_' + box.getAttribute('data-checklist');
+            var inputs = Array.prototype.slice.call(box.querySelectorAll('input[data-id]'));
+            var saved = [];
+            try { saved = JSON.parse(store(key) || '[]') || []; } catch (e) { saved = []; }
+            inputs.forEach(function (i) { i.checked = saved.indexOf(i.getAttribute('data-id')) !== -1; });
+            var paint = function () {
+                var done = inputs.filter(function (i) { return i.checked; }).length;
+                box.querySelector('[data-done]').textContent = done;
+                box.querySelector('[data-bar]').style.width = Math.round(done / inputs.length * 100) + '%';
+                box.classList.toggle('is-complete', done === inputs.length);
+            };
+            var save = function () {
+                var ids = inputs.filter(function (i) { return i.checked; }).map(function (i) { return i.getAttribute('data-id'); });
+                if (ids.length) store(key, JSON.stringify(ids)); else { try { localStorage.removeItem(key); } catch (e) {} }
+                paint();
+            };
+            inputs.forEach(function (i) { i.addEventListener('change', save); });
+            box.querySelector('[data-reset]').addEventListener('click', function () {
+                if (!confirm('이 나라 체크리스트의 체크를 모두 지울까요?')) return;
+                inputs.forEach(function (i) { i.checked = false; });
+                save();
+            });
+            paint();
+        });
+
         // 홈: 다시 온 방문자에게 지난 결과와 7일 활동 이어 하기
         var resume = document.querySelector('[data-home-resume]');
         if (resume) {

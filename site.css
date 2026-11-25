@@ -336,3 +336,24 @@ a { color: var(--primary-dark); }
 /* 문의하기: 이메일 강조 */
 .contact-mail { background: var(--primary-light); border-radius: 14px; padding: 14px 18px; font-size: 1.1rem; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
 .contact-mail a { font-weight: 800; word-break: break-all; }
+
+/* ---------- 해외여행 체크리스트 ---------- */
+.checklist-jump { margin-top: 14px; }
+.checklist { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 22px 20px; }
+.checklist h3 { font-size: 1.02rem; font-weight: 800; margin: 20px 0 6px; }
+.checklist ul { list-style: none; display: grid; gap: 4px; }
+.checklist label { display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; padding: 10px 4px; min-height: 44px; cursor: pointer; border-radius: 10px; word-break: keep-all; line-height: 1.6; }
+.checklist label:hover { background: var(--primary-light); }
+.checklist input { width: 22px; height: 22px; margin-top: 2px; accent-color: var(--primary); }
+.checklist input:checked + span { color: var(--text-muted); text-decoration: line-through; text-decoration-thickness: 1px; }
+.checklist-progress { font-weight: 700; }
+.checklist-progress b { font-size: 1.3rem; color: var(--primary-dark); }
+.checklist-bar { height: 8px; border-radius: 99px; background: var(--primary-light); overflow: hidden; margin-top: 6px; }
+.checklist-bar i { display: block; height: 100%; width: 0; background: var(--primary); border-radius: 99px; transition: width 0.2s; }
+.checklist.is-complete .checklist-progress::after { content: ' · 모두 준비했어요'; color: var(--primary-dark); }
+.checklist .text-link { margin-top: 6px; }
+@media (prefers-reduced-motion: reduce) { .checklist-bar i { transition: none; } }
+@media print {
+    .site-header, .site-footer, .page-hero img, .cta-box, .checklist-jump, .checklist .text-link { display: none !important; }
+    .checklist { border: 0; padding: 0; }
+}

@@ -793,13 +793,32 @@ function loadAbroad() {
     const dir = path.join(ROOT, 'content/abroad');
     return fs.readdirSync(dir).filter(n => n.endsWith('.html')).map(n => {
         const src = fs.readFileSync(path.join(dir, n), 'utf8');
-        const a = { slug: n.replace('.html', ''), body: src.replace(/^(<!--[\s\S]*?-->\n)+/, '').replace(/<!-- sources:[\s\S]*?-->\s*$/, '').trim() };
+        const a = { slug: n.replace('.html', ''), body: src.replace(/^(<!--[\s\S]*?-->\n)+/, '').replace(/<!-- (sources|checklist):[\s\S]*?-->\s*/g, '').trim() };
+        // 체크리스트: 한 줄에 '단계|항목'. 항목 id는 글자로 만든 짧은 해시라 순서를 바꿔도 체크 상태가 유지된다
+        a.checklist = ((src.match(/<!-- checklist:\n([\s\S]*?)\n-->/) || ['', ''])[1]).split('\n').filter(Boolean).map(line => {
+            const [phase, text] = line.split('|');
+            let h = 5381; for (const ch of text) h = ((h * 33) ^ ch.codePointAt(0)) >>> 0;
+            return { phase: phase.trim(), text: text.trim(), id: h.toString(36) };
+        });
         for (const k of ['name', 'title', 'desc', 'order', ...ABROAD_FACTS.map(f => f[0])]) a[k] = meta(src, k);
         a.order = Number(a.order) || 50;
         a.sources = (src.match(/<!-- sources: ([\s\S]*?) -->/) || ['', ''])[1].split(' ; ').filter(Boolean).map(s => { const [label, url] = s.split('|'); return { label: label.trim(), url: url.trim() }; });
         a.url = `/abroad/${a.slug}/`;
         return a;
     }).sort((x, y) => x.order - y.order);
+}
+function checklistHtml(a) {
+    if (!a.checklist.length) return '';
+    const phases = [...new Set(a.checklist.map(c => c.phase))];
+    return `<section class="section checklist" id="checklist" data-checklist="${a.slug}">
+        <h2 class="section-title">빠진 게 없는지 체크해 보세요</h2>
+        <p class="checklist-progress" aria-live="polite"><b data-done>0</b> / ${a.checklist.length} 완료</p>
+        <div class="checklist-bar" aria-hidden="true"><i data-bar></i></div>
+        ${phases.map(ph => `<h3>${esc(ph)}</h3><ul>${a.checklist.filter(c => c.phase === ph).map(c => `
+            <li><label><input type="checkbox" data-id="${c.id}"><span>${esc(c.text)}</span></label></li>`).join('')}</ul>`).join('')}
+        <p class="check-note">체크한 내용은 이 브라우저에만 저장돼요. 다른 기기에서는 보이지 않아요. 체크리스트는 위 내용을 줄여 놓은 것이라, 자세한 조건은 본문과 공식 확인처를 함께 봐 주세요.</p>
+        <button type="button" class="text-link" data-reset>체크 모두 지우기</button>
+    </section>`;
 }
 function buildAbroad() {
     const all = loadAbroad();
@@ -834,6 +853,7 @@ function buildAbroad() {
                         <li><b>돌아올 때 공항 검역.</b> <a href="${back.url}">한국으로 돌아올 때</a>를 꼭 미리 읽어 두세요.</li>
                     </ol>
                 </section>
+                <p class="callout callout-note section">나라별 페이지마다 <b>준비 체크리스트</b>가 있어요. 하나씩 체크하면서 빠진 서류나 일정이 없는지 확인해 보세요. 체크한 내용은 이 브라우저에 저장돼서 며칠에 걸쳐 준비해도 이어서 볼 수 있어요.</p>
                 <section class="section"><h2 class="section-title">나라별 자세히 보기</h2>
                     <ul class="rows">${all.map(a => row(a.url, a.name, cut(a.desc, 70), img('travel-7', '', 56, 56), 'var(--sky)')).join('')}</ul>
                 </section>
@@ -859,8 +879,10 @@ function buildAbroad() {
                     <section class="section" aria-labelledby="facts-title">
                         <h2 class="section-title" id="facts-title">한눈에 보기</h2>
                         <dl class="facts">${ABROAD_FACTS.map(([k, label]) => a[k] ? `<div><dt>${label}</dt><dd>${esc(a[k])}</dd></div>` : '').join('')}</dl>
+                        ${a.checklist.length ? `<p class="checklist-jump"><a class="btn btn-ghost" href="#checklist">준비 체크리스트 (${a.checklist.length}개 항목)</a></p>` : ''}
                     </section>
                     <article class="prose section">${a.body}</article>
+                    ${checklistHtml(a)}
                     ${sourceList(a)}
                     ${CHECK_NOTE}
                     <section class="section"><h2 class="section-title">다른 나라 조건</h2><ul class="rows">${others.map(o => row(o.url, o.name, o.prep ? `준비 기간 ${o.prep}` : '', '', 'var(--sky)')).join('')}</ul></section>
