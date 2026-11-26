@@ -72,7 +72,8 @@ function selectScene(id, fromUser) {
     app.querySelectorAll('[data-scene-article]').forEach(el => { el.hidden = el.dataset.sceneArticle !== sc.id; });
     app.querySelectorAll('[data-alt]').forEach(b => { b.textContent = '다른 강아지 모습 보기'; b.setAttribute('aria-pressed', 'false'); });
     applyPose(sc.behavior, sc.pose);
-    if (view3d) { view3d.setScene(sc); view3d.setView('scene'); }
+    state.env = sc.env;
+    if (view3d) { view3d.setEnv(sc.env); view3d.setScene(sc); view3d.setView('scene'); }
     if (fromUser) track('signal_scene', { scene: sc.id });
 }
 function toggleAlt(btn) {
@@ -160,7 +161,7 @@ function bindUi() {
         app.querySelectorAll('[data-tab]').forEach(x => x.setAttribute('aria-selected', String(x === t)));
         app.querySelectorAll('[data-pane]').forEach(p => { p.hidden = p.dataset.pane !== t.dataset.tab; });
         if (state.tab === 'scene') selectScene(state.scene);
-        else if (was === 'scene') { if (view3d) { view3d.setScene(null); view3d.setView('angle'); } setBehavior(state.behavior); }
+        else if (was === 'scene') { state.env = 'home'; if (view3d) { view3d.setEnv('home'); view3d.setScene(null); view3d.setView('angle'); } setBehavior(state.behavior); }
     }));
     app.querySelectorAll('[data-scene]').forEach(b => b.addEventListener('click', () => selectScene(b.dataset.scene, true)));
     app.querySelectorAll('[data-alt]').forEach(b => b.addEventListener('click', () => toggleAlt(b)));

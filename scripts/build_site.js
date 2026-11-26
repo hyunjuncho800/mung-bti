@@ -906,7 +906,7 @@ function buildSignal() {
 
 // 멍퀴즈 (/mung-signal/quiz/): 문항 signal-quiz-data.js, 엔진 signal-learn.js, 화면 signal-quiz.js.
 // 보기 버튼과 공유 버튼 옆에 광고가 붙지 않게 퀴즈와 결과 공유 페이지는 광고를 싣지 않는다.
-const signalImportmap = () => `<script type="importmap">${JSON.stringify({ imports: { three: '/vendor/three/three.module.min.js', 'three/addons/': '/vendor/three/', 'signal-dog': `/signal-dog.js?v=${V('signal-dog.js')}`, 'signal-props': `/signal-props.js?v=${V('signal-props.js')}`, 'signal-view': `/signal-view.js?v=${V('signal-view.js')}` } })}</script>`;
+const signalImportmap = () => `<script type="importmap">${JSON.stringify({ imports: { three: '/vendor/three/three.module.min.js', 'three/addons/': '/vendor/three/', 'signal-dog': `/signal-dog.js?v=${V('signal-dog.js')}`, 'signal-props': `/signal-props.js?v=${V('signal-props.js')}`, 'signal-view': `/signal-view.js?v=${V('signal-view.js')}`, 'signal-env': `/signal-env.js?v=${V('signal-env.js')}` } })}</script>`;
 // 견종별 3D 모델 주소 (signal-view.js가 data-models로 읽음)
 const stageModels = () => JSON.stringify({ shiba: `/models/shiba.glb?v=${V('models/shiba.glb')}`, husky: `/models/husky.glb?v=${V('models/husky.glb')}` });
 const BREED_CHIPS = `<div class="signal-breed" role="group" aria-label="견종 고르기"><span>견종</span><button type="button" class="chip" data-breed="shiba" aria-pressed="true">시바견</button><button type="button" class="chip" data-breed="husky" aria-pressed="false">허스키</button></div>`;

@@ -16,10 +16,13 @@ function show(spec) {
     const b = D.BEHAVIORS.find(x => x.id === spec.behavior) || D.BEHAVIORS[0];
     state.target = Object.assign({}, D.DEFAULTS, b.pose, spec.pose || {});
     state.motion = b.motion;
+    const sc = spec.scene ? SC.SCENES.find(s => s.id === spec.scene) : null;
+    state.env = sc ? sc.env : 'home';
     if (!view) return;
+    view.setEnv(state.env);
     view.poseChanged();
     view.replay();
-    view.setScene(spec.scene ? SC.SCENES.find(s => s.id === spec.scene) : null);
+    view.setScene(sc);
     view.setView(spec.view || 'angle');
 }
 

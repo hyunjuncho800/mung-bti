@@ -1,10 +1,10 @@
 // 멍상황: 일상 상황 12가지. 상황마다 강아지 행동(signal-data.js의 행동 id), 3D 소품, 보이는 신호, 의미, 다른 강아지라면, 보호자 선택지와 해설.
 // 선택지 해설은 각 출처의 안내(거리 두기, 억지로 하지 않기, 혼내지 않기)를 바탕으로 멍테스트가 직접 정리했다.
-// verdict: good(좋은 선택) / ok(상황에 따라 괜찮음) / bad(피하는 게 좋음)
+// verdict: good(좋은 선택) / ok(상황에 따라 괜찮음) / bad(피하는 게 좋음). env: 3D 배경(signal-env.js)
 (function (root) {
     var SCENES = [
         {
-            id: 'home_return', title: '보호자가 집에 돌아왔을 때', behavior: 'greeting', props: ['door', 'person'],
+            id: 'home_return', env: 'entrance', title: '보호자가 집에 돌아왔을 때', behavior: 'greeting', props: ['door', 'person'],
             person: { kind: 'adult', from: [0.45, 2.35], to: [0.45, 1.55] },
             situation: '현관문이 열리고 보호자가 들어와요. 강아지가 현관으로 달려 나와요.',
             signals: ['엉덩이까지 흔들리는 넓은 꼬리 흔들기', '말랑하게 움직이는 몸', '부드러운 눈과 편하게 벌린 입'],
@@ -18,7 +18,7 @@
             sources: ['dogstrust_body', 'dogstrust_jump', 'dogstrust_sep'],
         },
         {
-            id: 'meet_dog', title: '산책 중 다른 강아지를 만났을 때', behavior: 'alert', props: ['otherDog'],
+            id: 'meet_dog', env: 'park', title: '산책 중 다른 강아지를 만났을 때', behavior: 'alert', props: ['otherDog'],
             situation: '산책길 앞쪽에서 다른 강아지가 다가와요. 우리 강아지가 걸음을 멈춰요.',
             signals: ['앞으로 쫑긋 선 귀', '앞으로 쏠린 체중', '상대 강아지에게 고정된 시선'],
             meaning: '상대에게 관심이 있거나 경계하는 중일 수 있어요. 다음에 몸이 풀리는지, 굳는지가 중요해요.',
@@ -31,7 +31,7 @@
             sources: ['dogstrust_react', 'dogstrust_body'],
         },
         {
-            id: 'visitor', title: '낯선 사람이 집에 왔을 때', behavior: 'anxious', props: ['door', 'person'],
+            id: 'visitor', env: 'entrance', title: '낯선 사람이 집에 왔을 때', behavior: 'anxious', props: ['door', 'person'],
             person: { kind: 'adult', from: [0.45, 2.35], to: [0.45, 1.5] },
             situation: '처음 보는 손님이 현관으로 들어와요.',
             signals: ['뒤로 젖힌 귀', '낮아진 꼬리', '뒤로 빠진 체중과 시선 피하기', '입술 핥기'],
@@ -45,7 +45,7 @@
             sources: ['dogstrust_visitor', 'dogstrust_jump', 'aspca_bite', 'aspca_aggression'],
         },
         {
-            id: 'hug', title: '보호자가 강아지를 안으려고 할 때', behavior: 'avoidance', pose: { lick: true }, props: ['person'],
+            id: 'hug', env: 'home', title: '보호자가 강아지를 안으려고 할 때', behavior: 'avoidance', pose: { lick: true }, props: ['person'],
             person: { kind: 'adult', from: [0.9, 1.4], to: [0.6, 0.95], lean: true },
             situation: '보호자가 강아지를 안으려고 몸을 숙여 팔을 뻗어요.',
             signals: ['고개와 몸을 돌리기', '시선 피하기', '입술 핥기', '뒤로 젖힌 귀'],
@@ -59,7 +59,7 @@
             sources: ['aspca_bite', 'aspca_aggression', 'dogstrust_body'],
         },
         {
-            id: 'vet', title: '동물병원 진료를 기다릴 때', behavior: 'fearful', props: ['bench'],
+            id: 'vet', env: 'vet', title: '동물병원 진료를 기다릴 때', behavior: 'fearful', props: ['bench'],
             situation: '대기실에 낯선 냄새와 소리, 다른 동물들이 있어요.',
             signals: ['몸을 낮추고 떨기', '다리 사이로 만 꼬리', '뒤로 붙인 귀', '뒤로 빠진 체중'],
             meaning: '낯선 환경이 무섭다는 신호일 수 있어요.',
@@ -72,7 +72,7 @@
             sources: ['dogstrust_vet', 'dogstrust_exam'],
         },
         {
-            id: 'thunder', title: '천둥이나 큰 소리를 들었을 때', behavior: 'fearful', props: ['window', 'thunder'],
+            id: 'thunder', env: 'night', title: '천둥이나 큰 소리를 들었을 때', behavior: 'fearful', props: ['window', 'thunder'],
             situation: '창밖에서 번개가 치고 큰 천둥소리가 울려요.',
             signals: ['몸을 낮추고 떨기', '숨을 곳 찾기', '다리 사이로 만 꼬리', '헐떡임'],
             meaning: '큰 소리가 무섭다는 신호일 수 있어요.',
@@ -85,7 +85,7 @@
             sources: ['dogstrust_noise', 'dogstrust_react'],
         },
         {
-            id: 'leaving', title: '보호자가 외출을 준비할 때', behavior: 'anxious', props: ['door', 'bag', 'person'],
+            id: 'leaving', env: 'entrance', title: '보호자가 외출을 준비할 때', behavior: 'anxious', props: ['door', 'bag', 'person'],
             person: { kind: 'adult', from: [0.9, 1.9], to: [0.9, 1.9] },
             situation: '보호자가 가방을 챙기고 신발을 신어요.',
             signals: ['뒤로 젖힌 귀', '낮아진 꼬리', '시선 피하기와 입술 핥기', '보호자를 따라다니거나 문 앞을 막아서기'],
@@ -99,7 +99,7 @@
             sources: ['dogstrust_sep'],
         },
         {
-            id: 'toy', title: '장난감을 가지고 놀 때', behavior: 'play_bow', props: ['toy'],
+            id: 'toy', env: 'home', title: '장난감을 가지고 놀 때', behavior: 'play_bow', props: ['toy'],
             situation: '보호자가 공을 굴려 주자 강아지가 몸을 낮춰요.',
             signals: ['앞을 낮추고 엉덩이를 드는 놀이 인사', '넓게 흔드는 꼬리', '부드러운 얼굴'],
             meaning: '같이 놀자는 신호로 자주 보여요.',
@@ -112,7 +112,7 @@
             sources: ['dogstrust_body', 'dogstrust_guard'],
         },
         {
-            id: 'child', title: '어린아이가 다가왔을 때', behavior: 'avoidance', pose: { lick: true }, props: ['person'],
+            id: 'child', env: 'home', title: '어린아이가 다가왔을 때', behavior: 'avoidance', pose: { lick: true }, props: ['person'],
             person: { kind: 'child', from: [0.2, 2.4], to: [0.35, 1.25] },
             situation: '아이가 강아지를 쓰다듬으려고 다가와요.',
             signals: ['고개와 몸을 돌리기', '시선 피하기', '입술 핥기', '뒤로 빠진 체중'],
@@ -126,7 +126,7 @@
             sources: ['rspca_children', 'dogstrust_body'],
         },
         {
-            id: 'bath', title: '목욕을 준비할 때', behavior: 'anxious', pose: { lick: true }, props: ['tub'],
+            id: 'bath', env: 'bath', title: '목욕을 준비할 때', behavior: 'anxious', pose: { lick: true }, props: ['tub'],
             situation: '욕조에 물을 받는 소리가 나고, 보호자가 수건을 꺼내요.',
             signals: ['뒤로 젖힌 귀', '낮아진 꼬리', '몸을 낮추고 피하려 함', '입술 핥기'],
             meaning: '목욕이 부담스럽다는 신호일 수 있어요.',
@@ -139,7 +139,7 @@
             sources: ['dogstrust_exam', 'dogstrust_vet', 'dogstrust_stress'],
         },
         {
-            id: 'eating', title: '밥을 먹고 있을 때 사람이 다가올 때', behavior: 'guarding', props: ['person'],
+            id: 'eating', env: 'kitchen', title: '밥을 먹고 있을 때 사람이 다가올 때', behavior: 'guarding', props: ['person'],
             person: { kind: 'adult', from: [1.4, 2.2], to: [0.9, 1.5] },
             situation: '강아지가 밥을 먹는 중에 사람이 다가와요.',
             signals: ['밥그릇 위로 숙인 채 굳은 몸', '갑자기 멈춘 움직임', '다가오는 사람을 똑바로 쳐다보기', '급하게 먹기'],
@@ -153,7 +153,7 @@
             sources: ['aspca_food', 'dogstrust_guard', 'aspca_aggression'],
         },
         {
-            id: 'sleeping', title: '쉬거나 잘 때 사람이 다가올 때', behavior: 'resting', props: ['bed', 'person'],
+            id: 'sleeping', env: 'bedroom', title: '쉬거나 잘 때 사람이 다가올 때', behavior: 'resting', props: ['bed', 'person'],
             person: { kind: 'adult', from: [1.4, 2.2], to: [0.9, 1.45] },
             situation: '강아지가 자기 자리에서 엎드려 쉬고 있는데 사람이 다가와요.',
             signals: ['엎드려 힘을 뺀 몸', '반쯤 감은 눈', '고른 숨'],

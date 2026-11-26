@@ -17,7 +17,7 @@ export function createProps(scene, { loadOther, otherDogPose }) {
 
     const BUILD = {
         door() {
-            const g = group(0.45, 0, 2.35);
+            const g = group(0.45, 0, 2.52); // 현관 앞벽(z 2.6)에 붙은 문
             box(0.12, 2.3, 0.14, 0x8a6a4a, -0.6, 1.15, 0, g); box(0.12, 2.3, 0.14, 0x8a6a4a, 0.6, 1.15, 0, g); box(1.32, 0.12, 0.14, 0x8a6a4a, 0, 2.3, 0, g);
             const panel = box(1.1, 2.2, 0.06, 0xc49a6c, 0, 1.1, 0, g);
             panel.geometry.translate(0.55, 0, 0); panel.position.x = -0.55; panel.rotation.y = -1.1; // 열린 문
@@ -26,7 +26,7 @@ export function createProps(scene, { loadOther, otherDogPose }) {
         person() { return makePerson(0x7f9cc0, 0.78); },
         child() { return makePerson(0xe9a03b, 0.5); },
         window() {
-            const g = group(-1.5, 0, 0.3);
+            const g = group(-2.55, 0, 0.3); // 왼쪽 벽의 창문
             box(0.08, 1.15, 1.35, 0xe8e4dc, 0, 1.45, 0, g);
             const pane = box(0.1, 1.0, 1.2, 0x34506e, 0.01, 1.45, 0, g);
             pane.material = new THREE.MeshLambertMaterial({ color: 0x34506e, emissive: 0x000000 });

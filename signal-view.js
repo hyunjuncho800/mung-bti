@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/OrbitControls.js';
 import { createDog } from 'signal-dog';
 import { createProps } from 'signal-props';
+import { createEnv } from 'signal-env';
 
 // state: { target, motion, paused, loop, speed } 를 읽어 매 프레임 강아지 자세를 만든다. 모델을 못 불러오면 예외를 던진다.
 // opts.onPick(part): 강아지를 짧게 누른 부위, opts.onFail(msg): 그리기 도중 문제가 생겼을 때
@@ -24,14 +25,15 @@ export async function createView(stage, state, D, opts = {}) {
     stage.prepend(canvas);
 
     const scene = new THREE.Scene();
-    scene.add(new THREE.HemisphereLight(0xffffff, 0x8a7a66, 1.6));
+    const hemi = new THREE.HemisphereLight(0xffffff, 0x8a7a66, 1.6);
+    scene.add(hemi);
     const sun = new THREE.DirectionalLight(0xffffff, 1.6);
     sun.position.set(1.5, 3, 2);
     scene.add(sun);
-    const floorGeo = new THREE.CircleGeometry(1.4, 48), floorMat = new THREE.MeshLambertMaterial({ color: 0xdfe8df });
-    const floor = new THREE.Mesh(floorGeo, floorMat);
-    floor.rotation.x = -Math.PI / 2;
-    scene.add(floor);
+    // 배경(바닥·벽·하늘·소품). 조명 밝기는 배경에 맞춤 (밤 방은 어둡게)
+    const env = createEnv(scene);
+    const setEnv = id => { const f = env.set(id); hemi.intensity = 1.6 * f; sun.intensity = 1.6 * f; };
+    setEnv(state.env || 'home');
     scene.add(dog.root);
     // 멍상황 소품 (상대 강아지는 편안한 자세로 꼬리를 살랑)
     const otherDogPose = Object.assign({}, D.DEFAULTS, D.BEHAVIORS[0].pose, { wagSpeed: 0.4, wagRange: 0.5 });
@@ -50,9 +52,6 @@ export async function createView(stage, state, D, opts = {}) {
     const VIEWS = { angle: [[1.5, 0.85, 1.9], BODY], front: [[0, 0.62, 2.4], BODY], side: [[2.4, 0.62, 0], BODY], back: [[0, 0.75, -2.4], BODY], face: [[0.3, 0.76, 1.02], [0, 0.69, 0.45]], scene: [[3.9, 1.9, 1.0], [0.1, 0.62, 1.0]] };
     camera.position.set(...VIEWS.angle[0]);
 
-    const theme = () => { const dark = document.body.classList.contains('dark-mode'); scene.background = new THREE.Color(dark ? 0x1e2521 : 0xf7faf6); floorMat.color.set(dark ? 0x2b352f : 0xdfe8df); };
-    theme();
-    new MutationObserver(() => { theme(); wake(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
     // 자세: 지금 값이 목표 값으로 부드럽게 따라감
     // 자세(서기·앉기·엎드리기·눕기)와 냄새 맡기·앞발 들기는 0~1 무게로 바꿔 부드럽게 섞는다
@@ -145,7 +144,7 @@ export async function createView(stage, state, D, opts = {}) {
     canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); cancelAnimationFrame(raf); if (opts.onFail) opts.onFail('3D 화면이 멈췄어요. 새로고침하면 다시 볼 수 있어요.'); });
     addEventListener('pagehide', () => {
         cancelAnimationFrame(raf);
-        controls.dispose(); dog.dispose(); props.dispose(); floorGeo.dispose(); floorMat.dispose(); renderer.dispose();
+        controls.dispose(); dog.dispose(); props.dispose(); env.dispose(); renderer.dispose();
     });
 
     const view = {
@@ -153,12 +152,12 @@ export async function createView(stage, state, D, opts = {}) {
         // 공유 이미지용: 바닥과 배경 없이 강아지만 지금 화면 그대로 복사
         capture(w = 900, h = 760) {
             const bg = scene.background;
-            scene.background = null; floor.visible = false;
+            scene.background = null; env.group.visible = false;
             renderer.render(scene, camera);
             const c = document.createElement('canvas'); c.width = w; c.height = h;
             const src = renderer.domElement, k = Math.max(w / src.width, h / src.height);
             c.getContext('2d').drawImage(src, (w - src.width * k) / 2, (h - src.height * k) / 2, src.width * k, src.height * k);
-            scene.background = bg; floor.visible = true;
+            scene.background = bg; env.group.visible = true;
             wake();
             return c;
         },
@@ -167,6 +166,7 @@ export async function createView(stage, state, D, opts = {}) {
         replay() { for (const a in EVERY) if (state.target[a]) { timers[a] = 0; dog[a](); } wake(); },
         play(k) { if (EVERY[k]) { timers[k] = 0; dog[k](); } wake(); },
         setScene(sc) { props.setScene(sc); wake(); },
+        setEnv(id) { if (env.id !== id) { setEnv(id); wake(); } },
         async setBreed(b) {
             if (!MODELS[b] || b === breed) return;
             const next = await load(b);
