@@ -24,10 +24,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap">
     
-    <link rel="stylesheet" href="/site.css?v=b0ec86903b">
-    <script src="/site.js?v=1e3ff9ebb8"></script>
+    <link rel="stylesheet" href="/site.css?v=6dc2a1ef57">
+    <script src="/site.js?v=52e594a1e2"></script>
     
-    <script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/","signal-dog":"/signal-dog.js?v=806c619025","signal-props":"/signal-props.js?v=7930e3a269"}}</script>
+    <script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/","signal-dog":"/signal-dog.js?v=806c619025","signal-props":"/signal-props.js?v=7930e3a269","signal-view":"/signal-view.js?v=c71442be0f"}}</script>
 </head>
 <body>
 <header class="site-header">
@@ -81,6 +81,7 @@
                         <button type="button" role="tab" data-tab="scene" aria-selected="false">멍상황</button>
                     </div>
                     <div data-pane="observe">
+                        <div class="signal-learn" data-learn hidden></div>
                         <div class="chips signal-behaviors" role="group" aria-label="행동 고르기">
                             <button type="button" class="chip" data-behavior="relaxed" aria-pressed="false">편안함</button><button type="button" class="chip" data-behavior="play_bow" aria-pressed="false">놀이 제안</button><button type="button" class="chip" data-behavior="alert" aria-pressed="false">주의 집중</button><button type="button" class="chip" data-behavior="anxious" aria-pressed="false">불안 신호</button><button type="button" class="chip" data-behavior="fearful" aria-pressed="false">두려움 신호</button><button type="button" class="chip" data-behavior="warning" aria-pressed="false">경고 신호</button><button type="button" class="chip" data-behavior="greeting" aria-pressed="false">반가운 인사</button><button type="button" class="chip" data-behavior="curious" aria-pressed="false">궁금함</button><button type="button" class="chip" data-behavior="stress_yawn" aria-pressed="false">졸리지 않은 하품</button><button type="button" class="chip" data-behavior="shake_off" aria-pressed="false">몸 털기</button><button type="button" class="chip" data-behavior="sniff_ground" aria-pressed="false">딴청 피우며 냄새 맡기</button><button type="button" class="chip" data-behavior="paw_sit" aria-pressed="false">앉아서 앞발 들기</button><button type="button" class="chip" data-behavior="guarding" aria-pressed="false">자원 지키기</button><button type="button" class="chip" data-behavior="resting" aria-pressed="false">엎드려 쉬기</button><button type="button" class="chip" data-behavior="belly_relaxed" aria-pressed="false">편하게 배 보이기</button><button type="button" class="chip" data-behavior="appeasement_roll" aria-pressed="false">불안해서 배 보이기</button><button type="button" class="chip" data-behavior="excited" aria-pressed="false">높은 흥분</button><button type="button" class="chip" data-behavior="avoidance" aria-pressed="false">회피</button><button type="button" class="chip" data-behavior="freeze" aria-pressed="false">얼어붙기</button><button type="button" class="chip" data-behavior="attention" aria-pressed="false">관심 요청</button><button type="button" class="chip" data-behavior="appeasement" aria-pressed="false">갈등 완화 신호</button>
                         </div>
@@ -442,6 +443,13 @@
                     <ul><li><a href="https://www.dogstrust.org.uk/dog-advice/understanding-your-dog/body-language" rel="noopener" target="_blank">Dogs Trust: How to understand your dog's body language</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/understanding-your-dog/signs-your-dog-may-be-stressed" rel="noopener" target="_blank">Dogs Trust: Signs your dog may be stressed</a></li><li><a href="https://www.rspca.org.uk/adviceandwelfare/pets/dogs/behaviour/understanding" rel="noopener" target="_blank">RSPCA: Understanding your dog's body language</a></li><li><a href="https://www.aspca.org/pet-care/dog-care/dog-bite-prevention" rel="noopener" target="_blank">ASPCA: Dog Bite Prevention</a></li><li><a href="https://www.aspca.org/pet-care/dog-care/common-dog-behavior-issues/aggression" rel="noopener" target="_blank">ASPCA: Aggression</a></li><li><a href="https://www.aspca.org/pet-care/dog-care/common-dog-behavior-issues/food-guarding" rel="noopener" target="_blank">ASPCA: Food Guarding</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/training/unwanted-behaviours/jumping-up-training" rel="noopener" target="_blank">Dogs Trust: How to stop your dog jumping up at people</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/understanding-your-dog/scared-loud-noises" rel="noopener" target="_blank">Dogs Trust: What to do if your dog is scared of loud noises</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/understanding-your-dog/separation-anxiety-in-dogs" rel="noopener" target="_blank">Dogs Trust: Separation anxiety in dogs</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/health-wellbeing/vet-visit/stay-calm-at-the-vet" rel="noopener" target="_blank">Dogs Trust: How to calm your dog at the vet</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/health-wellbeing/vet-visit/vet-examinations" rel="noopener" target="_blank">Dogs Trust: How to keep your dog still</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/training/home/visitor-training" rel="noopener" target="_blank">Dogs Trust: How to prepare your dog for visitors</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/training/unwanted-behaviours/reactive-dog" rel="noopener" target="_blank">Dogs Trust: Reactive dogs</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/training/unwanted-behaviours/resource-guarding-food-and-toys" rel="noopener" target="_blank">Dogs Trust: Resource guarding in dogs</a></li><li><a href="https://www.rspca.org.uk/adviceandwelfare/pets/dogs/company/children" rel="noopener" target="_blank">RSPCA: Children and dogs</a></li></ul>
                     <p class="check-note">3D 화면은 three.js(MIT 라이선스)로 그려요.</p>
                 </section>
+                <aside class="cta-box section" style="background:var(--sky)">
+                    <div>
+                        <b>몸짓 읽기, 얼마나 잘할까?</b>
+                        <p>3D 강아지를 보고 뜻을 맞히는 멍퀴즈 10문제. 멍통역사 등급을 받아 보세요.</p>
+                        <a class="btn" href="/mung-signal/quiz/">멍퀴즈 풀기</a>
+                    </div>
+                </aside>
                 <section class="section"><h2 class="section-title">행동 언어 가이드</h2><ul class="rows">
 <li><a class="row-link plain" href="/mung-signal/guide/stress-signals/" style="--tone:var(--sky)">
     
@@ -493,9 +501,12 @@
     </ul>
     <p>&copy; 2026 mung-test.com</p>
 </footer>
+<script src="/mung-profile.js?v=50154ddec7" defer></script>
 <script src="/signal-data.js?v=40ec04df9b" defer></script>
 <script src="/signal-rules.js?v=4f929ce59f" defer></script>
 <script src="/signal-scenes.js?v=6ad493278c" defer></script>
-<script type="module" src="/signal-app.js?v=75bd95be53"></script>
+<script src="/signal-quiz-data.js?v=0e16739fd4" defer></script>
+<script src="/signal-learn.js?v=38233545ec" defer></script>
+<script type="module" src="/signal-app.js?v=24c3a34b72"></script>
 </body>
 </html>

@@ -68,5 +68,8 @@ for (const p of withAds) {
 n++;
 // 멍시그널: 3D 조작 버튼·슬라이더 옆에 광고가 붙지 않게 광고 없음
 ok(!fs.readFileSync(path.join(ROOT, 'mung-signal/index.html'), 'utf8').includes('googlesyndication'), '멍시그널 페이지는 광고 없음');
+// 멍퀴즈: 보기·공유 버튼 옆 광고 방지
+for (const f of ['mung-signal/quiz/index.html', ...['sprout', 'explorer', 'reader', 'interpreter', 'master'].map(g => `mung-signal/quiz/s/${g}/index.html`)])
+    ok(!fs.readFileSync(path.join(ROOT, f), 'utf8').includes('googlesyndication'), `${f}: 광고 없음`);
 
 console.log(`광고 로더 테스트 통과: ${n}개 확인 (페이지 ${withAds.length}개)`);

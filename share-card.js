@@ -265,5 +265,37 @@
         });
     }
 
-    window.MungCard = { temperament: temperament, check: check, og: og, profile: profile, deliver: deliver };
+    // 멍퀴즈 결과 카드. d: { format: feed|story, grade: {name, line}, score, dog: canvas|null }
+    // 강아지는 3D 화면을 찍은 그림(dog)을 쓰고, 3D가 안 되는 기기면 기본 그림을 쓴다.
+    function signal(d) {
+        var story = d.format === 'story', W = 1080, H = story ? 1920 : 1350;
+        var top = story ? 300 : 110; // 스토리는 인스타 위쪽 UI를 피한다
+        return Promise.all([fontsReady(sampleOf(d) + '멍테스트 멍퀴즈 멍통역사 결과 점 너도 우리 강아지 마음을 읽을 수 있을까? 도전해 봐 www.mung-test.com 재미로 보는 학습 결과예요'), d.dog ? null : loadImg('/img/type-2.webp')]).then(function (r) {
+            var k = canvas(W, H, '#A9D6F5'), ctx = k.ctx;
+            text(ctx, '멍테스트 멍퀴즈', W / 2, top, '800 40px ' + BODY, 'center');
+            var bx = 110, by = top + 50, bw = W - 220, bh = story ? 620 : 520;
+            ctx.fillStyle = '#FFFFFF'; rr(ctx, bx, by, bw, bh, 48); ctx.fill();
+            if (d.dog) { var kk = Math.min((bw - 40) / d.dog.width, (bh - 40) / d.dog.height), dw = d.dog.width * kk, dh = d.dog.height * kk; ctx.drawImage(d.dog, bx + (bw - dw) / 2, by + (bh - dh) / 2, dw, dh); }
+            else contain(ctx, r[1], bx + 40, by + 30, bw - 80, bh - 60);
+            ctx.fillStyle = INK;
+            var y = by + bh + (story ? 130 : 110);
+            text(ctx, '멍통역사 결과', W / 2, y, '700 40px ' + BODY, 'center');
+            var size = 104;
+            ctx.font = size + 'px ' + DISPLAY;
+            while (ctx.measureText(d.grade.name).width > 900 && size > 60) { size -= 4; ctx.font = size + 'px ' + DISPLAY; }
+            text(ctx, d.grade.name, W / 2, y + 125, size + 'px ' + DISPLAY, 'center');
+            text(ctx, d.score + '점', W / 2, y + 215, '800 64px ' + BODY, 'center');
+            ctx.font = '600 36px ' + BODY;
+            wrap(ctx, d.grade.line, 860).slice(0, 2).forEach(function (l, i) { text(ctx, l, W / 2, y + 290 + i * 50, '600 36px ' + BODY, 'center'); });
+            var fy = story ? H - 330 : H - 110;
+            text(ctx, '너도 우리 강아지 마음을 읽을 수 있을까? 도전해 봐!', W / 2, fy - 60, '800 36px ' + BODY, 'center');
+            ctx.globalAlpha = 0.75;
+            text(ctx, 'www.mung-test.com', W / 2, fy, '700 34px ' + BODY, 'center');
+            text(ctx, '재미로 보는 학습 결과예요', W / 2, fy + 46, '600 26px ' + BODY, 'center');
+            ctx.globalAlpha = 1;
+            return k.c;
+        });
+    }
+
+    window.MungCard = { temperament: temperament, check: check, og: og, profile: profile, deliver: deliver, signal: signal };
 })();

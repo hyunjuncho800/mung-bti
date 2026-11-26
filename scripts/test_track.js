@@ -36,10 +36,10 @@ const required = ['behavior_check_view', 'behavior_check_start', 'behavior_check
     'guide_view', 'guide_generate', 'guide_edit', 'guide_image_download', 'guide_share_click', 'guide_public_link_create', 'guide_public_link_visit',
     'match_start', 'match_complete', 'match_share_click', 'match_invite_create', 'match_invite_visit', 'match_invite_accept', 'match_invite_complete',
     'shared_visitor_test_start', 'shared_visitor_test_complete',
-    'signal_view', 'signal_behavior', 'signal_control', 'signal_part', 'signal_scene', 'signal_scene_choice'];
+    'signal_view', 'signal_behavior', 'signal_control', 'signal_part', 'signal_scene', 'signal_scene_choice', 'signal_quiz_start', 'signal_quiz_complete', 'signal_quiz_share'];
 eq(Object.keys(spec).sort(), required.slice().sort(), `요청된 이벤트 ${required.length}개가 모두 정의됨`);
 const used = new Set();
-for (const f of ['script.js', 'check.js', 'routine.js', 'manual.js', 'match.js', 'signal-app.js']) {
+for (const f of ['script.js', 'check.js', 'routine.js', 'manual.js', 'match.js', 'signal-app.js', 'signal-quiz.js']) {
     if (!fs.existsSync(path.join(ROOT, f))) continue;
     const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
     for (const m of src.matchAll(/track\('(\w+)'(?:, \{([^}]*)\})?\)/g)) {

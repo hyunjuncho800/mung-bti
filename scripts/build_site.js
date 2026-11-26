@@ -806,13 +806,12 @@ function buildSignal() {
                     <h3>이렇게 오해하기 쉬워요</h3>${ul(b.explain.mistakes)}
                     <p class="signal-src">참고: ${src(b.sources)}</p>
                 </article>`).join('');
-    const importmap = { imports: { three: '/vendor/three/three.module.min.js', 'three/addons/': '/vendor/three/', 'signal-dog': `/signal-dog.js?v=${V('signal-dog.js')}`, 'signal-props': `/signal-props.js?v=${V('signal-props.js')}` } };
     write('mung-signal/index.html', layout({
         title: '멍시그널: 3D 강아지로 보는 몸짓 신호 읽기 | 멍테스트',
         desc: '3D 강아지로 귀, 꼬리, 자세, 입 모양이 말하는 16가지 신호를 살펴봐요. 놀이 인사, 졸리지 않은 하품, 몸 털기, 자원 지키기, 불안해서 배 보이기까지 몸짓을 직접 바꿔 보며 읽는 법을 익혀요.',
         url: '/mung-signal/', section: 'signal', ads: false,
-        extraHead: `<script type="importmap">${JSON.stringify(importmap)}</script>`,
-        extraBody: ['signal-data', 'signal-rules', 'signal-scenes'].map(n => `<script src="/${n}.js?v=${V(n + '.js')}" defer></script>`).join('\n') +
+        extraHead: signalImportmap(),
+        extraBody: classic(['mung-profile', 'signal-data', 'signal-rules', 'signal-scenes', 'signal-quiz-data', 'signal-learn']) +
             `\n<script type="module" src="/signal-app.js?v=${V('signal-app.js')}"></script>`,
         body: hero({ tone: 'var(--sky)', title: '멍시그널', text: '강아지는 귀, 꼬리, 자세, 입 모양을 함께 써서 말해요. 3D 강아지를 돌려 보며 행동별 신호를 살펴보고, 멍조작에서 몸짓을 직접 바꿔 보세요.' }) +
             `<div class="wrap">
@@ -848,6 +847,7 @@ function buildSignal() {
                         <button type="button" role="tab" data-tab="scene" aria-selected="false">멍상황</button>
                     </div>
                     <div data-pane="observe">
+                        <div class="signal-learn" data-learn hidden></div>
                         <div class="chips signal-behaviors" role="group" aria-label="행동 고르기">
                             ${D.BEHAVIORS.map(b => `<button type="button" class="chip" data-behavior="${b.id}" aria-pressed="false">${esc(b.name)}</button>`).join('')}
                         </div>
@@ -888,12 +888,83 @@ function buildSignal() {
                     <ul>${Object.values(D.SOURCES).map(s => `<li><a href="${s.url}" rel="noopener" target="_blank">${esc(s.name)}</a></li>`).join('')}</ul>
                     <p class="check-note">3D 화면은 three.js(MIT 라이선스)로 그려요.</p>
                 </section>
+                <aside class="cta-box section" style="background:var(--sky)">
+                    <div>
+                        <b>몸짓 읽기, 얼마나 잘할까?</b>
+                        <p>3D 강아지를 보고 뜻을 맞히는 멍퀴즈 10문제. 멍통역사 등급을 받아 보세요.</p>
+                        <a class="btn" href="/mung-signal/quiz/">멍퀴즈 풀기</a>
+                    </div>
+                </aside>
                 <section class="section"><h2 class="section-title">행동 언어 가이드</h2><ul class="rows">${SIGNAL_GUIDE_ORDER.map(slug => { const src = fs.readFileSync(path.join(ROOT, 'content/signal-guide', `${slug}.html`), 'utf8'); return row(`/mung-signal/guide/${slug}/`, meta(src, 'h1'), meta(src, 'short'), '', 'var(--sky)'); }).join('')}</ul></section>
                 <p class="callout callout-note section">행동을 이해하는 데 도움을 드리는 일반 정보예요. 강아지의 마음이나 건강 상태를 진단하지 않아요. 행동이 갑자기 바뀌었거나, 아파 보이거나, 물려고 하는 일이 반복되면 수의사나 반려견 행동 전문가와 상담해 주세요.</p>
                 ${TEST_CTA}
             </div>
             </div>`,
     }));
+}
+
+// 멍퀴즈 (/mung-signal/quiz/): 문항 signal-quiz-data.js, 엔진 signal-learn.js, 화면 signal-quiz.js.
+// 보기 버튼과 공유 버튼 옆에 광고가 붙지 않게 퀴즈와 결과 공유 페이지는 광고를 싣지 않는다.
+const signalImportmap = () => `<script type="importmap">${JSON.stringify({ imports: { three: '/vendor/three/three.module.min.js', 'three/addons/': '/vendor/three/', 'signal-dog': `/signal-dog.js?v=${V('signal-dog.js')}`, 'signal-props': `/signal-props.js?v=${V('signal-props.js')}`, 'signal-view': `/signal-view.js?v=${V('signal-view.js')}` } })}</script>`;
+const classic = names => names.map(n => `<script src="/${n}.js?v=${V(n + '.js')}" defer></script>`).join('\n');
+function buildSignalQuiz() {
+    const QD = require(path.join(ROOT, 'signal-quiz-data.js'));
+    const L = require(path.join(ROOT, 'signal-learn.js'));
+    const count = lv => QD.QUESTIONS.filter(q => q.level === lv).length;
+    write('mung-signal/quiz/index.html', layout({
+        title: '멍퀴즈: 강아지 행동 언어 퀴즈로 몸짓 읽기 실력 확인 | 멍테스트',
+        desc: `3D 강아지의 몸짓을 보고 뜻과 대처를 고르는 강아지 행동 언어 퀴즈예요. 초급·중급·고급 ${QD.QUESTIONS.length}문항 중 10문제를 풀고 멍통역사 등급을 받아 보세요.`,
+        url: '/mung-signal/quiz/', section: 'signal', ads: false, image: '/img/og-signal-quiz.jpg',
+        extraHead: signalImportmap(),
+        extraBody: classic(['mung-profile', 'share-card', 'signal-data', 'signal-rules', 'signal-scenes', 'signal-quiz-data', 'signal-learn']) +
+            `\n<script type="module" src="/signal-quiz.js?v=${V('signal-quiz.js')}"></script>`,
+        body: hero({ tone: 'var(--sky)', eyebrow: '<a class="eyebrow-link" href="/mung-signal/">멍시그널</a>', title: '멍퀴즈', text: '3D 강아지를 보고 몸짓의 뜻을 맞혀 보세요. 10문제를 풀면 멍통역사 등급이 나와요.' }) +
+            `<div class="wrap">
+            <section class="signal-app section" data-quiz>
+                <div class="signal-view">
+                    <div class="signal-stage" data-stage data-model="/models/shiba.glb?v=${V('models/shiba.glb')}">
+                        <p class="signal-stage-msg" data-stage-msg>3D 강아지를 불러오는 중이에요...</p>
+                    </div>
+                    <p class="check-note">끌어서 돌리고, 휠이나 두 손가락으로 확대해요. 휴대폰에서는 옆으로 밀면 돌아가요.</p>
+                </div>
+                <div class="signal-panel quiz-panel" data-quiz-panel>
+                    <p>퀴즈를 불러오는 중이에요...</p>
+                    <noscript><p class="check-note">퀴즈는 자바스크립트를 켜야 동작해요.</p></noscript>
+                </div>
+            </section>
+            <div class="narrow">
+                <section class="section prose">
+                    <h2>어떤 문제가 나오나요</h2>
+                    <p>초급 ${count(1)}문항, 중급 ${count(2)}문항, 고급 ${count(3)}문항이 있고, 한 번에 겹치지 않는 10문제가 나와요. 초급은 대표적인 신호를 구별하고, 중급은 여러 신호를 함께 읽고, 고급은 집에 손님이 왔을 때나 밥을 먹을 때처럼 상황과 함께 읽어요.</p>
+                    <p>문제는 네 가지 종류예요. 행동의 뜻 고르기, 신체 부위의 변화 찾기, 보호자가 할 일 고르기, 비슷한 행동 구별하기. 답을 고르면 정답의 이유와 다른 보기가 맞지 않는 이유가 함께 나와요.</p>
+                    <h2>멍통역사 등급</h2>
+                    <ul>${L.GRADES.map((g, i) => `<li><b>${esc(g.name)}</b>: ${g.min}${L.GRADES[i + 1] ? `~${L.GRADES[i + 1].min - 10}` : ''}점</li>`).join('')}</ul>
+                    <p>점수는 맞힌 문제 수로 100점 만점이에요. 등급은 재미와 학습을 위한 것이고, 반려견 행동 전문 자격이나 실제 강아지의 행동 평가를 뜻하지 않아요.</p>
+                    <p>기록(도전 횟수, 최고 점수, 틀린 문제)은 이 브라우저에만 남고 서버로 보내지 않아요.</p>
+                </section>
+                <section class="section"><h2 class="section-title">더 알아보기</h2><ul class="rows">
+                    ${row('/mung-signal/', '멍시그널: 3D 강아지 몸짓 살펴보기', '행동 21가지와 일상 상황 12가지', '', 'var(--sky)')}
+                    ${row('/mung-signal/guide/', '행동 언어 가이드', '꼬리, 귀, 하품, 입술 핥기, 배 보이기', '', 'var(--sky)')}
+                </ul></section>
+                ${TEST_CTA}
+            </div>
+            </div>`,
+    }));
+    // 결과 공유 페이지: 미리보기 봇이 읽을 등급 정보. 점수는 주소의 ?s= 로 화면에만 보여 준다.
+    for (const g of L.GRADES) {
+        write(`mung-signal/quiz/s/${g.id}/index.html`, layout({
+            title: `${g.name} | 멍퀴즈 결과 | 멍테스트`, desc: `멍퀴즈 결과는 "${g.name}"이에요. 3D 강아지의 몸짓을 보고 마음을 읽어 보세요. 너도 도전해 봐!`,
+            url: `/mung-signal/quiz/s/${g.id}/`, section: 'signal', noindex: true, ads: false, image: '/img/og-signal-quiz.jpg',
+            body: hero({ tone: 'var(--sky)', width: 'narrow', eyebrow: '친구의 멍퀴즈 결과', title: esc(g.name), text: esc(g.line) }) +
+                `<div class="narrow">
+                    <p class="quiz-score section" data-shared-score hidden></p>
+                    <p class="section"><a class="btn" href="/mung-signal/quiz/">나도 도전하기</a></p>
+                    <p class="check-note">재미와 학습을 위한 결과예요. 실제 강아지의 행동 평가를 뜻하지 않아요.</p>
+                    ${TEST_CTA}
+                </div>
+                <script>(function(){var m=/[?&]s=(\d{1,3})(&|$)/.exec(location.search);var s=m&&+m[1];if(s===null||s>100||s%10)return;var el=document.querySelector('[data-shared-score]');el.textContent='친구는 '+s+'점을 받았어요.';el.hidden=false;})();</script>`,
+        }), { index: false });
+    }
 }
 
 // 멍시그널 행동 언어 가이드 (/mung-signal/guide/): 원본 content/signal-guide/<주소>.html
@@ -1185,6 +1256,7 @@ buildManual();
 buildMatch();
 buildSignal();
 buildSignalGuides();
+buildSignalQuiz();
 buildAbroad();
 buildShare();
 buildTools();

@@ -418,3 +418,48 @@ a { color: var(--primary-dark); }
 .scene-choice[open][data-verdict="ok"] { border-color: var(--mustard); }
 .scene-choice[open][data-verdict="bad"] { border-color: var(--pink); }
 .signal-scene [data-alt] { margin-top: 8px; }
+
+/* 멍퀴즈 */
+.quiz-title { font-size: 1.5rem; margin: 0 0 8px; }
+.quiz-record { background: var(--bg); border-radius: 12px; padding: 10px 14px; }
+.quiz-levels { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.quiz-levels .btn { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 12px 14px; text-align: left; }
+.quiz-levels .btn span { font-size: 0.82rem; font-weight: 500; opacity: 0.85; }
+.quiz-review { margin-top: 10px; width: 100%; }
+.quiz-tips { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 4px; }
+.quiz-tips ul { padding-left: 1.2em; margin: 0; }
+.quiz-tips li { margin-bottom: 6px; line-height: 1.55; word-break: keep-all; }
+.quiz-progress { font-size: 0.88rem; color: var(--text-muted); font-weight: 600; margin: 0 0 6px; }
+.quiz-bar { height: 6px; border-radius: 3px; background: var(--border); overflow: hidden; margin-bottom: 14px; }
+.quiz-bar i { display: block; height: 100%; background: var(--primary); }
+.quiz-q { font-size: 1.15rem; line-height: 1.5; margin: 0 0 10px; word-break: keep-all; outline: none; }
+.quiz-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px; }
+.quiz-desc summary { cursor: pointer; }
+.quiz-choices { display: grid; gap: 8px; }
+.quiz-choice { text-align: left; font: inherit; font-weight: 600; line-height: 1.5; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--border); background: var(--card); color: var(--text); cursor: pointer; word-break: keep-all; }
+.quiz-choice:hover:not(:disabled) { border-color: var(--primary); }
+.quiz-choice:disabled { cursor: default; }
+.quiz-choice.is-right { border-color: var(--green); background: color-mix(in srgb, var(--green) 18%, var(--card)); }
+.quiz-choice.is-wrong { border-color: var(--pink); background: color-mix(in srgb, var(--pink) 18%, var(--card)); }
+.quiz-feedback { margin-top: 14px; word-break: keep-all; }
+.quiz-feedback p { line-height: 1.6; }
+.quiz-verdict { font-weight: 800; font-size: 1.1rem; margin: 0 0 4px; }
+.quiz-why { padding-left: 1.2em; font-size: 0.92rem; color: var(--text-muted); line-height: 1.55; }
+.quiz-why b { color: var(--text); }
+.quiz-grade { font-family: var(--display); font-weight: 400; font-size: 2.1rem; margin: 4px 0; }
+.quiz-score { font-size: 1.1rem; margin: 0 0 6px; }
+.quiz-topics { padding-left: 1.2em; margin: 0 0 6px; }
+.quiz-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.quiz-cta { margin-top: 18px; background: var(--bg); border-radius: 16px; padding: 16px; }
+.quiz-cta p { margin: 6px 0 10px; font-size: 0.93rem; }
+.signal-learn { background: var(--bg); border-radius: 14px; padding: 12px 14px; margin-bottom: 14px; font-size: 0.92rem; word-break: keep-all; }
+.signal-learn ul { padding-left: 1.2em; margin: 4px 0; }
+.signal-learn a { font-weight: 700; }
+.chip.is-seen::after { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green); margin-left: 6px; vertical-align: middle; }
+.chip[aria-pressed="true"].is-seen::after { background: var(--on-primary); }
+@media (max-width: 820px) {
+    /* 퀴즈: 강아지와 문제를 한 화면에서 보도록 3D 화면을 낮춤 */
+    [data-quiz] .signal-stage { height: min(34vh, 290px); }
+    [data-quiz] .signal-panel { padding: 16px; }
+}
+[data-quiz], [data-signal] { scroll-margin-top: 72px; }

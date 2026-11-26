@@ -48,6 +48,9 @@
         signal_part: { part: 'key' },
         signal_scene: { scene: 'key' },
         signal_scene_choice: { scene: 'key', verdict: 'key' },
+        signal_quiz_start: { level: 'key' },
+        signal_quiz_complete: { level: 'key', score: 'int' },
+        signal_quiz_share: { method: 'key' },
         // 공유 링크로 들어온 사람이 직접 검사를 하는지
         shared_visitor_test_start: { from: 'key' },
         shared_visitor_test_complete: { from: 'key' },
