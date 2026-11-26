@@ -2,7 +2,7 @@
 // 강아지는 원점에서 앞(+z)을 본다. 소품은 필요할 때 한 번만 만들고 보였다 숨겼다 한다.
 import * as THREE from 'three';
 
-export function createProps(scene, { createDog, modelUrl, otherDogPose }) {
+export function createProps(scene, { loadOther, otherDogPose }) {
     const made = {}, geos = [], mats = {};
     const mat = c => (mats[c] ||= new THREE.MeshLambertMaterial({ color: c }));
     const box = (w, h, d, c, x, y, z, parent) => {
@@ -73,7 +73,7 @@ export function createProps(scene, { createDog, modelUrl, otherDogPose }) {
             const g = group(0.5, 0, 1.95);
             g.rotation.y = Math.PI - 0.25;
             g.scale.setScalar(0.85);
-            createDog(modelUrl).then(d => { g.add(d.root); g.userData.dog = d; }).catch(() => {});
+            loadOther().then(d => { g.add(d.root); g.userData.dog = d; }).catch(() => {});
             return g;
         },
     };

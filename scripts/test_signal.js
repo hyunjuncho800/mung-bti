@@ -92,8 +92,10 @@ ok(guides.length >= 7, `가이드 ${guides.length}편`);
 for (const f of guides) {
     const src = fs.readFileSync(path.join(gdir, f), 'utf8');
     for (const k of ['title', 'desc', 'h1', 'view', 'sources']) ok(new RegExp(`<!-- ${k}: .+ -->`).test(src), `${f}: ${k}`);
-    const view = (src.match(/<!-- view: b-([a-z_]+) -->/) || [])[1];
-    ok(D.BEHAVIORS.some(b => b.id === view), `${f}: 3D 링크 행동 있음`);
+    const view = (src.match(/<!-- view: ([bs])-([a-z_]+) -->/) || []);
+    ok(view[1] === 'b' ? D.BEHAVIORS.some(b => b.id === view[2]) : S.SCENES.some(x => x.id === view[2]), `${f}: 3D 링크 대상 있음`);
+    const rel = (src.match(/<!-- related: (.+) -->/) || ['', ''])[1].split(',').map(x => x.trim()).filter(Boolean);
+    ok(rel.every(r => fs.existsSync(path.join(gdir, r + '.html'))), `${f}: 관련 가이드 있음`);
     ok(src.match(/<!-- sources: (.+) -->/)[1].split(',').every(k => D.SOURCES[k.trim()]), `${f}: 출처 키`);
     ok(fs.existsSync(path.join(__dirname, '../mung-signal/guide', f.replace('.html', ''), 'index.html')), `${f}: 페이지 생성됨`);
 }

@@ -7,7 +7,7 @@ const track = (n, p) => window.mungTrack && window.mungTrack(n, p);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const LS = (() => { try { localStorage.getItem('x'); return localStorage; } catch (e) { return { getItem: () => null, setItem() {} }; } })();
 
-const state = { target: Object.assign({}, D.DEFAULTS, D.BEHAVIORS[0].pose), motion: {}, paused: matchMedia('(prefers-reduced-motion: reduce)').matches, loop: true, speed: 1 };
+const state = { breed: 'shiba', target: Object.assign({}, D.DEFAULTS, D.BEHAVIORS[0].pose), motion: {}, paused: matchMedia('(prefers-reduced-motion: reduce)').matches, loop: true, speed: 1 };
 let view = null, round = null;
 const LEVEL_NAME = { 1: '초급', 2: '중급', 3: '고급', mix: '섞어서', review: '틀린 문제 다시 풀기' };
 
@@ -197,6 +197,23 @@ function shareLink(btn, url, g, score) {
     else prompt('링크를 복사해 주세요', url);
 }
 
+
+// ---------------------------------------------------------------- 견종 고르기 (이 브라우저에 기억)
+function readBreed() { try { const b = localStorage.getItem('mung_signal_breed'); return b === 'husky' ? 'husky' : 'shiba'; } catch (e) { return 'shiba'; } }
+function bindBreed(scope, getView) {
+    const paint = () => scope.querySelectorAll('[data-breed]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.breed === state.breed)));
+    scope.querySelectorAll('[data-breed]').forEach(b => b.addEventListener('click', () => {
+        if (b.dataset.breed === state.breed) return;
+        state.breed = b.dataset.breed;
+        try { localStorage.setItem('mung_signal_breed', state.breed); } catch (e) {}
+        paint();
+        track('signal_breed', { breed: state.breed });
+        const v = getView();
+        if (v) v.setBreed(state.breed);
+    }));
+    paint();
+}
+
 // ---------------------------------------------------------------- 3D
 function hasWebGL() {
     if (/[?&]nowebgl\b/.test(location.search)) return false;
@@ -220,6 +237,8 @@ async function start3d() {
 }
 
 if (root && D && R && SC && QD && L) {
+    state.breed = readBreed();
+    bindBreed(root, () => view);
     renderStart();
     start3d();
 }

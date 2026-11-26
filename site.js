@@ -51,6 +51,7 @@
         signal_quiz_start: { level: 'key' },
         signal_quiz_complete: { level: 'key', score: 'int' },
         signal_quiz_share: { method: 'key' },
+        signal_breed: { breed: 'key' },
         // 공유 링크로 들어온 사람이 직접 검사를 하는지
         shared_visitor_test_start: { from: 'key' },
         shared_visitor_test_complete: { from: 'key' },

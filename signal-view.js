@@ -8,7 +8,11 @@ import { createProps } from 'signal-props';
 // state: { target, motion, paused, loop, speed } 를 읽어 매 프레임 강아지 자세를 만든다. 모델을 못 불러오면 예외를 던진다.
 // opts.onPick(part): 강아지를 짧게 누른 부위, opts.onFail(msg): 그리기 도중 문제가 생겼을 때
 export async function createView(stage, state, D, opts = {}) {
-    const dog = await createDog(stage.dataset.model);
+    // 견종: 무대의 data-models에 견종별 모델 주소. state.breed로 고르고, 바꾸면 모델만 갈아 끼운다.
+    const MODELS = JSON.parse(stage.dataset.models);
+    const load = b => createDog(MODELS[b] || MODELS.shiba, b);
+    let breed = MODELS[state.breed] ? state.breed : 'shiba';
+    let dog = await load(breed);
 
     const coarse = matchMedia('(pointer: coarse)').matches;
     const renderer = new THREE.WebGLRenderer({ antialias: !coarse, powerPreference: 'low-power', alpha: true });
@@ -31,7 +35,7 @@ export async function createView(stage, state, D, opts = {}) {
     scene.add(dog.root);
     // 멍상황 소품 (상대 강아지는 편안한 자세로 꼬리를 살랑)
     const otherDogPose = Object.assign({}, D.DEFAULTS, D.BEHAVIORS[0].pose, { wagSpeed: 0.4, wagRange: 0.5 });
-    const props = createProps(scene, { createDog, modelUrl: stage.dataset.model, otherDogPose });
+    const props = createProps(scene, { loadOther: () => load(breed === 'shiba' ? 'husky' : 'shiba'), otherDogPose }); // 상대 강아지는 다른 견종
 
     const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 20);
     const controls = new OrbitControls(camera, canvas);
@@ -163,6 +167,13 @@ export async function createView(stage, state, D, opts = {}) {
         replay() { for (const a in EVERY) if (state.target[a]) { timers[a] = 0; dog[a](); } wake(); },
         play(k) { if (EVERY[k]) { timers[k] = 0; dog[k](); } wake(); },
         setScene(sc) { props.setScene(sc); wake(); },
+        async setBreed(b) {
+            if (!MODELS[b] || b === breed) return;
+            const next = await load(b);
+            scene.remove(dog.root); dog.dispose();
+            dog = next; breed = b; scene.add(dog.root);
+            this.replay();
+        },
         setView(v) {
             let [pos, target] = VIEWS[v] || VIEWS.angle;
             follow = v === 'face';

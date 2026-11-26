@@ -24,10 +24,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap">
     
-    <link rel="stylesheet" href="/site.css?v=6dc2a1ef57">
-    <script src="/site.js?v=52e594a1e2"></script>
+    <link rel="stylesheet" href="/site.css?v=60f4dc3a7c">
+    <script src="/site.js?v=a435f16250"></script>
     
-    <script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/","signal-dog":"/signal-dog.js?v=806c619025","signal-props":"/signal-props.js?v=7930e3a269","signal-view":"/signal-view.js?v=c71442be0f"}}</script>
+    <script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/","signal-dog":"/signal-dog.js?v=f08863482a","signal-props":"/signal-props.js?v=791858d774","signal-view":"/signal-view.js?v=2c7e4cb683"}}</script>
 </head>
 <body>
 <header class="site-header">
@@ -51,9 +51,10 @@
 </div><div class="wrap">
             <section class="signal-app section" data-quiz>
                 <div class="signal-view">
-                    <div class="signal-stage" data-stage data-model="/models/shiba.glb?v=1087f17faf">
+                    <div class="signal-stage" data-stage data-models='{"shiba":"/models/shiba.glb?v=1087f17faf","husky":"/models/husky.glb?v=c54dc0a43e"}'>
                         <p class="signal-stage-msg" data-stage-msg>3D 강아지를 불러오는 중이에요...</p>
                     </div>
+                    <div class="signal-breed" role="group" aria-label="견종 고르기"><span>견종</span><button type="button" class="chip" data-breed="shiba" aria-pressed="true">시바견</button><button type="button" class="chip" data-breed="husky" aria-pressed="false">허스키</button></div>
                     <p class="check-note">끌어서 돌리고, 휠이나 두 손가락으로 확대해요. 휴대폰에서는 옆으로 밀면 돌아가요.</p>
                 </div>
                 <div class="signal-panel quiz-panel" data-quiz-panel>
@@ -111,6 +112,6 @@
 <script src="/signal-scenes.js?v=6ad493278c" defer></script>
 <script src="/signal-quiz-data.js?v=0e16739fd4" defer></script>
 <script src="/signal-learn.js?v=38233545ec" defer></script>
-<script type="module" src="/signal-quiz.js?v=f70846bbd1"></script>
+<script type="module" src="/signal-quiz.js?v=e1602e2ad8"></script>
 </body>
 </html>

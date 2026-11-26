@@ -24,10 +24,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap">
     
-    <link rel="stylesheet" href="/site.css?v=6dc2a1ef57">
-    <script src="/site.js?v=52e594a1e2"></script>
+    <link rel="stylesheet" href="/site.css?v=60f4dc3a7c">
+    <script src="/site.js?v=a435f16250"></script>
     
-    <script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/","signal-dog":"/signal-dog.js?v=806c619025","signal-props":"/signal-props.js?v=7930e3a269","signal-view":"/signal-view.js?v=c71442be0f"}}</script>
+    <script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/","signal-dog":"/signal-dog.js?v=f08863482a","signal-props":"/signal-props.js?v=791858d774","signal-view":"/signal-view.js?v=2c7e4cb683"}}</script>
 </head>
 <body>
 <header class="site-header">
@@ -51,7 +51,7 @@
 </div><div class="wrap">
             <section class="signal-app section" data-signal>
                 <div class="signal-view">
-                    <div class="signal-stage" data-stage data-model="/models/shiba.glb?v=1087f17faf">
+                    <div class="signal-stage" data-stage data-models='{"shiba":"/models/shiba.glb?v=1087f17faf","husky":"/models/husky.glb?v=c54dc0a43e"}'>
                         <p class="signal-stage-msg" data-stage-msg>3D 강아지를 불러오는 중이에요...</p>
                     </div>
                     <div class="signal-tools" role="group" aria-label="3D 화면 조작">
@@ -65,6 +65,7 @@
                         <label class="signal-speed">속도 <select data-speed><option value="0.5">0.5배</option><option value="1" selected>1배</option><option value="1.5">1.5배</option></select></label>
                         <button type="button" class="chip" data-reset>처음 상태로</button>
                     </div>
+                    <div class="signal-breed" role="group" aria-label="견종 고르기"><span>견종</span><button type="button" class="chip" data-breed="shiba" aria-pressed="true">시바견</button><button type="button" class="chip" data-breed="husky" aria-pressed="false">허스키</button></div>
                     <p class="check-note">끌어서 돌리고, 휠이나 두 손가락으로 확대해요. 휴대폰에서는 옆으로 밀면 돌아가고, 위아래로 밀면 화면이 내려가요.</p>
                     <div class="signal-parts">
                         <p class="signal-group-label" id="part-label">강아지의 귀, 눈, 입, 몸, 꼬리를 누르거나 아래에서 골라 보세요</p>
@@ -439,7 +440,7 @@
                     <h2>몸짓을 읽을 때 기억할 것</h2>
                     <p>꼬리 하나, 귀 하나만 보고 기분을 정하지 마세요. 같은 꼬리 흔들기도 몸이 풀려 있으면 반가움, 굳어 있으면 긴장일 수 있어요. 귀 모양과 꼬리 위치는 견종마다 평소 모습이 달라서, 우리 강아지가 편할 때 어떤 모습인지 먼저 알아 두면 읽기 쉬워요.</p>
                     <p>입술 핥기, 하품, 시선 피하기 같은 작은 신호를 일찍 알아차리면 더 큰 반응을 막기 쉬워요. 신호가 섞여 보이면 다가가기보다 거리를 두고 몇 초 더 지켜봐 주세요.</p>
-                    <p>3D 강아지는 Quaternius가 공개한 시바견 모델(CC0)에 멍테스트가 귀, 꼬리, 자세, 입 모양 움직임을 붙여 만들었어요. 실제 강아지보다 단순하게 표현돼요. 행동 설명은 아래 자료를 참고해 멍테스트가 직접 정리했어요.</p>
+                    <p>3D 강아지는 Quaternius가 공개한 시바견·허스키 모델(CC0)에 멍테스트가 귀, 꼬리, 자세, 입 모양 움직임을 붙여 만들었어요. 실제 강아지보다 단순하게 표현돼요. 행동 설명은 아래 자료를 참고해 멍테스트가 직접 정리했어요.</p>
                     <ul><li><a href="https://www.dogstrust.org.uk/dog-advice/understanding-your-dog/body-language" rel="noopener" target="_blank">Dogs Trust: How to understand your dog's body language</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/understanding-your-dog/signs-your-dog-may-be-stressed" rel="noopener" target="_blank">Dogs Trust: Signs your dog may be stressed</a></li><li><a href="https://www.rspca.org.uk/adviceandwelfare/pets/dogs/behaviour/understanding" rel="noopener" target="_blank">RSPCA: Understanding your dog's body language</a></li><li><a href="https://www.aspca.org/pet-care/dog-care/dog-bite-prevention" rel="noopener" target="_blank">ASPCA: Dog Bite Prevention</a></li><li><a href="https://www.aspca.org/pet-care/dog-care/common-dog-behavior-issues/aggression" rel="noopener" target="_blank">ASPCA: Aggression</a></li><li><a href="https://www.aspca.org/pet-care/dog-care/common-dog-behavior-issues/food-guarding" rel="noopener" target="_blank">ASPCA: Food Guarding</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/training/unwanted-behaviours/jumping-up-training" rel="noopener" target="_blank">Dogs Trust: How to stop your dog jumping up at people</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/understanding-your-dog/scared-loud-noises" rel="noopener" target="_blank">Dogs Trust: What to do if your dog is scared of loud noises</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/understanding-your-dog/separation-anxiety-in-dogs" rel="noopener" target="_blank">Dogs Trust: Separation anxiety in dogs</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/health-wellbeing/vet-visit/stay-calm-at-the-vet" rel="noopener" target="_blank">Dogs Trust: How to calm your dog at the vet</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/health-wellbeing/vet-visit/vet-examinations" rel="noopener" target="_blank">Dogs Trust: How to keep your dog still</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/training/home/visitor-training" rel="noopener" target="_blank">Dogs Trust: How to prepare your dog for visitors</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/training/unwanted-behaviours/reactive-dog" rel="noopener" target="_blank">Dogs Trust: Reactive dogs</a></li><li><a href="https://www.dogstrust.org.uk/dog-advice/training/unwanted-behaviours/resource-guarding-food-and-toys" rel="noopener" target="_blank">Dogs Trust: Resource guarding in dogs</a></li><li><a href="https://www.rspca.org.uk/adviceandwelfare/pets/dogs/company/children" rel="noopener" target="_blank">RSPCA: Children and dogs</a></li></ul>
                     <p class="check-note">3D 화면은 three.js(MIT 라이선스)로 그려요.</p>
                 </section>
@@ -478,6 +479,26 @@
 <li><a class="row-link plain" href="/mung-signal/guide/belly-up/" style="--tone:var(--sky)">
     
     <div><b>강아지가 배를 보이는 이유</b><span>편한 배 보이기와 불안한 배 보이기</span></div>
+</a></li>
+<li><a class="row-link plain" href="/mung-signal/guide/trigger-stacking/" style="--tone:var(--sky)">
+    
+    <div><b>스트레스가 쌓이는 강아지</b><span>평소와 달리 크게 반응하는 이유</span></div>
+</a></li>
+<li><a class="row-link plain" href="/mung-signal/guide/pain-and-behavior/" style="--tone:var(--sky)">
+    
+    <div><b>아픈 강아지의 몸짓</b><span>통증이 몸짓을 헷갈리게 할 때</span></div>
+</a></li>
+<li><a class="row-link plain" href="/mung-signal/guide/breed-differences/" style="--tone:var(--sky)">
+    
+    <div><b>견종에 따라 다른 몸짓 읽기</b><span>처진 귀, 말린 꼬리, 짧은 주둥이일 때</span></div>
+</a></li>
+<li><a class="row-link plain" href="/mung-signal/guide/kids-and-dogs/" style="--tone:var(--sky)">
+    
+    <div><b>아이와 강아지가 함께 살 때</b><span>아이에게 알려 줄 약속과 신호</span></div>
+</a></li>
+<li><a class="row-link plain" href="/mung-signal/guide/context/" style="--tone:var(--sky)">
+    
+    <div><b>상황이 몸짓의 뜻을 바꿀 때</b><span>같은 몸짓도 상황에 따라 다르게</span></div>
 </a></li></ul></section>
                 <p class="callout callout-note section">행동을 이해하는 데 도움을 드리는 일반 정보예요. 강아지의 마음이나 건강 상태를 진단하지 않아요. 행동이 갑자기 바뀌었거나, 아파 보이거나, 물려고 하는 일이 반복되면 수의사나 반려견 행동 전문가와 상담해 주세요.</p>
                 
@@ -507,6 +528,6 @@
 <script src="/signal-scenes.js?v=6ad493278c" defer></script>
 <script src="/signal-quiz-data.js?v=0e16739fd4" defer></script>
 <script src="/signal-learn.js?v=38233545ec" defer></script>
-<script type="module" src="/signal-app.js?v=24c3a34b72"></script>
+<script type="module" src="/signal-app.js?v=a8b58bbbd6"></script>
 </body>
 </html>

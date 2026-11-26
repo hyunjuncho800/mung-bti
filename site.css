@@ -463,3 +463,5 @@ a { color: var(--primary-dark); }
     [data-quiz] .signal-panel { padding: 16px; }
 }
 [data-quiz], [data-signal] { scroll-margin-top: 72px; }
+.signal-breed { display: flex; align-items: center; gap: 6px; margin-top: 10px; font-size: 0.9rem; font-weight: 600; }
+.signal-breed .chip { padding: 5px 12px; font-size: 0.88rem; }

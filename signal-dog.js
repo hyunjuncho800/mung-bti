@@ -9,7 +9,16 @@ const lerp = (a, b, t) => a + (b - a) * t;
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const tri = (v, lo, mid, hi) => (v < 0 ? lerp(mid, lo, -v) : lerp(mid, hi, v));
 
-export async function createDog(url) {
+// 견종별 설정: 재질 이름(털·흰 털·눈)과 머리에 붙일 부품 위치(처음 자세의 모델 좌표). 두 모델은 뼈대가 같다.
+export const BREEDS = {
+    shiba: { name: '시바견', file: 'shiba', fur: 'Main', light: 'Main_Light', lightColor: 0xeee2cc, eyes: ['Eyes_White', 'Eyes_Pupil', 'Eyes_Black'],
+        eye: [0.22, 2.707, 2.087], mouth: [0, 2.43, 2.33], tongue: [0, 2.43, 2.36], tongueOut: [0, 2.36, 2.5], tongueUp: [0, 2.55, 2.47], teeth: [0, 2.458, 2.425] },
+    husky: { name: '허스키', file: 'husky', fur: 'Material', light: 'Material.001', lightColor: 0xf0f0ec, eyes: ['Material.003', 'Material.002'],
+        eye: [0.204, 2.683, 1.963], mouth: [0, 2.42, 2.25], tongue: [0, 2.42, 2.28], tongueOut: [0, 2.35, 2.42], tongueUp: [0, 2.54, 2.39], teeth: [0, 2.448, 2.345] },
+};
+
+export async function createDog(url, breed = 'shiba') {
+    const cfg = BREEDS[breed] || BREEDS.shiba;
     const gltf = await new GLTFLoader().loadAsync(url);
     const model = gltf.scene;
     const root = new THREE.Group();
@@ -24,8 +33,8 @@ export async function createDog(url) {
         if (o.isSkinnedMesh) {
             o.frustumCulled = false; // 자세를 크게 바꾸면 처음 경계 상자를 벗어남
             o.material.roughness = 1; o.material.metalness = 0;
-            if (o.material.name === 'Main_Light') o.material.color.set(0xeee2cc); // 시바견 흰 털
-            if (o.material.name === 'Main') fur = o.material;
+            if (o.material.name === cfg.light) o.material.color.set(cfg.lightColor); // 흰 털을 밝게
+            if (o.material.name === cfg.fur) fur = o.material;
         }
     });
 
@@ -111,7 +120,7 @@ export async function createDog(url) {
     geos.push(capGeo);
     const lids = [1, -1].map(s => {
         const g = new THREE.Group();
-        g.position.set(0.22 * s, 2.707, 2.087);
+        g.position.set(cfg.eye[0] * s, cfg.eye[1], cfg.eye[2]);
         g.lookAt(g.position.clone().add(new THREE.Vector3(0.5 * s, 0, 0.87))); // 눈이 보는 방향
         g.scale.set(0.076, 0.04, 0.04);
         const cap = new THREE.Mesh(capGeo, fur);
@@ -120,10 +129,10 @@ export async function createDog(url) {
         B.Head.attach(g);
         return cap;
     });
-    const mouth = attach(new THREE.Mesh(ball, mat(0x3a1a1e)), [0, 2.43, 2.33], [0.1, 0.05, 0.1]);
-    const tongue = attach(new THREE.Mesh(ball, mat(0xe0747e)), [0, 2.43, 2.36], [0.065, 0.022, 0.1]);
-    const tongueOut = toHead(0, 2.36, 2.5).sub(tongue.pos);
-    const tongueUp = toHead(0, 2.55, 2.47).sub(tongue.pos);
+    const mouth = attach(new THREE.Mesh(ball, mat(0x3a1a1e)), cfg.mouth, [0.1, 0.05, 0.1]);
+    const tongue = attach(new THREE.Mesh(ball, mat(0xe0747e)), cfg.tongue, [0.065, 0.022, 0.1]);
+    const tongueOut = toHead(...cfg.tongueOut).sub(tongue.pos);
+    const tongueUp = toHead(...cfg.tongueUp).sub(tongue.pos);
     const teethG = new THREE.Group();
     const gumGeo = new THREE.BoxGeometry(0.16, 0.03, 0.05), fangGeo = new THREE.ConeGeometry(0.016, 0.06, 6), incGeo = new THREE.BoxGeometry(0.015, 0.025, 0.012);
     geos.push(gumGeo, fangGeo, incGeo);
@@ -131,7 +140,7 @@ export async function createDog(url) {
     const gum = new THREE.Mesh(gumGeo, mat(0xb8505c)); gum.position.set(0, 0.015, -0.01); teethG.add(gum);
     for (const x of [-0.06, 0.06]) { const f = new THREE.Mesh(fangGeo, toothMat); f.position.set(x, -0.02, 0.005); f.rotation.x = Math.PI; teethG.add(f); }
     for (const x of [-0.03, -0.01, 0.01, 0.03]) { const t = new THREE.Mesh(incGeo, toothMat); t.position.set(x, -0.005, 0.015); teethG.add(t); }
-    const teeth = attach(teethG, [0, 2.458, 2.425], [1.35, 1.35, 1.35]);
+    const teeth = attach(teethG, cfg.teeth, [1.35, 1.35, 1.35]);
 
     // 바닥 그림자
     const cv = document.createElement('canvas'); cv.width = cv.height = 64;
@@ -174,7 +183,7 @@ export async function createDog(url) {
         const hit = raycaster.intersectObjects(pickables, false)[0];
         if (!hit) return null;
         const o = hit.object;
-        if (lidSet.has(o) || /^Eyes/.test(o.material.name)) return 'eyes';
+        if (lidSet.has(o) || cfg.eyes.includes(o.material.name)) return 'eyes';
         if (mouthParts.has(o)) return 'mouth';
         if (mouth.obj.getWorldPosition(pv).distanceTo(hit.point) < 0.045) return 'mouth';
         let best = 'Body', bd = Infinity;
