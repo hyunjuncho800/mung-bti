@@ -10,7 +10,8 @@ const ids = new Set(D.PARAMS.map(p => p.id).concat(D.TOGGLES.map(t => t.id), ['p
 
 const EXPECT = { relaxed: 'calm', play_bow: 'positive', alert: 'caution', anxious: 'stress', fearful: 'fear', warning: 'warning',
     greeting: 'positive', curious: 'positive', stress_yawn: 'stress', shake_off: 'stress', sniff_ground: 'stress', paw_sit: 'stress',
-    guarding: 'warning', resting: 'calm', belly_relaxed: 'calm', appeasement_roll: 'fear' };
+    guarding: 'warning', resting: 'calm', belly_relaxed: 'calm', appeasement_roll: 'fear',
+    excited: 'positive', avoidance: 'stress', freeze: 'warning', attention: 'positive', appeasement: 'stress' };
 for (const b of D.BEHAVIORS) {
     Object.keys(b.pose).forEach(k => ok(ids.has(k), `${b.id}: 자세 값 ${k}가 조절 항목에 있음`));
     for (const [k, v] of Object.entries(b.pose)) {
@@ -59,5 +60,46 @@ ok(!/\d\s*%|퍼센트|확률|점수/.test(all), '확률·점수 표현 없음');
 ok(!/진단합니다|확실히|틀림없/.test(all), '단정 표현 없음');
 // 모든 결과에 진료 안내
 ok(R.interpret({}).checks.some(c => c.includes('동물병원')), '갑작스런 변화는 진료 안내');
+
+// 신체 부위 설명: 모든 행동 × 모든 부위에서 다섯 갈래가 다 나오고, 확률 표현이 없음
+for (const b of D.BEHAVIORS) for (const part of Object.keys(R.PARTS)) {
+    const info = R.partInfo(part, Object.assign({}, D.DEFAULTS, b.pose));
+    ok(info.observe && info.meaning && info.check.length && info.action.length && info.mistakes.length, `${b.id}/${part}: 부위 설명 다섯 갈래`);
+    ok(!/\d\s*%|확률|점수/.test(JSON.stringify(info)), `${b.id}/${part}: 확률 표현 없음`);
+}
+ok(R.partInfo('mouth', { lipCurl: 0.8 }).observe.includes('이빨'), '입: 이빨');
+ok(R.partInfo('tail', { tailHeight: -1 }).observe.includes('말아'), '꼬리: 말아 넣음');
+ok(R.partInfo('body', { posture: 'back', tension: 0.9 }).meaning.includes('다가오지'), '몸: 굳은 배 보이기');
+ok(R.partInfo('nose', {}) === null, '없는 부위는 null');
+
+// 멍상황: 12가지, 행동·출처 연결, 좋은 선택과 피할 선택이 모두 있음
+const S = require('../signal-scenes.js');
+ok(S.SCENES.length === 12, `멍상황 ${S.SCENES.length}가지`);
+for (const sc of S.SCENES) {
+    ok(D.BEHAVIORS.some(b => b.id === sc.behavior) && D.BEHAVIORS.some(b => b.id === sc.alt.behavior), `${sc.id}: 행동 연결`);
+    ok(sc.signals.length && sc.meaning && sc.alt.text && sc.situation, `${sc.id}: 설명`);
+    ok(sc.choices.some(c => c.verdict === 'good') && sc.choices.some(c => c.verdict === 'bad'), `${sc.id}: 좋은 선택과 피할 선택`);
+    ok(sc.choices.every(c => S.VERDICT[c.verdict] && c.why), `${sc.id}: 선택지 해설`);
+    ok(sc.sources.length && sc.sources.every(k => D.SOURCES[k]), `${sc.id}: 출처`);
+    // 위협 신호 상황에서 억지로 하기·혼내기를 좋은 선택으로 두지 않음
+    ok(!sc.choices.some(c => c.verdict === 'good' && /억지로|혼낸|끌고|꽉 붙잡/.test(c.text)), `${sc.id}: 강제·처벌은 좋은 선택 아님`);
+}
+// 가이드 페이지와 상투어 검사
+const fs = require('fs'), path = require('path');
+const gdir = path.join(__dirname, '../content/signal-guide');
+const guides = fs.readdirSync(gdir).filter(f => f.endsWith('.html'));
+ok(guides.length >= 7, `가이드 ${guides.length}편`);
+for (const f of guides) {
+    const src = fs.readFileSync(path.join(gdir, f), 'utf8');
+    for (const k of ['title', 'desc', 'h1', 'view', 'sources']) ok(new RegExp(`<!-- ${k}: .+ -->`).test(src), `${f}: ${k}`);
+    const view = (src.match(/<!-- view: b-([a-z_]+) -->/) || [])[1];
+    ok(D.BEHAVIORS.some(b => b.id === view), `${f}: 3D 링크 행동 있음`);
+    ok(src.match(/<!-- sources: (.+) -->/)[1].split(',').every(k => D.SOURCES[k.trim()]), `${f}: 출처 키`);
+    ok(fs.existsSync(path.join(__dirname, '../mung-signal/guide', f.replace('.html', ''), 'index.html')), `${f}: 페이지 생성됨`);
+}
+const STOCK = ['필수적', '핵심', '완벽', '극강', '효과적', '다양한', '섬세한', '진정한', '명심', '미연에', '비결', '첫걸음', '골든타임', '바람직', '천차만별', '결론적으로', '극대화', '현저히', '전적으로', '반드시'];
+const allText = JSON.stringify([D.BEHAVIORS, R.RULES.map(r => [r.title, r.text]), R.PARTS, S.SCENES]) + guides.map(f => fs.readFileSync(path.join(gdir, f), 'utf8')).join('');
+ok(STOCK.every(w => !allText.includes(w)), '상투어 없음: ' + STOCK.filter(w => allText.includes(w)).join(','));
+ok(!/습니다[.!?]/.test(allText), '"~습니다" 문체 없음');
 
 console.log(`멍시그널 규칙 테스트 통과: ${n}개 확인`);

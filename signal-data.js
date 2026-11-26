@@ -18,6 +18,7 @@
         { id: 'gaze', label: '시선', min: -1, max: 1, step: 0.05, def: 0, left: '피함', right: '똑바로 응시' },
         { id: 'mouthOpen', label: '입 벌림', min: 0, max: 1, step: 0.05, def: 0.3, left: '다묾', right: '크게 벌림' },
         { id: 'lipCurl', label: '입술 들기 (이빨 보이기)', min: 0, max: 1, step: 0.05, def: 0, left: '없음', right: '이빨이 보임' },
+        { id: 'bodyTurn', label: '몸 방향', min: -1, max: 1, step: 0.05, def: 0, left: '왼쪽으로 돌림', right: '오른쪽으로 돌림' },
     ];
     // 켜고 끄는 동작과 상황. 조작 화면에서 버튼으로 바꾼다.
     var TOGGLES = [
@@ -26,6 +27,7 @@
         { id: 'shake', label: '몸 털기' },
         { id: 'sniff', label: '땅 냄새 맡기' },
         { id: 'paw', label: '앞발 들기' },
+        { id: 'jump', label: '펄쩍 뛰기' },
         { id: 'freeze', label: '움직임 멈춤' },
         { id: 'bowl', label: '밥그릇 앞' },
     ];
@@ -47,6 +49,15 @@
         aspca_bite: { name: 'ASPCA: Dog Bite Prevention', url: 'https://www.aspca.org/pet-care/dog-care/dog-bite-prevention' },
         aspca_aggression: { name: 'ASPCA: Aggression', url: 'https://www.aspca.org/pet-care/dog-care/common-dog-behavior-issues/aggression' },
         aspca_food: { name: 'ASPCA: Food Guarding', url: 'https://www.aspca.org/pet-care/dog-care/common-dog-behavior-issues/food-guarding' },
+        dogstrust_jump: { name: 'Dogs Trust: How to stop your dog jumping up at people', url: 'https://www.dogstrust.org.uk/dog-advice/training/unwanted-behaviours/jumping-up-training' },
+        dogstrust_noise: { name: 'Dogs Trust: What to do if your dog is scared of loud noises', url: 'https://www.dogstrust.org.uk/dog-advice/understanding-your-dog/scared-loud-noises' },
+        dogstrust_sep: { name: 'Dogs Trust: Separation anxiety in dogs', url: 'https://www.dogstrust.org.uk/dog-advice/understanding-your-dog/separation-anxiety-in-dogs' },
+        dogstrust_vet: { name: 'Dogs Trust: How to calm your dog at the vet', url: 'https://www.dogstrust.org.uk/dog-advice/health-wellbeing/vet-visit/stay-calm-at-the-vet' },
+        dogstrust_exam: { name: 'Dogs Trust: How to keep your dog still', url: 'https://www.dogstrust.org.uk/dog-advice/health-wellbeing/vet-visit/vet-examinations' },
+        dogstrust_visitor: { name: 'Dogs Trust: How to prepare your dog for visitors', url: 'https://www.dogstrust.org.uk/dog-advice/training/home/visitor-training' },
+        dogstrust_react: { name: 'Dogs Trust: Reactive dogs', url: 'https://www.dogstrust.org.uk/dog-advice/training/unwanted-behaviours/reactive-dog' },
+        dogstrust_guard: { name: 'Dogs Trust: Resource guarding in dogs', url: 'https://www.dogstrust.org.uk/dog-advice/training/unwanted-behaviours/resource-guarding-food-and-toys' },
+        rspca_children: { name: 'RSPCA: Children and dogs', url: 'https://www.rspca.org.uk/adviceandwelfare/pets/dogs/company/children' },
     };
 
     // 행동 상태. pose는 PARAMS·TOGGLES·posture 값(빠진 값은 기본값), motion은 모양만 바꾸는 반복 동작(tremble: 몸 떨림, wiggle: 몸 흔들기).
@@ -70,7 +81,7 @@
             motion: {},
             explain: {
                 observe: '앞다리를 쭉 뻗어 가슴을 낮추고 엉덩이는 높이 든 자세예요. 꼬리를 넓게 흔들고, 입이 편하게 벌어져 있어요.',
-                meaning: '"같이 놀자"는 신호로 자주 보여요. 놀이 도중에 하면 "지금까지는 장난이었어"라고 알려 주는 의미일 수도 있어요.',
+                meaning: '"같이 놀자"는 신호로 자주 보여요. 친근한 마음을 보여 주거나 서로의 긴장을 풀 때도 써요.',
                 check: ['몸이 통통 튀듯 가볍게 움직이는지', '상대가 반응하지 않을 때 스스로 물러나는지', '놀이가 끝난 뒤 금방 차분해지는지'],
                 action: ['짧게 놀아 주고 중간중간 쉬는 시간을 넣어 주세요.', '강아지끼리 놀 때는 한쪽이 피하거나 숨으면 잠깐 떼어 놓아요.'],
                 mistakes: ['이 자세 하나만 보고 다른 강아지와 무조건 잘 논다고 생각하지 마세요. 몸이 뻣뻣해지거나 한쪽만 계속 쫓으면 놀이가 아닐 수 있어요.'],
@@ -258,6 +269,71 @@
                 mistakes: ['배를 쓰다듬어 달라는 뜻으로 가장 오해하기 쉬운 자세예요. 계속 다가가면 으르렁거리거나 물 수 있어요.'],
             },
             sources: ['dogstrust_body', 'dogstrust_stress', 'aspca_bite'],
+        },
+        {
+            id: 'excited', name: '높은 흥분', tone: 'positive',
+            pose: { earForward: 0.4, earBack: 0.2, tailHeight: 0.5, wagSpeed: 1, wagRange: 0.8, tension: 0.3, mouthOpen: 0.7, gaze: 0.3, jump: true },
+            motion: {},
+            explain: {
+                observe: '펄쩍펄쩍 뛰고 이리저리 움직여요. 꼬리를 크게 흔들고, 입을 벌린 채 숨을 빠르게 쉬어요.',
+                meaning: '아주 신나 있거나 놀고 싶은 마음이 큰 상태일 수 있어요.',
+                check: ['몸과 얼굴이 풀려 있는지, 굳어 있는지', '불러도 반응하지 못할 만큼 흥분했는지', '귀를 젖히거나 꼬리를 내린 채 뛰지 않는지'],
+                action: ['흥분이 오래가면 냄새 맡기 같은 차분한 활동으로 쉬는 시간을 주세요.', '뛰어오를 땐 반응을 멈추고, 네 발이 바닥에 닿으면 칭찬해 주세요.'],
+                mistakes: ['펄쩍 뛰는 행동이 늘 기쁨은 아니에요. 불안할 때도 뛰어오르거나 옷을 물거나 목줄을 빼려고 할 수 있어서 귀, 꼬리, 눈을 함께 봐야 해요.'],
+            },
+            sources: ['dogstrust_body', 'dogstrust_jump'],
+        },
+        {
+            id: 'avoidance', name: '회피', tone: 'stress',
+            pose: { earForward: 0, earBack: 0.55, tailHeight: -0.4, wagSpeed: 0, tension: 0.5, weight: -0.4, headPitch: -0.2, gaze: -0.8, mouthOpen: 0, bodyTurn: 0.8 },
+            motion: {},
+            explain: {
+                observe: '고개와 몸을 다가오는 대상의 반대쪽으로 돌리고 시선을 피해요. 체중이 뒤로 빠져 있고 자리를 뜨려고 해요.',
+                meaning: '지금 상황이나 상대가 부담스러워서 거리를 두고 싶다는 뜻일 수 있어요.',
+                check: ['피할 길이 열려 있는지', '피하는데도 상대가 계속 다가오는지', '입술 핥기, 하품 같은 신호가 함께 나오는지'],
+                action: ['피할 수 있게 길을 막지 말고 그대로 보내 주세요.', '다가가던 사람이 있다면 멈추고 물러나게 해 주세요.'],
+                mistakes: ['고개를 돌리는 걸 "삐졌다", "무시한다"로 보기 쉬워요. 피하는 신호를 계속 무시하면 더 강한 신호로 넘어갈 수 있어요.'],
+            },
+            sources: ['dogstrust_body', 'dogstrust_stress', 'aspca_bite'],
+        },
+        {
+            id: 'freeze', name: '얼어붙기', tone: 'warning',
+            pose: { earForward: 0.3, earBack: 0.35, tailHeight: 0, wagSpeed: 0, tension: 0.9, gaze: 0.7, mouthOpen: 0, freeze: true },
+            motion: {},
+            explain: {
+                observe: '움직이던 강아지가 갑자기 딱 멈춰요. 몸이 굳고 조용해지며 한곳을 뚫어지게 바라봐요.',
+                meaning: '많이 긴장했거나 겁을 먹었다는 신호일 수 있어요. 다음 행동을 고르는 짧은 순간이라, 으르렁거리거나 무는 행동으로 이어질 수 있어요.',
+                check: ['무엇을 바라보며 멈췄는지', '입을 꽉 다물었는지', '멈춘 상태가 몇 초 넘게 이어지는지'],
+                action: ['하던 행동(쓰다듬기, 다가가기, 물건 가져가기)을 바로 멈추세요.', '천천히 거리를 벌리고 강아지에게 시간을 주세요.'],
+                mistakes: ['가만히 있으니 괜찮다고 생각하기 쉬워요. 얼어붙은 강아지는 편한 게 아니라 버티는 중일 수 있어요.'],
+            },
+            sources: ['dogstrust_stress', 'aspca_bite', 'aspca_aggression'],
+        },
+        {
+            id: 'attention', name: '관심 요청', tone: 'positive',
+            pose: { posture: 'sit', earForward: 0.35, earBack: 0.1, tailHeight: 0.1, wagSpeed: 0.45, wagRange: 0.5, tension: 0.15, headPitch: 0.55, gaze: 0.45, mouthOpen: 0.35 },
+            motion: {},
+            explain: {
+                observe: '보호자 쪽으로 몸을 돌려 앉아 얼굴을 올려다보고, 꼬리를 살랑살랑 흔들어요.',
+                meaning: '같이 놀거나 쓰다듬어 달라는 등 보호자의 관심을 바라는 것일 수 있어요.',
+                check: ['몸과 얼굴이 풀려 있는지', '밥, 산책, 화장실처럼 필요한 게 있는 시간인지', '앞발로 긁거나 매달릴 만큼 조르는지'],
+                action: ['원하는 게 무엇인지 살펴보고, 들어줄 수 있으면 짧게 응해 주세요.', '뛰어오르며 조를 땐 반응을 멈추고, 차분해지면 관심을 주세요.'],
+                mistakes: ['계속 따라다니며 앞발로 긁거나 매달리는 건 관심 요청일 수도 있지만, 불안해서 안심을 구하는 행동일 때도 있어요.'],
+            },
+            sources: ['dogstrust_body', 'dogstrust_jump'],
+        },
+        {
+            id: 'appeasement', name: '갈등 완화 신호', tone: 'stress',
+            pose: { earForward: 0, earBack: 0.7, tailHeight: -0.45, wagSpeed: 0.9, wagRange: 0.25, bodyHeight: -0.5, tension: 0.45, weight: -0.2, headPitch: -0.3, gaze: -0.6, mouthOpen: 0.05, lick: true },
+            motion: {},
+            explain: {
+                observe: '몸을 낮추고 귀를 뒤로 붙인 채 시선을 피하며 다가와요. 낮게 든 꼬리를 빠르게 흔들고 입술을 핥으며, 다가왔다가 금방 물러나기도 해요.',
+                meaning: '"싸울 생각이 없어요"라며 상대의 긴장을 풀려는 신호일 수 있어요. 마음이 편한 상태라기보다 조금 불안한 상태예요.',
+                check: ['다가왔다 물러나기를 되풀이하는지', '입꼬리가 뒤로 당겨져 웃는 것처럼 이빨이 살짝 보이는지', '상대가 다가올 때 몸이 더 낮아지는지'],
+                action: ['몸을 굽히거나 손을 뻗어 다가가지 말고, 옆으로 비켜서서 강아지가 먼저 다가오게 해 주세요.', '다른 사람이나 강아지가 몰아붙이지 않게 거리를 만들어 주세요.'],
+                mistakes: ['낮은 자세로 꼬리를 흔들며 다가오는 걸 반가운 인사로, 입꼬리를 당긴 얼굴을 웃는 얼굴로 오해하기 쉬워요.'],
+            },
+            sources: ['dogstrust_body'],
         },
     ];
 

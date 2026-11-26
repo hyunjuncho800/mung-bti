@@ -161,13 +161,39 @@ export async function createDog(url) {
     root.scale.setScalar(S);
     root.position.z = -0.5 * S;
 
+    // 화면을 누른 곳이 어느 부위인지: 맞은 점에서 가장 가까운 뼈로 고른다
+    const pickables = [];
+    model.traverse(o => { if (o.isMesh) pickables.push(o); });
+    const mouthParts = new Set([mouth.obj, tongue.obj]);
+    teeth.obj.traverse(o => mouthParts.add(o));
+    const lidSet = new Set(lids);
+    const pv = new THREE.Vector3();
+    const PART_OF = [[/^Ear/, 'ears'], [/^Tail/, 'tail'], [/Leg|Shoulder/, 'legs'], [/^(Head|Neck3)$/, 'head'], [/^Neck/, 'head']];
+    function pick(raycaster) {
+        model.traverse(o => { if (o.isSkinnedMesh) { o.computeBoundingSphere(); o.computeBoundingBox(); } });
+        const hit = raycaster.intersectObjects(pickables, false)[0];
+        if (!hit) return null;
+        const o = hit.object;
+        if (lidSet.has(o) || /^Eyes/.test(o.material.name)) return 'eyes';
+        if (mouthParts.has(o)) return 'mouth';
+        if (mouth.obj.getWorldPosition(pv).distanceTo(hit.point) < 0.045) return 'mouth';
+        let best = 'Body', bd = Infinity;
+        for (const name in B) {
+            if (/^(IK|FF|Pole)/.test(name)) continue;
+            const d = B[name].getWorldPosition(pv).distanceToSquared(hit.point);
+            if (d < bd) { bd = d; best = name; }
+        }
+        const m = PART_OF.find(([re]) => re.test(best));
+        return m ? m[1] : 'body';
+    }
+
     const ev = { lick: -1, yawn: -1, shake: -1, blink: 1.5 };
     const tick = (k, len) => { if (ev[k] < 0) return 0; ev[k] += dtNow; const v = Math.sin(clamp(ev[k] / len, 0, 1) * Math.PI); if (ev[k] > len) ev[k] = -1; return v; };
     let dtNow = 0;
     function update(p, t, dt) {
         resetBones();
         dtNow = dt;
-        const sitW = p.sitW || 0, lieW = p.lieW || 0, backW = p.backW || 0, sniffW = p.sniffW || 0, pawW = p.pawW || 0;
+        const sitW = p.sitW || 0, lieW = p.lieW || 0, backW = p.backW || 0, sniffW = p.sniffW || 0, pawW = p.pawW || 0, jumpW = p.jumpW || 0;
         const still = p.freeze ? 0.15 : 1;
         const breathe = Math.sin(t * (p.tension > 0.6 ? 3.2 : 2.1)) * (p.freeze ? 0.3 : 1);
         const lick = tick('lick', 0.55), yawn = tick('yawn', 1.8), shakeAmp = tick('shake', 1.0);
@@ -183,8 +209,10 @@ export async function createDog(url) {
         B.Torso2.scale.set(1 + breathe * 0.012, 1, 1 + breathe * 0.012);
         // 배 보이며 눕기: 몸 가운데를 축으로 옆·등 쪽으로 굴림
         const roll = backW * 2.2, h = lerp(1.7, 0.62, backW);
-        model.rotation.z = roll;
-        model.position.set(1.7 * Math.sin(roll) + (p.tremble ? Math.sin(t * 55) * 0.015 : 0), h - 1.7 * Math.cos(roll), 0);
+        // 펄쩍 뛰기: 몸 전체가 통통 뛰어오름 / 몸 돌리기: 다가오는 쪽(앞)에서 몸을 돌림
+        const hop = jumpW * Math.abs(Math.sin(t * 6.5)) * 0.5 * still;
+        model.rotation.set(0, (p.bodyTurn || 0) * 0.9, roll);
+        model.position.set(1.7 * Math.sin(roll) + (p.tremble ? Math.sin(t * 55) * 0.015 : 0), h - 1.7 * Math.cos(roll) + hop, 0);
 
         // 목과 머리: 고개 높이, 기울이기(귀도 같이), 시선 피하면 고개 돌림, 냄새 맡기. 숙인 몸만큼 고개를 들어 앞을 봄
         const hp = -p.headPitch;
@@ -256,6 +284,7 @@ export async function createDog(url) {
     return {
         root, update,
         headWorld: out => B.Head.getWorldPosition(out),
+        pick,
         lick() { ev.lick = 0; },
         yawn() { ev.yawn = 0; },
         shake() { ev.shake = 0; },

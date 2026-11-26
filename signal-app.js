@@ -16,21 +16,48 @@ const state = {
 let view3d = null; // 3D가 준비되면 { wake, setView, snap, reset }
 
 // ---------------------------------------------------------------- 자세와 해석
-function setBehavior(id, fromUser) {
+// 행동의 자세를 강아지에 적용 (extra: 상황별로 덧붙이는 값)
+function applyPose(id, extra) {
     const b = D.BEHAVIORS.find(x => x.id === id) || D.BEHAVIORS[0];
-    state.behavior = b.id;
-    state.target = Object.assign({}, D.DEFAULTS, b.pose);
+    state.target = Object.assign({}, D.DEFAULTS, b.pose, extra || {});
     state.motion = b.motion;
-    app.querySelectorAll('[data-behavior]').forEach(el => el.setAttribute('aria-pressed', String(el.dataset.behavior === b.id)));
-    app.querySelectorAll('[data-explain]').forEach(el => { el.hidden = el.dataset.explain !== b.id; });
     syncControls();
     poseChanged();
     if (view3d) view3d.replay();
+    return b;
+}
+function setBehavior(id, fromUser) {
+    const b = applyPose(id);
+    state.behavior = b.id;
+    app.querySelectorAll('[data-behavior]').forEach(el => el.setAttribute('aria-pressed', String(el.dataset.behavior === b.id)));
+    app.querySelectorAll('[data-explain]').forEach(el => { el.hidden = el.dataset.explain !== b.id; });
     if (fromUser) track('signal_behavior', { behavior: b.id });
+}
+
+// ---------------------------------------------------------------- 멍상황
+const SC = window.MungSignalScenes;
+function selectScene(id, fromUser) {
+    const sc = SC.SCENES.find(x => x.id === id) || SC.SCENES[0];
+    state.scene = sc.id;
+    state.alt = false;
+    app.querySelectorAll('[data-scene]').forEach(el => el.setAttribute('aria-pressed', String(el.dataset.scene === sc.id)));
+    app.querySelectorAll('[data-scene-article]').forEach(el => { el.hidden = el.dataset.sceneArticle !== sc.id; });
+    app.querySelectorAll('[data-alt]').forEach(b => { b.textContent = '다른 강아지 모습 보기'; b.setAttribute('aria-pressed', 'false'); });
+    applyPose(sc.behavior, sc.pose);
+    if (view3d) { view3d.setScene(sc); view3d.setView('scene'); }
+    if (fromUser) track('signal_scene', { scene: sc.id });
+}
+function toggleAlt(btn) {
+    const sc = SC.SCENES.find(x => x.id === state.scene);
+    state.alt = !state.alt;
+    if (state.alt) applyPose(sc.alt.behavior, sc.alt.pose); else applyPose(sc.behavior, sc.pose);
+    btn.textContent = state.alt ? '원래 모습 보기' : '다른 강아지 모습 보기';
+    btn.setAttribute('aria-pressed', String(state.alt));
 }
 
 function poseChanged() {
     renderResult();
+    renderPart();
     if (view3d) view3d.poseChanged();
 }
 
@@ -42,6 +69,23 @@ function renderResult() {
     box.innerHTML = `<p class="signal-result-title">${esc(r.title)}</p>` +
         r.readings.map(x => `<p><b>${esc(x.title)}</b> ${esc(x.text)}</p>`).join('') +
         list('눈에 띄는 신호', r.signals) + list('함께 확인할 것', r.checks) + list('보호자는 이렇게', r.actions);
+}
+
+// ---------------------------------------------------------------- 신체 부위 설명
+function selectPart(id) {
+    state.part = state.part === id ? null : id;
+    app.querySelectorAll('[data-part]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.part === state.part)));
+    renderPart();
+    if (state.part) track('signal_part', { part: state.part });
+}
+function renderPart() {
+    const box = app.querySelector('[data-part-info]');
+    const info = state.part && R.partInfo(state.part, state.target);
+    box.hidden = !info;
+    if (!info) return;
+    const ul = xs => `<ul>${xs.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
+    box.innerHTML = `<h3>${esc(info.name)}</h3><h4>지금 보이는 모습</h4><p>${esc(info.observe)}</p><h4>이럴 수 있어요</h4><p>${esc(info.meaning)}</p>` +
+        `<h4>함께 확인할 신호</h4>${ul(info.check)}<h4>보호자는 이렇게</h4>${ul(info.action)}<h4>이렇게 오해하기 쉬워요</h4>${ul(info.mistakes)}`;
 }
 
 // ---------------------------------------------------------------- 멍조작: 슬라이더와 토글
@@ -83,10 +127,20 @@ function syncControls() {
 // ---------------------------------------------------------------- 탭, 재생 조작
 function bindUi() {
     app.querySelectorAll('[data-tab]').forEach(t => t.addEventListener('click', () => {
+        const was = state.tab;
+        state.tab = t.dataset.tab;
         app.querySelectorAll('[data-tab]').forEach(x => x.setAttribute('aria-selected', String(x === t)));
         app.querySelectorAll('[data-pane]').forEach(p => { p.hidden = p.dataset.pane !== t.dataset.tab; });
+        if (state.tab === 'scene') selectScene(state.scene);
+        else if (was === 'scene') { if (view3d) { view3d.setScene(null); view3d.setView('angle'); } setBehavior(state.behavior); }
+    }));
+    app.querySelectorAll('[data-scene]').forEach(b => b.addEventListener('click', () => selectScene(b.dataset.scene, true)));
+    app.querySelectorAll('[data-alt]').forEach(b => b.addEventListener('click', () => toggleAlt(b)));
+    app.querySelectorAll('details[data-verdict]').forEach(d => d.addEventListener('toggle', () => {
+        if (d.open) track('signal_scene_choice', { scene: state.scene, verdict: d.dataset.verdict });
     }));
     app.querySelectorAll('[data-behavior]').forEach(b => b.addEventListener('click', () => setBehavior(b.dataset.behavior, true)));
+    app.querySelectorAll('[data-part]').forEach(b => b.addEventListener('click', () => selectPart(b.dataset.part)));
     const pause = app.querySelector('[data-pause]');
     const paintPause = () => { pause.textContent = state.paused ? '재생' : '일시정지'; pause.setAttribute('aria-pressed', String(state.paused)); };
     pause.addEventListener('click', () => { state.paused = !state.paused; paintPause(); if (view3d) view3d.wake(); });
@@ -105,6 +159,7 @@ function bindUi() {
 
 // ---------------------------------------------------------------- 3D
 function hasWebGL() {
+    if (/[?&]nowebgl\b/.test(location.search)) return false; // 대체 화면 확인용
     try {
         const c = document.createElement('canvas');
         return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl')));
@@ -120,10 +175,9 @@ function fallback(stage, msg) {
 async function start3d() {
     const stage = app.querySelector('[data-stage]');
     if (!hasWebGL()) { fallback(stage, '이 기기에서는 3D 화면을 볼 수 없어요. 설명과 멍조작 해석은 그대로 쓸 수 있어요.'); return; }
-    let THREE, OrbitControls, dog;
+    let THREE, OrbitControls, dog, createDog, createProps;
     try {
-        let createDog;
-        [THREE, { OrbitControls }, { createDog }] = await Promise.all([import('three'), import('three/addons/OrbitControls.js'), import('signal-dog')]);
+        [THREE, { OrbitControls }, { createDog }, { createProps }] = await Promise.all([import('three'), import('three/addons/OrbitControls.js'), import('signal-dog'), import('signal-props')]);
         dog = await createDog(stage.dataset.model);
     } catch (e) { fallback(stage, '3D 화면을 불러오지 못했어요. 새로고침해 보세요.'); return; }
 
@@ -146,6 +200,9 @@ async function start3d() {
     floor.rotation.x = -Math.PI / 2;
     scene.add(floor);
     scene.add(dog.root);
+    // 멍상황 소품 (상대 강아지는 편안한 자세로 꼬리를 살랑)
+    const otherDogPose = Object.assign({}, D.DEFAULTS, D.BEHAVIORS[0].pose, { wagSpeed: 0.4, wagRange: 0.5 });
+    const props = createProps(scene, { createDog, modelUrl: stage.dataset.model, otherDogPose });
 
     const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 20);
     const controls = new OrbitControls(camera, canvas);
@@ -153,11 +210,11 @@ async function start3d() {
     controls.enableDamping = true;
     controls.enablePan = false;
     controls.minDistance = 0.45;
-    controls.maxDistance = 4;
+    controls.maxDistance = 6;
     controls.maxPolarAngle = Math.PI / 2 - 0.04;
     // 시점: [카메라 위치, 바라볼 곳]. face는 귀·눈·입 신호를 가까이 보는 시점
     const BODY = [0, 0.42, 0];
-    const VIEWS = { angle: [[1.5, 0.85, 1.9], BODY], front: [[0, 0.62, 2.4], BODY], side: [[2.4, 0.62, 0], BODY], back: [[0, 0.75, -2.4], BODY], face: [[0.3, 0.76, 1.02], [0, 0.69, 0.45]] };
+    const VIEWS = { angle: [[1.5, 0.85, 1.9], BODY], front: [[0, 0.62, 2.4], BODY], side: [[2.4, 0.62, 0], BODY], back: [[0, 0.75, -2.4], BODY], face: [[0.3, 0.76, 1.02], [0, 0.69, 0.45]], scene: [[3.9, 1.9, 1.0], [0.1, 0.62, 1.0]] };
     camera.position.set(...VIEWS.angle[0]);
 
     const theme = () => { const dark = document.body.classList.contains('dark-mode'); scene.background = new THREE.Color(dark ? 0x1e2521 : 0xf7faf6); floorMat.color.set(dark ? 0x2b352f : 0xdfe8df); };
@@ -166,7 +223,7 @@ async function start3d() {
 
     // 자세: 지금 값이 목표 값으로 부드럽게 따라감
     // 자세(서기·앉기·엎드리기·눕기)와 냄새 맡기·앞발 들기는 0~1 무게로 바꿔 부드럽게 섞는다
-    const W = { sitW: t => t.posture === 'sit', lieW: t => t.posture === 'lie', backW: t => t.posture === 'back', sniffW: t => t.sniff, pawW: t => t.paw };
+    const W = { sitW: t => t.posture === 'sit', lieW: t => t.posture === 'lie', backW: t => t.posture === 'back', sniffW: t => t.sniff, pawW: t => t.paw, jumpW: t => t.jump };
     const cur = Object.assign({}, state.target);
     const copyFlags = () => {
         cur.freeze = state.target.freeze; cur.bowl = state.target.bowl;
@@ -180,7 +237,8 @@ async function start3d() {
     let simT = 0, tween = null, interacting = false, dirty = true, follow = false;
     const headV = new THREE.Vector3(), headD = new THREE.Vector3(), FACE_OFFSET = new THREE.Vector3(0.3, 0.07, 0.57);
     const step = dt => {
-        const k = 1 - Math.exp(-dt * 4), kw = 1 - Math.exp(-dt * 2.5);
+        // 얼어붙기는 갑자기 멈추는 게 특징이라 빠르게 바꿈
+        const k = 1 - Math.exp(-dt * (state.target.freeze ? 12 : 4)), kw = 1 - Math.exp(-dt * 2.5);
         D.PARAMS.forEach(p => { cur[p.id] += (state.target[p.id] - cur[p.id]) * k; });
         for (const w in W) cur[w] += ((W[w](state.target) ? 1 : 0) - cur[w]) * kw;
         copyFlags();
@@ -216,11 +274,26 @@ async function start3d() {
         }
         if (controls.update()) busy = true;
         dog.update(cur, simT, state.paused ? 0 : dt * state.speed);
+        if (props.update(simT, state.paused ? 0 : dt * state.speed)) busy = true;
         renderer.render(scene, camera);
         frames++;
         if (now - fpsT >= 1000) { stage.dataset.fps = Math.round(frames * 1000 / (now - fpsT)); frames = 0; fpsT = now; }
         if (busy) schedule();
     }
+    // 휴대폰: 위아래로 밀면 화면 스크롤, 옆으로 밀면 회전 (OrbitControls가 none으로 바꾼 걸 되돌림)
+    canvas.style.touchAction = 'pan-y';
+    // 짧게 누르면(끌지 않고) 그 자리의 부위 설명
+    const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+    let down = null;
+    canvas.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, t: performance.now() }; });
+    canvas.addEventListener('pointerup', e => {
+        if (!down || Math.hypot(e.clientX - down.x, e.clientY - down.y) > 6 || performance.now() - down.t > 500) return;
+        const r = canvas.getBoundingClientRect();
+        ndc.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1);
+        ray.setFromCamera(ndc, camera);
+        const part = dog.pick(ray);
+        if (part) { state.part = null; selectPart(part); }
+    });
     controls.addEventListener('start', () => { interacting = true; tween = null; wake(); });
     controls.addEventListener('end', () => { interacting = false; wake(); });
     controls.addEventListener('change', schedule);
@@ -239,7 +312,7 @@ async function start3d() {
     canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); cancelAnimationFrame(raf); fallback(stage, '3D 화면이 멈췄어요. 새로고침하면 다시 볼 수 있어요.'); });
     addEventListener('pagehide', () => {
         cancelAnimationFrame(raf);
-        controls.dispose(); dog.dispose(); floorGeo.dispose(); floorMat.dispose(); renderer.dispose();
+        controls.dispose(); dog.dispose(); props.dispose(); floorGeo.dispose(); floorMat.dispose(); renderer.dispose();
     });
 
     view3d = {
@@ -248,10 +321,13 @@ async function start3d() {
         // 행동을 고르면 그 행동의 동작을 바로 한 번 보여 줌
         replay() { for (const a in EVERY) if (state.target[a]) { timers[a] = 0; dog[a](); } wake(); },
         play(k) { if (EVERY[k]) { timers[k] = 0; dog[k](); } wake(); },
+        setScene(sc) { props.setScene(sc); wake(); },
         setView(v) {
             let [pos, target] = VIEWS[v] || VIEWS.angle;
             follow = v === 'face';
             if (follow) { dog.headWorld(headV); target = headV.toArray(); pos = headV.clone().add(FACE_OFFSET).toArray(); }
+            // 상황 장면은 사람·소품까지 보여야 해서 좁은 화면(휴대폰)에서는 더 멀리서 봄
+            if (v === 'scene' && camera.aspect < 1.1) pos = pos.map((x, i) => target[i] + (x - target[i]) * 1.5);
             tween = { from: camera.position.clone(), to: new THREE.Vector3(...pos), fromT: controls.target.clone(), toT: new THREE.Vector3(...target), t0: performance.now() };
             wake();
         },
@@ -260,12 +336,19 @@ async function start3d() {
     resize();
     view3d.poseChanged();
     view3d.replay();
+    if (state.tab === 'scene') selectScene(state.scene);
 }
 
 if (app && D && R) {
     buildControls();
     bindUi();
-    setBehavior('relaxed');
+    // 주소 뒤 #b-행동 또는 #s-상황으로 바로 열기 (가이드 페이지의 "3D로 보기" 링크)
+    const h = location.hash.slice(1);
+    const bh = h.startsWith('b-') && D.BEHAVIORS.find(b => b.id === h.slice(2));
+    const sh = h.startsWith('s-') && SC.SCENES.find(x => x.id === h.slice(2));
+    setBehavior(bh ? bh.id : 'relaxed');
+    if (sh) { state.scene = sh.id; app.querySelector('[data-tab="scene"]').click(); }
+    if (bh || sh) app.scrollIntoView({ block: 'start' });
     track('signal_view', { webgl: hasWebGL() });
     start3d();
 }

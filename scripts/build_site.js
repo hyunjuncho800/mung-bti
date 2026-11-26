@@ -792,6 +792,8 @@ function buildMatch() {
 // 3D 조작 버튼과 슬라이더 옆에 광고가 붙지 않게 이 페이지는 광고를 싣지 않는다.
 function buildSignal() {
     const D = require(path.join(ROOT, 'signal-data.js'));
+    const R = require(path.join(ROOT, 'signal-rules.js'));
+    const S = require(path.join(ROOT, 'signal-scenes.js'));
     const src = ids => ids.map(id => `<a href="${D.SOURCES[id].url}" rel="noopener" target="_blank">${esc(D.SOURCES[id].name)}</a>`).join(', ');
     const ul = xs => `<ul>${xs.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
     const articles = D.BEHAVIORS.map(b => `
@@ -804,13 +806,13 @@ function buildSignal() {
                     <h3>이렇게 오해하기 쉬워요</h3>${ul(b.explain.mistakes)}
                     <p class="signal-src">참고: ${src(b.sources)}</p>
                 </article>`).join('');
-    const importmap = { imports: { three: '/vendor/three/three.module.min.js', 'three/addons/': '/vendor/three/', 'signal-dog': `/signal-dog.js?v=${V('signal-dog.js')}` } };
+    const importmap = { imports: { three: '/vendor/three/three.module.min.js', 'three/addons/': '/vendor/three/', 'signal-dog': `/signal-dog.js?v=${V('signal-dog.js')}`, 'signal-props': `/signal-props.js?v=${V('signal-props.js')}` } };
     write('mung-signal/index.html', layout({
         title: '멍시그널: 3D 강아지로 보는 몸짓 신호 읽기 | 멍테스트',
         desc: '3D 강아지로 귀, 꼬리, 자세, 입 모양이 말하는 16가지 신호를 살펴봐요. 놀이 인사, 졸리지 않은 하품, 몸 털기, 자원 지키기, 불안해서 배 보이기까지 몸짓을 직접 바꿔 보며 읽는 법을 익혀요.',
         url: '/mung-signal/', section: 'signal', ads: false,
         extraHead: `<script type="importmap">${JSON.stringify(importmap)}</script>`,
-        extraBody: ['signal-data', 'signal-rules'].map(n => `<script src="/${n}.js?v=${V(n + '.js')}" defer></script>`).join('\n') +
+        extraBody: ['signal-data', 'signal-rules', 'signal-scenes'].map(n => `<script src="/${n}.js?v=${V(n + '.js')}" defer></script>`).join('\n') +
             `\n<script type="module" src="/signal-app.js?v=${V('signal-app.js')}"></script>`,
         body: hero({ tone: 'var(--sky)', title: '멍시그널', text: '강아지는 귀, 꼬리, 자세, 입 모양을 함께 써서 말해요. 3D 강아지를 돌려 보며 행동별 신호를 살펴보고, 멍조작에서 몸짓을 직접 바꿔 보세요.' }) +
             `<div class="wrap">
@@ -830,18 +832,45 @@ function buildSignal() {
                         <label class="signal-speed">속도 <select data-speed><option value="0.5">0.5배</option><option value="1" selected>1배</option><option value="1.5">1.5배</option></select></label>
                         <button type="button" class="chip" data-reset>처음 상태로</button>
                     </div>
-                    <p class="check-note">끌어서 돌리고, 휠이나 두 손가락으로 확대해요.</p>
+                    <p class="check-note">끌어서 돌리고, 휠이나 두 손가락으로 확대해요. 휴대폰에서는 옆으로 밀면 돌아가고, 위아래로 밀면 화면이 내려가요.</p>
+                    <div class="signal-parts">
+                        <p class="signal-group-label" id="part-label">강아지의 귀, 눈, 입, 몸, 꼬리를 누르거나 아래에서 골라 보세요</p>
+                        <div class="chips" role="group" aria-labelledby="part-label">
+                            ${Object.entries(R.PARTS).map(([id, v]) => `<button type="button" class="chip" data-part="${id}" aria-pressed="false">${esc(v.name)}</button>`).join('')}
+                        </div>
+                        <div class="signal-part-info" data-part-info aria-live="polite" hidden></div>
+                    </div>
                 </div>
                 <div class="signal-panel">
                     <div class="signal-tabs" role="tablist">
                         <button type="button" role="tab" data-tab="observe" aria-selected="true">멍관찰</button>
                         <button type="button" role="tab" data-tab="control" aria-selected="false">멍조작</button>
+                        <button type="button" role="tab" data-tab="scene" aria-selected="false">멍상황</button>
                     </div>
                     <div data-pane="observe">
                         <div class="chips signal-behaviors" role="group" aria-label="행동 고르기">
                             ${D.BEHAVIORS.map(b => `<button type="button" class="chip" data-behavior="${b.id}" aria-pressed="false">${esc(b.name)}</button>`).join('')}
                         </div>
                         ${articles}
+                    </div>
+                    <div data-pane="scene" hidden>
+                        <p class="check-note">일상에서 자주 만나는 상황이에요. 같은 상황에서도 강아지마다 반응이 달라서, "다른 강아지 모습 보기"로 다른 반응도 볼 수 있어요.</p>
+                        <div class="chips signal-behaviors" role="group" aria-label="상황 고르기">
+                            ${S.SCENES.map(x => `<button type="button" class="chip" data-scene="${x.id}" aria-pressed="false">${esc(x.title)}</button>`).join('')}
+                        </div>
+                        ${S.SCENES.map(x => `
+                        <article class="signal-explain signal-scene" data-scene-article="${x.id}" id="s-${x.id}">
+                            <h2>${esc(x.title)}</h2>
+                            <p>${esc(x.situation)}</p>
+                            <h3>이런 신호가 보여요</h3>${ul(x.signals)}
+                            <h3>이럴 수 있어요</h3><p>${esc(x.meaning)}</p>
+                            <h3>다른 강아지라면</h3><p>${esc(x.alt.text)}</p>
+                            <button type="button" class="chip" data-alt aria-pressed="false">다른 강아지 모습 보기</button>
+                            <h3>보호자라면 어떻게 할까요?</h3>
+                            <p class="check-note">선택지를 눌러 해설을 보세요.</p>
+                            ${x.choices.map(c => `<details class="scene-choice" data-verdict="${c.verdict}"><summary>${esc(c.text)}</summary><p><b>${S.VERDICT[c.verdict]}</b> ${esc(c.why)}</p></details>`).join('')}
+                            <p class="signal-src">참고: ${src(x.sources)}</p>
+                        </article>`).join('')}
                     </div>
                     <div data-pane="control" hidden>
                         <p class="check-note">귀, 꼬리, 몸, 입을 따로 바꿔 보세요. 해석은 신호 여러 개의 조합으로만 고르고, 숫자나 확률로 말하지 않아요.</p>
@@ -859,11 +888,74 @@ function buildSignal() {
                     <ul>${Object.values(D.SOURCES).map(s => `<li><a href="${s.url}" rel="noopener" target="_blank">${esc(s.name)}</a></li>`).join('')}</ul>
                     <p class="check-note">3D 화면은 three.js(MIT 라이선스)로 그려요.</p>
                 </section>
+                <section class="section"><h2 class="section-title">행동 언어 가이드</h2><ul class="rows">${SIGNAL_GUIDE_ORDER.map(slug => { const src = fs.readFileSync(path.join(ROOT, 'content/signal-guide', `${slug}.html`), 'utf8'); return row(`/mung-signal/guide/${slug}/`, meta(src, 'h1'), meta(src, 'short'), '', 'var(--sky)'); }).join('')}</ul></section>
                 <p class="callout callout-note section">행동을 이해하는 데 도움을 드리는 일반 정보예요. 강아지의 마음이나 건강 상태를 진단하지 않아요. 행동이 갑자기 바뀌었거나, 아파 보이거나, 물려고 하는 일이 반복되면 수의사나 반려견 행동 전문가와 상담해 주세요.</p>
                 ${TEST_CTA}
             </div>
             </div>`,
     }));
+}
+
+// 멍시그널 행동 언어 가이드 (/mung-signal/guide/): 원본 content/signal-guide/<주소>.html
+// 머리 주석: title, desc, h1, short, view(3D로 볼 #b-행동), related(다른 가이드), sources(signal-data.js의 출처 키)
+const SIGNAL_GUIDE_ORDER = ['stress-signals', 'tail-wagging', 'ears-back', 'lip-licking', 'yawning', 'play-bow', 'belly-up'];
+const SIGNAL_GUIDE_DATE = '2026-11-26';
+function buildSignalGuides() {
+    const D = require(path.join(ROOT, 'signal-data.js'));
+    const gs = SIGNAL_GUIDE_ORDER.map(slug => {
+        const src = fs.readFileSync(path.join(ROOT, 'content/signal-guide', `${slug}.html`), 'utf8');
+        const m = k => meta(src, k);
+        return { slug, url: `/mung-signal/guide/${slug}/`, title: m('title'), desc: m('desc'), h1: m('h1'), short: m('short'), view: m('view'),
+            related: m('related').split(',').map(x => x.trim()).filter(Boolean), sources: m('sources').split(',').map(x => x.trim()).filter(Boolean),
+            body: src.replace(/<!--[\s\S]*?-->\s*/g, '').trim() };
+    });
+    const bySlug = Object.fromEntries(gs.map(g => [g.slug, g]));
+    const crumbs = (name, url) => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '멍테스트', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: '멍시그널', item: `${SITE}/mung-signal/` },
+        { '@type': 'ListItem', position: 3, name: '행동 언어 가이드', item: `${SITE}/mung-signal/guide/` },
+        ...(name ? [{ '@type': 'ListItem', position: 4, name, item: `${SITE}${url}` }] : []),
+    ] });
+    const rows = list => list.map(g => row(g.url, g.h1, g.short, '', 'var(--sky)')).join('');
+    write('mung-signal/guide/index.html', layout({
+        title: '강아지 행동 언어 가이드: 꼬리, 귀, 하품, 입술 핥기 읽는 법 | 멍테스트',
+        desc: '강아지 바디랭귀지를 신호별로 정리했어요. 꼬리 흔들기, 귀 젖히기, 입술 핥기, 하품, 놀이 인사, 배 보이기, 스트레스 신호를 3D 강아지와 함께 살펴보세요.',
+        url: '/mung-signal/guide/', section: 'signal', ld: [crumbs()],
+        body: hero({ tone: 'var(--sky)', width: 'narrow', eyebrow: '<a class="eyebrow-link" href="/mung-signal/">멍시그널</a>', title: '행동 언어 가이드', text: '강아지 몸짓을 신호별로 정리했어요. 글마다 3D 강아지로 바로 볼 수 있어요.' }) +
+            `<div class="narrow">
+                <section class="section prose">
+                    <h2>몸짓을 읽는 순서</h2>
+                    <p>먼저 몸 전체가 말랑한지, 굳어 있는지 보세요. 그다음 귀, 눈, 입, 꼬리를 차례로 보고, 마지막으로 지금 무슨 일이 있는지 주변을 살펴요. 신호 하나로 결론을 내리기보다 여러 신호가 같은 쪽을 가리키는지 확인하는 게 중요해요.</p>
+                    <p>우리 강아지가 편할 때 어떤 모습인지 알아 두면 달라진 점을 알아차리기 쉬워요. 귀와 꼬리의 평소 위치는 견종마다 다르거든요.</p>
+                </section>
+                <section class="section"><h2 class="section-title">신호별 가이드</h2><ul class="rows">${rows(gs)}</ul></section>
+                <p class="section"><a class="btn" href="/mung-signal/">3D 강아지로 직접 보기</a></p>
+                ${DISCLAIMER}
+            </div>`,
+    }));
+    for (const g of gs) {
+        const rel = g.related.map(r => bySlug[r]).filter(Boolean);
+        write(`mung-signal/guide/${g.slug}/index.html`, layout({
+            title: `${g.title} | 멍테스트`, desc: g.desc, url: g.url, section: 'signal',
+            ld: [
+                { '@context': 'https://schema.org', '@type': 'Article', headline: g.h1, description: g.desc, inLanguage: 'ko', datePublished: SIGNAL_GUIDE_DATE, dateModified: SIGNAL_GUIDE_DATE, author: { '@type': 'Organization', name: '멍테스트', url: `${SITE}/` }, publisher: { '@type': 'Organization', name: '멍테스트' }, mainEntityOfPage: `${SITE}${g.url}` },
+                crumbs(g.h1, g.url),
+            ],
+            body: hero({ tone: 'var(--sky)', width: 'narrow', eyebrow: '<a class="eyebrow-link" href="/mung-signal/guide/">멍시그널 / 행동 언어 가이드</a>', title: esc(g.h1) }) +
+                `<div class="narrow">
+                    <p class="guide-meta">${SIGNAL_GUIDE_DATE} 작성 · 멍테스트 편집</p>
+                    <article class="prose section">${g.body}</article>
+                    <p class="section"><a class="btn" href="/mung-signal/#${g.view}">3D 강아지로 이 모습 보기</a></p>
+                    <section class="section prose"><h2>참고한 자료</h2><ul>${g.sources.map(k => `<li><a href="${D.SOURCES[k].url}" rel="noopener" target="_blank">${esc(D.SOURCES[k].name)}</a></li>`).join('')}</ul>
+                    <p class="check-note">위 자료를 참고해 멍테스트가 직접 정리했어요.</p></section>
+                    <p class="callout callout-note section">행동을 이해하는 데 도움을 드리는 일반 정보예요. 강아지의 마음이나 건강 상태를 진단하지 않아요. 행동이 갑자기 바뀌었거나, 아파 보이거나, 물려고 하는 일이 되풀이되면 수의사나 반려견 행동 전문가와 상담해 주세요.</p>
+                    ${rel.length ? `<section class="section"><h2 class="section-title">함께 보면 좋은 신호</h2><ul class="rows">${rows(rel)}</ul></section>` : ''}
+                    <section class="section"><h2 class="section-title">다른 신호</h2><ul class="rows">${rows(gs.filter(o => o !== g && !rel.includes(o)))}</ul></section>
+                    ${TEST_CTA}
+                </div>`,
+        }));
+    }
+    return gs;
 }
 
 // ---------------------------------------------------------------- 반려동물 해외여행: 나라별 입국 조건 (/abroad/)
@@ -1092,6 +1184,7 @@ buildRoutine();
 buildManual();
 buildMatch();
 buildSignal();
+buildSignalGuides();
 buildAbroad();
 buildShare();
 buildTools();
