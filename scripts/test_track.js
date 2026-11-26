@@ -35,10 +35,11 @@ for (const m of siteSrc.matchAll(/^\s{8}(\w+): \{([^}]*)\},?$/gm)) spec[m[1]] = 
 const required = ['behavior_check_view', 'behavior_check_start', 'behavior_check_complete', 'temperament_test_start', 'temperament_test_complete', 'routine_start', 'routine_day_complete', 'result_share', 'shared_link_visit',
     'guide_view', 'guide_generate', 'guide_edit', 'guide_image_download', 'guide_share_click', 'guide_public_link_create', 'guide_public_link_visit',
     'match_start', 'match_complete', 'match_share_click', 'match_invite_create', 'match_invite_visit', 'match_invite_accept', 'match_invite_complete',
-    'shared_visitor_test_start', 'shared_visitor_test_complete'];
+    'shared_visitor_test_start', 'shared_visitor_test_complete',
+    'signal_view', 'signal_behavior', 'signal_control'];
 eq(Object.keys(spec).sort(), required.slice().sort(), `요청된 이벤트 ${required.length}개가 모두 정의됨`);
 const used = new Set();
-for (const f of ['script.js', 'check.js', 'routine.js', 'manual.js', 'match.js']) {
+for (const f of ['script.js', 'check.js', 'routine.js', 'manual.js', 'match.js', 'signal-app.js']) {
     if (!fs.existsSync(path.join(ROOT, f))) continue;
     const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
     for (const m of src.matchAll(/track\('(\w+)'(?:, \{([^}]*)\})?\)/g)) {

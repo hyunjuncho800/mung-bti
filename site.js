@@ -41,6 +41,10 @@
         match_invite_visit: { via: 'key', state: 'key' },
         match_invite_accept: {},
         match_invite_complete: { nickname: 'key' },
+        // 멍시그널
+        signal_view: { webgl: 'bool' },
+        signal_behavior: { behavior: 'key' },
+        signal_control: { param: 'key' },
         // 공유 링크로 들어온 사람이 직접 검사를 하는지
         shared_visitor_test_start: { from: 'key' },
         shared_visitor_test_complete: { from: 'key' },
